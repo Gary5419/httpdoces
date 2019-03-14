@@ -1,0 +1,124 @@
+<?php
+#ini_set( 'display_errors', 1 );
+require_once("include/2018/config.php");
+$cookie_name = "201805";
+
+if(isset($_GET['afi'])){
+	
+    #アフィリエイトIDがクッキー値と異なる場合、クッキーを削除して値変更
+	$expire = time() + 60 * 60 * 24 * 30 * 1;#1ヶ月
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+
+
+
+require_once("../_data/201805.php");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+<link href="../css/custom.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+  </head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li><a href="../" class="trans">ポケカル情報誌の紹介</a></li>
+            <li><?php echo $m_navi[$p][6];?></li>
+          </ul>
+          <section>
+
+        <div id="wrap_top">
+          
+
+<div class="caption">
+ポケカルのサイトでは、<span class="c_c00000">24時間いつでもオンライン予約が可能</span>です。また、<span class="c_c00000">クレジットカードでの支払いが可能</span>です（電話からの申込みの場合は、払込票の支払い手段のみ）。ぜひ、ポケカルのWEBサイトで、<span class="c_c00000">便利なオンライン予約</span>をご利用ください。
+</div>
+
+<ul id="cruise_navi">
+<?php foreach($m_navi as $key => $val): ?>
+<li><a href="<?php if($key == "sept-2016")	echo "./"; else echo "./?p=".$key;?>" class="cruise_link<?php if(strcmp($p,$key) == 0)	echo "_a";?>"><?php echo $val[0];?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<?php if($m_navi[$p][7] != ""): ?>
+<div align="center"><img src="img/<?php echo $m_navi[$p][7];?>.jpg"></div>
+<?php endif; ?>
+
+<?php if($m_navi[$p][8] != ""): ?>
+<div align="center"><img src="img/<?php echo $m_navi[$p][8];?>.jpg"></div>
+<?php endif; ?>
+
+<div class="mb20"></div>
+
+<div class="midashi">誌面に掲載されているツアー・チケット・グルメプラン情報</div>
+
+
+<?php foreach($data[$p] as $val): 
+
+if($val[2] == "") continue;
+?>
+
+<?php if($afi == ""): ?>
+<a href="/book/calendar.php?eventid=P<?php echo sprintf("%06d",$val[0]); ?>&y=0000&m=00&by=0000&bm=00" style="color:#0070C0;text-decoration:none;" >
+<?php else: ?>
+<a href="http://www.poke.co.jp/book/calendar/P<?php echo sprintf("%06d",$val[0]);?>/<?php echo $afi; ?>/index.html" style="color:#0070C0;text-decoration:none;">
+<?php endif; ?>
+<ul class="dmlist">
+<li><img src="../img/icon_bm.png" width="32"></li>
+<li>【<?php echo $val[0];?>】</li>
+<li><?php 
+if(mb_strlen($val[2],'UTF-8') > 52):
+echo mb_substr($val[2],0,52,'UTF-8')."...";
+else:
+echo $val[2];
+endif;
+?>
+</li>
+</ul>
+</a>
+
+
+<?php endforeach; ?>
+
+
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

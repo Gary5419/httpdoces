@@ -1,0 +1,110 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$title = "工場夜景クルーズ - 京浜運河コース航路マップ | ポケカル";
+$description = "工場夜景クルーズの京浜運河コース 航路マップ";
+$keywords = "京浜運河,工場夜景,航路,マップ,地図,クルーズ,ポケカル";
+define("H1TXT","工場夜景クルーズ - 京浜運河コース航路マップ");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/factory-cruise/map-keihin/">
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<style>
+.headline04{
+	font-size:22px;
+	padding-left:20px;
+  	background: #554538 !important;
+}
+.lead{
+	width:98%;
+
+	margin:20px auto;
+	color:#333333;
+	font-size:14px;
+	line-height:1.5;
+}
+a.apply_btn {
+    -webkit-appearance: none;
+    display: block;
+    margin: 10px auto;
+    text-decoration: none;
+    border: none;
+    color: #FFF;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 100px;
+    cursor: pointer;
+    background: #ec7391;
+    width: 300px;
+    
+	height:50px;
+	color:#FFF !important;
+	text-decoration:none;
+	line-height:48px;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+			<li><a class="trans" href="../">工場夜景クルーズ</a></li>
+            <li>京浜運河コース 航路マップ</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>工場夜景クルーズ - 京浜運河コース 航路マップ</span></h2>
+</div>
+
+<div align="center">
+<img src="../img/map1.jpg" width="" style="margin-bottom:20px;" >
+</div>
+<br>
+<!-- end/keyimage -->
+
+<a href="../" class="apply_btn">工場夜景クルーズTOPへ戻る</a>
+
+
+</div>
+</div>
+
+<?php include_once("include/2018/footer.html" ); ?>

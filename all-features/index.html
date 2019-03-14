@@ -1,0 +1,64 @@
+<?php
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->setAllSpecialHtml();
+$data2 = $cms->res_data;
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="ポケカルおすすめ特集">
+    <meta name="keywords" content="おすすめ特集,ポケカル">
+    <title>おすすめ特集 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("../book/head_tag.php"); ?>
+  </head>
+  <body>
+  <?php include_once("../book/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>おすすめ特集</li>
+          </ul>
+          <section class="theme">
+            <h1 class="headline01">特集一覧</h1>
+            
+            <div class="pdlr10">
+            <p class="headline02">おすすめ特集</p>
+            </div>
+            
+            <p class="download pdlr20"><?php echo ALLFEATURES; ?></p>
+			
+
+<div class="mb30"></div>
+
+<div class="pdlr10">
+<ul class="feature-list layout-col-3">
+			<?php echo $data2['all_special']; ?>
+
+            </ul>
+</div>
+            
+          </section>
+        
+
+        </div>
+      </div>
+      <?php include_once("include/2018/footer.html" ); ?>

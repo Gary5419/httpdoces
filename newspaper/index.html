@@ -1,0 +1,101 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+require_once("../_data/newspaper2019.php");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="新聞広告掲載のツアー情報" />
+    <meta name="keywords" content="" />
+    <meta name="copyright" content="" />
+    <title>新聞広告掲載のツアー | 日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-news.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/newspaper/">
+<style>
+ul.news{
+	margin:50px 30px 200px 30px;
+	position:relative;
+	overflow:hidden;
+}
+ul.news li{
+	float:left;
+	width:50%;
+	font-size:16px;
+	margin-bottom:15px;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP </a></li>
+            <li>新聞広告掲載ツアー</li>
+          </ul>
+
+
+<h1 class="headline01">新聞広告掲載ツアー</h1>
+
+<img src="images/keyimage_pc.jpg" width="100%" >
+
+<div class="mb30"></div>
+
+
+<div class="p16 mlr10">
+各新聞広告に掲載しているポケカルのツアー情報をご覧いただけます。新聞広告を見て、気になるツアーがあれば、当ページにて詳細をご確認ください。各ツアーの詳細ページでは、新聞広告には記載されていない、ツアー行程やお食事内容など、さらに詳しい情報を参照することができます。ポケカルサイトでは、24時間いつでもオンラインでご予約を受付中。クレジットカードもご利用可能です。ぜひ、便利なWEB予約をご利用ください。
+</div>
+
+<div class="mb50"></div>
+
+
+<ul class="news">
+<?php
+foreach($news as $v):
+?>
+<li><a href="<?php echo $v[1]; ?>"><?php echo $v[0]; ?></a></li>
+<?php
+endforeach;
+?>
+</ul>
+
+
+
+</div>
+</div>
+
+
+</div>
+
+
+<?php include_once("include/2018/footer.html" ); ?>

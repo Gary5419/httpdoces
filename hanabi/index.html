@@ -1,0 +1,191 @@
+<?php
+require_once("include/2018/config.php");
+
+/*
+$cookie_name = "eventlist_special";
+
+if(isset($_GET['afi'])){
+	$url_array = parse_url($_SERVER["REQUEST_URI"]); 
+	$params = str_replace("&afi=".$_GET['afi'],"",$url_array['query']);
+    $expire = 0;
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+*/
+
+#IACEトラベル：1144
+#サイネックス：1175
+#マップルトラベル：1149
+#アクティビティジャパン：1177
+#1176
+
+require_once "./_data/index.php";
+
+define("H1TXT","花火大会ツアー特集2018 | 日帰りバスツアー・日帰り旅行ならポケカル");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="Description" content="2018年もポケカルでは、都内や東京近県の花火大会の観覧ツアーを企画いたします。まだ企画中のツアーがほとんどですが、販売可能となった花火ツアーは、当特集で順次公開！ツアーのタイプは、クルーズ観覧、特別席観覧、バス送迎付き観覧など、花火大会ごとにさまざま。ご予算や前後の予定に合せ、ツアーをお選びください。隅田川花火大会や江戸川花火など、人気の花火ツアーは毎年、完売になりますので、当ページで公開後は、お早めにご予約ください！" />
+<meta name="Keywords" content="花火,花火大会,2018,観覧,クルーズ,特別席,バスツアー,隅田川花火大会,江戸川花火大会" />
+<meta name="copyright" content="" />
+<title>花火大会ツアー特集2018 | 日帰りバスツアー・日帰り旅行ならポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-days.css" rel="stylesheet" type="text/css" />
+<link href="css/style-hanabi.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/hanabi/">
+
+<style>
+
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main" style="background:#000C32;margin-top:-20px;padding-top:20px;">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../" style="color:#FFF;">ポケカル TOP</a></li>
+            <li style="color:#FFF;">花火大会ツアー特集2018</li>
+            </ul>
+
+          <link href="../css/style-days.css" rel="stylesheet" type="text/css" />
+      
+<div align="center">
+<img src="images/keyimage_pc.jpg" width="920" alt="花火大会ツアー特集2018。都内や東京近県の花火大会の観覧ツアーをご案内">
+</div>
+
+<div class="mb40"></div>
+
+<div style="width:900px;margin:0px auto;line-height:1.6;padding:10px;">
+<div style="font-size:16px;color:#FFF;">
+2018年もポケカルでは、都内や東京近県の花火大会の観覧ツアーを企画いたします。まだ企画中のツアーがほとんどですが、販売可能となった花火ツアーは、当特集で順次公開！ツアーのタイプは、クルーズ観覧、特別席観覧、バス送迎付き観覧など、花火大会ごとにさまざま。ご予算や前後の予定に合せ、ツアーをお選びください。特に1万発を超える大型花火大会は、観覧スポットや交通機関の混雑が予想されるため、船からの観覧クルーズがおススメ！水上の特等席からゆっくり花火をお愉しみいただけます。隅田川花火大会や江戸川花火など、人気の花火ツアーは、毎年、完売になります。当ページでツアー公開後は、お早めにご予約ください。
+</div>
+
+</div>
+
+<div class="mb20"></div>
+
+<!-- イベント詳細　-->
+
+<!-- ★区切り★ -->
+
+
+<h2 style="font-size:20px;font-weight:bold;color:#FFF;margin-bottom:30px;margin-top:0px;"><img src="images/icon_fw2017.png" width="80" style="position:relative;top:0px;">&nbsp;花火大会一覧 2018年(ポケカルのツアーで行ける！)</h2>
+
+
+<div id="fwbg">
+
+<div style="float:right;">
+<!--
+	<a href="/book/eventlist.php?themaid=hanabi&sort=new" style="color:#FFF;margin-right:15px;text-decoration:none;font-size:16px;">花火ツアーをすべてみる</a>
+-->
+</div>
+
+<div id="fwnavi">
+<a href="#tokyo">東京</a>　｜　<a href="#kanagawa">神奈川</a>　｜　<a href="#chiba">千葉</a>　｜　<a href="#ibaraki">茨城県</a>　｜　<a href="#tochigi">栃木県</a>　｜　<a href="#gunma">群馬県</a>
+</div>
+
+<?php 
+$pref = "";
+foreach($data_hanabi as $key => $v): 
+
+if($pref != $key):
+?>
+<a name="<?php echo $key;?>"></a>
+<h3 class="pref"><img src="images/icon_marker.png" width="30" style="position:relative;top:0px;margin-right:6px;"><?php echo $m_data[$key]; ?>の花火大会</h3>
+<?php
+$pref = $key;
+endif;
+
+foreach($v as $val): ?>
+
+
+<div class="spot">
+<div class="spotleft">
+
+    <div class="photo_outer">
+    
+    
+    <img src="images/<?php echo $val[8]; ?>" width="100%" class="">
+   
+    </div>
+
+</div>
+<div class="spotright">
+
+	<div class="midashi"><?php echo $val[2];?></div>
+
+	<div><span class="c_ffffb3">◆開催日時：</span><span class="c_ffffff"><?php echo $val[3];?></span></div>
+
+	<div><span class="c_ffffb3">◆開催場所：</span><span class="c_ffffff"><?php echo $val[4];?></span></div>
+
+	<div><span class="c_ffffb3">◆特徴：</span><span class="c_ffffff"><?php echo $val[5];?></span></div>
+    
+    <div><span class="c_ffffb3">◆荒天の場合：</span><span class="c_ffffff"><?php echo $val[6];?></span></div>
+
+
+	<div style="float:right">
+		<?php if($val[9]==0):?>
+    		<a href="<?php echo $val[7];?>" class="apply_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">ツアーの一覧を見る</a>
+		<?php else:?>
+			<div class="apply_btn_off">ツアーの一覧を見る</div>
+		<?php endif;?>
+    </div>   
+</div>
+</div>
+
+<?php endforeach; ?>
+<div class="separator"></div>
+<?php endforeach; ?>
+
+
+</div><br><br><br>
+
+
+
+
+<!--
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+-->
+
+
+    </div>
+    </div>
+  </div>
+
+</div></div></div></div>
+
+
+<?php include_once("include/2018/footer.html" ); ?>

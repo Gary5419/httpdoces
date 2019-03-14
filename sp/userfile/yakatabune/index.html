@@ -1,0 +1,623 @@
+<?php
+require_once("include/2018/config.php");
+?>
+<?php
+
+#$title = $m_navi[$p][1];
+#$description = $m_navi[$p][2];
+#$keywords = $m_navi[$p][3];
+#define("H1TXT",$m_navi[$p][4]);
+
+
+
+require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/_data/index_160310.php';
+require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/_data/functions.php';
+
+$cr1 = getCrawlData("%23%E6%96%B0%E7%9D%80%E5%B1%8B%E5%BD%A2%E8%88%B9");	#新着屋形船
+$cr2 = getCrawlData("%23%E3%83%90%E3%82%B9%E5%A3%B2%E3%82%8C%E7%AD%8B");	#バス売れ筋
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<title>屋形船特集（浅草橋、蔵前、勝どき、北品川から乗船） |  ポケカル</title>
+<meta name="description" content="江戸情緒あふれる粋な船遊びを気軽に体験できる屋形船のクルーズプランをご紹介いたします。お食事が付いたプランでは揚げたての天ぷらや新鮮なお刺身などの絶品料理に加え、飲み放題も付いておりオススメです。屋形船は浅草橋、蔵前、勝どき、北品川などより出船しており、会社帰りの飲み会、休日のデートやご家族との優雅な食事など2名様よりご予約できるプランもございます。日常とは違う優雅なひとときを屋形船で是非お楽しみください。日帰りツアーや旅行の予約ならポケカルへ" />
+<meta name="keywords" content="ランチ,ディナー,飲み会,乗船場,屋形船,貸切,クルーズ,忘年会,観光,日帰り,ポケカル" />
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<meta name="format-detection" content="telephone=no" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+<script src="/sp/common/js/jquery.mobile-1.1.1.min.js"></script>
+
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+<script type="text/javascript" >
+$(function(){	
+		$('.input_kw').focus(function(){
+			$(this).css('background-image', 'none');
+		});
+		
+		(function distance() {
+			
+			var $fs1 = $('#topSlide1');
+			
+			var flipsnap1 = Flipsnap('#topSlide1 .flipsnap1', {
+				distance: 220
+			});
+			
+			var $fs2 = $('#topSlide2');
+			
+			var flipsnap2 = Flipsnap('#topSlide2 .flipsnap2', {
+				distance: 220
+			});
+			
+		})();
+});
+			
+</script>
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+	  
+	  		
+		
+		
+    });
+    $(window).load(function(){
+      
+    });
+  </script>
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<style>
+
+.photo{
+	border:4px solid #FFF;
+	
+	-moz-box-shadow: 0px 0px 5px #999;
+	-webkit-box-shadow: 0px 0px 5px #999;
+	-o-box-shadow: 0px 0px 5px #999;
+	-ms-box-shadow: 0px 0px 5px #999;
+}
+
+a.btn_detail{
+	display:block;
+	width:100%;
+	margin:0 auto;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background:#FF9932;
+	color:#FFF;
+	font-size:12pt;
+	font-weight:bold;
+	text-align:center;
+	line-height:40px;
+	
+	 box-shadow: 0px 1px 1px #BABABA;
+    -moz-box-shadow: 0px 1px 1px #BABABA;
+	
+	color:#FFF;text-decoration:none;
+}
+
+.clearfix{clear:both;height:0;line-height:0;}
+
+
+
+.wrap_search_theme{
+	width:90%;
+	margin:0 auto;
+}
+.search_theme_title{
+	color:#795548;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:5px;
+}
+.search_theme_body{
+	color:#595959;
+	font-size:12px;
+	line-height:1.5;
+	margin-top:10px;
+	margin-bottom:8px;
+}
+.wrap_btn{
+	padding-top:10px;padding-bottom:15px;border-bottom:1px solid #D9D9D9;/*margin-bottom:10px;*/
+	margin-left:10px;
+	margin-right:10px;
+}
+
+
+/* flipsnap */
+#topSlide1{
+	width:100%;
+	margin:0 auto;
+	overflow:hidden;
+}
+#topSlide1 a{
+	text-decoration:none;	
+}
+.flipsnap1{
+	width:<?php $cnt = 8; $w = 220 * $cnt + 50; echo $w; ?>px;
+	padding-left:50px;
+}
+
+ .viewport1 {
+	width: 320px;
+	margin:0 auto 10px auto;
+	
+	padding: 10px 0;
+	-webkit-transform: translateZ(0);
+ } 
+.item1 {
+  width: 220px;
+  height:330px;
+  font-size: 10pt;
+  text-align: center;
+ 
+  float: left;
+  color: #666;
+}
+
+.item1_in{
+	width:200px;
+	margin:0 auto;
+}
+
+
+#topSlide1,#topSlide2{
+	width:100%;
+	margin:0 auto;
+	overflow:hidden;
+}
+#topSlide1 a,#topSlide2 a{
+	text-decoration:none;	
+}
+.flipsnap1,.flipsnap2{
+	width:<?php $cnt = 8; $w = 220 * $cnt + 50; echo $w; ?>px;
+	padding-left:50px;
+}
+
+ .viewport1, .viewport2 {
+	width: 320px;
+	margin:0 auto 10px auto;
+	
+	padding: 10px 0;
+	-webkit-transform: translateZ(0);
+ } 
+.item1,.item2 {
+  width: 220px;
+  height:330px;
+  font-size: 10pt;
+  text-align: center;
+ 
+  float: left;
+  color: #666;
+}
+
+.item1_in,.item2_in{
+	width:200px;
+	margin:0 auto;
+}
+
+
+
+
+.main01_ph{
+	margin:8px 8px 0 8px;
+	text-align:center;
+	width:180px;
+	height:120px;
+	overflow:hidden;
+	
+}
+.main01_title{
+	font-size:12px;
+	color:#996633;
+	font-weight:bold;
+	padding:5px 15px 5px 15px;
+	line-height:1.5;
+	height:70px;
+	overflow:hidden;
+	text-align:left;
+}
+.main01_con{
+	color:#4d4d4d;
+	line-height:1.5;
+	padding:3px 15px 2px 15px;
+	font-weight:normal;
+	text-align:left;
+	height:70px;
+}
+.main01_pr{
+	text-align:right;
+	color:#cc3333;
+	font-size:20px;
+	font-weight:bold;	
+	padding:0 15px 2px 15px;
+	
+}
+.main01_t01{
+	background:#C00000;
+	color:#FFF;
+	padding:6px 5px;
+	font-size:14px;
+	font-weight:bold;
+}
+.main01_b01{
+	border:1px solid #C00000;
+	font-size:12px;
+}
+.main01_t02{
+	background:#FFCC00;
+	color:#FFF;
+	padding:6px 5px;
+	font-size:14px;
+	font-weight:bold;
+}
+.main01_b02{
+	border:1px solid #FFCC00;
+	font-size:12px;
+}
+.main_title{
+	background:#996633;
+	color:#FFF;
+	font-weight:bold;
+	padding:0px 5px 0 8px;
+	height:38px;
+	line-height:38px;
+	border-bottom:1px solid #BFBFBF;
+	font-size:14px;
+}
+.sub_title{
+	background:#E5DCCA;
+	color:#9F7242;
+	font-weight:bold;
+	padding:0px 5px 0 8px;
+	height:38px;
+	line-height:38px;
+	border-bottom:1px solid #BFBFBF;
+	font-size:14px;
+}
+.bar {
+    background: #ECECEC;
+    border-bottom: 2px solid #A6A6A6;
+    color: #404040;
+    font-weight: bold;
+    padding: 8px 7px;
+    margin-bottom: 20px;
+}
+.main_con{
+	margin:10px 0;
+	border-top:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;	
+	padding:10px;
+	font-size:12px;
+}
+
+#main04{
+	width:310px;
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+}
+#main04 li{
+	margin:0px 5px 6px 5px;
+	float:left;
+	
+	
+	width:145px;
+	
+	
+	
+	font-size:12px;
+	font-weight:bold;
+	text-align:center;
+	
+	 
+	
+	color:#FFF;
+	
+	box-sizing:border-box;
+}
+#main04 li a{
+	display:block;
+	width:100%;
+	
+	text-decoration:none;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background:#E5DCCA;
+	box-shadow: 0px 1px 1px #9B672E;
+    -moz-box-shadow: 0px 1px 1px #9B672E;
+	color:#9F7242;
+	
+	line-height:1.5;
+	box-sizing:border-box;
+	padding:20px 5px 20px 5px;
+}
+#main04 li a span{color:#C00000;font-size:14px;}
+a.odekake_link{
+	display:block;
+	padding:0 10px;
+	font-size:14px;
+	color:#626262;
+	text-decoration:none;	
+}
+.odekake_lead{
+	padding:10px;
+	font-size:12px;
+	line-height:1.5;
+}
+.odekake_title{
+	border-top:1px solid #ECECEC;
+	padding:20px 10px 10px 10px;
+	font-size:14px;
+	color:#986431;
+	font-weight:bold;
+}
+.lead{
+	padding:10px 10px 0 10px;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li>屋形船特集</li>
+        </ul>
+        <section>
+
+
+<img src="/sp/images/special/yakatabune.jpg" alt="屋形船特集" width="100%">
+
+<div class="lead">
+江戸情緒あふれる粋な船遊びを気軽に体験できる屋形船のクルーズプランをご紹介いたします。お食事が付いたプランでは揚げたての天ぷらや新鮮なお刺身などの絶品料理に加え、飲み放題も付いておりオススメです。屋形船は浅草橋、蔵前、勝どき、北品川などより出船しており、会社帰りの飲み会、休日のデートやご家族との優雅な食事など2名様よりご予約できるプランもございます。日常とは違う優雅なひとときを屋形船で是非お楽しみください。
+</div>
+
+
+<div class="mb20"></div>
+
+<div class="search">
+
+<h3 class="main_title">新着を探す</h3>
+
+<div class="lead ">
+新しい屋形船プランの情報をお求めの方はこちら！現在は花火大会が観覧できる屋形船プランのご予約を受付中！屋形船の多くは、掘りごたつと展望デッキを備えており(プランによりそれらの設備のない屋形船もあります。プランの詳細より設備情報をご確認ください)、足を伸ばしてゆったり料理を楽しみ、広々とした視界から迫力の花火をお楽しみください。
+</div>
+<section id="topSlide1">
+	
+    <div class="viewport1">
+        <div class="flipsnap1">
+        	            
+            <?php 
+            $cnt = 0;
+            foreach($cr1 as $val){
+           
+                if($cnt < 8):
+                    $path = $val['img'];
+                    $size = getimagesize($path);
+                    $width = $size[0];
+                    $height = $size[1];
+            ?>
+    
+           
+            <div class="item1">
+            <div class="item1_in main01_b01"><h3>
+            <a href="<?php echo $val['link']; ?>">
+            <div class="main01_t01">新着</div>
+            <div class="main01_ph">
+          
+            
+            <?php if($width < $height): ?>
+                <img src="<?php echo $val['img']; ?>" height="120">
+            <?php else: ?>    
+                <?php if($height < 0.75 * $width): ?>
+                <img src="<?php echo $val['img']; ?>" height="120">
+                <?php else: ?>
+                <img src="<?php echo $val['img']; ?>" width="180">
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            </div>
+           
+            <div class="main01_title">
+            <?php 
+            if(mb_strlen($val['title'],'UTF-8') > 52):
+            echo mb_substr($val['title'],0,52,'UTF-8')."...";
+            else:
+            echo $val['title'];
+            endif;
+            ?>
+            </div>
+            <div class="main01_con">
+            <?php 
+           
+            echo $val['price'];
+           
+            ?>
+            </div>
+            <div class="main01_pr"><?php echo $val[4]; ?></div>
+            </a></h3>
+            </div>
+            </div>
+            <?php 
+                $cnt++;
+                endif;
+            } ?>
+                        
+                  
+                        
+        </div>
+    </div>
+    
+    
+</section>
+
+<div class="wrap_btn">
+<a href="/sp/book/eventlist_special.php?special=new_yakatabune&sort=new&pagenum=1&keyword=%23%E6%96%B0%E7%9D%80%E5%B1%8B%E5%BD%A2%E8%88%B9" class="btn_detail">新着を全て見る</a>
+</div>
+
+
+<h3 class="main_title">出船時間で探す</h3>
+
+<div class="lead ">屋形船はお昼、または夜に出船するプランをご用意しております。お昼に出船する屋形船はランチプランもありますので、お手軽にお食事とクルーズを楽しむことができます。夜出船では団体での貸切プランもあり、大人数での宴会などにもご利用いただけます。お昼とは違う表情が見られる東京の夜景とお食事を合わせてご堪能ください。</div>
+
+<div class="sub_title">昼出船</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10">
+<img src="images/lunch_gray.jpg" width="290" ></div>
+
+<div class="main_con">屋形船というと夜のイメージがありますが、利用しやすいランチプランもあります。気軽なお集まりにぜひご利用ください！</div>
+
+<div class="wrap_btn">
+準備中
+</div>
+
+<div class="sub_title">夜出船</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10"><a href="/book/eventlist_special.php?special=dinner_noriai&sort=new&pagenum=1&keyword=%23%E5%A4%9C%E5%87%BA%E8%88%B9%E5%B1%8B%E5%BD%A2%E8%88%B9"><img src="images/dinner.jpg" width="290" ></a></div>
+
+<div class="main_con">夜景を楽しみながら美味しい食事と飲み物が堪能できる夜出船のプランです。航路によりレインボーブリッジなどお昼とは違う東京の夜景をたっぷり味わえます。</div>
+
+<div class="wrap_btn">
+<a href="/book/eventlist_special.php?special=dinner_noriai&sort=new&pagenum=1&keyword=%23%E5%A4%9C%E5%87%BA%E8%88%B9%E5%B1%8B%E5%BD%A2%E8%88%B9" class="btn_detail">一覧を見る</a>
+</div>
+
+<div class="sub_title">夜出船（団体貸切）</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10"><img src="images/group_gray.jpg" width="290" ></div>
+
+<div class="main_con">貸切なので、周囲に気兼ねすることなく屋形船を楽しめます。会社の飲み会や同窓会などのお集まりに最適です。</div>
+
+<div class="wrap_btn">
+準備中
+</div>
+
+
+
+
+
+<div class="mb30"></div>
+
+<div class="mb20"></div>
+
+
+
+<h3 class="main_title">乗船場で探す</h3>
+
+<div class="lead ">乗船場は都内のさまざまな場所にあり、最寄駅から約5～10分ほどと距離も近いため、お気軽に乗船場まで歩いて行くことができます。晴海屋、大江戸、三浦屋などの船会社より出船しており、アクセスがしやすい乗船場がある場合は、こちらより屋形船のプランをお探しください。</div>
+
+<div class="sub_title">浅草橋</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10"><a href="/book/eventlist_special.php?special=asakusabashi&sort=new&pagenum=1&keyword=%23%E6%B5%85%E8%8D%89%E6%A9%8B%E5%B1%8B%E5%BD%A2%E8%88%B9"><img src="images/asakusabashi.jpg" width="290" ></a></div>
+
+<div class="main_con">【JR】「浅草橋駅」「馬喰町駅」から徒歩約3分なのでアクセス便利。行きも帰りもラクラクです。</div>
+
+<div class="wrap_btn">
+<a href="/book/eventlist_special.php?special=asakusabashi&sort=new&pagenum=1&keyword=%23%E6%B5%85%E8%8D%89%E6%A9%8B%E5%B1%8B%E5%BD%A2%E8%88%B9" class="btn_detail">一覧を見る</a>
+</div>
+
+<div class="sub_title">蔵前</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10"><a href="/book/eventlist_special.php?special=kuramae&sort=new&pagenum=1&keyword=%23%E8%94%B5%E5%89%8D%E5%B1%8B%E5%BD%A2%E8%88%B9"><img src="images/kuramae.jpg" width="290" ></a></div>
+
+<div class="main_con">都営大江戸線「蔵前駅」より徒歩約2分の便利な出船場です。都営浅草線「蔵前駅」からは約5分です。</div>
+
+<div class="wrap_btn">
+<a href="/book/eventlist_special.php?special=kuramae&sort=new&pagenum=1&keyword=%23%E8%94%B5%E5%89%8D%E5%B1%8B%E5%BD%A2%E8%88%B9" class="btn_detail">一覧を見る</a>
+</div>
+
+<div class="sub_title">勝どき</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10"><a href="/book/eventlist_special.php?special=kachidoki&sort=new&pagenum=1&keyword=%23%E5%8B%9D%E3%81%A9%E3%81%8D%E5%B1%8B%E5%BD%A2%E8%88%B9"><img src="images/kachidoki.jpg" width="290" ></a></div>
+
+<div class="main_con">勝どき【晴海乗船場】（朝潮小型船のりば）から乗船するコースです。都営大江戸線「勝どき駅」より徒歩約5分です。</div>
+
+<div class="wrap_btn">
+<a href="/book/eventlist_special.php?special=kachidoki&sort=new&pagenum=1&keyword=%23%E5%8B%9D%E3%81%A9%E3%81%8D%E5%B1%8B%E5%BD%A2%E8%88%B9" class="btn_detail">一覧を見る</a>
+</div>
+
+<div class="sub_title">北品川</div>
+
+<div class="mb10"></div>
+
+<div align="center" class="mb10"><a href="/book/eventlist_special.php?special=kitashinagawa&sort=new&pagenum=1&keyword=%23%E5%8C%97%E5%93%81%E5%B7%9D%E5%B1%8B%E5%BD%A2%E8%88%B9"><img src="images/kitashinagawa.jpg" width="290" ></a></div>
+
+<div class="main_con">【屋形船平井・乗船場】まで、京浜急行・北品川駅より徒歩約5分、JR品川駅（高輪口）より徒歩約10分です。</div>
+
+<div class="wrap_btn">
+<a href="/book/eventlist_special.php?special=kitashinagawa&sort=new&pagenum=1&keyword=%23%E5%8C%97%E5%93%81%E5%B7%9D%E5%B1%8B%E5%BD%A2%E8%88%B9" class="btn_detail">一覧を見る</a>
+</div>
+
+
+
+<div class="m-b-20"></div>
+
+
+
+
+<div class="odekake_title">
+日帰りのツアーに出掛けるならポケカルへ
+</div>
+
+<div class="odekake_lead">
+ポケカルは「非日常」をコンセプトとして、他には無いオリジナル企画の日帰りバスツアーをご提供しております。行ったことのない場所や普段入れない施設、参加型の体験企画など、新たな喜びを感じていただけるようなコースをご用意しております。もちろん定番ツアーも多数ご用意していますので、ご予算やご都合に合わせてお選びいただけます。ぜひポケカルのツアーをご利用ください。</div>
+
+<div class="mb20"></div>
+
+<p class="t-a-c">
+<a href="#page" class="backtotop" style="color:#553820;text-decoration:none;"><img src="/sp/images/top/icon_arrow_up.png" width="18">&nbsp;ページトップへ</a>
+</p>
+
+
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

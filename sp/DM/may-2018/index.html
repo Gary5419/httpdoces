@@ -1,0 +1,133 @@
+<?php
+require_once("include/2018/config.php");
+?>
+<?php
+require_once("../../../DM/_data/201805.php");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="../dm.css">
+
+</head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li><a href="../">/ ポケカル情報誌の紹介</a></li>
+          <li><a href="./"><?php echo $m_navi[$p][5]; ?></a></li>
+          <li><?php echo $m_navi[$p][6];?></li>
+        </ul>
+        <section>
+
+<div class="caption">
+ポケカル最新号のご紹介。定番のバスツアー以外にも、散策や音楽鑑賞などの室内イベント、学び教室、人気歌手や演劇のチケットなど、常時、100コース以上の日帰りコンテンツを掲載。ぜひお手にとってご覧ください。
+</div>
+
+<div class="bar"><?php echo str_replace("ポケカル","",$m_navi[$p][5]); ?></div>
+<div class="mb10"></div>
+
+
+<div class="g01">
+
+誌面の指定
+<div class="mb5"></div>
+<form>
+<select id="object" name="object" style="width:100%;" onchange="location.href='./?p='+this.value;">
+<?php foreach($m_navi as $key => $val): ?>
+<option value="<?php echo $key; ?>"<?php if(strcmp($p,$key) == 0)	echo " selected='selected'";?>><?php echo $val[0]; ?></option>
+<?php endforeach; ?>
+</select>
+</form>
+<div class="mb10"></div>
+
+<!--ここに冊子画像を表示-->
+<div style="margin:0 10px;">
+<?php if($m_navi[$p][7] != ""): ?>
+<div align="center"><img src="http://img.poke.co.jp/DM/<?php echo $base; ?>/img/<?php echo $m_navi[$p][7];?>.jpg" width="100%"></div>
+<?php endif; ?>
+
+<?php if($m_navi[$p][8] != ""): ?>
+<div align="center"><img src="http://img.poke.co.jp/DM/<?php echo $base; ?>/img/<?php echo $m_navi[$p][8];?>.jpg" width="100%"></div>
+<?php endif; ?>
+</div>
+
+
+<div class="mb20"></div>
+
+</div>
+
+<div class="mb20"></div>
+
+<div class="barTour">誌面に掲載中のツアー・プラン</div>
+<div class="g01">
+<table class="tblGrp1">
+<?php foreach($data[$p] as $val): 
+
+if($val[2] == "") continue;
+?>
+    <tr class="trGrp">
+      <td class="tdGrp1">・</td><td>
+<?php if($afi == ""): ?>
+<a href="/sp/book/calendar.php?eventid=P<?php echo sprintf("%06d",$val[0]); ?>&y=0000&m=00&by=0000&bm=00" style="color:#0070C0;text-decoration:none;" >
+<?php else: ?>
+<a href="http://www.poke.co.jp/sp/book/calendar/P<?php echo sprintf("%06d",$val[0]);?>/<?php echo $afi; ?>/index.html" style="color:#0070C0;text-decoration:none;">
+<?php endif; ?>
+【<?php echo $val[0];?>】<?php 
+if(mb_strlen($val[2],'UTF-8') > 52):
+echo mb_substr($val[2],0,52,'UTF-8')."...";
+else:
+echo $val[2];
+endif;
+?>
+</a>
+</td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+</div>
+
+<div class="mb40"></div>
+    
+</div>
+
+
+
+</div>
+
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

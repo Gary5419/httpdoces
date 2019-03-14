@@ -1,0 +1,111 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$title = "東京湾クルーズツアー | ポケカル";
+$description = "ランチ、ディナー、サンセット、東京湾クルーズが楽しめるプランのご紹介。船は、シンフォニーやヴァンテアン、安宅丸からシーンに応じてお選びください。24時間いつでもオンライン予約可能です。";
+$keywords = "東京湾クルーズ,ツアー,プラン,ランチ,ディナー,予約,ポケカル";
+define("H1TXT","東京湾クルーズツアー");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<style>
+.headline04{
+	font-size:22px;
+	padding-left:10px;
+}
+.lead{
+	width:98%;
+
+	margin:20px auto;
+	color:#333333;
+	font-size:14px;
+	line-height:1.5;
+}
+a.apply_btn {
+    -webkit-appearance: none;
+    display: block;
+    margin: 10px auto;
+    text-decoration: none;
+    border: none;
+    color: #FFF;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 100px;
+    cursor: pointer;
+    background: #ec7391;
+    width: 300px;
+    
+	height:50px;
+	color:#FFF !important;
+	text-decoration:none;
+	line-height:48px;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+			<li><a class="trans" href="../">東京湾クルーズ</a></li>
+            <li>ディナークルーズの予定航路</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>ディナークルーズの予定航路</span></h2>
+</div>
+
+<div class="lead">
+航路図は、客船シンフォニーのディナークルーズ航路の一例になります。ハートを描くような航路が特徴的です。羽田空港の滑走路や、レインボーブリッジ、東京ゲートブリッジ、お台場や大井ふ頭など、東京湾の煌びやかなイルミネーションを一望できます。ぜひ特別なひと時をお過ごしください。※クルーズのプランや当日の天候や予期せぬ出来事により航路が変更となる場合がございます。本航路を確約するものではありません。予めご了承ください。
+</div>
+
+<div align="center">
+<img src="../img/map1.jpg" width="" style="margin-bottom:20px;" >
+</div>
+<br>
+<!-- end/keyimage -->
+
+<a href="../" class="apply_btn">東京湾クルーズTOPに戻る</a>
+
+
+</div>
+</div>
+
+<?php include_once("include/2018/footer.html" ); ?>

@@ -1,0 +1,294 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+require_once("../../faq/_data/index.php");
+#$suffix = "index_renew.html";
+$suffix = "";
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="Description" content="<?php echo $description; ?>" />
+<meta name="Keywords" content="<?php echo $keywords; ?>" />
+<title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+
+<style>
+.c_ff7c80{color:#FF7C80;}
+.c_c00000{color:#C00000;}
+.c_595959{color:#595959;}
+.c_99cc01{color:#99CC01;}
+.c_0070c0{color:#0070C0;}
+.bar_99cc01{
+	background:#99CC01;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	color:#FFF;
+	font-weight:bold;
+	font-size:14px;
+	width:310px;
+	margin:0 auto 20px auto;
+}
+.bar_99cc01 p{
+	padding:9px 12px;
+}
+.bar{
+	background:#ECECEC;
+	border-bottom:2px solid #A6A6A6;
+	color:#404040;
+	
+	font-weight:bold;
+	padding:8px 7px;
+	margin-bottom:20px;
+	font-size:14px;
+}
+.tokutyo_wrap{width:310px;margin:0 auto;line-height:1.4;color:#595959;}
+.tokutyo01{
+	font-size:14px;font-weight:bold;
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	
+	background:#95CF1D;
+	border:3px solid #95CF1D;
+	width:304px;
+	margin:0 auto;
+}
+.tokutyo01 p{
+	margin:0;
+	padding:8px 7px;
+	color:#FFF;
+}
+.tokutyo02{font-size:12px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border:3px solid #95CF1D;
+	
+	
+	color:#404040;
+	margin:0 auto 7px auto;
+	width:304px;
+}
+.tokutyo02 p{
+	margin:0;
+	padding:8px 15px;
+	
+	font-weight:bold;
+}
+.tokutyo03{text-align:center;font-size:11px;}
+.tokutyo04{border:1px solid #BFBFBF;}
+.tokutyo05{
+	font-size:14px;font-weight:bold;
+
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	border:1px solid #D9D9D9;
+	
+	background:#FFF8E1;
+	width:308px;
+	margin:0 auto;
+}
+.tokutyo05 p{
+	padding:12px 10px;
+	color:#FF7C80;
+}
+.tokutyo06{width:310px;margin:0 auto;font-size:12px;}
+
+.mb10{margin-bottom:10px;}
+.mb20{margin-bottom:20px;}
+.mb30{margin-bottom:30px;}
+.mb100{margin-bottom:100px;line-height:1.6;}
+
+.bar_ececec{
+	background:#ececec;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding:0px 12px;
+	line-height:56px;
+	color:#595959;
+	font-weight:bold;
+	font-size:20px;
+	width:880px;
+	margin:0 auto 20px auto;
+}
+.tbl{
+	width:100%;
+	border-top:1px solid #D9D9D9;
+	margin-bottom:15px;
+}
+.tbl th{ color:#99cc01;border-bottom:1px solid #D9D9D9;font-weight:normal;text-align:left;padding:7px 0 10px 10px;width:45px;font-size:12px;}
+.tbl td{border-bottom:1px solid #D9D9D9; padding:7px 10px 10px 0;font-size:12px;}
+.lead{
+	margin:0;
+	padding:0 8px;
+	color:#404040;	
+	font-size:12px;
+}
+
+
+.faq{
+	border:1px solid #D9D9D9;
+	background:#F5F2E9;	
+	margin:0 auto 10px auto;
+	width:308px;
+}
+.faq_title{
+	font-size:14px;
+	font-weight:bold;
+	display:block;
+	margin:8px;
+}
+.faq_body{
+	font-size:12px;
+	margin:4px 14px 8px 14px;
+}
+.faq_body a{
+	text-decoration:none;	
+}
+ul#faq_navi{
+	width:310px;
+	margin:0 auto 8px auto;
+	position:relative;
+	overflow:hidden;
+}
+
+ul#faq_navi li{
+	float:left;
+	width:152px;
+	margin-right:6px;
+}
+
+
+ul#faq_navi li:nth-child(2n){
+	margin-right:0;
+}
+a.faq_link{
+	display:block;
+	text-decoration:none;
+	font-size:12px;
+	text-align:center;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+
+	background:#CCECFF;
+	color:#404040;
+	
+	padding:12px 0px;
+	margin-bottom:10px;
+	
+	-moz-box-shadow: 0px 2px 0px #a6a6a6;
+	-webkit-box-shadow: 0px 2px 0px #a6a6a6;
+	-o-box-shadow: 0px 2px 0px #a6a6a6;
+	-ms-box-shadow: 0px 2px 0px #a6a6a6;
+	
+	font-weight:bold;
+	text-align:center;
+}
+
+a:hover.faq_link{
+	background:#3366CC;
+	color:#FFF;
+	font-weight:bold;
+}
+
+a.faq_link_a{
+	display:block;
+	text-decoration:none;
+	font-size:12px;
+	text-align:center;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+
+	padding:12px 0px;
+	margin-bottom:10px;
+	
+	-moz-box-shadow: 0px 2px 0px #a6a6a6;
+	-webkit-box-shadow: 0px 2px 0px #a6a6a6;
+	-o-box-shadow: 0px 2px 0px #a6a6a6;
+	-ms-box-shadow: 0px 2px 0px #a6a6a6;
+
+	background:#3366CC;
+	color:#FFF;
+	font-weight:bold;
+	text-align:center;
+}
+
+</style>
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li><a href="/sp/faq/">よくある質問</a></li>
+          <li><?php echo $m_data[$p][0]; ?></li>
+        </ul>
+        <section>
+
+<div class="bar">よくある質問</div>
+   
+
+<ul id="faq_navi">
+<?php foreach($m_data as $key => $val): ?>
+<li><a href="./<?php echo $suffix; ?><?php if($key != "faq") echo "?p={$key}";?>" class="faq_link<?php if($key == $p) echo "_a";?>"><?php echo $val[0]; ?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<?php foreach($data[$p] as $val): ?>
+<div class="faq">
+<div class="faq_title">Q.<?php echo $val[1]; ?></div>
+<div class="faq_body"><?php echo str_replace("___END___","</a>",str_replace("___START___","<a href='{$val[3]}'>",$val[2])) ; ?></div>
+</div>
+<?php endforeach; ?>
+
+
+
+</div>
+
+
+<div class="m-b-20"></div>
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

@@ -1,0 +1,127 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$title = "工場夜景クルーズ - 本牧・根岸コース航路マップ | ポケカル";
+$description = "工場夜景クルーズの本牧・根岸コース 航路マップ";
+$keywords = "本牧・根岸,工場夜景,航路,マップ,地図,クルーズ,ポケカル";
+define("H1TXT","工場夜景クルーズ - 本牧・根岸コース航路マップ");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/factory-cruise/map-keihin/">
+<link rel="canonical" href="https://www.poke.co.jp/factory-cruise/map-keihin/">
+
+
+<style>
+.lead{
+	padding:0 10px;
+	font-size:0.3rem;
+}
+a.apply_btn {
+-webkit-appearance: none;
+display: block;
+
+text-decoration: none;
+border: none;
+color: #FFF !important;
+font-size: 0.32rem;
+text-align: center;
+line-height: 32px;
+
+
+background: #ec7391;
+width: 100%;
+border-radius: 0px;
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+
+box-sizing:border-box;
+padding:0.25rem 0.1rem 0.23rem;
+
+}
+	
+.headline01{
+	background: #554538  !important;
+}
+</style>
+</head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="/">日帰り旅行・ツアーTOP</a></li>
+          <li><a href="../">工場夜景クルーズ</a></li>
+          <li>本牧・根岸コース 航路マップ</li>
+        </ul>
+        <section>
+
+<h1 class="headline01">本牧・根岸コース 航路マップ</h1>
+
+<div class="mb10"></div>
+
+
+<div class="mb10"></div>
+
+<div class="cruise_lead">
+<center>
+<a href="../img/map2.jpg" target="_blank"><img src="../img/map2.jpg" width="96%"></a>
+</center>
+
+</div>
+
+
+
+
+    
+     <div class="mb20"></div>
+   <div class="wrapper">  
+    <a href="../" class="apply_btn">工場夜景クルーズTOPへ戻る</a>
+    </div>
+    
+    <div class="mb40"></div>
+    
+
+
+
+
+
+</div>
+
+    
+</section>
+
+<?php require_once("2018/footer.html"); ?>

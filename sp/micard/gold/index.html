@@ -1,0 +1,447 @@
+<?php
+require_once("../../../micard/gold/_data/index.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="robots" content="noindex,nofollow" />
+<meta name="description" content="エムアイカード ゴールドカード会員さま専用ページです。" />
+<meta name="keywords" content="エムアイカード ゴールドカード会員さま専用ページ,ポケカル" />
+<meta name="copyright" content="" />
+<title>エムアイカード ゴールドカード会員さま専用ページ | ポケカル</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+<style>
+.bgblue{
+	background:#0153a5;
+	color:#FFF;
+}
+.wrap{
+	width:100%;
+	
+}
+#wrap h1{
+	
+	font-size:12px;
+	
+	font-weight:normal;
+	box-sizing:border-box;
+	padding:7px;
+}
+#headlogo{
+	text-align:center;
+}
+
+.tourtitle{
+	margin:0;
+	display:block;
+	background:#0153a5;
+	font-size:16px;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+	box-sizing:border-box;
+	padding:8px 6px;
+}
+.tourwrap{
+	width:100%;
+	margin:0 auto;
+}
+.tourbox{
+	border-left:1px solid #959595;
+	border-right:1px solid #959595;
+	border-bottom:1px solid #959595;
+	width:100%;
+	box-sizing:border-box;
+	position:relative;
+	overflow:hidden;
+}
+.clearfix{
+	clear:both;
+	height:0;
+	line-height:0;
+}
+.left{
+	width:100%;
+	padding-top:5px;
+	padding-right:5px;
+	padding-left:5px;
+	padding-bottom:20px;
+	box-sizing:border-box;
+}
+.right{
+	width:100%;
+	color:#666;
+	padding-top:5px;
+	padding-right:5px;
+	padding-left:5px;
+	padding-bottom:20px;
+	box-sizing:border-box;
+	font-size:16px;
+}
+
+table.price{
+	border-top:1px solid #CCC;
+	border-left:1px solid #CCC;
+	margin:20px 0 40px 0;
+	width:100%;
+}
+table.price td{
+	border-right:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	background:#FFF;
+	font-size:16px;
+	padding:5px;
+	box-sizing:border-box;
+	line-height:1.7;
+}
+table.price td:nth-child(2n+1){
+	width:120px;
+	text-align:center;
+	
+}
+table.price td span{
+	color:#C00000;
+}
+.bg{
+	background:#f2f0f1;
+}
+#foot{
+	background:#0153a5;
+	font-size:12px;
+	color:#FFF;
+	text-align:center;
+	padding:7px 0;
+}
+.titleline{
+	padding:0;
+	margin:0;
+	width:100%;
+	
+}
+.titleline img{
+	margin:0;
+	padding:0;
+}
+.contact-content{
+	background:#FFF;
+}
+.btn{
+	display:block;
+	width:100%;
+	
+	line-height:59px;
+	text-align:center;
+	color:#FFF !important;
+	font-weight:bold;
+	font-size:20px;
+	background:url(images/btn.png) no-repeat;
+	background-size:100%;
+	
+	text-decoration:none;
+	overflow:visible;
+	height:70px;
+}
+</style>
+</head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+<div class="bgblue">
+<div class="wrap">
+<h1>エムアイカード ゴールドカード会員さま専用ページ | ポケカル</h1>
+</div>
+</div>
+
+<div id="headlogo">
+<img src="images/logos.png" width="100%">
+</div>
+
+
+<div class="bgblue">
+<div class="wrap">
+<img src="images/head.png" width="100%">
+</div>
+</div>
+
+<div align="center"><img src="images/midashi.png"></div>
+
+<div class="bg">
+<div class="wrap">
+
+<?php 
+$cnt=1;
+foreach($micard_data as $eventid => $v):
+?>
+    <div class="tourwrap">
+    
+        <div class="tourtitle"><?php echo $v['title']; ?></div>
+        <div class="titleline"><img src="images/titleline.png" width="100%"></div>
+        <div class="tourbox">
+        
+            <div class="left">
+            <img src="images/img<?php echo $eventid; ?>.jpg" width="100%">
+            </div>
+            <div class="right">
+            <?php echo $v['exp']; ?>
+            
+            <table cellpadding="0" cellspacing="0" border="0" class="price">
+            <tr>
+            <td>出発日
+            </td>
+            <td><?php echo $v['date']; ?></td>
+            </tr>
+            <tr>
+            <td>旅行代金
+            </td>
+            <td>
+            <?php echo $v['price']; ?>
+            
+            </td>
+            </tr>
+            <tr>
+            <td>行程
+            </td>
+            <td>
+
+            <?php echo $v['process']; ?> 
+            
+            </td>
+            </tr>
+            </table>
+            
+            <div class="btn"><?php echo $v['code']; ?></div>
+            
+            </div>
+            
+        
+        </div>
+        
+    </div>
+
+<?php
+if($cnt < count($micard_data)){
+?>
+    <div><img src="images/separator.png"></div>
+<?php 
+}
+$cnt++;
+
+endforeach; ?>
+
+<!--
+    <div class="tourwrap">
+    
+        <div class="tourtitle">ヒルトンホテル・お台場花火観覧＆スカイパス東京観光パノラマツアー</div>
+        <div class="titleline"><img src="images/titleline.png" width="100%"></div>
+        <div class="tourbox">
+        
+            <div class="left">
+            <img src="images/img1.jpg" width="100%">
+            </div>
+            <div class="right">
+            ヒルトン東京お台場ホテル「レストラン・シースケープ」内から、お食事をしながら花火鑑賞をお楽しみいただきます！
+            
+            <table cellpadding="0" cellspacing="0" border="0" class="price">
+            <tr>
+            <td>出発日
+            </td>
+            <td>8/11（土）</td>
+            </tr>
+            <tr>
+            <td>旅行代金
+            </td>
+            <td>
+            <span>14,800円（税込）</span>［お食事＋乗船料＋添乗員付き］
+            
+            </td>
+            </tr>
+            <tr>
+            <td>行程
+            </td>
+            <td>
+
+            北品川「船宿　品川船清」乗船場（17：40集合）・・・東京花火大祭・屋形船観覧クルーズ（※花火観覧予定19:10～20:30）・・・帰港後、終了（21：00頃） 
+            
+            </td>
+            </tr>
+            </table>
+            
+            <div class="btn">商品番号 P012498</div>
+            
+            </div>
+            
+        
+        </div>
+        
+    </div>
+    
+    <div><img src="images/separator.png"></div>
+
+    <div class="tourwrap">
+    
+        <div class="tourtitle">ヒルトンホテル・お台場花火観覧＆スカイパス東京観光パノラマツアー</div>
+    	<div class="titleline"><img src="images/titleline.png" width="100%"></div>
+        
+        <div class="tourbox">
+        
+            <div class="left">
+            <img src="images/img1.jpg" width="100%">
+            </div>
+            <div class="right">
+            ヒルトン東京お台場ホテル「レストラン・シースケープ」内から、お食事をしながら花火鑑賞をお楽しみいただきます！
+            
+            <table cellpadding="0" cellspacing="0" border="0" class="price">
+            <tr>
+            <td>出発日
+            </td>
+            <td>8/11（土）</td>
+            </tr>
+            <tr>
+            <td>旅行代金
+            </td>
+            <td>
+            <span>14,800円（税込）</span>［お食事＋乗船料＋添乗員付き］
+            
+            </td>
+            <tr>
+            <td>行程
+            </td>
+            <td>
+
+            北品川「船宿　品川船清」乗船場（17：40集合）・・・東京花火大祭・屋形船観覧クルーズ（※花火観覧予定19:10～20:30）・・・帰港後、終了（21：00頃） 
+            
+            </td>
+            </tr>
+            </tr>
+            </table>
+            
+            <div class="btn">商品番号 P012498</div>
+            
+            </div>
+            
+        
+        </div>
+        
+    </div>
+    
+    <div><img src="images/separator.png"></div>
+
+    <div class="tourwrap">
+    
+        <div class="tourtitle">ヒルトンホテル・お台場花火観覧＆スカイパス東京観光パノラマツアー</div>
+        <div class="titleline"><img src="images/titleline.png" width="100%"></div>
+    
+        <div class="tourbox">
+        
+            <div class="left">
+            <img src="images/img1.jpg" width="100%">
+            </div>
+            <div class="right">
+            ヒルトン東京お台場ホテル「レストラン・シースケープ」内から、お食事をしながら花火鑑賞をお楽しみいただきます！
+            
+            <table cellpadding="0" cellspacing="0" border="0" class="price">
+            <tr>
+            <td>出発日
+            </td>
+            <td>8/11（土）</td>
+            </tr>
+            <tr>
+            <td>旅行代金
+            </td>
+            <td>
+            <span>14,800円（税込）</span>［お食事＋乗船料＋添乗員付き］
+            
+            </td>
+            </tr>
+            <tr>
+            <td>行程
+            </td>
+            <td>
+
+            北品川「船宿　品川船清」乗船場（17：40集合）・・・東京花火大祭・屋形船観覧クルーズ（※花火観覧予定19:10～20:30）・・・帰港後、終了（21：00頃） 
+            
+            </td>
+            </tr>
+            </table>
+            
+            <div class="btn">商品番号 P012498</div>
+            
+            </div>
+            
+        
+        </div>
+-->
+
+<br>
+<br>
+<br>
+
+<!--
+          <div id="anchor04" class="contact-us">
+            <h2 class="headline04"><span>お問い合わせ</span><span class="txt-small">お申込み・お問い合わせはお電話でも承っております</span></h2>
+            <div class="contact-content">
+              <div class="info-contact">
+                <div class="infor-left">
+                  <p class="desc-left">お電話でのお申込み・お問い合わせはこちら</p>
+                  <a href="tel:0356527072">
+                    <img src="images/tel.png" alt="number phone">
+                  </a>
+                </div>
+                <div class="infor-adress">
+                  <p class="ttl">株式会社ポケカル</p>
+                  <p>〒103-0015<br>東京都中央区日本橋箱崎町20-1 アンソレイエ・オオタ 5F</p>
+                  <p>東京都知事登録旅行業第2-6811号<br>(社)全国旅行業協会正会員</p>
+                </div>
+              </div>
+              <div class="time-contact">
+                <span class="title">営業時間</span>
+                <span class="desc-time">ポケカルお客様センター　9：00～18：00　年中無休</span>
+              </div>
+              
+            </div>
+          </div>
+-->
+
+        <section class="contact-us">
+          
+          <div class="contact-content">
+            <p class="txt01">お電話でのお申込み・お問い合わせはこちら</p>
+            <p class="tel"><a href="tel:0570-039-639"><img src="images/tel.png" alt="number phone" class="inline-block"></a></p>
+            <p class="time-contact">
+              <span class="title">営業時間</span>
+              <span class="desc-time">エムアイカード専用お客さまセンター　9：00～18：00</span>
+            </p>
+            <p>お問い合わせ・ご予約の際、商品番号をお伝えいただくとスムーズです。</p>
+          
+          </div>
+        </section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+       </div> 
+    </div>
+</div>
+
+<div id="foot">(C)Pokekaru All Rights Reserved</div>
+
+</div>
+
+</body>
+</html>

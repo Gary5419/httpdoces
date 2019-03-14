@@ -1,0 +1,124 @@
+<?php
+$protocol = $_SERVER['HTTPS'] ? "https" : "http";
+header("HTTP/1.0 301 Moved Permanently");
+header("Location: {$protocol}://{$_SERVER['HTTP_HOST']}/ec-rules/");
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+define("H1TXT","通販規約 | ポケカル");
+?>
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="ポケカルの通販規約です。" />
+<meta name="keywords" content="通販規約,ポケカル" />
+<meta name="copyright" content="" />
+<title>通販規約 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+#tuuhan{
+	width:900px;
+	margin:0 auto;
+}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>通販規約</li>
+          </ul>
+          <section>
+
+
+        <div id="tuuhan">
+          <h2 class="ttl-long">通販規約</h2>
+          <div class="messageField">
+            <div class="message">
+              <div class="top">
+              </div>
+              <div class="body">
+                <p>※お申し込みいただく際は必ずお読みください。</p>
+              </div>
+              <div class="bottom">
+              </div>
+            </div>
+          </div>
+          <div class="doc">
+            <h3>運営販売者</h3>
+            <p>ポケカル<br />
+            【所在地】東京都中央区日本橋箱崎町20-1　アンソレイエ・オオタ5階<br />
+            【連絡先】03-5623-9302</p>
+            <h4>運営統括責任者</h4>
+            <p>坂井 隆史</p>
+            <p>【販売価格】<br />商品ごとに記載</p>
+            <p>【商品代金以外にご負担頂く費用】<br />
+            消費税（内税）、振り込みの場合の振込手数料、送料<br />
+＊ご注文額やキャンペーン等により送料が変動する場合があります。その際は、サイト上のご案内に準じた送料となります</p>
+
+<p>【お支払方法】<br />
+銀行振り込み、郵便局・コンビニエンスストアでの払込み</p>
+
+<p>【お支払期限】<br />
+銀行振り込みをご利用の場合には、注文確認メール発信日から7日までに商品代金を弊社指定の銀行口座にお振込下さい</p>
+
+<p>【製品の引き渡し時期】<br />
+受付完了後、2日〜7日以内にお届け致します。<br />
+入荷状況によって発送にお時間がかかる場合がございますのでご了解ください。<br />
+商品の配送は日本国内に限らせて頂きます。<br />
+地域によってはお届け出来ない場合がございます。<br />
+商品のお届け日のご指定はお受けできません。</p>
+
+<p>【販売数量】<br />
+商品毎に掲載</p>
+
+<p>【返品】<br />
+食品の返品は、商品の性質上原則としてお受け出来ませんのであらかじめご了承ください。<br />
+品質管理には十分留意しておりますが、万が一ご注文の商品と違う商品が届いてしまった場合には必ずお電話にてご連絡下さい。<br />
+（お客様都合以外に返品・再送の送料は、弊社負担となります）<br />
+交換返品はお届け後7日以内にご連絡下さい。<br />
+<br />
+返品交換に関するお問い合わせは下記までお願い致します。<br />
+03-5652-7072</p>
+
+</div>
+</div>
+       
+      </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### -->
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

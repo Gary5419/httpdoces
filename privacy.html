@@ -1,0 +1,118 @@
+<?php
+$protocol = $_SERVER['HTTPS'] ? "https" : "http";
+header("HTTP/1.0 301 Moved Permanently");
+header("Location: {$protocol}://{$_SERVER['HTTP_HOST']}/privacy/");
+
+define("H1TXT","個人情報保護について | ポケカル");
+?>
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="ポケカルの個人情報保護（プライバシーポリシー）についての取扱いになります。" />
+<meta name="keywords" content="個人情報保護,プライバシーポリシー,ポケカル" />
+<meta name="copyright" content="" />
+<title>個人情報保護について | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+#privacy{
+	width:900px;
+	margin:0 auto;
+}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>個人情報保護について</li>
+          </ul>
+          <section>
+
+
+        <div id="privacy">
+          <h2 class="ttl-long">個人情報保護について</h2>
+          <div class="doc">
+            <h3>個人情報の取り扱いについて</h3>
+            <p>株式会社ポケカル(以下、｢当社」といいます。）は、個人情報(お客様の氏名、住所、電話番号、生年月日、性別など特定の個人を識別できるもの、以下も同様とします。）を取扱う際に、個人情報保護に関する諸法令、および主務大臣のガイドラインに定められた義務、並びに本ポリシーを遵守します。</p>
+            <h3>利用目的の範囲内での利用</h3>
+            <p class="h_sub_copy">当社は、利用目的をできる限り特定した上、あらかじめご本人の同意を得た場合、および法令により例外として認められた場合を除き、明示または公表した利用目的の範囲内でのみ個人情報を取扱います。当社が個人情報を利用する目的は次のとおりです。</p>
+            <ol>
+              <li><span class="title">１．</span>イベントの予約受付手配</li>
+              <li><span class="title">２．</span>イベント情報誌および協賛企業からのお役に立つ情報の送付</li>
+              <li><span class="title">３．</span>メールマガジンの送信</li>
+              <li><span class="title">４．</span>ご予約やお問い合わせの内容確認やご連絡</li>
+              <li><span class="title">５．</span>より良い企画や商品およびサービスの開発とお客様へのご案内</li>
+              <li><span class="title">６．</span>お客様のご意見やご感想等のアンケートご協力のお願い</li>
+            </ol>
+            <h3>利用目的等の明示・公表</h3>
+            <p>当社は、あらかじめ利用目的、共同利用者の範囲、お問い合わせ窓口等の必要な情報を明示し、同意を得た上で個人情報を取得するよう努めます。</p>
+            <h3>安全管理措置</h3>
+            <p>当社は、お預かりした個人情報を利用目的の範囲内で正確・最新の内容に保つよう努め、不正なアクセス、改ざん、漏えいなどから守るべく、現時点での技術水準に合わせた必要かつ適切な安全管理措置を講じます。</p>
+            <h3>委託先の監督</h3>
+            <p>当社は、お預かりした個人情報の処理を利用目的の範囲内で第三者に委託する場合があります。これらの第三者は、十分な個人情報のセキュリティ水準にあることを確認の上選定し、契約等を通じて、必要かつ適切な監督を行います。</p>
+            <h3>開示等の求め</h3>
+            <p> 当社がお客様から、保有個人情報の開示を求められたときは、請求者がご本人であることを確認させていただいた上で、特別な理由のない限り、当社が定める方法により、当該保有個人情報を開示いたします。</p>
+            
+            <h3>クッキーポリシー：クッキーとは？</h3>
+            <p> クッキーとは、ウェブページを利用したときに、ブラウザとサーバーとの間で送受信した利用履歴や入力内容などを、お客様のコンピュータにファイルとして保存しておく仕組みです。<br>
+次回、同じページにアクセスすると、クッキーの情報を使って、ページの運営者はお客様ごとに表示を変えたりすることができます。<br>
+お客様がブラウザの設定でクッキーの送受信を許可している場合、ウェブサイトは、ユーザーのブラウザからクッキーを取得できます。<br>
+なお、お客様のブラウザは、プライバシー保護のため、そのウェブサイトのサーバーが送受信したクッキーのみを送信します。
+</p>
+
+<h3>クッキーポリシー：クッキーの設定について</h3>
+<p>・お客様は、クッキーの送受信に関する設定を「すべてのクッキーを許可する」、「すべてのクッキーを拒否する」、「クッキーを受信したらユーザーに通知する」などから選択できます。<br>
+設定方法は、ブラウザにより異なります。クッキーに関する設定方法は、お使いのブラウザの「ヘルプ」メニューでご確認ください。<br>
+・すべてのクッキーを拒否する設定を選択されますと、認証が必要なサービスを受けられなくなる等、インターネット上の各種サービスの利用上、制約を受ける場合がありますのでご注意ください。
+</p>
+
+<h3>ポケカルがクッキーを使用して行っていること</h3>
+<p>以下の目的のため、ポケカルはクッキーを利用しています。<br>
+・お客様が認証サービスにログインされるとき、保存されているお客様の登録情報を参照して、お客様ごとにカスタマイズされたサービスを提供できるようにするため<br>
+・お客様が興味を持っている内容や、ポケカルのサイト上での利用状況をもとに、最も適切な広告を他社サイト上で表示するため<br>
+・ポケカルのサイトの利用者数やトラフィックを調査するため<br>
+・ポケカルのサービスを改善するため<br>
+・セキュリティー保持のため、ご利用から一定の時間が経過したお客様に対してパスワードの再入力（再認証）を促すため<br>
+<br>
+なお、ポケカルは、ポケカルの広告の配信を委託する第三者への委託に基づき、第三者を経由して、ポケカルのクッキーを保存し、参照する場合があります。
+
+</p>
+            
+            <div class="sign">
+              <p>株式会社ポケカル　代表取締役社長　鈴木道男<br />窓口 　個人情報保護担当者　　鎌田直臣<br />電話番号　03-5652-7072</p>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### -->
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

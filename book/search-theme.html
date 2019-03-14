@@ -1,0 +1,703 @@
+<?php
+header( "HTTP/1.1 301 Moved Permanently" ); 
+header( "Location: /all-themes/" ); 
+exit;
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="description" content="バスツアーやクルーズ、日帰り温泉、工場見学、散策、グルメ、チケットなどのジャンルからテーマ別に日帰りツアーを探すことができます。" />
+<meta name="keywords" content="テーマ,ジャンル,日帰り,バスツアー,旅行,日帰りツアー,ツアー,クルーズ,温泉,散策,工場見学,お座敷遊び,チケット,ポケカル" />
+<meta name="copyright" content="" />
+<title>テーマ別ツアー一覧 | ポケカル</title>
+
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    //GETパラメータ取得
+    var atid = $(document).getUrlParam("atid");
+    var asid = $(document).getUrlParam("asid");
+    var today_date = new Date();
+    var yy = String(today_date.getFullYear());
+    var mm = String(today_date.getMonth() + 1);
+    var dd = String(today_date.getDate());
+    var h = String(today_date.getHours());
+    var m = String(today_date.getMinutes());
+    var s = String(today_date.getSeconds());
+    if(mm < 10) mm = "0" + mm;
+    if(dd < 10) dd = "0" + dd;
+    if(h < 10) h = "0" + h;
+    if(m < 10) m = "0" + m;
+    if(s < 10) s = "0" + s;
+    var visitday = yy + mm + dd;
+    var visitdatetime = yy + "/" + mm + "/" + dd + " " + h + ":" + m + ":" + s;
+    //Cookieの有効期間チェック
+    if($.cookie('pokecurrent') != null){
+	var poke_current = $.cookie('pokecurrent').split(",");
+	var cookie_visitdatetime = Date.parse(poke_current[2]);
+	var cookie_time = new Date();
+	cookie_time.setTime(cookie_visitdatetime);
+	var diff = (today_date - cookie_time) / 1000; //秒
+	//1時間を越えていたらCookie削除
+	if(diff > 3600){
+	    $.cookie('pokecurrent', null);
+	}
+    }
+    //asidをcookieに格納
+    if (asid != null) {
+	currentdata = new Array(atid, asid, visitdatetime);
+	$.cookie('pokecurrent', currentdata);
+	//初回訪問日をCookieに格納
+	var firstvisitasid = $.cookie('pokekaru');
+	if (firstvisitasid == null){
+	    firstvisitdata = new Array(atid, asid, visitday);
+	    $.cookie('pokekaru', firstvisitdata,{ expires: 180 }); //180日間有効
+	}
+    }
+    //楽天から来た場合、戻るボタン表示
+    if($.cookie('pokecurrent') != null){
+	var poke_current = $.cookie('pokecurrent').split(",");
+	var cookie_asid = poke_current[1];
+	if(cookie_asid == 1035){
+	    var link_rakuten = "http://img.travel.rakuten.co.jp/image/tr/hs/landt/Meqsh/";
+	    $("#rakuten_back").html("<br /><div style=\"border:2px solid orange; padding:5px;\"><a href=\""+ link_rakuten +"\"><img src=\"/common/img/raketenlogo.gif\" Align=\"left\" Hspace=\"10\" Vspace=\"0\"></a>こちらのページからは、ポケカルのサイトとなります。&nbsp;<Input type=\"button\" value=\"楽天トラベルへ戻る\" style=\"WIDTH: 180px; HEIGHT: 20px; color: red;\" onClick=\"location.href='" + link_rakuten + "'\"><br/>ご予約は「ポケカル」にて行われます。楽天スーパーポイントの対象外となりますので、あらかじめご了承ください。</div>");
+	}
+    }
+    //来訪記録
+    /*
+    if (asid != null) {
+	$.ajax({
+	    type: "POST",
+	    url: "/book/accessdatainput.php",
+	    data: "atid=" + atid + "&asid=" + asid,
+		success: function(msg){
+		//成功時の処理、特に無し。
+	    }
+	});
+    }
+    */
+	$("#navLeftTheme dt").click(
+	function(){
+		$(this).next().slideToggle();
+	});
+});
+</script>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=252046804923647&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="container pgtop" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper" style="background:#FFF;">
+          <ul class="breadcrumb">
+          <ul>
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>テーマ別ツアー一覧</li>
+          </ul>
+
+
+
+
+<h2 id="search-theme_bar"><p>ポケカルテーマ別ツアー一覧<span class="p14">（テーマ別にツアーを検索することができます）</span></p></h2>
+
+
+<div class="search-theme_midashi">
+「日帰りツアー」と一口で言っても実は色々あります。さあどれから参加しますか？<br>
+日帰りバスツアーでも「観光名所めぐり」「季節の花・自然めぐり」「社会見学ツアー」など、いろんなテーマでご紹介しています。<br>
+さらに、バスに乗る以外でも人気のツアーが多数。 普段なかなか乗る機会がない「船」で東京の街をめぐるクルーズツアー、ガイドがご案内しながら街あるきする散策ツアー、東京・その他エリアの歴史に注目してゆかりの地をめぐるツアーも人気です。 また、伝統芸能やお座敷遊び、コーヒー焙煎や染色など、めったにできない体験を、1日・数時間だけお手軽に覗いてみることができるプランも盛りだくさん。 もっと手軽に！という方には、人気の公演・コンサートのチケットはいかがですか？電話1本またはHP申込だけすればお手元にチケットが届きます。お好みだけでなく、ご予定に合わせてお選びいただけます！
+</div>
+
+<div class="search-theme_midashi2">
+ツアーのテーマを下記からお選びください
+</div>
+
+<div class="mb20"></div>
+
+<style>
+#search_theme_tab{
+	margin-left:10px;
+	position:relative;
+	overflow:hidden;
+}
+#search_theme_tab li{
+	float:left;
+	margin-right:10px;
+	box-sizing:border-box;
+}
+#search_theme_tab li:nth-child(3n+1){
+	width:300px;
+	background:#D9D9D9;
+	color:#595959;
+	line-height:40px;
+	text-align:center;
+	
+	font-weight:bold;
+	font-size:14px;
+	
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+}
+#search_theme_tab li:nth-child(3n+2),#search_theme_tab li:nth-child(3n){
+	width:210px;
+	border:1px solid #BFBFBF;
+	line-height:34px;
+	text-align:center;
+	
+}
+#search_theme_tab li:nth-child(3n+2) a,#search_theme_tab li:nth-child(3n) a{
+	color:#9A6C5E;
+	text-decoration:none;
+	display:block;
+	font-weight:bold;
+	font-size:14px;
+	
+/*	margin-bottom:5px;*/
+}
+#search_theme_border{
+	border-bottom:4px solid #BFBFBF;
+	margin-bottom:5px;
+}
+
+</style>
+
+<div id="search_theme_border">
+
+<ul id="search_theme_tab">
+<li>テーマの一覧</li>
+<li><a href="http://www.poke.co.jp/book/eventlist.php?sort=new&pagenum=1&keyword=%23%E6%96%B0%E7%9D%80%E3%83%84%E3%82%A2%E3%83%BC">新着ツアー</a></li>
+<li><a href="http://www.poke.co.jp/event/area.html">エリアで探す</a></li>
+</ul>
+
+</div>
+
+<!--
+<a href="/book/eventlist.php?sort=new&pagenum=1&keyword=%23%E6%96%B0%E7%9D%80%E3%83%84%E3%82%A2%E3%83%BC"><img src="/images/book/banner_newtour.jpg"></a>&nbsp;<a href="/book/eventlist.php?sort=new&pagenum=1&keyword=%23%E6%96%B0%E7%9D%80%E3%83%81%E3%82%B1%E3%83%83%E3%83%88"><img src="/images/book/banner_ticket.jpg"></a>
+-->
+
+<div class="mb20"></div>
+
+<ul id="search-theme_navi">
+<li><a href="#l1" class="search-theme_link">バスツアー</a></li>
+<li><a href="#l2" class="search-theme_link">体験、社会見学、工場見学</a></li>
+<li><a href="#l3" class="search-theme_link">クルーズツアー</a></li>
+<li><a href="#l4" class="search-theme_link">グルメ、イベント</a></li>
+
+<li><a href="#l5" class="search-theme_link">割引特典付きチケット</a></li>
+<li><a href="#l6" class="search-theme_link">名所・旧跡めぐり</a></li>
+<li><a href="#l7" class="search-theme_link">街歩き</a></li>
+<li><a href="#l8" class="search-theme_link">東京スカイツリー</a></li>
+
+<li><a href="#l9" class="search-theme_link">日帰り温泉、宿泊付きツアー</a></li>
+<li><a href="#l10" class="search-theme_link">関西日帰り遊び</a></li>
+<li><a href="#l11" class="search-theme_link">桜・お花見ツアー</a></li>
+<li><a href="#l12" class="search-theme_link">花火大会観覧ツアー</a></li>
+</ul>
+
+
+<div class="search-theme_content">
+<div class="search-theme_left">
+
+	<a name="l1"></a>
+	<h3 class="search-theme_bar1"><a href="/bustours/" style="color:#0264F8;font-size:16px;text-decoration:none;">バスツアーのテーマから探す</a></h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo09.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">観光名所めぐりバスツアー</div>
+    
+	<div class="search-theme_con">日帰りバスツアーの定番、東京観光。従来から人気のスポットだけでなく、新しくオープンし続ける新名所も注目。個人で見て回るのは大変だけど、バスツアーなら楽々ひとめぐりお食事付も多いのでそれも楽しみの一つです。</div>
+    
+    <a href="/book/eventlist.php?themaid=bus&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+    </div>
+    </div>
+    
+    <div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo10.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">花・自然めぐりバスツアーのテーマから探す</div>
+	
+    <div class="search-theme_con">春夏秋冬、日本は四季がめぐる美しい国。季節ごとの花・自然を楽しまなくては絶対に損です！もちろん見るだけではなく季節のフルーツ・旬の食べ物も楽しめる！見頃は一瞬です、お手軽バスツアーだからこその楽しみ方！</div>
+    
+    <a href="/book/eventlist.php?themaid=nature-bus&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo11.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">社会見学バスツアーのテーマから探す</div>
+
+	<div class="search-theme_con">昨今人気の「社会見学バスツアー。」企業や施設の裏側へ潜入したり、現地スタッフの案内でバックヤードの秘密を見せてもらったり。大人から子供まで家族で楽しめるのが社会見学の一番の特徴。みんなでさあ学びに行こう！</div>
+    
+    <a href="/book/eventlist.php?themaid=society-bus&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+	
+    <div class="mb20"></div>
+    
+    <a name="l3"></a>
+    <h3 class="search-theme_bar3">クルーズツアーのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo05.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">川下りクルーズ</div>
+
+	<div class="search-theme_con">実は東京は川が多数流れ込む「水の都」。隅田川、神田川、荒川、日本橋川、小名木川、大横川…。普段見慣れた風景も、川から眺めると全く違った風景に。東京観光「上級者編」ともいえるクルーズツアーはいかがですか？</div>
+    
+    <a href="/book/eventlist.php?themaid=cruising&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo06.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">東京湾クルーズ</div>
+
+	<div class="search-theme_con">見どころだらけの東京湾周辺は観光・レジャースポットだらけ！せっかくだから船にのって海の真ん中へ行ってみませんか？橋の下をくぐったり、頭上を飛行機が飛び交ったり、陸上では味わえない魅力満載！</div>
+    
+    <a href="/book/eventlist.php?themaid=tokyobay&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo07.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">ナイトクルーズ</div>
+
+	<div class="search-theme_con">昼間は雄大な東京湾も、夜になればビルや橋のライトアップで一気に幻想的な世界に変わります。夏の夕涼みに、冬の澄んだ空気の下で、または工場夜景クルーズなど、ナイトクルーズだけの楽しみ方は多数！</div>
+    
+    <a href="/book/eventlist.php?themaid=night-cruise&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo08.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">屋形船遊び</div>
+
+	<div class="search-theme_con">風流＆粋といえば屋形船！元は江戸時代、大名や大店の旦那が贅を尽くして作った舟遊び用の船。だから今も屋形船といえば船宿の自慢はお食事！船盛り・てんぷらなど江戸前の絶品グルメを船で楽しめる贅沢プラン！</div>
+    
+    <a href="/book/eventlist.php?themaid=yakata&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="mb20"></div>
+	
+    <a name="l5"></a>
+    <h3 class="search-theme_bar5">割引特典付きチケットのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo01.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">公演付きグルメプラン</div>
+
+	<div class="search-theme_con">せっかくお出かけするのに公演を見るだけなんてつまらない！そんなあなたにおすすめのプランが「公演付グルメプラン」。公演会場の近くで、ちょっとリッチなお食事もセットでご用意。優雅な1日をお過ごしください。</div>
+    
+    <a href="/book/eventlist.php?themaid=ticket-gourmet&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo02.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">公演チケット</div>
+
+	<div class="search-theme_con">歌舞伎、スポーツ観戦、ミュージカル、演劇、コンサート。多数ある人気ステージから、ポケカル厳選で、さらに割引や特典付きのチケットをご紹介！申し込んだらあとはチケットが届くのを待つだけなので楽々♪</div>
+    
+    <a href="/book/eventlist.php?themaid=ticket&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo03.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">室内ライブ</div>
+
+	<div class="search-theme_con">よりライブ感を身近に感じたい方は「室内ライブ」がおすすめ！お食事を楽しみながら、目の前の舞台で歌やダンスの舞台を楽しめます。こじんまりした会場でないと味わえない迫力は1度行ったらやみつきに？！</div>
+    
+    <a href="/book/eventlist.php?themaid=live&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo04.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">ショー＆レビュー</div>
+	
+    <div class="search-theme_con">華やかな衣装と照明、舞台セットで異次元を体験できるのが「ショー＆レビュー」。女性に人気のニューハーフショーや、懐かしの昭和歌謡が楽しめるレビューなど。行ってみたいと思ったら今がチャンス！忘れられない時間をお過ごしください。</div>
+    
+    <a href="/book/eventlist.php?themaid=show&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+	
+    <div class="mb20"></div>
+
+	<a name="l7"></a>
+    <h3 class="search-theme_bar7">街歩きのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo24.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">街歩き</div>
+
+	<div class="search-theme_con">小江戸、小京都、蔵の街など、いろんな「二つ名」を持つ街があります。昔の風情を今も残す町並みを眺めながらぶらり散策は大人だから楽しめる余暇の過ごし方。少しだけ21世紀からタイムスリップする気分を味わいませんか？</div>
+    
+    <a href="/book/eventlist.php?themaid=walking&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="mb20"></div>
+    
+    <a name="l11"></a>
+    <h3 class="search-theme_bar11">桜・お花見ツアーのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo22.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">桜・お花見ツアー</div>
+
+	<div class="search-theme_con">日本の「国花」ともいえる桜。だから、ではありませんが日本人は桜が大好き！年に1回の1週間ほどの開花時期は、大勢が桜の姿を見に名所を訪れます。せっかくだからバスツアー・クルーズなどで、名所を1日でたくさん見て回りませんか？</div>
+    
+    <a href="/book/eventlist.php?themaid=sakura&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="mb20"></div>
+    
+    <a name="l12"></a>
+    <h3 class="search-theme_bar12">花火大会観覧ツアーのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo23.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">花火大会観覧ツアー</div>
+
+	<div class="search-theme_con">真夏の夜に開く大輪の花、花火。夏はまさに花火大会のトップシーズン！隅田川花火大会、東京湾大華火祭のほかにも10,000発レベルの大きな大会が目白押し。ポケカルでは屋形船・クルーズ・特別屋上席の観覧プランを多数ご用意！</div>
+    
+    <a href="/book/eventlist.php?themaid=hanabi&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+
+</div>
+<div class="search-theme_right">
+
+	<a name="l2"></a>
+	<h3 class="search-theme_bar2">体験、社会見学、工場見学のテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo14.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">伝統芸能</div>
+
+	<div class="search-theme_con">三味線、日本舞踊、各地域の伝承舞踊・音楽。日本人だけれど聴いたことない・見たことがない伝統芸能は意外とたくさんあったりします。こういった芸術が楽しめる大人だからこそ、1日ゆったり伝統芸能に浸ってみませんか？</div>
+    
+    <a href="/book/eventlist.php?themaid=tradition&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+ 	
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo15.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+	<div class="search-theme_title">お座敷遊び</div>
+
+	<div class="search-theme_con">「お座敷」と聞くと、「一見さんお断り」や「値段が高い」といったイメージですが、そんな一流料亭のお座敷も昼間ちょこっと貸切っての体験が可能！ここでしか見ることができない芸者さんのお座敷芸は1度は見て見たい！</div>
+    
+    <a href="/book/eventlist.php?themaid=ozashiki&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo16.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+	<div class="search-theme_title">体験教室</div>
+
+	<div class="search-theme_con">一度やってみたい！でも機会がない…といった習い事ありませんか？「教室」まで堅苦しくなく、レジャー感覚で体験してみましょう。コーヒー焙煎、食材の見分け方、その他手作り教室など、お好みで、お1人でも参加大歓迎！</div>
+    
+    <a href="/book/eventlist.php?themaid=experience&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo17.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+	<div class="search-theme_title">歴史探訪</div>
+
+	<div class="search-theme_con">徳川幕府のおひざ元・江戸＝東京には多数の史跡残っていますが、意外と見過ごしてしまったり、由来を知らなかったりと、穴場も多いもの。そこはポケカルガイドにお任せ！知る人ぞ知る東京の史跡をばっちりご案内いたします！</div>
+    
+    <a href="/book/eventlist.php?themaid=history&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo18.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+	<div class="search-theme_title">社会見学</div>
+
+	<div class="search-theme_con">いくつになっても、「知らなかったこと」「見たことがないもの」に人は興味をひかれるもの。子供の頃に見たことがあっても、大人になったらより一層感動が深まる場合も。新しい発見もあり、社会見学ツアーは、だからこそ大人に人気です。</div>
+    
+    <a href="/book/eventlist.php?themaid=society&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+	<div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo19.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+	<div class="search-theme_title">工場見学</div>
+
+	<div class="search-theme_con">社会見学と並んで人気なのが「工場見学」ツアー。お酒、スイーツ、そのほかいろんな食材や品物が製造される様子をじかに見学すると驚きの連続！見学後はよりおいしく・便利に感じられるかも。おみやげ付きも多いです。</div>
+    
+    <a href="/book/eventlist.php?themaid=factory&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="mb20"></div>
+    
+    <a name="l4"></a>
+    <h3 class="search-theme_bar4">グルメ、イベントのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo12.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">レストランプラン</div>
+	
+    <div class="search-theme_con">レジャーの楽しみはやっぱりグルメ！キレイな景色を楽しみながら絶品グルメに舌鼓をうつのは大人の醍醐味。ポケカルのレストランプランなら、特別限定メニューやドリンクサービス、特別価格までお得なプラン満載です！</div>
+    
+    <a href="/book/eventlist.php?themaid=gourmet&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo13.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">祭り・イベント</div>
+
+	<div class="search-theme_con">ご祭礼に土地のお祭り。やっぱり「祭り」はた楽しい！盛上る！！豪華な山車やとりどりの衣装を着た参加者を間近に観覧して、一行と一緒に盛り上がりましょう。豪華なおみこしや楽しい出店。年に1度のお祭りも、バスツアーで楽々ご案内します。</div>
+    
+    <a href="/book/eventlist.php?themaid=festival&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="mb20"></div>
+    
+    <a name="l6"></a>
+    <h3 class="search-theme_bar6">名所・旧跡めぐりのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo20.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">名所・旧跡めぐり</div>
+
+	<div class="search-theme_con">浅草、上野、谷根千、横浜…。一目見るだけでも価値がある「名所・旧跡」はいたるところに存在します。中には今もなお現役の施設や、古いものばかりでなく「新しい名所」も。地図を片手に名所めぐり散策もおすすめです。</div>
+    
+    <a href="/book/eventlist.php?themaid=spot&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+
+	<div class="mb20"></div>
+    
+    <a name="l8"></a>
+    <h3 class="search-theme_bar8">東京スカイツリーのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo21.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">東京スカイツリー</div>
+
+	<div class="search-theme_con">2012年5月に世界一高い電波塔として開業した「東京スカイツリー（R）」。634mという高さと異次元ともいえる高い展望台へ、今も多くの人が訪れています。高すぎて見上げるのもつらい東京スカイツリーの上まで行ってみましょう！</div>
+    
+    <a href="/book/eventlist.php?themaid=skytree&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+
+	<div class="mb20"></div>
+    
+    <a name="l9"></a>
+    <h3 class="search-theme_bar9">日帰り温泉、宿泊付きツアーのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo25.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">日帰り温泉</div>
+	
+    <div class="search-theme_con">疲れをとりたい、まったりしたい。そんな時最適なのが温泉！それも日帰りできる距離なら移動の疲れもないのでなお良し！人気の箱根の温泉を中心に、神奈川・千葉・埼玉、または都内の施設までお食事付プラン含めて揃ってます！</div>
+    
+    <a href="/book/eventlist.php?themaid=dayspa&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+    </div>
+    </div>
+    
+    <div class="separator_search-theme mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo27.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">宿泊付きツアー</div>
+
+	<div class="search-theme_con">「日帰り遊びのポケカル」ですが、皆様により楽しいツアーをご紹介するため、この春から宿泊付ツアーのご案内も開始しました。お食事付・近場からの送迎バス付きで、ゆったりとした時間をお過ごしください。</div>
+    
+    <a href="/book/eventlist.php?themaid=stay&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+    <div class="mb20"></div>
+    
+    <a name="l10"></a>
+    <h3 class="search-theme_bar10">関西日帰り遊びのテーマから探す</h3>
+    
+    <div class="mb20"></div>
+    
+    <div class="search-theme_sub">
+    <div class="search-theme_sleft">
+    <img src="img/theme-photo28.jpg" width="160">
+    </div>
+    <div class="search-theme_sright">
+    <div class="search-theme_title">関西日帰り遊び</div>
+
+	<div class="search-theme_con">ポケカルは東京だけではありません！京都・大阪・神戸など、関西の日帰り遊びもご提供しています。東京都はまた違った歴史・楽しさがある関西方面の日帰りツアーも、この機会にぜひお楽しみください。</div>
+    
+    <a href="/book/eventlist.php?themaid=west&sort=new" class="search-theme_btn"><img src="/images/top/icon_lupe.png" width="20">&nbsp;ツア－を全て見る</a>
+	</div>
+    </div>
+    
+</div>
+</div>
+
+
+
+    <!--/#main--> 
+  </div>
+  <!--/#content .clearfix-->
+  
+ <?php include_once("include/2018/footer.html"); ?>

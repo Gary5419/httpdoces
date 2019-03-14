@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<title>jQuery Stycky header</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js?ver=1.8.3"></script>
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="js/html5shiv-printshiv.js"></script>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+<style>
+/* ===================================================================
+CSS information
+ file name  :  default.css
+ style info :  ãƒªã‚»ãƒƒãƒˆåŠã³bodyåˆæœŸè¨­å®š (ã“ã®ã‚¹ã‚¿ã‚¤ãƒ«ã‚·ãƒ¼ãƒˆã¯åŸºæœ¬çš„ã«å¤‰æ›´ã—ãªã„)
+=================================================================== */
+/* change min-width to suit your needs */
+html {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 13px;
+	color: #333;
+	vertical-align: baseline;
+	font-family: "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+	line-height: 1.6;
+	letter-spacing: 0.1em;
+}
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, input, textarea{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight:normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section,textarea {
+	display: block;
+}
+nav ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+a {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	color: #333;
+	cursor:pointer;
+	outline:none;
+}
+/* change colours to suit your needs */
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+/* change colours to suit your needs */
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: normal;
+	font-weight: bold;
+}
+del {
+	text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout:fixed;
+}
+/* change border colour to suit your needs */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
+}
+input[type="submit"]{
+	cursor:pointer;
+	border:none;
+	}
+textarea{
+	resize:vertical;
+	overflow:hidden;
+	}
+input, select {
+	vertical-align: middle;
+	border-radius
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	-o-border-radius: 0;
+	-ms-border-radius: 0;
+	-webkit-appearance: none;
+	border:none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight:normal;
+}
+li {
+	list-style:none;
+}
+address{
+	font-style:normal;
+}
+
+/* utility */
+.m05 {
+	margin-bottom: 5px;
+}
+.m10 {
+	margin-bottom: 10px;
+}
+.m12 {
+	margin-bottom: 12px;
+}
+.m15 {
+	margin-bottom: 15px;
+}
+.m20 {
+	margin-bottom: 20px;
+}
+.m30 {
+	margin-bottom: 30px;
+}
+.m40 {
+	margin-bottom: 40px;
+}
+.m50 {
+	margin-bottom: 50px;
+}
+.m60 {
+	margin-bottom: 60px;
+}
+.mt05 {
+	margin-top: 5px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+.mt12 {
+	margin-top: 12px;
+}
+.mt15 {
+	margin-top: 15px;
+}
+.mt20 {
+	margin-top: 20px;
+}
+.mt30 {
+	margin-top: 30px;
+}
+.mt35 {
+	margin-top: 35px;
+}
+.mt40 {
+	margin-top: 40px;
+}
+.mt50 {
+	margin-top: 50px;
+}
+.mt60 {
+	margin-top: 60px;
+}
+.ml05 {
+	margin-left: 5px;
+}
+.ml10 {
+	margin-left: 10px;
+}
+.ml12 {
+	margin-left: 12px;
+}
+.ml15 {
+	margin-left: 15px;
+}
+.ml20 {
+	margin-left: 20px;
+}
+.ml30 {
+	margin-left: 30px;
+}
+.ml40 {
+	margin-left: 40px;
+}
+.ml50 {
+	margin-left: 50px;
+}
+.ml60 {
+	margin-left: 60px;
+}
+.mr05 {
+	margin-right: 5px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.mr15 {
+	margin-right: 15px;
+}
+.mr20 {
+	margin-right: 20px;
+}
+.mr30 {
+	margin-right: 30px;
+}
+.mr40 {
+	margin-right: 40px;
+}
+.mr50 {
+	margin-right: 50px;
+}
+.mr60 {
+	margin-right: 60px;
+}
+.pt05 {
+	padding-top: 5px;
+}
+.pt10 {
+	padding-top: 10px;
+}
+.pt15 {
+	padding-top: 15px;
+}
+.pt20 {
+	padding-top: 20px;
+}
+.pt30 {
+	padding-top: 30px;
+}
+.pt40 {
+	padding-top: 40px;
+}
+.pb05 {
+	padding-bottom: 5px;
+}
+.pb10 {
+	padding-bottom: 10px;
+}
+.pb15 {
+	padding-bottom: 15px;
+}
+.pb20 {
+	padding-bottom: 20px;
+}
+.pb30 {
+	padding-bottom: 30px;
+}
+.pb40 {
+	padding-bottom: 40px;
+}
+.pl05 {
+	padding-left: 5px;
+}
+.pl10 {
+	padding-left: 10px;
+}
+.pl15 {
+	padding-left: 15px;
+}
+.pl20 {
+	padding-left: 20px;
+}
+.pl30 {
+	padding-left: 30px;
+}
+.pl40 {
+	padding-left: 40px;
+}
+.pr05 {
+	padding-right: 5px;
+}
+.pr10 {
+	padding-right: 10px;
+}
+.pr15 {
+	padding-right: 15px;
+}
+.pr20 {
+	padding-right: 20px;
+}
+.pr30 {
+	padding-right: 30px;
+}
+.pr40 {
+	padding-right: 40px;
+}
+.flt {
+	float: left;
+}
+.flr {
+	float: right;
+}
+.txt_l, td.txt_l, .txt_l td {
+	text-align: left;
+}
+.txt_r, td.txt_r, .txt_r td {
+	text-align: right;
+}
+.txt_c, td.txt_c, .txt_c td {
+	text-align: center;
+}
+.valign_t, td.valign_t, .valign_t td {
+	vertical-align: top;
+}
+.valign_m, td.valign_m, .valign_m td {
+	vertical-align: middle;
+}
+.valign_b, td.valign_b, .valign_b td {
+	vertical-align: bottom;
+}
+
+.clear {
+	clear: both;
+}
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: block;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
+}
+
+.ie6_error, .noScript {
+	background:#F66;
+	padding: 30px;
+	text-align:center;
+	font-size:150%;
+	color:#333;
+}
+.last-child {
+	margin:0 !important;
+}
+body {
+  background: #27323d;
+  color: #fff;
+}
+
+#header {
+  background: #1c262f;
+}
+#header .inner {
+  overflow: hidden;
+  padding: 8px 0px 10px 0;
+}
+#header .inner h1 {
+  float: left;
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  font-size: 2rem;
+}
+#header .inner ul {
+  float: left;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 8px;
+  font-size: 0.8rem;
+  margin: 20px 0 10px 20px;
+}
+#header .inner ul li {
+  float: left;
+  margin-right: 20px;
+}
+#header .inner ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#change {
+  background: #f66f6f;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: none;
+  z-index: 9999;
+  padding: 8px 0 10px 0px;
+}
+#change h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  font-size: 2rem;
+  float: left;
+  font-weight: bold;
+  color: #1c262f;
+}
+#change ul {
+  float: left;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 8px;
+  font-size: 0.8rem;
+  margin: 20px 0 10px 20px;
+}
+#change ul li {
+  float: left;
+  margin-right: 20px;
+}
+#change ul li a {
+  color: #1c262f;
+  text-decoration: none;
+}
+
+#top {
+  padding: 60px 0px 80px 0px;
+  text-align: center;
+  font-family: 'Droid Sans', sans-serif;
+}
+#top h1 {
+  background: #1e272f;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  border-radius: 50%;
+  position: relative;
+  font-size: 50px;
+  font-size: 5rem;
+}
+#top h1 span {
+  position: absolute;
+  top: 85px;
+  width: 300px;
+  left: 0px;
+  text-align: center;
+}
+
+#content {
+  background: #252f39;
+  border-top: #f66f6f 2px solid;
+}
+#content .inner {
+  position: relative;
+  padding: 50px 0;
+}
+#content .inner h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  font-size: 3rem;
+}
+#content .inner p {
+  font-family: 'Droid Sans', sans-serif;
+  line-height: 2.0;
+  margin-bottom: 30px;
+}
+#content #arrow {
+  width: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  left: 0px;
+  margin-left: 452px;
+  top: -32px;
+}
+#content #arrow .left {
+  width: 32px;
+  height: 64px;
+  float: left;
+  background: #f66f6f;
+}
+#content #arrow .right {
+  width: 32px;
+  height: 64px;
+  float: right;
+  background: #d56060;
+}
+#content #arrow .icon {
+  position: absolute;
+  width: 15px;
+  height: 9px;
+  left: 24px;
+  top: 29px;
+  background: url(../images/icon.png) no-repeat;
+}
+
+.inner {
+  width: 960px;
+  margin: auto;
+}
+</style>
+
+<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js?ver=1.8.3"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header">
+			<div class="inner">
+				<h1>Demo</h1>
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">ABOUT</a></li>
+					<li><a href="#">COMPANY</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</div><!-- /inner -->
+		</header>
+		<div id="change">
+			<div class="inner">
+				<h1>Demo</h1>
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">ABOUT</a></li>
+					<li><a href="#">COMPANY</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</div><!-- /inner -->
+		</div>
+		<section id="top">
+			<div class="inner">
+				<h1><span>Demo</span></h1>
+			</div>
+		</section><!--/top-->
+		<section id="content">
+			<div class="inner">
+				<div id="arrow">
+					<span class="left"></span>
+					<span class="right"></span>
+					<span class="icon"></span>
+				</div><!-- /arrow -->
+				<h1>Title</h1>
+				<p>sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.</p>
+
+				<h1>Title</h1>
+				<p>sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.</p>
+
+				<h1>Title</h1>
+				<p>sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.</p>
+
+				<h1>Title</h1>
+				<p>sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.</p>
+
+				<h1>Title</h1>
+				<p>sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.sample text.</p>
+			</div><!-- /inner -->
+		</section>
+	</div><!-- /wrapper -->
+<!--st js-->
+<script>
+//スティッキーヘッダー
+var $window = $(window), //ウィンドウを指定
+$content = $("#content"), //#content部分
+$chenge = $("#change"), //#change部分
+topContent = $content.offset().top; //#contentの位置を取得
+alert(topContent);
+var sticky = false;
+
+ $window.on("scroll", function () {
+      if ($window.scrollTop() > topContent) {　//scroll位置が#contentの上にある場合
+           if ( sticky === false ){
+                $chenge.slideDown();　//#change部分が上がる。
+                sticky = true;
+           }
+      } else {
+           if ( sticky === true ){　//scroll位置が下にある場合
+                $chenge.slideUp();//#change部分が降りてくる。
+                sticky = false;
+           }
+      }
+ });
+ $window.trigger("scroll");
+</script>
+</body>
+</html>

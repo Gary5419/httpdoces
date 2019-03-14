@@ -1,0 +1,102 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="通販規約" />
+    <meta name="keywords" content="" />
+    <title>通販規約(特定商取引法に基づく表記)｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/ec-rules/">
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+            <li>通販規約(特定商取引法に基づく表記)</li>
+          </ul>
+          <section class="p14">
+          
+          <h1 class="headline01">通販規約(特定商取引法に基づく表記)</h1>
+		  
+					
+          
+          <div class="mlr15">
+          
+          <div class="headline06">運営販売者</div>
+          
+          <div class="mlr15">
+          
+						
+						<div class="mb10">販売者：　株式会社ポケカル</div>
+						
+						<div class="mb10">所在地：　東京都中央区日本橋箱崎町20-1　アンソレイエ・オオタ5階</div>
+						
+						<div class="mb10">連絡先：　03-5623-9302</div>
+						
+          
+          </div>
+          
+          <div class="headline06">運営統括責任者</div>
+          
+          <div class="mlr15">
+          
+						
+						<div class="mb10">責任者：　坂井 隆史</div>
+						
+						<div class="mb10">販売価格：　商品ごとに記載</div>
+						
+						<div class="mb10">商品代金以外にご負担頂く費用：　消費税(内税)、振り込みの場合の振込手数料、送料 ※ご注文額やキャンペーン等により送料が変動する場合があります。その際は、サイト上のご案内に準じた送料となります</div>
+						
+						<div class="mb10">お支払方法：　郵便局・コンビニエンスでの払込、クレジットカード、銀行振込</div>
+						
+						<div class="mb10">お支払期限：　銀行振り込みをご利用の場合には、注文確認メール発信日から7日までに商品代金を弊社指定の銀行口座にお振込下さい</div>
+						
+						<div class="mb10">製品の引き渡し時期：　受付完了後、2日〜7日以内にお届け致します。入荷状況によって発送にお時間がかかる場合がございますのでご了解ください。商品の配送は日本国内に限らせて頂きます。地域によってはお届け出来ない場合がございます。商品のお届け日のご指定はお受けできません。</div>
+						
+						<div class="mb10">販売数量：　商品毎に掲載</div>
+						
+						<div class="mb10">返品：　食品の返品は、商品の性質上原則としてお受け出来ませんのであらかじめご了承ください。品質管理には十分留意しておりますが、万が一ご注文の商品と違う商品が届いてしまった場合には必ずお電話にてご連絡下さい。お客様都合以外に返品・再送の送料は、弊社負担となります。交換返品はお届け後7日以内にご連絡下さい。</div>
+						
+						<div class="mb10">返品交換に関するお問い合わせ：　03-5652-7072 までお問い合わせください</div>
+						
+          
+					</div>
+					
+					</div>
+
+					</div>
+          
+          </section>
+          
+        </div>
+	</div>
+      </div>
+      <div class="mb100"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

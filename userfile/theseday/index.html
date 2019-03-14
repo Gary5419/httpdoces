@@ -1,0 +1,323 @@
+<?php
+header("HTTP/1.1 301 Moved Permanently");
+header("Location: http://www.poke.co.jp/maniau/");
+exit;
+
+require_once "../../_data/theseday.php";
+
+define("H1TXT","直前予約大歓迎！まだ間に合う日帰りツアーのご紹介。ポケカル");
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<meta name="Description" content="開催日直前でも予約が可能な日帰りツアーのご紹介。お一人様でのご参加も大歓迎。インターネットやお電話でお申込ください。日帰りツアーや日帰りバスツアーの予約ならポケカル" />
+<meta name="Keywords" content="直前,間際,前日,予約,週末,おでかけ,日帰り,バスツアー,ツアー,旅行,ポケカル" />
+<meta name="copyright" content="" />
+<title>直前予約歓迎！まだ間に合う 日帰りツアー｜ポケカル</title>
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-days.css" rel="stylesheet" type="text/css" />
+<style>
+#pokekaru_old_html{
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	
+}
+.daybar{
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background:#3399FF;
+	color:#FFF;
+	font-size:18px;
+	font-weight:bold;
+	padding:12px 0 12px 20px;
+	margin-bottom:10px;
+}
+
+.spot{
+	width:900px;
+	position:relative;
+	overflow:hidden;
+	margin-bottom:20px;
+	border:1px solid #BFBFBF;
+	
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+.spotleft{
+	width:240px;
+	float:left;
+	margin:10px 0 10px 10px;
+}
+.spotright{
+	width:620px;
+	float:right;
+	margin-right:10px;
+	font-size:14px;
+	line-height:1.6;
+	
+	margin:10px 10px 10px 0;
+	
+}
+.detail{
+	width:610px;
+	position:relative;
+	overflow:hidden;
+}
+.deleft{
+	float:left;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background:#3399FF;
+	color:#FFF;
+	text-align:center;
+	width:100px;
+	padding:7px 0;
+	margin-bottom:10px;
+	font-size:14px;
+}
+.deright{
+	float:right;
+	width:500px;
+	padding-top:7px;
+	font-size:14px;
+}
+
+.apply_btn{
+	display:block;
+	width:300px;
+	margin:0 auto;
+	text-decoration:none;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background:#FF9901;
+	color:#FFF;
+	font-size:16px;
+	text-align:center;
+	line-height:40px;
+	
+	 box-shadow: 0px 2px 0px #E87B00;
+    -moz-box-shadow: 0px 2px 0px #E87B00;
+	margin-bottom:5px;
+}
+.photo{
+	border:3px solid #FFF;
+}
+.photo_outer{
+	border:1px solid #CCC;
+	width:234px;
+	height:158px;
+	margin:0 auto;
+}
+.price{font-weight:bold;color:#F00;}
+</style>
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once "userfile_tag_after_startbody.inc"; ?>
+<?php require_once 'include/const.inc.php'; ?>
+<?php require_once 'header_noarea.inc'; ?>
+
+<div id="wrapper">
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="floatContainer">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+      <div class="topicPath floatContainer noside">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <li>直前予約歓迎 まだ間に合う日帰りツアー</li>
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <div id="pokekaru_old_html">
+          <link href="../css/style-days.css" rel="stylesheet" type="text/css" />
+
+
+<!--
+<TABLE WIDTH=900 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD ALIGN=left VALIGN=top><img src="img/keyimage_gw.jpg" width="900"></TD>
+</TR>
+</TABLE>
+
+<div style="width:800px;margin:20px auto;line-height:1.3;">
+<div style="font-size:20px;font-weight:bold;">
+ゴールデンウィーク到来！4月29日(土)〜5月7日(日)までの9日間、今からでもご予約が可能となる「まだ間に合う」ツアー・イベント情報をご紹介！都内で気軽に行けるバスツアーやクルーズのほか、あしかがフラワーパークや富岡製糸場まで足を延ばすツアーもございます。1日でもご予定が空いている方はゴールデンウィークの思い出に是非ご参加ください！
+</div>
+<div style="font-size:16px;font-weight:bold;">
+※直前予約の場合、お電話でのご予約は銀行振込でのお支払い。インターネットからのご予約はクレジットカードでのお支払いとなります。
+</div>
+</div>
+-->
+
+
+<TABLE WIDTH=900 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD ALIGN=left VALIGN=top><img src="img/keyimage.jpg" width="900"></TD>
+</TR>
+</TABLE>
+
+<style>
+.special_title{
+    font-family: Meiryo,"メイリオ", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+	margin-top:10px;
+/*    background: #F5F2E9;*/
+    padding: 7px;
+    box-sizing: border-box;
+    line-height: 1.5;
+	width:100%;
+}
+</style>
+<div class="special_title">
+直前予約大歓迎！まだ間に合う「日帰りツアー」のご案内。週末の土日や、連休や祝日などの人気日も、まだまだご予約可能！お一人様のご参加も大歓迎ですので、ぜひお気軽に、電話やインターネットにてお申込ください。※直前予約の場合、お電話でのご予約は銀行振込でのお支払い。インターネットからのご予約はクレジットカードでのお支払いとなります。
+</div>
+
+
+
+<!-- イベント詳細　-->
+
+<!-- ★区切り★ -->
+
+<?php foreach($data as $key => $v): ?>
+<div class="daybar"><?php echo $key;?>開催</div>
+
+<?php foreach($v as $val): ?>
+<div class="spot">
+<div class="spotleft">
+
+<?php
+$path = "http://img.poke.co.jp/media/transfer/img/eventid_{$val[0]}/eventid_{$val[0]}_pic1.jpg";
+
+$size = getimagesize($path);
+$width = $size[0];
+$height = $size[1];
+?>
+
+    <div class="photo_outer">
+    <div align="center" style="width:228px;overflow:hidden;">
+    <!--
+    <img src="http://img.poke.co.jp/media/transfer/img/eventid_<?php echo $val[0];?>/eventid_<?php echo $val[0];?>_pic1.jpg" height="150" class="photo">
+    -->
+    
+    
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $path; ?>" height="150" class="photo">
+    
+    
+    <?php else: ?>    
+        <?php if($height > 0.6675 * $width): ?>
+        <img src="<?php echo $path; ?>" height="150" class="photo">
+        <?php else: ?>
+        <img src="<?php echo $path; ?>" width="216" class="photo">
+        <?php endif; ?>
+    <?php endif; ?>
+    
+    
+    
+    
+    </div>
+    </div>
+
+</div>
+<div class="spotright">
+<div class="marginB10">
+<a href="<?php echo $val[2];?>" style="color:#0070C0;font-size:16px;font-weight:bold;text-decoration:none;"><?php echo $val[1];?></a>
+</div>
+
+	<div class="detail">
+    <div class="deleft">参加費</div>
+    <div class="deright"><span class="price"><?php echo $val[5];?></span>
+    </div>
+    </div>
+    
+    <div class="detail">
+    <div class="deleft">申込み期限</div>
+    <div class="deright">
+    
+    <div style="float:right">
+    <a href="<?php echo $val[2];?>" class="apply_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">詳細を見る・申込みをする</a>
+    </div>
+    
+    <?php echo $val[3];?>まで
+    </div>
+    </div>
+
+</div>
+</div>
+<?php endforeach; ?>
+<?php endforeach; ?>
+
+
+</div><br><br><br>
+
+
+
+
+
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <?php require_once 'footer.inc'; ?>
+
+<!-- Google Code for &#12304;&#29305;&#38598;&#12305;&#26481;&#20140;&#12473;&#12459;&#12452;&#12484;&#12522;&#12540; Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "zTiXCIbr7AIQupD43gM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1004406842/?value=0&amp;label=zTiXCIbr7AIQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<?php
+#ini_set('display_errors', 'On');
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "koyo";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+
+require_once dirname(dirname(__FILE__)) . '/_data/simple_html_dom.php';
+#require_once dirname(dirname(__FILE__)) . '/_data/index_160310.php';
+require_once dirname(dirname(__FILE__)) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('紅葉庭園','紅葉に染まる六義園や八芳園などの名庭園を巡ります。四季折々に表情が変わる大池泉様式の庭園。都会のオアシスで秋の絶景を体感ください。','/koyo/teien/','koyo-garden','');
+$cruise[0][] = array('銀杏並木','秋の銀杏並木は、「黄金の路」。青々した空と銀杏並木のコントラストはまさしく秋の情景そのもの。東京の銀杏の見頃は、11月下旬以降です。','/koyo/icho-namiki/','koyo-ginnan','');
+$cruise[0][] = array('寺社仏閣','寺社仏閣と紅葉の組み合わせは日本の情景の代表格。オレンジや黄色の落ち葉を踏みしめながら参拝頂ければ、それだけで、心洗われます。','/koyo/shrines-temples/','koyo-temple','');
+$cruise[0][] = array('大自然の紅葉','大自然の中の紅葉見学。見頃のピークには、山々や河川そのものが赤・オレンジに染まります。スケールの大きな紅葉が好きな方には、ぜひおすすめ','/koyo/actual-nature/','koyo-nature','');
+$cruise[0][] = array('紅葉トレッキング','一年で最も美しいと言っていいほどの野山を散策する紅葉トレッキング。遠くから眺めるばかりでなく、色とりどりの自然に抱かれ、紅葉狩りを堪能ください。','/koyo/trekking/','koyo-trekking','');
+$cruise[0][] = array('京都の紅葉スポット','主に貸切タクシーにて、京都の紅葉スポットをめぐります。紅葉めぐりのコース・時間はさまざま。混雑のストレスなしで、ゆっくり紅葉狩りをお愉しみください。','/koyo/kyoto/','koyo-kyoto','');
+
+
+$params["purposeid"] = "koyo_recommend";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+$params["purposeid"] = "koyo_best-time";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list2[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="主に東京・関東の紅葉名所が見学できる日帰りツアーのご紹介。ツアーは、エリア別だけでなく、寺社仏閣や庭園、野山の紅葉など、シチュエーション別での検索が可能。また10日以内に見頃が予想されるツアーは『間もなく見ごろ！ツアー』にてご案内中。東京の紅葉は、11月中頃から下旬まで。短い期間の「赤・オレンジの絶景」をお楽しみください。" />
+<meta name="keywords" content="紅葉,イチョウ,銀杏,見頃,名所,東京,関東,日帰り,ツアー,ポケカル" />
+<meta name="copyright" content="" />
+<title>紅葉名所見学ツアー2018 | 日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/koyo/">
+
+
+<style>
+.pricebox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#fff100, #fffcb9);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.pricebox p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+.areabox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#FFD400, #FF6B37);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.areabox p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+ul.spboxcol, ul.spwidecol{
+	width:100%;
+	position:relative;
+	overflow:hidden;
+	padding-bottom:40px;
+}
+ul.spboxcol li, ul.spwidecol li{
+	float:left;
+	box-sizing:border-box;
+}
+ul.spboxcol li a, ul.spwidecol li a{
+	text-decoration:none !important;
+}
+ul.spboxcol li{
+	width:246px;
+	border-radius: 7px;
+	margin-right:12px;
+	margin-bottom:10px;
+	
+}
+ul.spwidecol{
+	padding:bottom:70px;
+}
+ul.spwidecol li{
+	width:calc(50% - 5px);
+	margin-bottom:10px;
+	margin-right:10px;
+	
+	height:220px;
+}
+ul.spwidecol li:nth-child(2n){
+	margin-right:0;
+}
+ul.spwidecol li p{
+	padding:10px 10px 10px 10px;
+}
+
+ul.spboxcol li:nth-child(4n){
+	margin-right:0;
+}
+.spbox1,.spbox2,.spbox3,.spbox4,.spbox5,.spbox6,.spbox7,.spbox8,.spbox9{
+    padding: 0.5em 1em;
+    margin: 0;
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.spbox1 p,.spbox2 p,.spbox3 p,.spbox4 p,.spbox5 p,.spbox6 p,.spbox7 p,.spbox8 p,.spbox9 p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.spbox1{
+	background: linear-gradient(right, #91FDB7, #709DFF);
+	background: -moz-linear-gradient(right, #91FDB7, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#709DFF)); 
+}
+.spbox1 p {
+	color: #FFF;
+}
+
+.spbox2{
+	background: linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -moz-linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#4DD0E1)); 
+}
+.spbox2 p {
+	color: #FFF;
+}
+
+.spbox3{
+	background: linear-gradient(right, #4DD0E1, #709DFF);
+	background: -moz-linear-gradient(right, #4DD0E1, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#4DD0E1), to(#709DFF)); 
+}
+.spbox3 p {
+	color: #FFF;
+}
+
+.spbox4{
+	background: linear-gradient(right, #FFD400, #FF6B37);
+	background: -moz-linear-gradient(right, #FFD400, #FF6B37);
+	background: -webkit-gradient(linear, right center, left center, from(#FFD400), to(#FF6B37)); 
+}
+.spbox4 p {
+	color: #FFF;
+}
+
+.spbox5{
+	background: linear-gradient(right, #FFB822, #FA709A);
+	background: -moz-linear-gradient(right, #FFB822, #FA709A);
+	background: -webkit-gradient(linear, right center, left center, from(#FFB822), to(#FA709A)); 
+}
+.spbox5 p {
+	color: #FFF;
+}
+
+.spbox6{
+	background: linear-gradient(right, #FB97B4, #89AEFF);
+	background: -moz-linear-gradient(right, #FB97B4, #89AEFF);
+	background: -webkit-gradient(linear, right center, left center, from(#FB97B4), to(#89AEFF)); 
+}
+.spbox6 p {
+	color: #FFF;
+}
+
+.spbox7{
+	background: linear-gradient(right, #FCCB90, #D57EEB);
+	background: -moz-linear-gradient(right, #FCCB90, #D57EEB);
+	background: -webkit-gradient(linear, right center, left center, from(#FCCB90), to(#D57EEB)); 
+}
+.spbox7 p {
+	color: #FFF;
+}
+
+.spbox8{
+	background: linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -moz-linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FF9A9E)); 
+}
+.spbox8 p {
+	color: #FFF;
+}
+
+.spbox9{
+	background: linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -moz-linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FFD1FF)); 
+}
+.spbox9 p {
+	color: #333;
+}
+
+.bg_ffffff{
+	background:#FFF;
+}
+
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+			<li>紅葉名所見学ツアー2018</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<h1 class="headline01"><p>紅葉見学ツアー</p></h1>
+
+<div class="mb20"></div>
+
+<div class="mb10"><img src="img/keyimage_pc.jpg" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。" width="100%"></div>
+
+<div class="lead">
+主に東京・関東の紅葉名所が見学できる日帰りツアーのご紹介。ツアーは、エリア別だけでなく、寺社仏閣や庭園、野山の紅葉など、シチュエーション別での検索が可能。また10日以内に見頃が予想されるツアーは『間もなく見ごろ！ツアー』にてご案内中。東京の紅葉は、11月中頃から下旬まで。短い期間の「赤・オレンジの絶景」をお楽しみください。
+</div>
+              <div class="mb20"></div>
+
+</div>
+		  
+<div class="bg_f4f2f0">
+
+<div class="wrapper">
+
+<h2 class="headline04">エリアから探す</h2>
+
+<div class="lead">
+	都道府県別に紅葉見学ツアーを検索することができます。中でも野趣あふれる紅葉が楽しめる茨城や埼玉のツアーが人気です。
+</div>
+
+<ul class="spboxcol">
+
+<li>
+<a href="/koyo/tokyo/">
+<h4 class="spbox4"><p>東京</p></h4>
+</a>
+</li>
+<li>
+<a href="/koyo/saitama/">
+<h4 class="spbox4"><p>埼玉</p></h4>
+</a>
+</li>
+<li>
+<a href="/koyo/kanagawa/">
+<h4 class="spbox4"><p>神奈川</p></h4>
+</a>
+</li>
+<li>
+<a href="/koyo/chiba/">
+<h4 class="spbox4"><p>千葉</p></h4>
+</a>
+</li>
+
+<!-- -->
+<li>
+<a href="/koyo/yamanashi/">
+<h4 class="spbox4"><p>山梨</p></h4>
+</a>
+</li>
+<li>
+<a href="/koyo/tochigi/">
+<h4 class="spbox4"><p>栃木</p></h4>
+</a>
+</li>
+<li>
+<a href="/koyo/ibaraki/">
+<h4 class="spbox4"><p>茨城</p></h4>
+</a>
+</li>
+<li>
+<a href="/koyo/gunma/">
+<h4 class="spbox4"><p>群馬・その他</p></h4>
+</a>
+</li>
+
+
+</ul>
+
+
+</div>
+</div>
+		  
+<div class="bg_e7e1dd">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>おすすめから探す</span><h3><a class="list-more" href="/koyo/recommend/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>おすすめツアーを全て見る</a></h3></h2>
+</div>
+
+
+<div class="mb10"></div>
+
+<div class="lead">
+おすすめツアーの中でもさらにイチオシツアーは、茨城の三大紅葉スポット「竜神大吊橋」「花貫渓谷」「袋田の滝」を巡るツアー！価格も9,500円のご奉仕価格！バスツアーだからできる「てんこ盛りの行程」は満足度100％！
+</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+<div class="bg_feddac">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>間もなく見頃を迎える紅葉ツアー</span><h3><a class="list-more" href="/koyo/best-time/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>見頃のツアーを全て見る</a></h3></h2>
+</div>
+
+
+<div class="mb10"></div>
+
+<div class="lead">
+紅葉が色づきはじめ、10日以内に紅葉の見頃が予想される紅葉ツアーのご紹介。ただし、あくまで予想になるため、紅葉のピークを保証するものではありません。ご了承のうえ、ご参考としてください。
+</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list2 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+		  
+		  
+<div class="bg_e7e1dd">
+<div class="wrapper">
+			
+<div class="headline04_wrap">
+<h2 class="headline04"><span>紅葉のシーンから探す</span></h2>
+</div>
+
+<div class="lead"></div>
+
+<ul id="ticket_main">
+<?php foreach($cruise[0] as $val): ?>
+<li>
+
+<h4 class="ticket_main_title"><?php echo $val[0]; ?></h4>
+
+<div class="ticket_main_img">
+<a href="<?php echo $val[2]; ?>" class="ticket_sp_btn">
+<img src="img/<?php echo $val[3]; ?>.jpg" width="100%">
+</a>
+</div>
+
+<div class="ticket_main_con">
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>予定航路</a>)";} ?></div>
+
+
+
+</li>
+<? endforeach; ?>
+
+</ul>
+
+<div class="pb30"></div>
+
+</div>
+</div>
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="mb20"></div>
+
+<div class="wrapper">
+
+<h2 class="headline01">紅葉ツアー動画</h2>
+
+<div class="block">          
+	<div class="wrap-slide">
+
+<ul class="l-grid slider-news">
+<?php echo $data2['optvideo']; ?>
+</ul>
+
+	</div>
+</div>
+
+<?php endif; ?>
+
+</div>
+
+
+
+  <!--/#content .clearfix-->
+  
+<?php include_once("include/2018/footer.html" ); ?>

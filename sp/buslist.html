@@ -1,0 +1,284 @@
+<?php
+require_once("include/2018/config.php");
+?>
+<?php define("H1TXT","ポケカル利用バス会社一覧"); 
+
+$busTXT = file_get_contents("http://odekake.poke.co.jp/busdb/api.php");
+$bus_base = explode("\n",$busTXT);
+$cnt = 0;
+$busdb = array();
+foreach($bus_base as $v){
+	$busdb[$cnt] = explode("\t",$v);
+    $cnt++;
+}
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="株式会社ポケカル 利用バス会社一覧"/>
+<meta name="keywords" content="日帰りバスツアー,日帰りツアー,日帰り,バスツアー,ツアー,旅行,利用バス会社,ポケカル" />
+<meta name="copyright" content="" />
+<title>株式会社ポケカル 利用バス会社一覧</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+
+<style>
+.marginB5{margin-bottom:5px;}
+.marginB10{margin-bottom:10px;}
+.marginB20{margin-bottom:20px;}
+
+.p16{font-size:16px;}
+.p14{font-size:14px;}
+.p12{font-size:12px;}
+.p10{font-size:10px;}
+
+.bar{
+	background:#ECECEC;
+	border-bottom:2px solid #A6A6A6;
+	color:#404040;
+	
+	font-weight:bold;
+	padding:8px 7px;
+	margin-bottom:20px;
+}
+
+.busblock{
+	border:1px solid #D9D9D9;
+	box-sizing:border-box;
+	padding:7px;
+	width:96%;
+	margin:0 auto 10px auto;
+	font-size:12px;
+}
+.busbar{ 
+background:#CCFFCC;padding:2px 7px; margin-bottom:5px;
+}
+.busin{
+	padding:0 6px;
+	line-height:1.4;
+}
+
+.busblock2{
+	border:1px solid #7F7F7F;
+	box-sizing:border-box;
+	padding:7px;
+	width:96%;
+	margin:0 auto 20px auto;
+	border-radius: 6px;   
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+	font-size:12px;
+}
+.busbar2{ 
+background:#E6E6E6;padding:2px 7px; margin-bottom:5px;
+}
+.busin2{
+	padding:0 6px;
+	line-height:1.4;
+}
+
+.bustbl , .bustbl2{
+	width:310px;
+	margin:0 auto;
+	box-sizing:border-box;
+}
+.bustbl2{
+	border-top:1px solid #D6D6D6;
+	border-left:1px solid #D6D6D6;
+}
+.bustbl th{
+	font-size:12px;
+	background:#ED7390;
+	color:#FFF;
+	padding:7px 5px;
+	text-align:center;
+	border-right:1px solid #FFF;
+	box-sizing:border-box;
+	word-break:break-all;
+}
+.bustbl2 td{
+	font-size:12px;
+	padding:7px 5px;
+	border-right:1px solid #D6D6D6;
+	border-bottom:1px solid #D6D6D6;
+	box-sizing:border-box;
+	word-break:break-all;
+}
+
+
+.busblock{
+	border:1px solid #D9D9D9;
+	box-sizing:border-box;
+	padding:7px;
+	width:310px;
+	margin:0 auto 10px auto;
+}
+.busbar{ 
+background:#CCFFCC;padding:2px 7px; margin-bottom:5px;
+}
+.busin{
+	padding:0 7px;
+	line-height:1.6;
+}
+
+.busblock2{
+	border:1px solid #7F7F7F;
+	box-sizing:border-box;
+	padding:7px;
+	width:316px;
+	margin:15px auto 20px auto;
+	border-radius: 10px;   
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+.busbar2{ 
+background:#E6E6E6;padding:5px 7px; margin-bottom:5px;
+}
+.busin2{
+	padding:0 5px;
+	line-height:1.3;
+}
+a.btn_sfr{
+	width:100%;
+	display:block;
+	text-decoration:none;
+	
+	-webkit-appearance: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	border:none;
+	
+	background:#FF8B5E;
+	
+	-moz-box-shadow: 0px 3px 0px #CD7343;
+	-webkit-box-shadow: 0px 3px 0px #CD7343;
+	-o-box-shadow: 0px 3px 0px #CD7343;
+	-ms-box-shadow: 0px 3px 0px #CD7343;
+	box-shadow: 0px 3px 0px #CD7343;
+	
+	text-align:center;
+	color:#FFF;
+	padding:15px 0 12px 0;
+	
+	font-size:14px;
+}
+</style>
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li>ポケカル利用バス会社一覧</li>
+        </ul>
+        <section>
+
+<div class="tokutyo_wrap">    
+
+			  
+              
+              <h2 class="bar">ポケカル利用バス会社一覧</h2>
+
+              <div class="marginB20"></div>
+              
+              <div class="busblock">
+              <div class="busbar">東京都</div>
+              <div class="busin">東京滋賀交通、東京パッセンジャー、夢湖観光バス、萩観光バス、関越バス、東京遊覧観光バス、東京ワーナー観光バス、冨士自動車、光輝観光バス、亜希プロ、ワールド自興、ニッコー観光バス、和泉観光自動車、IBS COACH TOKYO、中日臨海バス、東京リムジンバス観光バス、旅友、バス窓.com、JAMJAM、東京シティ観光、朝日観光、関東自動車　東京営業所、帝産観光バス、西武バス、美杉観光バス、平成興業、沢井観光自動車、富士自動車、富士急行観光、四葉観光バス、群馬セイワ観光</div>
+
+              </div>
+              
+              
+              <div class="busblock">
+              <div class="busbar">埼玉県</div>
+              <div class="busin">武陽観光バス、十二天観光バス、ワールド自興、光輝観光バス、夢湖観光バス</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">千葉県</div>
+              <div class="busin">マイティ交通、D･Y EXPRESS、旅友</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">神奈川県</div>
+              <div class="busin">中日臨海バス、ピースジャパン、旅友、ミヤコバス、バス窓.com</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">愛知県</div>
+              <div class="busin">新生観光サービス、オーワ、名古屋滋賀交通、西三交通</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">京都府</div>
+              <div class="busin">都バス、ヤサカ観光バス、滋賀観光バス、日本交通、奈良交通、奈良観光、京都観光バス</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">大阪府</div>
+              <div class="busin">国際興業観光バス、ヤサカ観光バス、日本交通、中日臨海バス、トランスパック、西日本JRバス、日本交通、商都交通、奈良交通、近鉄バス、奈良観光、神姫観光バス、都島自動車、阪急バス</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">福岡県</div>
+              <div class="busin">昭和自動車、森山観光、両野交通、ハラショー観光、倉成観光バス</div>
+
+              </div>
+              
+              <div style="width:300px;margin:0 auto 20px auto;"><a href="http://www.poke.co.jp/sp/buslist/per-tours.html" class="btn_sfr">ツアー毎の利用バス会社ページはこちら</a></div>
+              
+              <div class="busblock2">
+              <div class="busbar2">弊社利用基準</div>
+              <div class="busin2">社員が上記バス会社を訪問し、設備・施設・安全確認を行い、認定させて頂いて評価基準を作ってます。<br>
+				セフティーマークの評価基準と同じにしています。</div>
+                
+                <div class="marginB10"></div>
+                
+                <div class="busbar2">貸切バス事業者安全性評価認定制度</div>
+              <div class="busin2">日本バス協会が貸切バス会社からの申請に基づき、各バス会社を評価認定しています。<br>
+				セフティー等の詳細につきましては、下記のホームページをご覧ください。<br>
+				<br>
+				・公益社団法人日本バス協会ホームページ<br>
+				<a href="http://www.bus.or.jp/safety/nintei.html" target="_blank" rel="nofollow" style="color:#0070C0;">http://www.bus.or.jp/safety/nintei.html</a>
+				</div>
+
+              </div>
+
+
+
+    </div>   
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

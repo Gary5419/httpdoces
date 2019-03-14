@@ -1,0 +1,251 @@
+<?php
+#ini_set('display_errors', 'On');
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "factory-cruise";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+
+require_once dirname(dirname(__FILE__)) . '/_data/simple_html_dom.php';
+#require_once dirname(dirname(__FILE__)) . '/_data/index_160310.php';
+require_once dirname(dirname(__FILE__)) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('京浜運河コース','川崎の京浜運河沿いの工場夜景を見学するコースです。工場夜景クルーズの中では、もっとも一般的なコースで、暗闇から突如現れる巨大プラントの光が幻想的。','/factory-cruise/keihin/','factory-keihin','/factory-cruise/map-keihin/');
+$cruise[0][] = array('本牧・根岸コース','横浜港から磯子方面の本牧・根岸の工場群を見学するコースです。中でもJX日鉱日石の製油所は、「光の城」と称されるほどのまばゆい存在感。','/factory-cruise/honmoku/','factory-honmoku','/factory-cruise/map-honmoku/');
+$cruise[0][] = array('昼間の工場見学クルーズ','あるようでない「昼間」時間の工場見学クルーズ。当然、夜には見えない、プラントの複雑な機構を見ることができ、『工場萌え』な人にはぴったりのプランです。','/factory-cruise/daytime/','factory-daytime','');
+$cruise[0][] = array('食べ放題と工場見学クルーズ','人気の食べ放題と工場見学クルーズがセットになったプランのご紹介。食べ放題は中華や和洋ビュッフェなど、お店ごとに異なります。お好みに合わせてプランをお選びください。','/factory-cruise/buffet/','factory-buffet','');
+$cruise[0][] = array('期間限定プラン','期間限定の航路やプラン、モニターツアーに類するプランのご案内。クルーズではなく、車移動や徒歩での工場見学ツアーも当ジャンルにてご案内をしております。','/factory-cruise/limited/','factory-limited','');
+$cruise[0][] = array('団体様貸切プラン','工場夜景見学クルーズを団体様の貸切でご利用できるプランのご案内。ご予約やお問い合わせは、インターネットではなく、お電話にて承っております。','/factory-cruise/group-charter/','factory-group','');
+
+
+$params["purposeid"] = "factory-cruise_recommended";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="工場夜景クルーズは、船に乗って、工場地帯の夜景を楽しむクルージング。船に乗っていれば、夜景スポットまで案内してくれるお手軽さが人気で、毎年多くのお客様にご利用頂いています。工場の無機質な佇まいとその光は、まるで、映画に登場する近未来都市さながら。その幻想的な風景をぜひ一度、ご覧ください。" />
+<meta name="keywords" content="工場夜景,クルーズ,横浜,京浜,本牧,根岸,ポケカル" />
+<meta name="copyright" content="" />
+<title>工場夜景クルーズ | 日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/factory-cruise/">
+
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+			<li>工場夜景クルーズ</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<h1 class="headline01"><p>工場夜景クルーズ</p></h1>
+
+<div class="mb20"></div>
+
+<div class="mb10"><img src="img/keyimage_pc.jpg" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。" width="100%"></div>
+
+<div class="lead">
+工場夜景クルーズは、船に乗って、工場地帯の夜景を楽しむクルージング。出船場所は、都内からもアクセス至便な横浜※。船に乗っていれば、夜景スポットまで案内してくれるお手軽さが人気で、毎年多くのお客様にご利用頂いています。ポケカルでは、2つの見学航路を基本に、レストランでのお食事がセットになった各種プランをご案内(期間限定の特別航路もあります)。近未来的な工場夜景をぜひ一度体験ください。※出船場所が異なる場合もあります。
+</div>
+              <div class="mb20"></div>
+
+</div>
+<div class="bg_d5ccc5">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>おすすめプラン</span><h3><a class="list-more" href="/factory-cruise/recommended/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>おすすめプランを全て見る</a></h3></h2>
+</div>
+
+
+
+
+
+
+<div class="mb10"></div>
+
+<div class="lead">ポケカルでは人気の工場夜景クルーズとお食事をセットにしたプランが人気。工場夜景クルーズだけだと、ちょっと物足りない方にお勧めしたいこのプラン。添乗員はつきませんので、お店でのお食事と乗船以外はお客様の自由なスタイルでお楽しみください。
+</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+<div class="bg_716052">
+<div class="wrapper">
+			
+<div class="headline04_wrap">
+<h2 class="headline04"><span>航路・お食事・シーン別</span></h2>
+</div>
+
+<div class="lead"></div>
+
+<ul id="ticket_main">
+<?php foreach($cruise[0] as $val): ?>
+<li>
+
+<h4 class="ticket_main_title"><?php echo $val[0]; ?></h4>
+
+<div class="ticket_main_img">
+<a href="<?php echo $val[2]; ?>" class="ticket_sp_btn">
+<img src="img/<?php echo $val[3]; ?>.jpg" width="100%">
+</a>
+</div>
+
+<div class="ticket_main_con">
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>航路マップ</a>)";} ?></div>
+
+
+
+</li>
+<? endforeach; ?>
+
+</ul>
+
+<div class="pb30"></div>
+
+</div>
+</div>
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+
+<div class="mb20"></div>
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>工場夜景クルーズ動画</span></h2>
+</div>
+
+<div class="mb20"></div>
+
+<div class="p14">
+ポケカルのスタッフが撮影した工場夜景・昼景クルーズ動画をご紹介。工場群の近くまで、船で寄せてくれ、ちょっとしたアトラクション気分が味わえます。特に冬の時期が空気が澄んで工場の灯りがとってもきれいです！
+</div>
+
+<section class="sec-video">
+<ul class="l-grid">
+<?php echo $data2['optvideo']; ?>
+</ul>
+</section>
+
+</div>
+
+<?php endif; ?>
+
+
+
+
+
+  <!--/#content .clearfix-->
+  
+<?php include_once("include/2018/footer.html" ); ?>

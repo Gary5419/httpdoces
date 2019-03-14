@@ -1,0 +1,736 @@
+<?php
+#ini_set('display_errors', 'On');
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+
+require_once dirname(dirname(__FILE__)) . '/_data/simple_html_dom.php';
+#require_once dirname(dirname(__FILE__)) . '/_data/index_160310.php';
+require_once dirname(dirname(__FILE__)) . '/_data/functions.php';
+
+/*一般参賀ツアー*/
+$params["purposeid"] = "ippansanga";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*七福神めぐりツアー*/
+$params["purposeid"] = "new-year_shichifukujin";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list2[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*初詣ツアー*/
+$params["purposeid"] = "new-year_hatsumode";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list3[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*正月三が日に行けるツアー*/
+$params["purposeid"] = "new-year_shogatsu";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list4[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*年末年始のコンサート・公演(カセット12枠)*/
+$params["purposeid"] = "new-year_concert";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 12) break;
+	$list5[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="2019年は元号が変わることもあり、年末年始は、平成最後のイベントが目白押し！中でも、天皇陛下がお出ましになる、一般参賀は過去最大の見学者が予想され、初日の出､初詣も例年以上の人出になりそうです。そんな盛り上がりの中、ポケカルでは、年末年始のツアーを大増量！家でじっとなんてしていられません。" />
+<meta name="keywords" content="年末年始,冬休み,お出かけ,2018,2019,ポケカル" />
+<meta name="copyright" content="" />
+<title>年末年始・冬休みのお出かけ 2018-2019 | 日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/new-year/">
+
+
+<style>
+.pricebox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#fff100, #fffcb9);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.pricebox p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+.areabox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#aed03e, #e6f0c2);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.areabox p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+ul.spboxcol, ul.spwidecol{
+	width:100%;
+	position:relative;
+	overflow:hidden;
+	padding-bottom:40px;
+}
+ul.spboxcol li, ul.spwidecol li{
+	float:left;
+	box-sizing:border-box;
+}
+ul.spboxcol li a, ul.spwidecol li a{
+	text-decoration:none !important;
+}
+ul.spboxcol li{
+	width:246px;
+	border-radius: 7px;
+	margin-right:12px;
+	margin-bottom:10px;
+	
+}
+ul.spwidecol{
+	padding:bottom:70px;
+}
+ul.spwidecol li{
+	width:calc(50% - 5px);
+	margin-bottom:10px;
+	margin-right:10px;
+	
+	height:220px;
+}
+ul.spwidecol li:nth-child(2n){
+	margin-right:0;
+}
+ul.spwidecol li p{
+	padding:10px 10px 10px 10px;
+}
+
+ul.spboxcol li:nth-child(4n){
+	margin-right:0;
+}
+.spbox1,.spbox2,.spbox3,.spbox4,.spbox5,.spbox6,.spbox7,.spbox8,.spbox9{
+    padding: 0.5em 1em;
+    margin: 0;
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.spbox1 p,.spbox2 p,.spbox3 p,.spbox4 p,.spbox5 p,.spbox6 p,.spbox7 p,.spbox8 p,.spbox9 p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.spbox1{
+	background: linear-gradient(right, #91FDB7, #709DFF);
+	background: -moz-linear-gradient(right, #91FDB7, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#709DFF)); 
+}
+.spbox1 p {
+	color: #FFF;
+}
+
+.spbox2{
+	background: linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -moz-linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#4DD0E1)); 
+}
+.spbox2 p {
+	color: #FFF;
+}
+
+.spbox3{
+	background: linear-gradient(right, #4DD0E1, #709DFF);
+	background: -moz-linear-gradient(right, #4DD0E1, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#4DD0E1), to(#709DFF)); 
+}
+.spbox3 p {
+	color: #FFF;
+}
+
+.spbox4{
+	background: linear-gradient(right, #FFD400, #FF6B37);
+	background: -moz-linear-gradient(right, #FFD400, #FF6B37);
+	background: -webkit-gradient(linear, right center, left center, from(#FFD400), to(#FF6B37)); 
+}
+.spbox4 p {
+	color: #FFF;
+}
+
+.spbox5{
+	background: linear-gradient(right, #FFB822, #FA709A);
+	background: -moz-linear-gradient(right, #FFB822, #FA709A);
+	background: -webkit-gradient(linear, right center, left center, from(#FFB822), to(#FA709A)); 
+}
+.spbox5 p {
+	color: #FFF;
+}
+
+.spbox6{
+	background: linear-gradient(right, #FB97B4, #89AEFF);
+	background: -moz-linear-gradient(right, #FB97B4, #89AEFF);
+	background: -webkit-gradient(linear, right center, left center, from(#FB97B4), to(#89AEFF)); 
+}
+.spbox6 p {
+	color: #FFF;
+}
+
+.spbox7{
+	background: linear-gradient(right, #FCCB90, #D57EEB);
+	background: -moz-linear-gradient(right, #FCCB90, #D57EEB);
+	background: -webkit-gradient(linear, right center, left center, from(#FCCB90), to(#D57EEB)); 
+}
+.spbox7 p {
+	color: #FFF;
+}
+
+.spbox8{
+	background: linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -moz-linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FF9A9E)); 
+}
+.spbox8 p {
+	color: #FFF;
+}
+
+.spbox9{
+	background: linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -moz-linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FFD1FF)); 
+}
+.spbox9 p {
+	color: #333;
+}
+
+.bg_ffffff{
+	background:#FFF;
+}
+
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+			<li>年末年始・冬休みのお出かけ 2018-2019</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<h1 class="headline01"><p>年末年始・冬休み特集 2018-2009</p></h1>
+
+<div class="mb20"></div>
+
+<div class="mb10"><img src="img/keyimage_pc.jpg" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。" width="100%"></div>
+
+<div class="lead">来年は元号が変わることもあり、2018年・2019年の年末年始は、平成最後のイベントが目白押し！中でも、天皇皇后陛下がお出ましになる、一般参賀は過去最大の見学者が予想され、初日の出､初詣も例年以上の人出になりそうです。そんな盛り上がりの中、ポケカルでは、年末年始のツアー・イベントを大増量！寝正月でゆっくり過ごすのもよいですが、今年に限っては、家でじっとなんてしていられません。
+</div>
+              <div class="mb20"></div>
+
+</div>
+		  
+		  
+<div class="bg_d5efff">
+
+<div class="wrapper">
+
+<h2 class="headline04">年末年始の日程から探す</h2>
+
+<div class="lead">
+	2018-2019年の年末年始は、1/4(金)を休めば、なんと9連休！平成最後の長期休暇を有効に活用しない手はありません！ぽっかり空いた予定の無い日など、ぜひ日帰りツアーをお楽しみください。
+</div>
+
+<ul class="spboxcol">
+
+<!-- -->
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-28&stock_date_to=2018-12-28&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>12/28(金)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-29&stock_date_to=2018-12-29&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>12/29(土)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-30&stock_date_to=2018-12-30&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>12/30(日)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-31&stock_date_to=2018-12-31&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>12/31(月)</p></h4>
+</a>
+</li>
+	
+<!-- -->
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2019-01-01&stock_date_to=2019-01-01&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>1/1(火)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2019-01-02&stock_date_to=2019-01-02&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>1/2(水)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2019-01-03&stock_date_to=2019-01-03&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>1/3(木)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2019-01-04&stock_date_to=2019-01-06&adults_cnt=2&purpose_id[]=new-year_all-tours">
+<h4 class="spbox5"><p>1/4(金)~6(月)</p></h4>
+</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+		  
+	  
+<div class="bg_fbe9e9">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>一般参賀ツアー</span><h3><a class="list-more" href="/ippansanga/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead">天皇陛下は、2019年4月30日に退位され、元号も、5月1日から新たな元号となります。文字通り平成の世が終わる最中、天皇陛下がお出ましになる一般参賀も天皇誕生日と、正月2日の2回を残すのみ。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+<div class="bg_d5efff">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>七福神めぐりツアー</span><h3><a class="list-more" href="/new-year/shichifukujin/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead">日本橋を筆頭に、深川、谷中、亀戸、さまざまな七福神めぐりコースを取り揃えております。各ツアーで歩く距離は、約2～5km前後。ウォーキングも兼ね、2019年の開運を祈願しましょう。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list2 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+		  
+<div class="bg_fbe9e9">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>初詣ツアー</span><h3><a class="list-more" href="/new-year/hatsumode/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead">平成時代の初詣も2019年で最後。多くの寺社仏閣は例年以上の人出になることが予想されます。平成への御礼参りも兼ね、ポケカルのツアーで初詣にまいりましょう。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list3 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+<div class="bg_d5efff">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>正月三が日に行けるツアー</span><h3><a class="list-more" href="/new-year/shogatsu/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead">過去の人気ツアー「駅伝応援ツアー」は2019年も健在！七福神めぐりや初詣、お正月気分が満喫できる厳選ツアーをぜひご覧ください。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list4 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>	
+
+		  
+<div class="bg_fbe9e9">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>年末年始のコンサート・公演</span><h3><a class="list-more" href="/new-year/concert/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>チケットを全て見る</a></h3></h2>
+</div>
+<div class="mb20"></div>
+<div class="mb10"><img src="img/tokusyu_pc.jpg" width="100%"></div>
+
+<div class="lead">歌舞伎・演劇の新春公演、年忘れコンサートなど、年末年始は、公演目白押し！普段行けない方は、この機会を利用しない手はありません。多くのチケットは、ポケカル限定価格でご提供。要チェックです。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list5 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>	
+		  
+
+
+  <!--/#content .clearfix-->
+  
+<?php include_once("include/2018/footer.html" ); ?>

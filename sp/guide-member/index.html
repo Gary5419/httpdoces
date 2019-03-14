@@ -1,0 +1,107 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->setGuideListHtml($_GET['type']);
+$data2 = $cms->res_data;
+
+$text_type = "";
+if($_REQUEST['type'] == 1){
+	$text_type = "アンジーンガイド一覧";
+}elseif($_REQUEST['type'] == 2){
+	$text_type = "パートナーガイド一覧";
+}else{
+	$text_type = "ガイド一覧";
+}
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="ポケカルが主催するツアーで、各ツアーのガイドを担当するメンバーのご案内。歴史や街・文化に精通したガイドのプロフェッショナルがご案内するツアーは、多くのお客様に大好評。ガイドを目当てにツアーを申し込むお客様もいらっしゃいます。当ページでは、ガイドのプロフィールやツアーにご参加いただいたお客様の声をご紹介。ぜひ、ツアー選びにお役立てください。">
+    <meta name="keywords" content="ガイド,ポケカル,アンジーン">
+    <title>ガイド一覧｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css?v=181019">
+    <link rel="stylesheet" href="../tokyo-cruise/css/style.css" />
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/bustours/">
+<link rel="canonical" href="http://www.poke.co.jp/bustours/">
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">日帰り旅行・ツアーTOP</a></li>
+		  <li class="pl20"><?php echo $text_type; ?></li>
+        </ul>
+        <section>
+
+<h1 class="headline01"><?php echo $text_type; ?></h1>
+
+<div class="mb10"></div>
+
+
+<div class="guide_lead">
+ポケカルが主催するツアーで、各ツアーのガイドを担当するメンバーのご案内※。歴史や街・文化に精通したガイドのプロフェッショナルがご案内するツアーは、多くのお客様に大好評。ガイドを目当てにツアーを申し込むお客様もいらっしゃいます。当ページでは、ガイドのプロフィールや担当ツアーのスケジュールの他、ツアーにご参加いただいたお客様の声もご紹介。ぜひ、ツアー選びの中で、ガイドの評価も参考ください。※ポケカルのツアーを担当する一部のガイドメンバーの紹介となります。全てのメンバーではありません。ご了承の上、ページをご覧ください。
+</div>
+
+
+<div class="mb20"></div>	
+
+</div>
+
+<div class="search">
+
+<?php
+echo $data2['guide_list'];
+?>
+
+
+
+</div>
+<!-- / #page -->
+
+</section>
+
+<?php require_once("2018/footer.html"); ?>

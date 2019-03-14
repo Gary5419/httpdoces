@@ -1,0 +1,288 @@
+<?php
+$p = isset($_REQUEST['p']) ? $_REQUEST['p'] : "engeki";
+
+require_once("./_data/index.php");
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!-- InstanceBegin template="/Templates/second-noside.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+<!-- InstanceEndEditable -->
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="style" -->
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-ticket.css" rel="stylesheet" type="text/css" />
+<!-- InstanceEndEditable -->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once 'header_noarea.inc'; ?>
+<div id="wrapper">
+
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="floatContainer">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+      <div class="topicPath floatContainer noside">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <!-- InstanceBeginEditable name="breadcrumbs" -->
+            <li><?php echo $breadcrumb;?></li>
+
+            <!-- InstanceEndEditable -->
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <!-- InstanceBeginEditable name="main" -->
+        <div id="pokekaru_old_html">
+         
+
+<!-- keyimage -->
+
+<div align="center"><img src="img/keyimage.png" ></div>
+
+<br>
+<!-- end/keyimage -->
+
+
+
+
+
+<div class="ticket_caption">
+2016年のGW（ゴールデンウィーク）。皆様はどんな過ごし方を予定されていますか？2015年は連休日との間に平日が2日挟まり、長い連休をとるのが難しい曜日配置でしたが、2016年はまさしく「ゴールデン」という名にふさわしい曜日配置。5/2（月）、５/6（金）を休めば、なんと10連休がとれちゃいます！<br>
+デフレ不況の中、旅行の安近短（＝安い近い短い）ブームは2016年も健在で、リサーチ会社「リサーチバンク」によると、2015年のゴールデンウィークの過ごし方アンケートは、2014に対して、日帰り旅行が宿泊旅行の割合を逆転！訪日外国人の増加によりホテルの宿泊料金も値上がりが続く昨今、2016年はさらにいっそう日帰り旅行へのニーズが高くなることが予想されます。GWシーズンは、宿泊料金も通常日より高く、交通費も含めると、宿泊旅行は一人3万円を超えてしまいます。日帰り旅行は、その点1万円以下で楽しめるツアーが多く、それが最大の人気の秘訣。ぜひ、ぽけかる倶楽部でGWを安く・楽しく過ごすためのツアーを発見してください！
+</div>
+
+<ul id="ticket_content">
+<?php foreach($data as $val): 
+
+$tmp = array();
+for($i=4;$i<=13;$i++){
+	if($val[$i] != "")	$tmp[] = $val[$i];
+}
+$dt = implode("・",$tmp);
+?>
+<li>
+
+<div class="ticket_middle">
+<div class="ticket_middle_left">
+
+<?php
+$path = "http://img.poke.co.jp/media/transfer/img/eventid_{$val[0]}/eventid_{$val[0]}_pic1.jpg";
+
+/*
+if($val[14] == 1):
+?>
+	<div align="center"><img src="<?php echo $path;?>" height="175" class="photo"></div>
+<?php else: ?>
+	<div align="center"><img src="<?php echo $path;?>" width="220" class="photo"></div>
+<?php endif;
+
+*/
+	
+    $size = getimagesize($path);
+    $width = $size[0];
+    $height = $size[1];
+if($width < $height): ?>
+    	<div align="center"><img src="<?php echo $path;?>" height="175" class="photo"></div>
+<?php else: ?>    
+    <?php if($height < 0.75 * $width): ?>
+    <div align="center"><img src="<?php echo $path;?>" width="220" class="photo"></div>
+    <?php else: ?>
+    <div align="center"><img src="<?php echo $path;?>" width="220" class="photo"></div>
+    <?php endif; ?>
+<?php 
+endif; 
+
+?>
+
+
+
+<div class="mb10"></div>
+</div>
+<div class="ticket_middle_right">
+
+<a href="<?php echo $val[1];?>" style="color:#0070C0;text-decoration:none;font-size:20px;font-weight:bold;line-height:1.4;">
+<?php 
+if(mb_strlen($val[2],'UTF-8') > 60):
+echo mb_substr($val[2],0,60,'UTF-8')."...";
+else:
+echo $val[2];
+endif;
+?></a>
+
+<div class="mb10"></div>
+
+<table cellpadding="0" cellspacing="0" border="0" style="margin-top:7px;width:100%;">
+<tr>
+<td class="ticket_middle_tdleft"><div style="padding-bottom:6px;"><img src="img/icon_calendar.png" width="22" style="position:relative;top:3px;">&nbsp;GWの開催日</div></td>
+<td class="ticket_middle_tdright"><div class="dt"><?php echo $dt;?></div></td>
+</tr>
+<tr><td><img src="img/spacer.gif" height="10" width="1" style="display:block;"></td><td></td></tr>
+<tr>
+<td class="ticket_middle_tdleft">料金</td>
+<td class="ticket_middle_tdright">
+<div class="ticket_price"><?php echo $val[3];?></div>
+</td>
+</tr>
+</table>
+
+<a href="<?php echo $val[1];?>" class="ticket_btn" style="color:#FFF;text-decoration:none;">詳細を見る・申込みをする</a>
+
+<div class="mb30"></div>
+
+
+
+</div>
+</div>
+
+</li>
+<?php endforeach; ?>
+</ul>
+
+
+<!-- tab-area -->
+
+
+<!-- InstanceEndEditable -->
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <!-- ##### FOOTER #####  -->
+  <div id="footerField">
+    <ul class="footerLink">
+      <li><a href="/">日帰りツアー・見学・イベント情報トップ</a></li>
+      <li><a href="/event/">日帰りツアー・体験イベント一覧</a></li>
+      <li class="last"><a href="http://www.poketabi-hikaku.com/" target="_blank">ぽけ旅比較.com</a></li>
+    </ul>
+    <ul class="footerLink">
+<li><a href="/book/eventlist/bus/none/none/0/0000/00/00/index.html">観光名所めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/society-bus/none/none/0/0000/00/00/index.html">社会見学バスツアー</a></li>
+<li><a href="/book/eventlist/nature-bus/none/none/0/0000/00/00/index.html">花・自然めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/yakata/none/none/0/0000/00/00/index.html">屋形船遊び</a></li>
+<li><a href="/book/eventlist/cruising/none/none/0/0000/00/00/index.html">川下りクルーズ</a></li>
+<li><a href="/book/eventlist/tokyobay/none/none/0/0000/00/00/index.html">東京湾クルーズ</a></li>
+<li><a href="/book/eventlist/night-cruise/none/none/0/0000/00/00/index.html">ナイトクルーズ</a></li>
+<li class="last"><a href="/book/eventlist/ozashiki/none/none/0/0000/00/00/index.html">お座敷遊び</a></li><br>
+
+<li><a href="/book/eventlist/tradition/none/none/0/0000/00/00/index.html">伝統芸能</a></li>
+<li><a href="/book/eventlist/show/none/none/0/0000/00/00/index.html">ショー＆レビュー</a></li>
+<li><a href="/book/eventlist/society/none/none/0/0000/00/00/index.html">社会見学</a></li>
+<li><a href="/book/eventlist/factory/none/none/0/0000/00/00/index.html">工場見学</a></li>
+<li><a href="/book/eventlist/walking/none/none/0/0000/00/00/index.html">街歩き</a></li>
+<li><a href="/book/eventlist/history/none/none/0/0000/00/00/index.html">歴史探訪</a></li>
+<li><a href="/book/eventlist/spot/none/none/0/0000/00/00/index.html">名所・旧跡めぐり</a></li>
+<li><a href="/book/eventlist/exhibition/none/none/0/0000/00/00/index.html">展覧会・特別展</a></li>
+<li><a href="/book/eventlist/experience/none/none/0/0000/00/00/index.html">体験教室</a></li>
+<li class="last"><a href="/book/eventlist/gourmet/none/none/0/0000/00/00/index.html">レストランプラン</a></li><br>
+
+<li><a href="/book/eventlist/ticket-gourmet/none/none/0/0000/00/00/index.html">公演つきグルメプラン</a></li>
+<li><a href="/book/eventlist/ticket/none/none/0/0000/00/00/index.html">公演チケット</a></li>
+<li><a href="/book/eventlist/live/none/none/0/0000/00/00/index.html">室内ライブ</a></li>
+<li><a href="/book/eventlist/dayspa/none/none/0/0000/00/00/index.html">日帰り温泉</a></li>
+<li><a href="/book/eventlist/festival/none/none/0/0000/00/00/index.html">祭り・イベント</a></li>
+<li><a href="/book/eventlist/skytree/none/none/0/0000/00/00/index.html">東京スカイツリー</a></li>
+<li><a href="/book/eventlist/sakura/none/none/0/0000/00/00/index.html">桜・お花見ツアー</a></li>
+<li class="last"><a href="/book/eventlist/hanabi/none/none/0/0000/00/00/index.html">花火大会観覧ツアー</a></li><br>
+
+<li><a href="/book/eventlist/group/none/none/0/0000/00/00/index.html">団体様貸切OK</a></li>
+<li><a href="/book/eventlist/stay/none/none/0/0000/00/00/index.html">宿泊付きツアー</a></li>
+<li><a href="/book/eventlist/west/none/none/0/0000/00/00/index.html">関西 日帰り遊び</a></li>
+<li class="last"><a href="/book/eventlist/other/none/none/0/0000/00/00/index.html">その他地域 日帰り遊び</a></li>
+</ul>
+    <ul>
+      <li><a href="/company.html">運営会社</a></li>
+      <li><a href="/media.html">メディア掲載実績</a></li>
+      <li><a href="/pr.html">プレスリリース</a></li>
+      <li><a href="/ryokogyo.html">旅行業登録票</a></li>
+      <li><a href="/privacy.html">個人情報保護</a></li>
+      <li><a href="/copyright.html">著作権</a></li>
+      <li><a href="/yakkan.html">約款</a></li>
+      <li><a href="/tuuhan.html">通販規約</a></li>
+      <li class="last"><a href="/book/inquiry.php">お問い合わせ</a></li>
+    </ul>
+    <p class="imageBlock"><img src="/images/common/imgCopy.jpg" alt="Copyright c 2009 Pokekaru-Club. All rights reserved." width="358" height="14" /></p>
+  </div>
+  <!-- ##### /FOOTER ##### -->
+</div>
+
+
+<!-- Google Code for &#12304;&#29305;&#38598;&#12305;&#26481;&#20140;&#12473;&#12459;&#12452;&#12484;&#12522;&#12540; Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "zTiXCIbr7AIQupD43gM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1004406842/?value=0&amp;label=zTiXCIbr7AIQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+
+<!-- 20121024 -->
+<!-- Google Code for &#12486;&#12540;&#12510;&#12391;&#25506;&#12377;&#65306;&#12464;&#12523;&#12513; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_label = "auxcCKb1zwQQupD43gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1004406842/?value=0&amp;label=auxcCKb1zwQQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- 20121024 -->
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+<!-- InstanceEnd -->
+</html>

@@ -1,0 +1,217 @@
+<?php
+require_once("include/2018/config.php");
+
+$filepath = "./_data/_msg_news.tsv";
+$msg_news = "";
+if(file_exists( $filepath )){
+	$msg_news = file_get_contents($filepath);
+}
+
+
+$cookie_name = "mrraf";
+
+if(isset($_GET['afi'])){
+
+    #アフィリエイトIDがクッキー値と異なる場合、クッキーを削除して値変更
+	#$expire = time() + 60 * 60 * 24 * 30 * 1;#1ヶ月
+    $expire = 0;
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="ポケカルは、日帰りツアーが検索・予約できる【日帰りツアー専門サイト】です。バスツアー、クルーズツアー、街歩き、体験イベント、体験教室、工場見学など、日帰りで楽しめるツアーを随時ご紹介しております。">
+    <meta name="keywords" content="日帰り,ツアー,日帰りツアー専門,ポケカル">
+    <title>日帰り旅行・ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css?v=180630">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+  </head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container pgtop" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <?php echo $data['slider']; ?>
+
+<?php
+if($msg_news != ""){
+    ?>
+<style>
+#msg_news{
+	text-align:center;
+	margin-top:30px;
+}
+#msg_news .fa {
+    background: transparent;
+    margin: 0 7px 1px 0;
+    padding-left: 1px;
+    border: 1px solid #167ac6;
+    width: 25px;
+    height: 25px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 22px;
+    text-align: center;
+	color:#FFF;
+	border-color:#FFF;
+	background:#167ac6;
+}
+#msg_news a{
+	text-decoration:none;
+/*	padding-bottom:4px;*/
+	padding-bottom:0px;
+	border-bottom:1px solid #167ac6;
+	font-size:15px;
+}
+</style>
+
+
+    <div id="msg_news">
+    
+            <i class="fa fa-angle-right"></i><?php echo $msg_news; ?>
+    </div>
+
+<?php
+}
+?>
+
+        <section class="tour-search tour-search-top">
+          <div class="wrapper">
+
+            <?php include_once("include/2018/tour_search01_h1.html" ); ?>
+          </div>
+        </section>
+
+        <section class="sec-theme sec-theme-top bg-sec">
+          <div class="wrapper">
+            <h2 class="headline01"><span>テーマで探す</span><a class="list-more" href="/all-themes/"><i class="fa fa-angle-right"></i>全てのテーマを見る</a></h2>
+            <div class="tab-list">
+              <ul class="clearfix">
+                <li class="active"><a data-target="#tab-theme0101" href="#">テーマ No.1〜No.12</a></li>
+                <li><a data-target="#tab-theme0102" href="#">テーマ No.13〜No.23</a></li>
+              </ul>
+            </div>
+            <div class="tab-content tab-content01">
+              <div id="tab-theme0101" class="tab-box">
+                <div class="block-list clearfix">
+                	<?php echo $data['theme1_12']; ?>
+
+                </div>
+              </div><!-- tab-theme0101 -->
+              <div id="tab-theme0102" class="tab-box">
+                <div class="block-list clearfix">
+                
+                <?php echo $data['theme13_23']; ?>
+
+                  <div class="box more"><a href="/all-features/"><span><img src="/common2/img/common/icon_theme.png" alt="全てのテーマ一覧"><span>全てのテーマ一覧</span></span></a></div>
+                </div>
+              </div><!-- tab-theme0102 -->
+            </div>
+          </div>
+        </section>
+        <section class="sec-feature">
+          <div class="wrapper">
+            <?php include_once("include/2018/feature.html" ); ?>
+          </div>
+        </section>
+        <section class="sec-ticket bg-sec">
+          <div class="wrapper">
+            <h2 class="headline01"><span>チケットを探す</span><a class="list-more" href="/book/eventlist.php?theme_id[]=ticket"><i class="fa fa-angle-right"></i>全てのチケットを見る</a></h2>
+            <div class="block-list clearfix">
+            	<?php echo $data['ticket']; ?>
+
+              <div class="box more"><a href="/book/eventlist.php?theme_id[]=ticket"><span><img src="/common2/img/common/icon_ticket.png" alt="全てのチケット一覧"><span>全てのチケット一覧</span></span></a></div>
+            </div>
+          </div>
+        </section>
+        <div class="wrapper">
+          <div class="section-group">
+
+
+            <section class="sec-communicate">
+              <?php include_once("include/2018/communicate.html" ); ?>
+            </section>
+            
+            <?php echo $data['favorites']; ?>
+            <?php echo $data['history']; ?>
+
+            <section class="sec-video">
+              <?php include_once("include/2018/video.html" ); ?>
+            </section>
+          </div>
+        </div>
+        <section class="sec-news bg-sec">
+          <div class="wrapper">
+            <h2 class="headline01"><span>新着情報</span><a class="list-more" href="/news/"><i class="fa fa-angle-right"></i>全ての新着情報を見る</a></h2>
+            <ul class="news-list">
+            	<?php echo $data['whatsnew']; ?>
+
+            </ul>
+          </div>
+        </section>
+        <section class="sec-sns">
+          <div class="wrapper">
+            <h2 class="headline01">公式SNS</h2>
+            <div class="sns-group clearfix">
+              <div class="facebook">
+                <p class="sns-title">Facebook</p>
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.12';
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-page" data-href="https://www.facebook.com/pokekaru/" data-tabs="timeline" data-width="495" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/pokekaru/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/pokekaru/">ポケカル</a></blockquote></div>
+              </div>
+              <div class="twitter">
+                <p class="sns-title">Twitter</p>
+                <div><a class="twitter-timeline" data-lang="ja" data-width="495" data-height="400" href="https://twitter.com/pokekaru?ref_src=twsrc%5Etfw">Tweets by pokekaru</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+              </div>
+            </div>
+            <div class="group-banner">
+              <ul class="list-banner">
+                <li><a class="trans" href="/userfile/group/"><img src="/common2/img/top/img_banner01.jpg" alt=" "></a></li>
+                <li><a class="trans" href="http://kotoricafe.jp/" target="_blank" rel="nofollow"><img src="/common2/img/top/img_banner02.jpg" alt=" "></a></li>
+                <li><a class="trans" href="/userfile/newspaper/"><img src="/common2/img/top/img_banner03.jpg" alt=" "></a></li>
+    
+                <li><a class="trans" href="http://rsv.nta.co.jp/Affiliate/set/AF100101.aspx?SITE_ID=00571127&REDI_URL=http%3A//www.nta.co.jp/jr/shinkansen/%3Futm_source%3Dpokekaru%26utm_medium%3Dteikei%26utm_campaign%3Dpokekaru_jr_shinkansen" target="_blank"><img src="https://img.poke.co.jp/images/top/bnr_nta_pcsp.jpg" alt=" "></a></li>
+                
+<!--                <li><a class="trans" href="#" target="_blank"><img src="/common2/img/top/img_banner02.jpg" alt=" "></a></li>-->
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+<!-- master => www 同期解除テスト -->
+      <?php include_once("include/2018/footer.html"); ?>

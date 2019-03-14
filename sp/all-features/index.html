@@ -1,0 +1,54 @@
+<?php
+require_once("include/2018/config.php");
+
+#$cms = new getDataFromCms();
+$cms->setAllSpecialHtml();
+$data2 = $cms->res_data;
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="ポケカル特集一覧">
+    <meta name="keywords" content="特集一覧,ポケカル">
+    <title>特集一覧 | ポケカル</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+  </head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li>特集一覧</li>
+        </ul>
+        <section class="wrapper">
+          <h1 class="headline01">特集一覧</h1>
+          
+          <div class="mb10"></div>
+          
+          <p class='mb20'>
+          ポケカルで掲載している全ての特集ページをご覧いただくことができます。特集ページは、桜や紅葉などの季節に関連したものやお祭りやゴールデンウィーク、クリスマスなどイベントや祝日に関連したものなどさまざま。ポケカルの編集スタッフがイチオシしたいツアーを特集ページ化することが多いため、ツアー探しに迷った方は、特集ページをぜひ見ていただき、お好みのツアーを発見ください。ほぼ毎週新しい特集ページを公開しております。今後も乞うご期待！
+          </p>
+          
+          <?php echo $data2['all_special']; ?>
+        
+        
+        </section>
+       
+      <?php require_once("2018/footer.html"); ?>

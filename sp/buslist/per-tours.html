@@ -1,0 +1,184 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<?php define("H1TXT","ポケカル利用バス会社一覧"); 
+
+$busTXT = file_get_contents("http://odekake.poke.co.jp/busdb_api/api.php");
+$bus_base = explode("\n",$busTXT);
+$cnt = 0;
+$busdb = array();
+foreach($bus_base as $v){
+	$busdb[$cnt] = explode("\t",$v);
+    $cnt++;
+}
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="株式会社ポケカル 利用バス会社一覧"/>
+<meta name="keywords" content="日帰りバスツアー,日帰りツアー,日帰り,バスツアー,ツアー,旅行,利用バス会社,ポケカル" />
+<meta name="copyright" content="" />
+<title>株式会社ポケカル 利用バス会社一覧</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+
+<style>
+.marginB5{margin-bottom:5px;}
+.marginB10{margin-bottom:10px;}
+.marginB20{margin-bottom:20px;}
+
+.p16{font-size:16px;}
+.p14{font-size:14px;}
+.p12{font-size:12px;}
+.p10{font-size:10px;}
+
+.bar{
+	background:#ECECEC;
+	border-bottom:2px solid #A6A6A6;
+	color:#404040;
+	
+	font-weight:bold;
+	padding:8px 7px;
+	margin-bottom:20px;
+}
+
+.busblock{
+	border:1px solid #D9D9D9;
+	box-sizing:border-box;
+	padding:7px;
+	width:96%;
+	margin:0 auto 10px auto;
+	font-size:12px;
+}
+.busbar{ 
+background:#CCFFCC;padding:2px 7px; margin-bottom:5px;
+}
+.busin{
+	padding:0 6px;
+	line-height:1.4;
+}
+
+.busblock2{
+	border:1px solid #7F7F7F;
+	box-sizing:border-box;
+	padding:7px;
+	width:96%;
+	margin:0 auto 20px auto;
+	border-radius: 6px;   
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+	font-size:12px;
+}
+.busbar2{ 
+background:#E6E6E6;padding:2px 7px; margin-bottom:5px;
+}
+.busin2{
+	padding:0 6px;
+	line-height:1.4;
+}
+
+.bustbl , .bustbl2{
+	width:310px;
+	margin:0 auto;
+	box-sizing:border-box;
+}
+.bustbl2{
+	border-top:1px solid #D6D6D6;
+	border-left:1px solid #D6D6D6;
+}
+.bustbl th{
+	font-size:12px;
+	background:#ED7390;
+	color:#FFF;
+	padding:7px 5px;
+	text-align:center;
+	border-right:1px solid #FFF;
+	box-sizing:border-box;
+	word-break:break-all;
+}
+.bustbl2 td{
+	font-size:12px;
+	padding:7px 5px;
+	border-right:1px solid #D6D6D6;
+	border-bottom:1px solid #D6D6D6;
+	box-sizing:border-box;
+	word-break:break-all;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li><a href="/sp/buslist.html">ポケカル利用バス会社一覧</a></li>
+          <li>利用バス会社(ツアー毎)</li>
+        </ul>
+        <section>			  
+              
+              <h2 class="bar">利用バス会社(ツアー毎)</h2>
+
+             
+              
+              <div class="marginB20"></div>
+              
+              
+              <table class="bustbl" style="margin-bottom:6px;">
+              <tr>
+              <th width="20%">出発日</th><th width="18%">商品番号</th><th width="25%">ツアータイプ名</th><th>バス会社名</th>
+              </tr>
+              </table>
+              
+              <table class="bustbl2">
+              <?php 
+              foreach($busdb as $v){ 
+             	if( count($v) < 4) continue;
+              ?>
+              <tr>
+              <td width="20%"><?php echo $v['0']; ?></td><td width="18%"><?php echo $v['1']; ?></td><td width="25%"><?php echo $v['2']; ?></td><td><?php echo $v['3']; ?></td>
+              </tr>
+              <?php 
+              
+              }
+              ?>
+              </table>
+
+
+              </div>
+
+    </div>   
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

@@ -1,0 +1,134 @@
+<?php
+
+$ym = "201612";
+
+$cookie_name = $ym;
+
+if(isset($_GET['afi'])){
+	
+    #アフィリエイトIDがクッキー値と異なる場合、クッキーを削除して値変更
+	$expire = time() + 60 * 60 * 24 * 30 * 1;#1ヶ月
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+
+
+
+require_once("../_data/{$ym}.php");
+
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="../css/custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<?php require_once 'header_noarea.inc'; ?>
+<div id="wrapper">
+
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+      <div class="topicPath floatContainer noside">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <li><a href="./"><?php echo $m_navi[$p][5]; ?></a></li><li><?php echo $m_navi[$p][6];?></li>
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <div id="wrap_top">
+          
+
+<div class="caption">
+ぽけかる倶楽部のサイトでは、<span class="c_c00000">24時間いつでもオンライン予約が可能</span>です。また、<span class="c_c00000">クレジットカードでの支払いが可能</span>です（電話からの申込みの場合は、払込票の支払い手段のみ）。ぜひ、ぽけかる倶楽部のWEBサイトで、<span class="c_c00000">便利なオンライン予約</span>をご利用ください。
+</div>
+
+<ul id="cruise_navi">
+<?php foreach($m_navi as $key => $val): ?>
+<li><a href="<?php if($key == $base)	echo "./"; else echo "./?p=".$key;?>" class="cruise_link<?php if(strcmp($p,$key) == 0)	echo "_a";?>"><?php echo $val[0];?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<?php if($m_navi[$p][7] != ""): ?>
+<div align="center"><img src="img/<?php echo $m_navi[$p][7];?>.jpg"></div>
+<?php endif; ?>
+
+<?php if($m_navi[$p][8] != ""): ?>
+<div align="center"><img src="img/<?php echo $m_navi[$p][8];?>.jpg"></div>
+<?php endif; ?>
+
+<div class="mb20"></div>
+
+<div class="midashi">誌面に掲載されているツアー・チケット・グルメプラン情報</div>
+
+
+<?php foreach($data[$p] as $val): 
+
+if($val[2] == "") continue;
+?>
+
+<?php if($afi == ""): ?>
+<a href="/book/calendar.php?eventid=P<?php echo sprintf("%06d",$val[0]); ?>&y=0000&m=00&by=0000&bm=00" style="color:#0070C0;text-decoration:none;" >
+<?php else: ?>
+<a href="http://www.poke.co.jp/book/calendar/P<?php echo sprintf("%06d",$val[0]);?>/<?php echo $afi; ?>/index.html" style="color:#0070C0;text-decoration:none;">
+<?php endif; ?>
+<ul class="dmlist">
+<li><img src="../img/icon_bm.png" width="32"></li>
+<li>【<?php echo $val[0];?>】</li>
+<li><?php 
+if(mb_strlen($val[2],'UTF-8') > 52):
+echo mb_substr($val[2],0,52,'UTF-8')."...";
+else:
+echo $val[2];
+endif;
+?>
+</li>
+</ul>
+</a>
+
+
+<?php endforeach; ?>
+
+
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <!-- ##### FOOTER #####  -->
+  <?php require_once 'footer.inc'; ?>
+  <!-- ##### /FOOTER ##### -->
+</div>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+</html>

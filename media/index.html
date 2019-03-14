@@ -1,0 +1,227 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+
+<meta name="Description" content="ポケカルが取り上げられたテレビ、雑誌、新聞等のご紹介です。" />
+<meta name="Keywords" content="メディア掲載,紹介,ポケカル" />
+<meta name="copyright" content="" />
+<title>メディア掲載 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+#media{
+	width:900px;
+	margin:0 auto;
+}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+            <li>メディア掲載実績</li>
+          </ul>
+          <section>
+            <h1 class="headline01">メディア掲載実績</h1>
+            <table class="tbl-info2">
+              <tr>
+                <th class="th2">掲載日</th>
+                <th class="th2">メディアの名称</th>
+              </tr>
+              <tr>
+                <th class="th">2018/10/09</th>
+                <td class="td">テレビ東京 WBS（ワールドビジネスサテライト）</td>
+              </tr>
+              <tr>
+                <th class="th">2015/12/07</th>
+                <td class="td">	日本テレビ ZIP!</td>
+              </tr>
+              <tr>
+                <th class="th">2015/12/04</th>
+                <td class="td">テレビ朝日 グッド！モーニング</td>
+              </tr>
+              <tr>
+                <th class="th">2015/10/20</th>
+                <td class="td">テレビ朝日 スーパーJチャンネル</td>
+              </tr>
+              <tr>
+                <th class="th">2015/10/17</th>
+                <td class="td">テレビ神奈川 ハマナビ</td>
+              </tr>
+              <tr>
+                <th class="th">2015/08/18</th>
+                <td class="td">日本テレビ news every.</td>
+              </tr>
+              <tr>
+                <th class="th">2015/07/03</th>
+                <td class="td">都市出版株式会社 東京人</td>
+              </tr>
+              <tr>
+                <th class="th">2015/07/01</th>
+                <td class="td">夏ぴあ 花火ぴあ首都圏版</td>
+              </tr>
+              <tr>
+                <th class="th">2015/06/21</th>
+                <td class="td">交通新聞社 散歩の達人</td>
+              </tr>
+              <tr>
+                <th class="th">2015/04/27</th>
+                <td class="td">三栄書房 男の隠れ家</td>
+              </tr>
+              <tr>
+                <th class="th">2015/04/21</th>
+                <td class="td">フジテレビ ノンストップ！</td>
+              </tr>
+              <tr>
+                <th class="th">2015/04/07</th>
+                <td class="td">光文社 女性自身</td>
+              </tr>
+              <tr>
+                <th class="th">2015/02/19</th>
+                <td class="td">テレビ朝日 スーパーJチャンネル</td>
+              </tr>
+              <tr>
+                <th class="th">2015/02/11</th>
+                <td class="td">NTT docomo iコンシェル「Trend ＆ Topic」</td>
+              </tr>
+              <tr>
+                <th class="th">2015/01/12</th>
+                <td class="td">日本経済新聞社 日経MJ</td>
+              </tr>
+              <tr>
+                <th class="th">2015/01/02</th>
+                <td class="td">フジテレビ くりぃむしちゅーの新春特番</td>
+              </tr>
+              <tr>
+                <th class="th">2014/12/03</th>
+                <td class="td">テレビ朝日 モーニングバード</td>
+              </tr>
+              <tr>
+                <th class="th">2014/12/03</th>
+                <td class="td">テレビ朝日 グッド！モーニング</td>
+              </tr>
+              <tr>
+                <th class="th">2014/12/03</th>
+                <td class="td">フジテレビ とくダネ！</td>
+              </tr>
+              <tr>
+                <th class="th">2014/12/03</th>
+                <td class="td">フジテレビ スーパーニュース</td>
+              </tr>
+              <tr>
+                <th class="th">2014/12/03</th>
+                <td class="td">日本テレビ スッキリ！</td>
+              </tr>
+              <tr>
+                <th class="th">2014/11/22</th>
+                <td class="td">BSJAPAN プレミアムの時代</td>
+              </tr>
+              <tr>
+                <th class="th">2014/11/04</th>
+                <td class="td">講談社 週刊現代</td>
+              </tr>
+              <tr>
+                <th class="th">2014/10/21</th>
+                <td class="td">テレビ朝日　モーニングバード</td>
+              </tr>
+              <tr>
+                <th class="th">2014/10/06</th>
+                <td class="td">主婦と生活社 ねんきん生活</td>
+              </tr>
+              <tr>
+                <th class="th">2014/09/30</th>
+                <td class="td">KADOKAWA TOKYOWALKER</td>
+              </tr>
+              <tr>
+                <th class="th">2014/09/16</th>
+                <td class="td">朝日新聞出版 週刊朝日</td>
+              </tr>
+              <tr>
+                <th class="th">2014/08/26</th>
+                <td class="td">ソウル新聞 ソウル新聞</td>
+              </tr>
+              <tr>
+                <th class="th">2014/08/05</th>
+                <td class="td">フジテレビ カスペ！</td>
+              </tr>
+              <tr>
+                <th class="th">2014/07/07</th>
+                <td class="td">国土交通省 ダムを見に行こう！</td>
+              </tr>
+              <tr>
+                <th class="th">2014/07/03</th>
+                <td class="td">夏ぴあ 花火ぴあ首都圏版2014</td>
+              </tr>
+              <tr>
+                <th class="th">2014/06/20</th>
+                <td class="td">三井不動産 日本橋ごよみ</td>
+              </tr>
+              <tr>
+                <th class="th">2014/06/03</th>
+                <td class="td">テレビ朝日 スーパーJチャンネル</td>
+              </tr>
+              <tr>
+                <th class="th">2014/05/13</th>
+                <td class="td">朝日新聞社 朝日新聞</td>
+              </tr>
+              <tr>
+                <th class="th">2014/05/10</th>
+                <td class="td">テレビ朝日 SmaSTATION!!</td>
+              </tr>
+              <tr>
+                <th class="th">2014/05/05</th>
+                <td class="td">ミステリーチャンネル カイロスのテーブル</td>
+              </tr>
+              <tr>
+                <th class="th">2014/03/27</th>
+                <td class="td">日本テレビ ZIP!</td>
+              </tr>
+              <tr>
+                <th class="th">2014/03/25</th>
+                <td class="td">大誠社 珈琲時間</td>
+              </tr>
+              <tr>
+                <th class="th">2014/03/20</th>
+                <td class="td">三井不動産 日本橋ごよみ</td>
+              </tr>
+              <tr>
+                <th class="th">2014/02/05</th>
+                <td class="td">みらい出版 コトレシピ</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+          </section>
+        </div>
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

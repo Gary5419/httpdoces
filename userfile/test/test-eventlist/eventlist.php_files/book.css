@@ -1,0 +1,653 @@
+#bodyField.book {
+	margin: 0 auto;
+	width: 900px;
+}
+#pageTitle {
+	padding-bottom:14px;
+}
+#stepTitle {
+	padding-bottom:10px;
+}
+.messageField {
+	margin-bottom: 20px;
+}
+.message {
+	margin-bottom: 10px;
+	padding: 0;
+	background: url(http://img.poke.co.jp/images/book/bg_message.jpg) repeat-y top left;
+}
+.message .top {
+	height:5px;
+	line-height:5px;
+	background: url(http://img.poke.co.jp/images/book/bg_message_top.jpg) no-repeat top left;
+	overflow: hidden;
+}
+.message .body {
+	padding: 5px 10px;
+	font-size: 14px;
+	line-height: 1em;
+}
+.message .body p {
+	margin: 0;
+	color: #000000;
+	font-size: 14px;
+	line-height: 1.2em;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+.message .bottom {
+	height:5px;
+	line-height:5px;
+	background: url(http://img.poke.co.jp/images/book/bg_message_bottom.jpg) no-repeat top left;
+	overflow: hidden;
+}
+.message.gray {
+	background: url(http://img.poke.co.jp/images/book/bg_field_gray.jpg) repeat-y top left;
+}
+.message.gray .top {
+	background: url(http://img.poke.co.jp/images/book/bg_field_gray_top.jpg) no-repeat top left;
+}
+.message.gray .bottom {
+	background: url(http://img.poke.co.jp/images/book/bg_field_gray_bottom.jpg) no-repeat top left;
+}
+ul.alert {
+	padding-top: 5px;
+}
+ul.alert li {
+	color: #FF3300;
+	font-weight: bold;
+	line-height: 1.7em;
+	list-style: none;
+	text-indent: 1px;
+}
+/* フォームテーブル */
+.inputField table {
+	font-size: 15px;
+	line-height: 1;
+	margin-bottom: 10px;
+	width: 900px;
+	border-collapse: collapse;
+}
+.inputField table.half {
+	width: 625px !important;
+}
+/* ヘッダ */
+.inputField table thead th {
+	margin: 0;
+	padding: 0;
+	height: 5px;
+	border-top: none;
+	border-right: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	background-image: url('/images/book/bg_field_white_top.jpg');
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+.inputField table thead td {
+	margin: 0;
+	padding: 0;
+	height: 5px;
+	border-top: none;
+	border-left: 1px solid #CCCCCC;
+	border-right: none;
+	background-color: #FFFFFF;
+	background-image: url('/images/book/bg_field_white_top.jpg');
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+.inputField table thead th.single, .inputField table thead td.single {
+	width: auto;
+	border-left: none;
+	border-right: none;
+}
+/* ボディ */
+.inputField table tbody th {
+	margin: 0;
+	padding: 10px;
+	width: 157px;
+	border-top: 1px solid #CCCCCC;
+	border-left: none;
+	border-right: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	background-image: url('/images/book/bg_field_white.jpg');
+	background-repeat: repeat-y;
+	background-position: top left;
+}
+.inputField table tbody td {
+	margin: 0;
+	padding: 10px;
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: none;
+	background-color: #FFFFFF;
+	background-image: url('/images/book/bg_field_white.jpg');
+	background-repeat: repeat-y;
+	background-position: top right;
+	font-size: 14px;
+	letter-spacing: 0;
+	line-height: 1.3em;
+	padding: 10px;
+}
+.inputField table tbody tr.first th, .inputField table tbody tr.first td {
+	padding-top: 5px;
+	border-top: none;
+}
+.inputField table tbody tr.last th, .inputField table tbody tr.last td {
+	padding-bottom: 5px;
+	border-bottom: none;
+}
+/* フッタ */
+.inputField table tfoot th {
+	margin: 0;
+	padding: 0;
+	height: 5px;
+	border-top: none;
+	border-right: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	background-image: url('/images/book/bg_field_white_bottom.jpg');
+	background-repeat: no-repeat;
+	background-position: bottom left;
+}
+.inputField table tfoot td {
+	margin: 0;
+	padding: 0;
+	height: 5px;
+	border-top: none;
+	border-left: 1px solid #CCCCCC;
+	border-right: none;
+	background-color: #FFFFFF;
+	background-image: url('/images/book/bg_field_white_bottom.jpg');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+.inputField table tfoot th.single, .inputField table tfoot td.single {
+	width: auto;
+	border-left: none;
+	border-right: none;
+}
+/* 罫線無し */
+.inputField table.borderless thead th, .inputField table.borderless thead td, .inputField table.borderless tbody th, .inputField table.borderless tbody td, .inputField table.borderless tfoot th, .inputField table.borderless tfoot td {
+	border: none;
+}
+/* 横表 */
+.inputField table.horizon thead th {
+	background-image: url('/images/book/bg_field_green_top.jpg');
+}
+.inputField table.horizon thead td {
+	background-image: url('/images/book/bg_field_green_top.jpg');
+}
+.inputField table.horizon tbody th {
+	background-image: url('/images/book/bg_field_gray.jpg');
+}
+.inputField table.horizon tbody tr.first th {
+	background-image: url('/images/book/bg_field_green.jpg');
+}
+.inputField table.horizon tbody td {
+	background-image: url('/images/book/bg_field_white.jpg');
+}
+.inputField table.horizon tbody tr.first td {
+	background-image: url('/images/book/bg_field_green.jpg');
+}
+.inputField table.horizon tfoot th {
+	background-image: url('/images/book/bg_field_gray_bottom.jpg');
+}
+.inputField table.horizon tfoot td {
+	background-image: url('/images/book/bg_field_white_bottom.jpg');
+}
+/* 縦表 */
+.inputField table.vertical thead th {
+	background-image: url('/images/book/bg_field_green_top.jpg');
+}
+.inputField table.vertical thead td {
+	background-image: url('/images/book/bg_field_white_top.jpg');
+}
+.inputField table.vertical tbody th {
+	background-image: url('/images/book/bg_field_green.jpg');
+}
+.inputField table.vertical tbody td {
+	background-image: url('/images/book/bg_field_white.jpg');
+}
+.inputField table.vertical tfoot th {
+	background-image: url('/images/book/bg_field_green_bottom.jpg');
+}
+.inputField table.vertical tfoot td {
+	background-image: url('/images/book/bg_field_white_bottom.jpg');
+}
+/* 色変更 - 緑色 */
+.inputField table thead th.green, .inputField table thead td.green {
+	background-image: url('/images/book/bg_field_green_top.jpg');
+}
+.inputField table tbody th.green, .inputField table tbody td.green {
+	background-image: url('/images/book/bg_field_green.jpg');
+}
+.inputField table tfoot th.green, .inputField table tfoot td.green {
+	background-image: url('/images/book/bg_field_green_bottom.jpg');
+}
+/* 色変更 - 灰色 */
+.inputField table thead th.gray, .inputField table thead td.gray {
+	background-image: url('/images/book/bg_field_gray_top.jpg');
+}
+.inputField table tbody th.gray, .inputField table tbody td.gray {
+	background-image: url('/images/book/bg_field_gray.jpg');
+}
+.inputField table tfoot th.gray, .inputField table tfoot td.gray {
+	background-image: url('/images/book/bg_field_gray_bottom.jpg');
+}
+/* 色変更 - 白色 */
+.inputField table thead th.white, .inputField table thead td.white {
+	background-image: url('/images/book/bg_field_white_top.jpg');
+}
+.inputField table tbody th.white, .inputField table tbody td.white {
+	background-image: url('/images/book/bg_field_white.jpg');
+}
+.inputField table tfoot th.white, .inputField table tfoot td.white {
+	background-image: url('/images/book/bg_field_white_bottom.jpg');
+}
+/* シングルセル */
+.inputField table thead th.single, .inputField table thead td.single, .inputField table tbody th.single, .inputField table tbody td.single, .inputField table tfoot th.single, .inputField table tfoot td.single {
+	width: auto;
+	border-left: none;
+	border-right: none;
+}
+/* 装飾 */
+.alignLeft {
+	text-align: left;
+}
+.alignRight {
+	text-align: right;
+}
+.weightBold {
+	font-weight: bold;
+}
+.inputField span.require {
+	color: #FF3300;
+	font-size: 13px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+.stonrg-red {
+	color:#FF0000;
+	font-weight:bold;
+}
+.inputField .form-input {
+	padding: 2px;
+	height: 18px;
+	line-height: 18px;
+	border-top: none;
+	border-left: none;
+	border-right: 1px solid #C3C3C3;
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 14px;
+	vertical-align: middle;
+	background: #FFFFFF url('/images/book/bg_form_input.gif') no-repeat left top;
+}
+.inputField .form-input.error {
+	border-right: 1px solid #C37575;
+	border-bottom: 1px solid #DD8584;
+	background: #FF999A url('/images/book/bg_form_input_error.gif') no-repeat left top;
+}
+.inputField .proposers {
+	font-size: 14px;
+}
+.inputField .proposers select {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	width:50px;
+}
+.confirmField {
+	position: relative;
+	padding: 7px 10px 24px;
+	text-align: center;
+}
+div.totop {
+	margin-top: 50px;
+	position: relative;
+}
+div.totop a {
+	position: absolute;
+	background: url(http://img.poke.co.jp/images/common/button_totop.gif) no-repeat top left;
+	width: 100px;
+	height: 15px;
+	right: 0;
+}
+a.button {
+	display: block;
+	font-size: 1%;
+	line-height: normal;
+	overflow: hidden;
+	text-indent: -9999px;
+}
+.confirmButton {
+	width:151px;
+	height:38px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_confirm.jpg) left top no-repeat;
+	display:block;
+}
+.confirmButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_confirm.jpg) left bottom no-repeat;
+}
+.submitField {
+	position: relative;
+	padding: 7px 10px 24px;
+	text-align: center;
+}
+.submitField p {
+	margin: 0 auto;
+	padding: 5px 0;
+	width: 400px;
+	line-height: 1.4em;
+}
+.submitField p.caution {
+	text-align: left;
+}
+.submitField input {
+	margin: 20px auto;
+	padding: 0 0;
+}
+.submitField a.totop {
+	position: absolute;
+	top: 180px;
+	right: 10px;
+}
+.submitButton {
+	width:311px;
+	height:38px;
+	text-indent:-9999px;
+	border:0 none;
+	margin:0;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_submit.jpg) left top no-repeat;
+	display:block;
+}
+.submitButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_submit.jpg) left bottom no-repeat;
+}
+.agreeField {
+	position: relative;
+	padding: 7px 10px 24px;
+	text-align: center;
+}
+.agreeField p {
+	margin: 0 auto;
+	padding: 5px 0;
+	width: 700px;
+	line-height: 1.4em;
+}
+.agreeField p.caution {
+	text-align: left;
+}
+.agreeField input {
+	margin: 20px auto;
+	padding: 0;
+}
+.agreeField a.totop {
+	position: absolute;
+	top: 291px;
+	right: 10px;
+}
+.agreeButton {
+	width:190px;
+	height:38px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_agree.jpg) left top no-repeat;
+	display:block;
+}
+.agreeButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_agree.jpg) left bottom no-repeat;
+}
+.disagreeButton {
+	width:241px;
+	height:38px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_disagree.jpg) left top no-repeat;
+	display:block;
+}
+.disagreeButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_disagree.jpg) left bottom no-repeat;
+}
+.compField {
+	position: relative;
+	padding: 7px 10px 24px;
+	text-align: center;
+}
+.compField input {
+	margin: 0 auto;
+}
+.compField a.totop {
+	position: absolute;
+	top: 69px;
+	right: 10px;
+}
+.compButton {
+	width:171px;
+	height:38px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_toppage.jpg) left top no-repeat;
+	display:block;
+}
+.compButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_toppage.jpg) left bottom no-repeat;
+}
+.previewButton {
+	width:171px;
+	height:35px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_preview.jpg) left top no-repeat;
+	display:block;
+}
+.previewButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_preview.jpg) left bottom no-repeat;
+}
+.backButton {
+	width:171px;
+	height:35px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_back.jpg) left top no-repeat;
+	display:block;
+}
+.backButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_back.jpg) left bottom no-repeat;
+}
+.cancelButton {
+	width:171px;
+	height:35px;
+	text-indent:-9999px;
+	border:0 none;
+	margin: 0 auto;
+	padding:0;
+	background:transparent url(http://img.poke.co.jp/images/book/button_cancel.jpg) left top no-repeat;
+	display:block;
+}
+.cancelButton:hover {
+	background:transparent url(http://img.poke.co.jp/images/book/button_cancel.jpg) left bottom no-repeat;
+}
+/* eventlsit */
+div.search_form {
+	width: 900px;
+	padding: 3px;
+	margin-bottom: 10px;
+	background: #FFA500;
+}
+div.search_form table {
+	width: 900px;
+	padding: 0;
+	margin: 0;
+}
+div.search_form table th {
+	text-align: left;
+}
+div.search_form table td {
+	white-space: nowrap;
+}
+div.search_form table td select {
+	padding: 1px;
+	font-size: 12px;
+}
+div.search_form table td.theme select {
+	width: 130px;
+}
+div.search_form table td.area select {
+	width: 210px;
+}
+div.search_form table td.schedule select {
+	width: 45px;
+}
+div.search_form a {
+	width:58px;
+	height:37px;
+	display:block;
+	background:transparent url(http://img.poke.co.jp/images/book/button_search_small.gif) left top no-repeat;
+}
+div.search_form a:hover {
+	background-position:left bottom;
+}
+div.search_info {
+	line-height: normal;
+	width: 900px;
+	margin: 10px 0 1px 10px;
+}
+div.search_info div.info {
+	float: left;
+}
+div.search_info div.info strong {
+	font-weight: bold;
+	font-size: 14px;
+}
+div.search_info div.pager {
+	float: right;
+}
+div.search_sort {
+	width: 880px;
+	padding: 10px;
+	background: #EBEBEB;
+	border-top: 2px solid #8fc323;
+}
+div.search_results {
+	width: 900px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #8fc323;
+}
+div.search_results table {
+	margin: 15px 0 0 10px;
+	padding: 0;
+	width: 605px;
+	border: none;
+	line-height: 140%;
+}
+div.search_results table td {
+	margin: 0;
+	padding: 0;
+}
+div.search_results table td.header {
+	padding-bottom: 10px;
+}
+div.search_results table td.header div.kind {
+	float: left;
+	width:245px;
+	height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 32px;
+}
+div.search_results table td.header div.name {
+	float: left;
+	width:635px;
+	padding: 10px 10px 0;
+}
+div.search_results table td.header div.name a {
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none !important;
+}
+div.search_results table td.body {
+	padding: 0 10px 5px 10px;
+}
+div.search_results table td.body div.thumb {
+	float: left;
+	width: 230px;
+}
+div.search_results table td.body div.thumb img {
+	border: 1px solid #CCCCCC;
+	padding: 1px;
+}
+div.search_results table td.body div.info {
+	float: left;
+	width: 635px;
+}
+div.search_results table td.body div.info table {
+	width: 635px;
+	margin: 0 0 5px 10px;
+}
+div.search_results table td.body div.info table td {
+	padding: 2px 13px;
+	line-height: 120%;
+}
+div.search_results table td.body div.info table td.crnr {
+	padding: 2px 13px;
+	font-size: 0px;
+	line-height:0;
+	text-indent: -9999px;
+}
+div.search_results table td.footer {
+	padding: 5px 10px;
+}
+div.search_results table td.footer div.desc {
+	float: left;
+	width: 660px;
+	padding-right: 20px;
+}
+div.search_results table td.footer div.detail {
+	float: left;
+	width: 108px;
+}
+div.search_results table td.footer div.detail {
+	width: 180px;
+	height: 24px;
+}
+div.search_results table td.footer div.detail a {
+	width: 180px;
+	height: 24px;
+	background: url('/images/book/button_detail.gif') no-repeat top left;
+}
+div.search_results table td.footer div.detail a:hover {
+	background-position:left bottom;
+}
+div.search_results table td.header {
+	background:url(search_item_top.gif) no-repeat top left;
+}
+div.search_results table td.body {
+	background:url(search_item_middle.gif) repeat-y top left;
+}
+div.search_results table td.footer {
+	background:url(search_item_bottom.gif) no-repeat bottom left;
+}
+p.caption {
+	padding:10px 0 15px 3px;
+	font-size:14px;
+}
+p.caption-small {
+	font-size: 12px;
+	padding: 0 25px 15px 15px;
+	text-indent: -12px;
+}

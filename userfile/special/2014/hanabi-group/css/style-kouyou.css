@@ -1,0 +1,23 @@
+
+/* バナー
+-------------------------------------------------------*/
+.BN table { width:900px; background-color:#FFC;}
+.BN td.titleBN { height:35px; font-size:18px;font-weight:900;line-height:130%;color:#000000; text-align:center;vertical-align:middle; }
+.BN td.banner1 { padding-right:15px;padding-bottom:30px; text-align:right; }
+.BN td.banner2 { padding-left:15px;padding-bottom:30px; text-align:left; }
+
+
+/* 2013　秋の紅葉　2013.9.18
+-------------------------------------------------------*/
+.top-table {font-size:14px; line-height:140%; text-align:center;}
+.top-td {text-align:left; padding:3px 5px; font-size:13px;}
+
+.sub-eventname {background-color:#900; font-size:14px; font-weight:bold; color:#FFF;}
+.sub-text {font-size:15px; font-weight:bold; color:#900; line-height:135%; padding:3px;}
+.sub-price {font-size:18px; font-weight:bold; color:#900;}
+.sub-date {font-size:13px; font-weight:bold;}
+
+
+
+
+		

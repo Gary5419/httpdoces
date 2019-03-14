@@ -1,0 +1,282 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "factory-cruise";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+$cms->setAllSpecialHtml();
+$data2 = $cms->res_data;
+
+define("H1TXT","工場夜景クルーズ");
+
+
+
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/index_160310.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('京浜運河コース','川崎の京浜運河沿いの工場夜景を見学するコースです。工場夜景クルーズの中では、もっとも一般的なコースで、暗闇から突如現れる巨大プラントの光が幻想的。','/factory-cruise/keihin/','factory-keihin','/factory-cruise/map-keihin/');
+$cruise[0][] = array('本牧・根岸コース','横浜港から磯子方面の本牧・根岸の工場群を見学するコースです。中でもJX日鉱日石の製油所は、「光の城」と称されるほどのまばゆい存在感。','/factory-cruise/honmoku/','factory-honmoku','/factory-cruise/map-honmoku/');
+$cruise[0][] = array('昼間の工場見学クルーズ','あるようでない「昼間」時間の工場見学クルーズ。当然、夜には見えない、プラントの複雑な機構を見ることができ、『工場萌え』な人にはぴったりのプランです。','/factory-cruise/daytime/','factory-daytime','');
+$cruise[0][] = array('食べ放題と工場見学クルーズ','人気の食べ放題と工場見学クルーズがセットになったプランのご紹介。食べ放題は中華や和洋ビュッフェなど、お店ごとに異なります。お好みに合わせてプランをお選びください。','/factory-cruise/buffet/','factory-buffet','');
+$cruise[0][] = array('期間限定プラン','期間限定の航路やプラン、モニターツアーに類するプランのご案内。クルーズではなく、車移動や徒歩での工場見学ツアーも当ジャンルにてご案内をしております。','/factory-cruise/limited/','factory-limited','');
+$cruise[0][] = array('団体様貸切プラン','工場夜景見学クルーズを団体様の貸切でご利用できるプランのご案内。ご予約やお問い合わせは、インターネットではなく、お電話にて承っております。','/factory-cruise/group-charter/','factory-group','');
+
+
+$params["purposeid"] = "factory-cruise_recommended";
+$cr1 = getSearchData($params);	#バス新着
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="工場夜景クルーズは、船に乗って、工場地帯の夜景を楽しむクルージング。船に乗っていれば、夜景スポットまで案内してくれるお手軽さが人気で、毎年多くのお客様にご利用頂いています。工場の無機質な佇まいとその光は、まるで、映画に登場する近未来都市さながら。その幻想的な風景をぜひ一度、ご覧ください。" />
+<meta name="keywords" content="工場夜景,クルーズ,横浜,京浜,本牧,根岸,ポケカル" />
+<meta name="copyright" content="" />
+<title>工場夜景クルーズ | 日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/factory-cruise/">
+<link rel="canonical" href="https://www.poke.co.jp/factory-cruise/">
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">日帰り旅行・ツアーTOP</a></li>
+		  <li class="pl20">工場夜景クルーズ</li>
+        </ul>
+        <section>
+
+<h1 class="headline01">工場夜景クルーズ</h1>
+
+
+<div><img src="img/keyimage_sp.jpg" width="100%" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。"></div>
+
+<div class="mb10"></div>
+
+
+<div class="lead">
+工場夜景クルーズは、船に乗って、工場地帯の夜景を楽しむクルージング。出船場所は、都内からもアクセス至便な横浜※。船に乗っていれば、夜景スポットまで案内してくれるお手軽さが人気で、毎年多くのお客様にご利用頂いています。ポケカルでは、2つの見学航路を基本に、レストランでのお食事がセットになった各種プランをご案内(期間限定の特別航路もあります)。近未来的な工場夜景をぜひ一度体験ください。※出船場所が異なる場合もあります。
+</div>
+
+
+<div class="mb20"></div>	
+
+</div>
+
+<div class="search">
+
+
+<h2 class="headline01">おすすめプラン</h2>
+
+<div class="bg_d5ccc5">
+
+<div class="pb10"></div>
+
+<div class="lead">ポケカル編集部がお薦めするクルーズプランのご紹介。売れ筋のクルーズプランや格安プラン、アニバーサリー、季節限定プランなどから厳選チョイス！クルーズ選びに迷ったら、まずはおすすめプランをご利用してみては。
+</div>
+
+<div class="pb10"></div>
+
+<div class="eventlist-scroll">
+<ul>
+	
+        	            
+            <?php 
+            $cnt = 0;
+            foreach($list1 as $val){
+           
+                if($cnt < 8):
+                    $path = $val['img'];
+                    $size = getimagesize($path);
+                    $width = $size[0];
+                    $height = $size[1];
+            ?>
+<li>
+           
+        
+            <a href="<?php echo $val['link']; ?>">
+            
+            <div class="main01_ph" align="center">
+          
+            
+            <?php if($width < $height): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+            <?php else: ?>    
+                <?php if($height < 0.75 * $width): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+                <?php else: ?>
+                <img src="<?php echo $val['img']; ?>" style="width:100%;">
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            </div>
+           
+            <h4 class="main01_title">
+            <?php 
+            if(mb_strlen($val['title'],'UTF-8') > 52):
+            echo mb_substr($val['title'],0,52,'UTF-8')."...";
+            else:
+            echo $val['title'];
+            endif;
+            ?>
+            </h4>
+            <div class="main01_con">
+            <?php 
+           
+            echo $val['price'];
+           
+            ?>
+            </div>
+            <div class="main01_pr"><?php echo $val[4]; ?></div>
+            </a>
+            
+            
+</li>         
+            
+            <?php 
+                $cnt++;
+                endif;
+            } ?>
+                        
+                  
+                        
+
+</ul>
+<div class="clearfix"></div>
+</div>
+
+
+<h3>
+<a href="/sp/factory-cruise/recommended/" class="eventlist-link"><img src="/sp/common2/img/common/arrow02.png">&nbsp;おすすめプランを全て見る</a>
+</h3>
+
+<div class="pb20"></div>
+
+</div><!-- bg_f2f2f2 -->
+
+
+<h2 class="headline01">航路・お食事・シーン別</h2>
+
+<div class="bg_716052">
+
+<div class="pb20"></div>
+
+<ul class="eventlist2">
+<?php 
+$cnt = 1;
+foreach($cruise[0] as $val): ?>
+
+<li>
+<a href="<?php echo $val[2];?>">
+<img src="img/<?php echo $val[3]; ?>.jpg" style="width:100%;" >
+</a>
+<div class="main_con">
+
+<strong><?php echo $val[0]; ?></strong><br>
+
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>航路マップ</a>)";} ?></div>
+
+
+
+<div class="pb10"></div>
+
+</li>
+
+<?php 
+if($cnt%4 == 0){
+?>
+</ul>
+<ul class="eventlist2">
+<?php
+}
+
+endforeach; ?>
+
+</ul>
+
+<div class="pb20"></div>
+
+
+
+</div><!--bg_eaeaea-->
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+<h2 class="headline01">クルーズ動画</h2>
+
+<div class="block">          
+	<div class="wrap-slide">
+
+<ul class="l-grid slider-news">
+<?php echo $data2['optvideo']; ?>
+</ul>
+
+	</div>
+</div>
+
+<?php endif; ?>
+
+
+
+</div>
+<!-- / #page -->
+
+</section>
+
+<?php require_once("2018/footer.html"); ?>

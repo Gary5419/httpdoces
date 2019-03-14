@@ -1,0 +1,102 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+define("H1TXT","運営会社 | ポケカル"); ?>
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="お探しのページが見つかりません。ポケカルは、日帰り旅行・ツアーが検索・予約できる【日帰りツアー専門サイト】です。バスツアーやクルーズ、街歩き、体験イベント、教室、工場見学など、日帰りで楽しめるツアー・遊びを随時ご紹介しております。" />
+<meta name="Keywords" content="" />
+<meta name="copyright" content="" />
+<title>お探しのページが見つかりません｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+<div class="main">
+<div class="wrapper">
+
+<div class="mb50"></div>
+
+<div class="p20" align="center">
+お探しのページが見つかりません<br>
+現在、このページはご覧になれません。
+</div>
+
+<div class="mb30"></div>
+
+<div class="p16" align="center">
+ポケカルのツアーはテーマや特集からお探しいただけます。下記のメニューを活用いただき、お好みのツアーを発見ください。
+</div>
+
+
+
+      <div class="mb100"></div>
+
+                <div class="headline04">ポケカルのツアー一覧</div>
+                
+                <div class="mlr15 p16">
+                
+                <div class="mb25"></div>
+                
+                <ul class="tokutyo">
+                <li>
+                <a href="/all-themes/" class="p16">テーマから探す</a>
+                
+                <div class="mb10"></div>
+                
+                <p class="mb10"><a href="/all-themes/"><img src="/tokutyo/img/tokutyo-theme.jpg" width="100%"></a></p>
+                
+                <span class="p16">ポケカルが取り扱うツアーをテーマ別にご覧いただくことができます。人気のテーマは花火やクルーズ！季節毎に変わるイベントをお見逃しなく！</span>
+    
+                </li>
+                <li>
+                <a href="/all-features/" class="p16">特集から探す</a>
+                
+                <div class="mb10"></div>
+                
+                <p class="mb10"><a href="/all-features/"><img src="/tokutyo/img/tokutyo-feature.jpg" width="100%"></a></p>
+                
+                <span class="p16">ポケカルが取り扱うツアーを特集別にご覧いただくことができます。特集は期間限定で公開されています。ツアーに参加した動画も特集内で紹介しておりますので、ぜひご覧ください！</span>
+                </li>
+                <li>
+                <a href="/bustours/" class="p16">日帰りバスツアーから探す</a>
+                
+                <div class="mb10"></div>
+                
+                <p class="mb10"><a href="/bustours/"><img src="/tokutyo/img/tokutyo-bustours.jpg" width="100%"></a></p>
+                
+                <span class="p16">ポケカルが取り扱うツアーの中で、バスツアーに分類されるものをまとめております。シーンや目的・エリア・価格帯からお好みのバスツアーをお探しください。</span>
+                </li>
+                </ul>
+                
+                <div class="mb100"></div>
+                
+                </div>
+                
+</div>
+</div>
+</div>                
+      <?php include_once("include/2018/footer.html" ); ?>

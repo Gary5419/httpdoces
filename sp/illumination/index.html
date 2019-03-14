@@ -1,0 +1,464 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "illumination";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+$cms->setAllSpecialHtml();
+$data2 = $cms->res_data;
+
+define("H1TXT","イルミネーション鑑賞ツアー");
+
+
+
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/index_160310.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('船から鑑賞','水辺のイルミネーションを船から鑑賞するツアーのご案内。昨年大好評だった目黒川のイルミネーションは今年も実施。幻想的な「冬の桜」が楽しめます。','/illumination/ship/','illumi-ship','');
+$cruise[0][] = array('ヘリコプターから鑑賞','ヘリコプターから鑑賞するイルミネーションは「街そのもの」。飛行機ほど高くない上空から見る風景は、繁華街のネオンや車のライトが織りなし、まるで宝石を散りばめたかのようです。','/illumination/helicopter/','illumi-heri','');
+$cruise[0][] = array('バスツアーで鑑賞','バスツアーで東京や関東近県のイルミネーションスポットへ行く、または車窓からイルミネーション鑑賞するツアーのご紹介。バス移動なら寒さも気になりません。','/illumination/bustour/','illumi-bustour','');
+$cruise[0][] = array('スカイバスから鑑賞','スカイバスからイルミネーションスポットを鑑賞するツアーのご紹介。添乗員が同行しないツアーもあり、週末のデートや平日の仕事帰りでも楽しめます。','/illumination/skybus/','illumi-skybus','');
+$cruise[0][] = array('花火とイルミネーション鑑賞','主にお台場のレインボー花火とイルミネーションの両方を鑑賞できるツアーのご紹介。空気が澄んだ冬は、花火鑑賞の絶好の季節。夏に花火を見逃した方、ぜひご利用ください。','/illumination/fireworks/','illumi-fireflower','');
+$cruise[0][] = array('展望タワーから鑑賞/限定イベント','東京タワーやスカイツリーなどの展望台や高所から鑑賞するツアーをご案内。期間限定で実施されるイルミネーションイベントも当コーナーでご案内中。','/illumination/limited/','illumi-ovs','');
+
+
+
+$params["purposeid"] = "illumination_recommended";
+$cr1 = getSearchData($params);	#バス新着
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="東京や関東近県のイルミネーションスポットを見学するツアーのご紹介。丸の内やよみうりランドの有名スポットはもちろんのこと、300万球のイルミネーションが圧巻の「東京ドイツ村」や、目黒川両岸がライトアップされる「目黒川 冬の桜イベント」なども人気。寒さが気になる方は、バスの車窓から見学するだけのツアーもあります。ぜひ「冬の絶景」をお見逃しなく！" />
+<meta name="keywords" content="イルミネーション,東京,関東,スポット,丸の内,ドイツ村,鑑賞,ツアー" />
+<meta name="copyright" content="" />
+<title>イルミネーション鑑賞ツアー | 東京や関東近県のイルミネーションスポットを見学</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/illumination/">
+
+<link rel="canonical" href="http://www.poke.co.jp/illumination/">
+
+<style>
+.lead {
+padding: 0 10px;
+font-size: 0.3rem;
+}
+.pricebox{
+    padding: 0.1em 1em;
+    margin: 0 20px 10px 20px;
+    
+
+	background: linear-gradient(#fff100, #fffcb9);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+	
+	width:calc(100% - 40px);
+	box-sizing:border-box;
+}
+.pricebox p {
+    margin: 0; 
+    padding: 10px 0;
+	font-size:0.5rem;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+.areabox{
+    padding: 0.1em 1em;
+    margin: 0 20px 10px 20px;
+    
+
+	background: linear-gradient(#aed03e, #e6f0c2);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+	
+	width:calc(100% - 40px);
+	box-sizing:border-box;
+}
+.areabox p {
+    margin: 0; 
+    padding: 10px 0;
+	font-size:0.5rem;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+	
+}
+
+.spwidecol{
+	margin:0 10px;
+}
+.spwidecol p{
+	padding:0.5em;
+	font-size: 0.26rem;
+}
+
+.spbox1,.spbox2,.spbox3,.spbox4,.spbox5,.spbox6,.spbox7,.spbox8,.spbox9{
+    padding: 0.1em 1em;
+    margin: 0 20px 10px 20px;
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.spbox1 p,.spbox2 p,.spbox3 p,.spbox4 p,.spbox5 p,.spbox6 p,.spbox7 p,.spbox8 p,.spbox9 p {
+    margin: 0; 
+    padding: 10px 0;
+	font-size: 0.5rem;
+	font-weight:bold;
+	text-align:center;
+}
+.spbox1{
+	background: linear-gradient(right, #91FDB7, #709DFF);
+	background: -moz-linear-gradient(right, #91FDB7, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#709DFF)); 
+}
+.spbox1 p {
+	color: #FFF;
+}
+
+.spbox2{
+	background: linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -moz-linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#4DD0E1)); 
+}
+.spbox2 p {
+	color: #FFF;
+}
+
+.spbox3{
+	background: linear-gradient(right, #4DD0E1, #709DFF);
+	background: -moz-linear-gradient(right, #4DD0E1, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#4DD0E1), to(#709DFF)); 
+}
+.spbox3 p {
+	color: #FFF;
+}
+
+.spbox4{
+	background: linear-gradient(right, #FFD400, #FF6B37);
+	background: -moz-linear-gradient(right, #FFD400, #FF6B37);
+	background: -webkit-gradient(linear, right center, left center, from(#FFD400), to(#FF6B37)); 
+}
+.spbox4 p {
+	color: #FFF;
+}
+
+.spbox5{
+	background: linear-gradient(right, #FFB822, #FA709A);
+	background: -moz-linear-gradient(right, #FFB822, #FA709A);
+	background: -webkit-gradient(linear, right center, left center, from(#FFB822), to(#FA709A)); 
+}
+.spbox5 p {
+	color: #FFF;
+}
+
+.spbox6{
+	background: linear-gradient(right, #FB97B4, #89AEFF);
+	background: -moz-linear-gradient(right, #FB97B4, #89AEFF);
+	background: -webkit-gradient(linear, right center, left center, from(#FB97B4), to(#89AEFF)); 
+}
+.spbox6 p {
+	color: #FFF;
+}
+
+.spbox7{
+	background: linear-gradient(right, #FCCB90, #D57EEB);
+	background: -moz-linear-gradient(right, #FCCB90, #D57EEB);
+	background: -webkit-gradient(linear, right center, left center, from(#FCCB90), to(#D57EEB)); 
+}
+.spbox7 p {
+	color: #FFF;
+}
+
+.spbox8{
+	background: linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -moz-linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FF9A9E)); 
+}
+.spbox8 p {
+	color: #FFF;
+}
+
+.spbox9{
+	background: linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -moz-linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FFD1FF)); 
+}
+.spbox9 p {
+	color: #333;
+}
+
+.bg_ffffff{
+	background:#FFF;
+}
+
+</style>
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">日帰り旅行・ツアーTOP</a></li>
+		  <li class="pl20">イルミネーション鑑賞ツアー</li>
+        </ul>
+        <section>
+
+<h1 class="headline01">イルミネーション鑑賞ツアー</h1>
+
+
+<div><img src="img/keyimage_sp.jpg" width="100%" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。"></div>
+
+<div class="mb10"></div>
+
+
+<div class="lead">
+東京や関東近県のイルミネーションスポットを見学するツアーのご紹介。丸の内やよみうりランドの有名スポットはもちろんのこと、300万球のイルミネーションが圧巻の「東京ドイツ村」や、目黒川両岸がライトアップされる「目黒川 冬の桜イベント」など、新興スポットも盛り上がっています。寒さが気になる方は、バスの車窓から見学するだけのツアーもあります。ぜひ「冬の絶景」をお見逃しなく！
+</div>
+
+
+<div class="mb20"></div>	
+
+</div>
+
+<div class="search">
+
+
+<h2 class="headline01">おすすめツアー</h2>
+
+<div class="bg_dee0f6">
+
+<div class="pb10"></div>
+
+<div class="lead">イルミネーションの点灯時期は、早いところでは、11月前半から。おすすめツアーでは、数多くのツアーの中でも、ポケカル編集部の厳選ツアーを紹介。中でも、2018年度に新登場するイルミネーションスポットは必見です！
+</div>
+
+<div class="pb10"></div>
+
+<div class="eventlist-scroll">
+<ul>
+	
+        	            
+            <?php 
+            $cnt = 0;
+            foreach($list1 as $val){
+           
+                if($cnt < 8):
+                    $path = $val['img'];
+                    $size = getimagesize($path);
+                    $width = $size[0];
+                    $height = $size[1];
+            ?>
+<li>
+           
+        
+            <a href="<?php echo $val['link']; ?>">
+            
+            <div class="main01_ph" align="center">
+          
+            
+            <?php if($width < $height): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+            <?php else: ?>    
+                <?php if($height < 0.75 * $width): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+                <?php else: ?>
+                <img src="<?php echo $val['img']; ?>" style="width:100%;">
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            </div>
+           
+            <h4 class="main01_title">
+            <?php 
+            if(mb_strlen($val['title'],'UTF-8') > 52):
+            echo mb_substr($val['title'],0,52,'UTF-8')."...";
+            else:
+            echo $val['title'];
+            endif;
+            ?>
+            </h4>
+            <div class="main01_con">
+            <?php 
+           
+            echo $val['price'];
+           
+            ?>
+            </div>
+            <div class="main01_pr"><?php echo $val[4]; ?></div>
+            </a>
+            
+            
+</li>         
+            
+            <?php 
+                $cnt++;
+                endif;
+            } ?>
+                        
+                  
+                        
+
+</ul>
+<div class="clearfix"></div>
+</div>
+
+
+<h3>
+<a href="/sp/illumination/recommended/" class="eventlist-link"><img src="/sp/common2/img/common/arrow02.png">&nbsp;おすすめツアーを全て見る</a>
+</h3>
+
+<div class="pb20"></div>
+
+</div><!-- bg_dee0f6 -->
+
+
+<h2 class="headline01">シーン別のイルミネーション鑑賞</h2>
+
+<div class="bg_aab0e8">
+
+<div class="pb20"></div>
+
+<ul class="eventlist2">
+<?php 
+$cnt = 1;
+foreach($cruise[0] as $val): ?>
+
+<li>
+<a href="<?php echo $val[2];?>">
+<img src="img/<?php echo $val[3]; ?>.jpg" style="width:100%;" >
+</a>
+<div class="main_con">
+
+<strong><?php echo $val[0]; ?></strong><br>
+
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>予定航路</a>)";} ?></div>
+
+
+
+<div class="pb10"></div>
+
+</li>
+
+<?php 
+if($cnt%4 == 0){
+?>
+</ul>
+<ul class="eventlist2">
+<?php
+}
+
+endforeach; ?>
+
+</ul>
+
+<div class="pb20"></div>
+
+
+
+</div><!--bg_aab0e8-->
+
+<h2 class="headline01">人気の土・日曜日に行けるツアー</h2>
+
+<div class="bg_dee0f6">
+
+<div class="pb10"></div>
+
+<div class="lead">12月の土曜日・日曜日で開催予定のイルミネーションツアーがすぐに検索できます。中でも、お台場のレインボー花火は12月の各土曜日に実施され、例年人気のツアー。検索機能を活用して、人気ツアーをぜひ一足先にご予約ください。
+</div>
+
+<div class="pb10"></div>
+
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-01&stock_date_to=2018-12-02&adults_cnt=2&purpose_id[]=illumination_all-tours" target="_blank">
+<h4 class="spbox6"><p>12/1(土)・2(日)</p></h4>
+</a>
+
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-08&stock_date_to=2018-12-09&adults_cnt=2&purpose_id[]=illumination_all-tours" target="_blank">
+<h4 class="spbox6"><p>12/8(土)・9(日)</p></h4>
+</a>
+
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-15&stock_date_to=2018-12-16&adults_cnt=2&purpose_id[]=illumination_all-tours" target="_blank">
+<h4 class="spbox6"><p>12/15(土)・16(日)</p></h4>
+</a>
+
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-22&stock_date_to=2018-12-23&adults_cnt=2&purpose_id[]=illumination_all-tours" target="_blank">
+<h4 class="spbox6"><p>12/22(土)・23(日)</p></h4>
+</a>
+
+<div class="pb20"></div>
+
+</div>
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+<h2 class="headline01">イルミネーション動画</h2>
+
+<div class="block">          
+	<div class="wrap-slide">
+
+<ul class="l-grid slider-news">
+<?php echo $data2['optvideo']; ?>
+</ul>
+
+	</div>
+</div>
+
+<?php endif; ?>
+
+
+
+
+</div>
+<!-- / #page -->
+
+</section>
+
+<?php require_once("2018/footer.html"); ?>

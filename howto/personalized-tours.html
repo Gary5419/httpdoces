@@ -1,0 +1,237 @@
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="個人型プランのご予約方法・ご利用可能なお支払い手段について詳細を説明しております。"/>
+<meta name="keywords" content="利用方法,予約方法,お支払い方法,個人型,プラン,チケット,ポケカル" />
+<meta name="copyright" content="" />
+<title>個人型プランのご予約方法 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+
+.bar{
+width: 100%;
+	background:#ECECEC;
+	color:#404040;
+	font-size:20px;
+	font-weight:bold;
+	-moz-box-shadow: 0px 2px 0px #A6A6A6;
+	-webkit-box-shadow: 0px 2px 0px #A6A6A6;
+	-o-box-shadow: 0px 2px 0px #A6A6A6;
+	-ms-box-shadow: 0px 2px 0px #A6A6A6;
+	box-shadow: 0px 2px 0px #A6A6A6;
+	
+	margin-bottom:20px;
+}
+.bar p{
+	padding:15px 15px 12px 15px;
+}
+
+.step{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background:#3366CC;
+	padding:10px 15px;
+	color:#FFF;
+	line-height:1.5;
+	
+	width:800px;
+	margin:0 auto;
+}
+.step_title{
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;
+}
+.step_body{
+	font-size:14px;
+	text-align:center;
+}
+
+
+.step2{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border:2px solid #3366CC;
+	background:#F5F2E9;
+	padding:10px 0;
+	color:#FFF;
+	line-height:1.5;
+	font-size:22px;
+	font-weight:bold;
+	color:#3366CC;
+	text-align:center;
+	width:401px;
+}
+
+.step3{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background:#3366CC;
+	padding:10px 15px;
+	color:#FFF;
+	line-height:1.5;
+	
+	width:375px;
+
+}
+.step3_body{
+	font-size:16px;
+	padding:10px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background:#FFF;
+	color:#404040;
+	
+}
+
+.lead{
+	width:800px;
+	margin:0 auto;
+	font-size:14px;
+	line-height:1.5;
+}
+.lead2{
+	width:800px;
+	margin:10px auto 0 auto;
+	font-size:18px;
+	font-weight:bold;
+	line-height:1.5;
+	color:#3366CC;
+	text-align:center;
+}
+.tbl{
+	width:830px;
+	margin:0 auto;	
+}
+.tbl td{vertical-align:top;}
+.c_c00000{color:#C00000;}
+.step5{
+	color:#FF7C80;
+	font-size:26px;
+	font-weight:bold;
+	text-align:center;	
+	margin-top:20px;
+	margin-bottom:50px;
+}
+.step4{
+	background:#FB9700;
+	text-align:center;
+	font-weight:bold;
+	font-size:18px;
+	border-radius:6px;
+	border:2px dashed #3366CC;
+	line-height:60px;
+	width:800px;
+	margin:0 auto;
+	color:#FFF;
+}
+</style>
+</head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li><a href="/howto/">ご利用方法</a></li>
+            <li>個人型遊び・体験商品</li>
+          </ul>
+        <section>
+
+			<h2 class="bar"><p> 「個人型遊び・体験」のご予約・開催までのフロー</p></h2>
+
+              <div class="lead ">「個人型遊び・体験」の商品は、<a href="https://mypage.poke.co.jp/login.php?redirect=http://www.poke.co.jp/howto/" style="color:#3C7EFF;text-decoration:none;">ポケカル会員登録</a>をいただいた後に、インターネットでのみ予約を受付けております。ご予約をいただいた情報は、ポケカル会員の<a href="https://mypage.poke.co.jp/" style="color:#3C7EFF;text-decoration:none;">マイページ</a>に反映されます。</div>
+              
+              <div class="marginB20"></div>
+              
+              <div class="step">
+              <div class="step_title">(1)お申込み</div>
+              <div class="step_body">プランページの開催カレンダーの「申込み」ボタンをクリックし、画面に従いご予約手続きを進めてください。</div>
+              </div>
+              
+              <div class="lead2">お支払い方法は、クレジットカードのみとなります</div>
+              
+              <div class="marginB10"></div>
+
+                
+                <div align="center" class="marginB15">
+                <img src="img/icon_arrow.png" width="50">
+                </div>
+
+			  <div class="step">
+              <div class="step_title">(2)予約完了メールが届きます</div>
+              <div class="step_body">
+              ポケカル会員の会員情報に登録いただいているメールアドレス宛に「予約完了メール」が送信されます。
+              </div>
+              
+              <div style="color:#F0F231;font-size:14px;text-align:center;">
+              メールが届かない場合でも、マイページに予約情報が反映されている場合は、予約は完了しております。
+              </div>
+              
+              </div>
+              <div style="color:#990000;width:810px;margin:10px auto 0 auto;font-weight:bold;text-align:center;">個人プランには、最少催行人数はございません。予約完了後、開催日時になりましたら、<br>集合場所(予約情報に記載されています)にお集まりください。</div>
+
+
+              <div class="marginB10"></div>
+              
+                <div align="center" class="marginB15">
+                <img src="img/icon_arrow.png" width="50">
+                </div>
+              
+              <div class="step">
+              <div class="step_title">(3)開催日の2日前・前日に確認メールが届きます</div>
+              
+              <div class="step_body">開催日の2日前・前日にポケカル会員の会員情報に登録いただいているメールアドレス宛に<br>
+				「開催日2日前・前日メール」が送信されます。再度、ご予約内容について、間違いがないかご確認ください。</div>
+              </div>
+              
+              <div class="marginB10"></div>
+                
+                <div align="center" class="marginB15">
+                <img src="img/icon_arrow.png" width="50">
+                </div>
+              
+              <div class="step">
+              <div class="step_title">(4)開催日当日になりましたら、集合場所へお集まりください</div>
+              <div class="step_body">集合場所は、予約情報に記載されております。
+              
+              <div class="marginB10"></div>
+              
+				</div>
+              </div>
+              
+              
+          
+           
+        </div>
+</section>
+
+<div class="mb40"></div>
+
+        </div>
+
+	</div>
+      </div>
+      <?php include_once("include/2018/footer.html" ); ?>

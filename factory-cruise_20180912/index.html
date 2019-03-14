@@ -1,0 +1,161 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<?php
+
+$p = isset($_REQUEST['p']) ? $_REQUEST['p'] : "hot-kojocruise";
+
+require_once("./_data/index.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<link href="css/style-cruise.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/factory-cruise/">
+
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>工場夜景クルーズ</li>
+          </ul>
+          <section>
+
+<!-- keyimage -->
+<img src="/images/special/hot-kojocruise.jpg" width="100%">
+<br>
+<!-- end/keyimage -->
+
+<div class="cruise_caption">
+ポケカルでは人気の工場夜景クルーズとお食事をセットにしたプランをご提供中(一部のプランは異なります)。工場夜景だけだとちょっと物足りない方にお勧めしたいこのプラン。添乗員はつきませんので、お店でのお食事と乗船以外はお客様の自由なスタイルでお楽しみください。
+</div>
+
+<h2 class="maintitle"> クルーズ航路のご紹介</h2>
+<div class="cruise_caption">
+工場夜景クルーズは、船に乗って、工場地帯の夜景を楽しむクルージングです。中でも、都内からのアクセスが良く、日帰りで楽しめる横浜のクルーズは、工場夜景を初めて楽しむ方にはもってこい。船に乗っていれば、夜景スポットまで案内してくれるお手軽さが人気で、毎年多くのお客様にご利用頂いています。ポケカルでは、現在2つの航路がご予約可能。各航路、見学できる工場が異なりますが、幻想的な光景と工場群の迫力はどちらのコースでも堪能できます。
+</div>
+
+
+
+<style>
+#cruise_content{
+	margin:0 auto;
+}
+</style>
+<ul id="cruise_content">
+<li>
+
+
+<h3 class="midashi">　京浜運河コース</h3>
+
+<div class="cruise_middle">
+
+<a href="./keihin/"><img src="img/map1.jpg" width="100%" alt=""></a>
+	
+<a href="./map-keihin/" class="cruise_kouro">航路地図を拡大する</a>
+
+<div class="cruise_lead">
+
+
+川崎の京浜運河沿いの工場夜景を探検＆夜の工場地帯から放たれる幻想的な光を船上から鑑賞します。暗闇から突如現れる巨大プラントと無機質な構造物の連なり・煙突から昇る白煙の光景は、近未来の都市に迷い込んだかのような感覚になります。ベイブリッジ＆横浜夜景の美しさと、工場地帯の無機質な光景の対比も当夜景クルーズでしか味わえない風景です。当コースでは、①東京電力 横浜火力発電所　②東亜石油 京浜製油所 水江工場　③東洋埠頭　④川崎天然ガス発電所などを見ることができます。
+
+</div>
+
+
+</div>
+<div class="cruise_bottom">
+<a href="./keihin/" class="cruise_btn" style="color:#FFF;text-decoration:none;">ツアーの一覧を見る</a>
+</div>
+</li>
+<li>
+
+
+<h3 class="midashi">　本牧・根岸コース</h3>
+
+<div class="cruise_middle">
+
+
+<a href="./honmoku/"><img src="img/map2.jpg" width="100%" alt=""></a>
+	
+<a href="./map-honmoku/" class="cruise_kouro">航路地図を拡大する</a>
+
+<div class="cruise_lead">
+
+本牧・根岸コースでは、JX日鉱日石エネルギー根岸製油所や火力発電所など巨大プラントの幻想的な夜景を満喫できます。特に、 JX日鉱日石の製油所は、「光の城」と称されるほどのまばゆい存在感。さらに、本牧埠頭のガントリークレーンと言われると巨大なクレーン群も見逃せません。船からコンテナを運び出すガントリークレーンは圧倒的な存在感。国際ハブポートを目指す横浜港の中でも最大規模を誇る埠頭です。ベイブリッジも含めた横浜ならではの夜景と工場群とのコントラストがとても幻想的なコースです。
+
+
+</div>
+
+
+
+</div>
+<div class="cruise_bottom">
+<a href="./honmoku/" class="cruise_btn" style="color:#FFF;text-decoration:none;">ツアーの一覧を見る</a>
+</div>
+</li>
+
+</ul>
+
+<h2 class="maintitle"> 工場夜景クルーズ体験記（おでかけ通信）</h2>
+
+<table cellpadding="0" cellspacing="0" border="0" class="cruise_tbl">
+<tr>
+<td width="300"><a href="http://odekake.poke.co.jp/archives/1057"><img src="img/odekake.jpg" width="100%"></a></td>
+<td>
+<a href="http://odekake.poke.co.jp/archives/1057" class="odekake_title">ポケカル公式ブログ「ポケカルおでかけ通信」に、工場夜景クルーズの体験記事を掲載
+</a>
+
+<div class="odekake_lead">
+ポケカルの公認ライターが乗船し、ツアーの詳細を記事にしました。ライター曰く、「当日は空気も澄んで見渡しがよく、工場の灯りがとってもキレイでした。例えると、テーマパークのアドベンチャークルーズに参加したみたい♪」とのこと。皆様もぜひご体験ください。※掲載している体験記は、現在販売を行っていない過去のツアーになります。
+</div>
+
+</td>
+</tr>
+</table>
+
+<h2 class="maintitle"> 工場夜景クルーズ体験動画（Youtube掲載動画）</h2>
+<div class="cruise_caption">
+体験記の取材の際に、撮影した動画です。スマホの動画機能で撮影したため、手ブレで見づらい点がありますがご容赦ください。
+</div>
+<iframe src="https://www.youtube.com/embed/_zNT6kHi5T0" width="100%" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

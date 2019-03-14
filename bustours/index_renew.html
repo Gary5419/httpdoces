@@ -1,0 +1,509 @@
+<?php
+#ini_set('display_errors', 'On');
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "bustours";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+require_once dirname(dirname(__FILE__)) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(__FILE__)) . '/_data/index_160310.php';
+require_once dirname(dirname(__FILE__)) . '/_data/functions.php';
+
+
+$params["purposeid"] = "bustours_new";
+$cr1 = getSearchData($params);	#バス新着
+
+$params["purposeid"] = "bustours_best-selling";
+$cr2 = getSearchData($params);	#バス売れ筋
+
+foreach($cr1 as $v){
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+}
+foreach($cr2 as $v){
+	$list2[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+}
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="日帰りバスツアーを検索・予約するこができます。テーマや日程、価格帯、出発地・目的地別などの検索条件で、お好みのツアーをお探しください。特に、春の桜、秋の紅葉狩り、工場見学、話題の観光名所めぐりは人気のバスツアーです。また、助成金が還元された格安バスツアーや宿泊付きのバスツアーも期間限定で取り扱っております。新着一覧では、常に最新のバスツアーをご紹介。毎日要チェックです。" />
+<meta name="keywords" content="日帰り,バスツアー,日帰りバスツアー,出発地,目的地,日程,東京,神奈川,横浜,千葉,埼玉,茨城,栃木,静岡,観光,桜,紅葉,ポケカル" />
+<meta name="copyright" content="" />
+<title>日帰りバスツアー・旅行 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link rel="stylesheet" type="text/css" href="./css/bustours_new.css" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/bustours/">
+
+
+<style>
+.row4,.row3 a{font-size:14px;}
+.row3{height:80px;}
+ul.cr4col li{
+	padding-bottom:10px;	
+}
+
+.bg_eaeaea{
+	background:#EAEAEA;
+	padding:20px 0 0 0;
+}
+.bg_f2f2f2{
+	background:#F2F2F2;
+	padding:20px 0 0 0;
+}
+
+
+.pricebox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#fff100, #fffcb9);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.pricebox p {
+    margin: 0; 
+    padding: 30px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+.areabox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#aed03e, #e6f0c2);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.areabox p {
+    margin: 0; 
+    padding: 30px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+
+.headline04{
+	font-size:22px;
+	padding-left:20px;
+	position:relative !important;
+	margin-bottom:0;
+}
+.headline04_wrap{
+	position:relative;
+	overflow:hidden;
+	
+}
+
+
+
+.list-more {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.list-more .fa {
+  background: transparent;
+  margin: 0 7px 1px 0;
+  padding-left: 1px;
+  border: 1px solid #167ac6;
+  width: 25px;
+  height: 25px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  line-height: 22px;
+  text-align: center;
+}
+.pb30{padding-bottom:30px;}
+
+.sec-video{
+	margin-top:-25px;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+			<li>日帰りバスツアー・旅行</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<h1 class="bar"><p>日帰りバスツアー・旅行</p></h1>
+
+<div class="mb20"></div>
+
+<div class="mb10"><img src="images/keyimage.jpg" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。" width="100%"></div>
+
+<div class="lead">テーマや日程、価格帯、出発地・目的地別など、様々な角度から、お好みのバスツアーをお探しいただけます。春の桜、夏の花火、秋の紅葉など季節限定ツアーはやっぱり人気のツアー。工場見学、寺社めぐりツアーは1年を通して企画しており、中には、助成金が還元された格安ツアーもあります。ポケカルのツアーで、お手軽な日帰り旅行をぜひお楽しみください！
+</div>
+              <div class="mb20"></div>
+
+</div>
+<div class="bg_eaeaea">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>新着から探す</span><h3><a class="list-more" href="/bustours/new/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>新着バスツアーを全て見る</a></h3></h2>
+</div>
+
+
+
+
+
+
+<div class="mb10"></div>
+
+<div class="lead">1ケ月以内に新しくポケカルに登録されたバスツアーをご紹介。都内や関東近県、日帰りや宿泊付きのツアーまで、最新のツアーをご紹介。売り切れ必至の人気ツアーも、まずは新着に登場。ぜひ毎日チェックしてみてください。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+<div class="bg_f2f2f2">
+<div class="wrapper">
+			
+<div class="headline04_wrap">
+<h2 class="headline04"><span>テーマや目的別から探す</span><h3><a class="list-more" href="/bustours/all/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>全てのバスツアーを見る</a></h3></h2>
+</div>
+
+<div class="lead"></div>
+
+<ul id="ticket_main">
+<?php foreach($bus[3] as $val): ?>
+<li>
+<a href="<?php echo $val[2]; ?>" class="ticket_sp_btn">
+<h4 class="ticket_main_title"><?php echo $val[0]; ?></h4>
+
+<div class="ticket_main_img">
+<img src="images/<?php echo $val[3]; ?>.jpg" width="100%">
+
+</div>
+
+<div class="ticket_main_con">
+<?php echo $val[1]; ?></div>
+
+</a>
+
+</li>
+<? endforeach; ?>
+
+</ul>
+
+<div class="pb30"></div>
+
+</div>
+</div>
+<div class="bg_eaeaea">
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>ポケカルおすすめバスツアー！</span><h3><a class="list-more" href="/bustours/best-selling/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>おすすめバスツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="lead"></div>
+
+<ul class="cr4col">
+<?php 
+$cnt=0;
+foreach($list2 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" height="190">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" height="190">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        	<img src="<?php echo $val['img']; ?>" height="190">
+        <?php else: ?>
+        	<img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;	
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+
+
+<div class="mb20"></div>
+
+<div class="wrapper">
+
+
+<h2 class="headline04">価格帯から探す</h2>
+
+<div class="mb20"></div>
+
+
+
+
+<ul class="cr4col">
+<?php foreach($bus[4] as $val): ?>
+<li>
+<a href="<?php echo $val[2]; ?>" style="text-decoration:none;color:#333;">
+
+<h4 class="pricebox"><p><?php echo str_replace("の日帰りバスツアー","",trim($val[0])); ?></p></h4>
+
+</a>
+
+<div class="row5"><?php echo $val[1]; ?></div>
+
+
+
+
+</li>
+<?php endforeach; ?>
+
+</ul>
+
+</div>
+
+<div class="mb20"></div>
+
+<div class="bg_eaeaea">
+
+<div class="wrapper">
+
+<h2 class="headline04">エリアから探す</h2>
+
+<div class="mb20"></div>
+
+<ul class="cr4col" style="padding-bottom:20px;">
+<?php foreach($bus[6] as $val): ?>
+<li style="background:none;">
+<a href="<?php echo $val[2]; ?>" style="color:#333;text-decoration:none;">
+<h4 class="areabox"><p><?php echo $val[0]; ?></p></h4>
+</a>
+
+
+
+<div class="ticket_main_con" style="margin-top:10px;">
+<?php echo $val[1]; ?></div>
+
+
+</li>
+<?php endforeach; ?>
+
+</ul>
+
+<div class="mb20"></div>
+
+</div>
+</div>
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+
+<div class="mb20"></div>
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>日帰りバスツアー動画</span></h2>
+</div>
+
+<div class="mb20"></div>
+
+<!--
+<div class="p14">
+
+</div>
+-->
+
+<section class="sec-video">
+<ul class="l-grid">
+<?php echo $data2['optvideo']; ?>
+</ul>
+</section>
+
+</div>
+
+<?php endif; ?>
+
+
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>バスツアー体験記（おでかけ通信）</span><h3><a class="list-more" href="http://odekake.poke.co.jp/archives/category/report" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>体験記を全て見る</a></h3></h2>
+</div>
+
+
+<div class="lead">ポケカルの公認ライターが実際にポケカルのバスツアーに参加し、その体験記をブログに公開しています。ライター曰く、取材をしていても「仕事を忘れてしまう」ほどの楽しい＆内容充実のツアー！ぜひツアー選びの参考に読んでください。</div>
+
+<div class="mb20"></div>
+<div id="special">
+
+<ul class="grp2">
+<li style="position:relative;">
+      <a href="http://odekake.poke.co.jp/archives/1487" class="list-more" style="left:0;font-size:15px;">
+      <i class="fa fa-angle-right"></i>東京に3つしかない鳥居に龍が彫られている寺社を巡る！東京三大龍鳥居めぐりバスツアー
+      </a>
+</li>
+<li style="position:relative;">
+      <a href="http://odekake.poke.co.jp/archives/1459" class="list-more" style="left:0;font-size:15px;">
+      <i class="fa fa-angle-right"></i>迎賓館赤坂離宮本館、旧吉田茂邸、鳩山会館見学バスツアー
+      </a>
+</li>
+<li style="position:relative;">
+      <a href="http://odekake.poke.co.jp/archives/1413" class="list-more" style="left:0;font-size:15px;">
+      <i class="fa fa-angle-right"></i>桔梗信玄餅つめ放題体験＆桔梗屋工場見学と味覚狩り＆食べ放題の食い倒れバスツアー
+      </a>
+</li>
+<li style="position:relative;">
+      <a href="http://odekake.poke.co.jp/archives/1614" class="list-more" style="left:0;font-size:15px;">
+      <i class="fa fa-angle-right"></i>イルミネーションと紅葉めぐり 「八芳園」紅葉御膳＆東京名庭園の紅葉3景めぐりバスツアー
+      </a>
+</li>
+<li style="position:relative;">
+      <a href="http://odekake.poke.co.jp/archives/1220" class="list-more" style="left:0;font-size:15px;">
+      <i class="fa fa-angle-right"></i>温暖なリゾートアイランド「初島」の河津桜と菜の花観賞バスツアー
+      </a>
+</li>
+
+</ul>
+</div>
+
+<div class="marb50"></div>
+
+
+
+
+    <!--/#main--> 
+  </div>
+  <!--/#content .clearfix-->
+  
+<?php include_once("include/2018/footer.html" ); ?>

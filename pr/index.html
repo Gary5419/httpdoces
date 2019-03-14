@@ -1,0 +1,321 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+
+<meta name="Description" content="プレスリリースの一覧" />
+<meta name="Keywords" content="" />
+<meta name="copyright" content="" />
+<title>プレスリリース｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+	  <?php include_once("/_data/tags/head_tag.php"); ?>
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/pr/">
+<style>
+#media{
+	width:900px;
+	margin:0 auto;
+}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+            <li>プレスリリース</li>
+          </ul>
+          <section>
+            <h1 class="headline01">プレスリリース</h1>
+            <table class="tbl-info2">
+							<tr>
+								<th class="th2">リリース日</th>
+								<th class="th2">プレスリリース内容</th>
+							</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2018/03/19</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20180319.pdf">役員人事のお知らせ</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/12/18</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20171218.pdf">毎回大好評「ラオス大使館特別見学ツアー」2018年初旬の設定日発表について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/10/17</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20171017.pdf">一般社団法人ツーリズムとよた開設記念「秋のモニターツアー」実施について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/09/27</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20170927.pdf">＜東急電鉄×ポケカル＞玉電開通110周年記念 魅力的な旧跡名所が残る世田谷線沿いを巡る商品販売について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/09/07</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20170907.pdf">西武グループ「西武線沿線活性化」推進施策の一環「埼玉西武ライオンズ特別観戦ツアー」の造成について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/08/31</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20170831_2.pdf">おかげ様で愛されて10周年！｢江戸の粋 神楽坂で楽しむ たいこもち｣2018年上半期設定日の追加について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/08/31</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20170831.pdf">＜東急電鉄×ポケカル＞オリジナルツアー 新たに3商品販売開始について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/08/04</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20170804.pdf">東急電鉄×伊豆急行の豪華観光列車『THE ROYAL EXPRESS』ポケカル限定の特別車内見学ツアー販売について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2017/05/18</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20170518.pdf">東急電鉄とポケカル社、着地型観光事業における資本業務提携契約の締結について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2016/05/31</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/press-release_20160530.pdf">「民泊」サービス展開に向けた 株式会社アパマンショップリーシングとの業務提携について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2013/02/04</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20130204.pdf">昭文社と共同で『まっぷるツアーby ぽけかる倶楽部』販売開始について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/12/28</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20111228.pdf">映画『麒麟の翼〜劇場版・新参者〜』公開記念オフィシャルタイアップツアーの販売開始について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/10/19</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20111019.pdf">「えきねっとポイントモール」出店記念キャンペーンの実施について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/08/11</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110811.pdf">「真夏の怪談バスツアー」好評開催中</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/07/14</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110714.pdf">花火商品満載の夏号情報誌を発行について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/06/09</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110609.pdf">究極の安・近・短バスツアー販売開始について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/04/21</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110421.pdf">高尾山散策ツアー　再販決定について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/03/01</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110301.pdf">春の新商品無料情報誌を発行について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/02/17</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110217.pdf">東京人気スポット５景観光バスツアー　増便・開催日程延長決定について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2011/01/27</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20110127.pdf">春の桜商品の販売開始と特集ページ開設について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/11/17</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20101117.pdf">ぽけかる名物ガイドご紹介ページ新設について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/09/28</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20100928.pdf">新宿ワシントンホテル共同企画 中国人観光客向け 新宿観光と買い物ツアー開始について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/06/22</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20100622.pdf">ANAとぽけかる倶楽部の着地型ツアーを共同開発について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/06/17</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20100617.pdf">携帯位置情報ゲーム「コロニーな生活☆PLUS（通称：コロプラ）」との提携について</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/04/07</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20100407.pdf">ANAとぽけかる倶楽部の連携スタートについて</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/04/01</th>
+									<td class="td">
+										
+											<a href="https://www.poke.co.jp/userfile/pdf/Press-Release_20100401.pdf">TBSテレビ「ひるおび！」にてぽけかるイベント放映</a>
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2010/02/19</th>
+									<td class="td">
+										
+											ぽけかる倶楽部・NECビッグローブ アフェリエイト提携サイトがオープン
+										
+									</td>
+								</tr>
+							
+								<tr>
+									<th style="background-color: #f2f2f2;" class="th">2009/08/28</th>
+									<td class="td">
+										
+											セブン-イレブン店頭にてぽけかる倶楽部のイベント販売開始
+										
+									</td>
+								</tr>
+							
+            </table>
+          </div>
+        </div>
+          </section>
+        </div>
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

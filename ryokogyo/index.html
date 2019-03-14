@@ -1,0 +1,95 @@
+<?php
+ini_set("display_errors",1);
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="Description" content="ポケカルの旅行業登録内容です。" />
+<meta name="Keywords" content="旅行業登録内容,ポケカル" />
+<title>旅行業登録内容 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+#ryokogyo{
+	width:900px;
+	margin:0 auto;
+}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+            <li>旅行業登録内容</li>
+          </ul>
+          <section>
+          
+          <h1 class="headline01">旅行業登録内容</h1>
+
+         
+            <table class="tbl-info2">
+              <tr>
+                <th class="th">名称</th>
+                <td class="td">株式会社ポケカル</td>
+              </tr>
+              <tr>
+                <th class="th">登録番号</th>
+                <td class="td">東京都知事登録旅行業第2-6811号</td>
+              </tr>
+              <tr>
+                <th class="th">登録年月日</th>
+                <td class="td">平成26年8月14日</td>
+              </tr>
+              <tr>
+                <th class="th">登録有効期間</th>
+                <td class="td">平成26年8月14日から平成31年8月13日まで</td>
+              </tr>
+              <tr>
+                <th class="th">住所</th>
+                <td class="td">〒103-0015 東京都中央区日本橋箱崎町20-1 アンソレイエ・オオタ 5F<br />
+                  TEL：03-5623-9302<br />
+                  FAX：03-3249-3005</td>
+              </tr>
+              <tr>
+                <th class="th">加盟団体</th>
+                <td class="td">(社)全国旅行業協会正会員</td>
+              </tr>
+              <tr>
+                <th class="th">総合旅行業務取扱管理者</th>
+                <td class="td">鈴木道男</td>
+              </tr>
+            </table>
+         
+		</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb60"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

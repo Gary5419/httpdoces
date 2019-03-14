@@ -1,0 +1,85 @@
+<?php
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->setAllHistoryHtml();
+$data2 = $cms->res_data;
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="ポケカル閲覧履歴">
+    <meta name="keywords" content="閲覧履歴,ポケカル">
+    <title>閲覧履歴 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+  </head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>閲覧履歴</li>
+          </ul>
+          <section class="theme">
+            <h1 class="headline01">閲覧履歴</h1>
+            
+            
+			
+
+<div class="mb30"></div>
+
+
+<?php 
+echo $data2['allhistory'];
+
+/*
+<div class='pdlr20'><div class='panel'><div class='panel-body'>
+
+<div class='panel-left'>
+<img src='http://img.poke.co.jp/media/transfer/img/eventid_18/eventid_18_pic1.jpg'>
+</div>
+<div class='panel-right'>
+
+<div class='desc'>皇居乾通り春の一般公開＆隅田川千本桜クルーズ＆東京桜名所3景めぐりバスツアー ～ランチバイキングのご昼食付～</div>
+
+<table>
+<tr>
+<th>開催期間</th>
+<td>2016年05月15日 ～ 2018年03月31日</td>
+</tr>
+<tr>
+<th>料金</th>
+<td>6,980円～（お食事＋クルーズ＋バス＋添乗員付）</td>
+</tr>
+</table>
+</div>
+<div class='clearfix'></div>
+
+</div><!--panel-body--></div><!-- panel--></div><!--pdlr20-->
+*/ ?>
+
+            
+          </section>
+
+        <div class="mb40"></div>
+
+        </div>
+      </div>
+      <?php include_once("include/2018/footer.html" ); ?>

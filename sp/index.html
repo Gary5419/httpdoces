@@ -1,0 +1,254 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$filepath = "../_data/_msg_news.tsv";
+$msg_news = "";
+if(file_exists( $filepath )){
+	$msg_news = file_get_contents($filepath);
+}
+
+$cookie_name = "mrraf";
+
+if(isset($_GET['afi'])){
+	
+    #アフィリエイトIDがクッキー値と異なる場合、クッキーを削除して値変更
+	#$expire = time() + 60 * 60 * 24 * 30 * 1;#1ヶ月
+    $expire = 0;
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="description" content="ポケカルは、日帰りツアーが検索・予約できる【日帰りツアー専門サイト】です。バスツアー、クルーズツアー、街歩き、体験イベント、体験教室、工場見学など、日帰りで楽しめるツアーを随時ご紹介しております。">
+    <meta name="keywords" content="日帰り,ツアー,日帰りツアー専門,ポケカル">
+    <title>日帰り旅行・ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+  </head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      
+      <!-- END HEADER -->
+
+      <div class="main">
+
+        <div class="keyvisual">
+          <div class="slider-top">
+          <?php echo $data['slider']; ?>
+
+<?php /*
+            <div class="item"><img src="/sp/common2/img/top/sl01.jpg" alt=" "></div>
+            <div class="item"><img src="/sp/common2/img/top/sl01.jpg" alt=" "></div>
+            <div class="item"><img src="/sp/common2/img/top/sl01.jpg" alt=" "></div>
+            <div class="item"><img src="/sp/common2/img/top/sl01.jpg" alt=" "></div>
+            <div class="item"><img src="/sp/common2/img/top/sl01.jpg" alt=" "></div>
+*/ ?>
+          </div>
+        </div>
+
+<?php /*
+<style>
+.system_alert{
+	border:3px solid #FF7C80;
+	display:block;
+	width:94%;
+	margin:20px auto 20px auto;
+	color:#404040;
+	background:#FFE7E7;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;	
+	padding:8px;
+	font-size:12px;
+}
+</style>
+
+<div class="system_alert">
+<b style="color:#000">【お気に入り登録につきまして】</b><br>
+只今、ポケカルサイト内にある「お気に入り登録」機能をご利用いただけません。ご利用者の皆様には、ご不便をおかけいたしますが、ご容赦くださいますよう何卒よろしくお願い申し上げます。
+</div>
+*/ ?>
+
+        <div class="top-search">
+        
+        <h1 class="mb10" align="center">日帰り旅行・ツアーならポケカルへ</h1>
+        
+          <div class="search">
+            
+           <form name="frm_cal" method="GET" action="/sp/book/calendar.php">
+               <input class="textbox" name="eventid" type="text" placeholder="「商品番号下5ケタ」を入力"> 
+                  <button class="btn" type="button" onClick="document.frm_cal.submit();">Search</button>
+                
+              </form>
+          </div>
+        </div>
+        
+
+<?php
+if($msg_news != ""){
+?>
+<style>
+#msg_news{
+	text-align:center;
+	margin:10px 25px 15px 25px;	
+	padding-bottom:20px;
+}
+#msg_news .fa {
+    background: transparent;
+    margin: 0 7px 1px 0;
+    padding-left: 1px;
+    border: 1px solid #167ac6;
+    width: 25px;
+    height: 25px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 22px;
+    text-align: center;
+	color:#FFF;
+	border-color:#FFF;
+	background:#167ac6;
+}
+#msg_news a{
+	text-decoration:none;
+/*	padding-bottom:3px;*/
+	padding-bottom:1px;
+	border-bottom:1px solid #167ac6;
+	font-size:0.26rem;
+}
+</style>
+
+
+    <div id="msg_news">
+    
+            <i class="fa fa-angle-right"></i><?php echo $msg_news; ?>
+    </div>
+
+<?php
+}
+?>
+
+
+
+<?php /*        <div align="center" style="margin-bottom:30px;"><a href="https://www.micard.co.jp/cam/180606pokekaru/index.html" target="_blank"><img src="/sp/images/top/bnr_micard_sp.jpg" width="80%"></a></div> */ ?>
+
+
+        <div class="top-search-theme">
+          <h2 class="headline01">テーマで探す</h2>
+          <div class="block01">
+            <div class="slider-top-news slider-hor">
+              <div class="w-block">
+                <ul class="ul-block">
+
+                <?php echo $data['theme1_12']; ?>
+
+                  <li>
+                    <div class="item">
+                      <a href="/sp/all-themes/">
+                        <div class="thumb"><img src="/sp/common2/img/top/thumb13.jpg" alt="全てのテーマを見る"></div>
+                        <div class="info">全てのテーマを見る</div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="w-block">
+                <ul class="ul-block">
+
+                <?php echo $data['theme13_23']; ?>
+
+                  <li>
+                    <div class="item">
+                      <a href="/sp/all-themes/">
+                        <div class="thumb"><img src="/sp/common2/img/top/thumb13.jpg" alt="image"></div>
+                        <div class="info">全てのテーマを見る</div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <?php require_once("2018/feature.html"); ?>
+
+        <div class="top-ticket">
+          <h2 class="headline01">チケットを探す</h2>
+          <div class="block01">
+            <ul class="ul-block">
+            <?php echo $data['ticket']; ?>
+
+              <li>
+                <div class="item">
+                  <a href="/sp/book/eventlist.php?theme_id[]=ticket">
+                    <div class="thumb"><img src="/sp/common2/img/top/thumb22.jpg" alt="全てのチケットを見る"></div>
+                    <div class="info">全てのチケットを見る</div>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <?php #require_once("2018/popular.html"); ?>
+        <?php require_once("2018/communicate.html"); ?>
+
+<?php /*
+        <section class="sec-block">
+          <?php require_once("2018/news_latest.html"); ?>
+          <?php require_once("2018/favorites.html"); ?>
+        </section>
+*/ ?>
+		<?php echo $data['favorites']; ?>
+        <?php echo $data['history']; ?>
+
+        <section class="sec-news">
+          <h2 class="headline01">新着情報</h2>
+          <ul class="news-list">
+          <?php echo $data['whatsnew']; ?>
+
+          </ul>
+          <p class="view-list"><a class="touch-pink" href="/sp/news/">一覧を見る</a><p>
+        </section>
+
+<!-- master => www 同期解除テスト -->
+	  <?php require_once("2018/footer.html"); ?>

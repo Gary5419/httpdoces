@@ -1,0 +1,123 @@
+/* ベース
+-------------------------------------------------------*/
+.BB table { width:900px; background-color:#FAEBD7; }
+.BB td.B01{ padding:0px 25px;}
+
+/* ベース-社会見学
+-------------------------------------------------------*/
+.BB-s table { width:900px; background-color:#9FF; }
+.BB-s td.B01{ padding:0px 25px;}
+
+
+/* 特徴
+-------------------------------------------------------*/
+.CC table { width:850px; background-color:#FAEBD7; margin-top:15px;margin-bottom:15px; }
+.CC td.memoC { padding:10px 0px; font-size:12px; line-height:180%;color:#000000; text-align:left;vertical-align:middle; }
+
+
+/* 特徴-社会見学
+-------------------------------------------------------*/
+.CC-s table { width:850px; background-color:#9FF; margin-top:15px;margin-bottom:15px; }
+.CC-s td.memoC-s { padding:10px 0px; font-size:12px; line-height:180%; color:#000000; text-align:left;vertical-align:middle; }
+
+
+/* 大人のバレエ鑑賞
+-------------------------------------------------------*/
+.MM table { width:850px; background-color:#D7D7FF; }
+.MM td.titleM { height:35px; padding-left:10px; background-color:#483D8B; font-size:18px;font-weight:900;line-height:130%;color:#ffffff; text-align:left;vertical-align:middle; }
+.MM td.photoM { width:200px; padding:10px 10px 10px 15px; text-align:center;vertical-align:middle; }
+.MM td.memoM {padding:10px 15px 10px 15px; font-size:12px;line-height:130%;color:#000000; text-align:left;vertical-align:middle; }
+.MM td.tourM { padding:20px 35px 10px 15px; text-align:left;vertical-align:bottom; }
+
+
+/* 社会見学特集-国会議事堂
+-------------------------------------------------------*/
+.MM-s table { width:850px; background-color:#FFC; }
+.MM-s td.titleM { height:35px; padding-left:10px; background-color:#3CF; font-size:18px;font-weight:900;line-height:130%;color:#ffffff; text-align:left;vertical-align:middle; }
+.MM-s td.photoM { width:200px; padding:10px 10px 10px 25px; text-align:center;vertical-align:top; }
+.MM-s td.memoM-s { width:650px; padding:20px 35px 10px 15px; font-size:12px;line-height:130%;color:#000000; text-align:left;vertical-align:middle; }
+.MM-s td.tourM { padding:20px 35px 10px 15px; text-align:left;vertical-align:bottom; }
+
+
+/* 大人のバレエ鑑賞チケット詳細
+-------------------------------------------------------*/
+.TT table { width:540px; padding:5px; background-color:#FFFFFF; vertical-align:middle; border:1px solid #6666CC; }
+.TT td.titleT {padding:5px 10px; font-size:16px;font-weight:800;line-height:130%; text-align:left;vertical-align:middle; }
+.TT td.dayT {padding:5px; font-size:13px;line-height:180%; text-align:left;vertical-align:middle; }
+.TT td.buttonT { width:220px; padding:10px; }
+
+/* 国会見学鑑賞チケット詳細
+-------------------------------------------------------*/
+.TT-s table { width:560px; padding:10px; background-color:#FFFFFF; vertical-align:middle; border:1px solid #6666CC; }
+.TT-s td.titleT-s { padding:5px 5px; font-size:16px;font-weight:800;line-height:130%; text-align:left;vertical-align:middle; }
+.TT-s td.dayT-s { width:360px; height:50px; padding:10px; font-size:14px;line-height:180%; text-align:left;vertical-align:middle; }
+.TT-s td.buttonT-s { width:220px; padding:10px; }
+
+
+/* 人気チケット情報
+-------------------------------------------------------*/
+.PP table { width:850px; background-color:#D8BFD8; }
+.PP td.titleP { height:35px; padding-left:10px; background-color:#993399; font-size:18px;font-weight:900;line-height:130%;color:#ffffff; text-align:left;vertical-align:middle; }
+.PP td.tourP { padding:15px; text-align:center;vertical-align:top; }
+
+/* 人気チケット情報-社会見学
+-------------------------------------------------------*/
+.PP-s table { width:850px; background-color:#CFF;}
+.PP-s td.titleP { height:35px; padding-left:10px; background-color:#09F; font-size:18px;font-weight:900;line-height:130%;color:#ffffff; text-align:left;vertical-align:middle; }
+.PP-s td.tourP { padding:15px; text-align:center;vertical-align:top; }
+
+
+/* 人気チケット情報特別価格＆特典付きチケット情報一覧
+----------------------------------------------------*/
+.LL table { width:850px; background-color:#D7E6FF; }
+.LL td.titleL { height:35px; padding-left:10px; background-color:#191970; font-size:18px;font-weight:900;line-height:130%;color:#ffffff; text-align:left;vertical-align:middle; }
+.LL td.tourL { padding:15px; text-align:center;vertical-align:top; }
+
+/* 社会見学特集-情報一覧
+----------------------------------------------------*/
+.LL table { width:850px; background-color:#CFF; }
+.LL td.titleL { height:35px; padding-left:10px; background-color:#6CF; font-size:18px;font-weight:900;line-height:130%;color:#ffffff; text-align:left;vertical-align:middle; }
+.LL td.tourL { padding:15px; text-align:center;vertical-align:top; }
+
+
+/* 人気チケット詳細
+-------------------------------------------------------*/
+.FF table { width:250px; padding:10px; background-color:#FFFFFF; vertical-align:middle; }
+.FF td.titleF { padding:5px 10px; font-size:14px;font-weight:700;line-height:130%; text-align:left;vertical-align:middle; }
+.FF td.dayF { padding:5px 10px; font-size:12px;line-height:180%; text-align:left;vertical-align:middle; }
+.FF td.photoF { padding-top:10px; text-align:center;vertical-align:bottom; }
+.FF td.cateF { padding-top:10px;padding-left:10px; text-align:left; }
+.FF td.newF { padding-top:10px;padding-right:10px; text-align:right; }
+
+/* 人気イベント詳細-社会見学特集
+-------------------------------------------------------*/
+.FF table { width:250px; padding:10px; background-color:#FFFFFF; vertical-align:middle; }
+.FF td.titleF { padding:5px 10px; font-size:14px;font-weight:700;line-height:130%; text-align:left;vertical-align:middle; }
+.FF td.dayF { padding:5px 10px; font-size:12px;line-height:180%; text-align:left;vertical-align:middle; }
+.FF td.photoF { padding-top:10px; text-align:center;vertical-align:bottom; }
+.FF td.cateF { padding-top:10px;padding-left:10px; text-align:left; }
+.FF td.newF { padding-top:10px;padding-right:10px; text-align:right; }
+
+
+
+/* バナー
+-------------------------------------------------------*/
+.BN table { width:850px; }
+.BN td.titleBN { height:35px; font-size:18px;font-weight:900;line-height:130%;color:#000000; text-align:center;vertical-align:middle; }
+.BN td.banner1 { padding-right:15px;padding-bottom:30px; text-align:right; }
+.BN td.banner2 { padding-left:15px;padding-bottom:30px; text-align:left; }
+
+
+
+
+/* テキスト装飾
+-------------------------------------------------------*/
+.price1 { text-decoration:line-through; }
+.price2 { color:#FF0000; font-weight:700; }
+
+.entry { border:solid 1px #9966CC; color:#333333; font-size:14px; padding:1px 10px; margin:5px; background-color:#C7B7FF;}
+.entry2 { border:solid 1px #9966CC; color:#333333; font-size:12px; padding:1px 10px; margin:2px; background-color:#FFFFFF;}
+
+.category { color:#FFFFFF; font-size:12px; padding:1px 10px; margin:2px; background-color:#CC6699;}
+.new { border:solid 1px #FF0000; color:#FF0000; font-size:12px;font-weight:800; padding:0px 10px; margin:2px; background-color:#FFFFFF; align:right;}
+.back { border:solid 1px #333399; color:#333399; font-size:12px;font-weight:800; padding:0px 10px; margin:2px; background-color:#FFFFFF; align:right;}

@@ -1,0 +1,490 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+#$cms->setAllSpecialHtml();
+#$data2 = $cms->res_data;
+$cms = new getDataFromCms();
+$cms->optmovie_type = "yokohama-cruise";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/index_160310.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('ランチ(船内)','横浜の開放的な海景色を見ながらランチクルーズをお愉しみください。船上の開放感も手伝って、日常のストレス発散・気分転換にも最適です。','/yokohama-cruise/lunch/','cruise-lunch','');
+$cruise[0][] = array('ディナー・ビア(船内)','みなとみらいの夜景やライトアップされた横浜ベイブリッジなど、夜の横浜クルージングは、幻想的な世界が広がります。ディナークルーズの他、夏は、ビアクルーズもおすすめです。','/yokohama-cruise/dinner/','cruise-dinner','');
+$cruise[0][] = array('ロイヤルウィング','ロイヤルウイングは、旅客定員630名の大型客船。最上フロアのサンデッキからは横浜の海を一望。料理は船内で調理され、食事時間にできたての料理を食すことができます。','/yokohama-cruise/royalwing/','cruise-royalwing','');
+$cruise[0][] = array('クルーズ＆レストラン','横浜クルーズを楽しみつつ、ホテル等のレストランでお食事するプランです。みなとみらい近隣のレストランで、時には優雅に時にはカジュアルにお食事が堪能できます。','/yokohama-cruise/restaurant/','cruise-restaurant','');
+$cruise[0][] = array('期間限定','クリスマスやハロウィン、年越しなど、期間限定の船上イベントやお食事が提供されるクルーズプランのご紹介。開催日が1年に1回の限定のランもあります。ぜひお見逃しなく。','/yokohama-cruise/limited/','cruise-limited','');
+$cruise[0][] = array('マリーンシャトル','「南欧風カフェ」をイメージしたマリーンシャトルは、定員540名の大型クルーズ船。カジュアルな雰囲気でクルージングを楽しむにはもってこい。夏はビアクルーズが人気です。','/tokyo-cruise/marine-shuttle/','cruise-marine','');
+
+
+
+$params["purposeid"] = "tokyo-cruise_recommended";
+$cr1 = getSearchData($params);	#バス新着
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="横浜クルーズのプランをご紹介。クルーズは、ディナーやランチの他、ホテルでのお食事とセットになったプランもあります。24時間いつでもオンライン予約可能です。" />
+<meta name="keywords" content="横浜クルーズ,ツアー,プラン,ランチ,ディナー,予約,ポケカル" />
+<meta name="copyright" content="" />
+<title>横浜クルーズツアー | ポケカル</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="style_new.css" />
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/yokohama-cruise/">
+<link rel="canonical" href="https://www.poke.co.jp/yokohama-cruise/">
+
+<style>
+
+
+.flipsnap1{
+/*
+	width:<?php $cnt = 8; $w = 220 * $cnt + 50; echo $w; ?>px;
+	padding-left:50px;
+*/
+}
+
+/*
+.flipsnap1,.flipsnap2{
+	width:<?php $cnt = 8; $w = 220 * $cnt + 50; echo $w; ?>px;
+	padding-left:50px;
+}
+*/
+.item1,.item2{
+	height:300px;
+}
+.eventlist_wrap{
+	
+}
+.eventlist-scroll::before{
+	
+}
+.eventlist-scroll{
+	width:100%;
+	
+	overflow:scroll !important;
+}
+.eventlist-scroll ul{
+	width:960px;
+	margin-left:15px;
+	
+	position:relative;
+	overflow:hidden;
+}
+.eventlist-scroll ul li{
+	float:left;
+	width:220px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	overflow:hidden;
+	
+	background:#FFF;
+	height:6.4rem;
+	margin-right:15px;
+	margin-bottom:20px;
+}
+.eventlist-link{
+	font-size:0.28rem;
+	display:block;
+	text-align:right;
+	padding-right:15px;
+}
+.eventlist-link img{
+	width:0.29rem;
+	display:inline;
+	position:relative;
+	top:2px;
+}
+
+.eventlist2{
+	width:100%;
+	box-sizing:border-box;
+	padding:0 10px;
+	position:relative;
+	overflow:hidden;
+}
+.eventlist2 li{
+	margin-right:8px;
+	width:calc(50% - 4px);
+	float:left;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	overflow:hidden;
+	
+	background:#FFF;
+	height:5.8rem;
+	margin-bottom:8px;
+}
+.eventlist2 li:nth-child(2n){
+	margin-right:0;
+}
+
+.bg_f2f2f2{
+	background:#F2F2F2;
+}
+.bg_eaeaea{
+	background:#EAEAEA !important;
+}
+.pb10{padding-bottom:10px;}
+.pb20{padding-bottom:20px;}
+
+
+.pricebox{
+    padding: 0.1em 1em;
+    margin: 0 20px 10px 20px;
+    
+
+	background: linear-gradient(#fff100, #fffcb9);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+	
+	width:calc(100% - 40px);
+	box-sizing:border-box;
+}
+.pricebox p {
+    margin: 0; 
+    padding: 10px 0;
+	font-size:0.5rem;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+.areabox{
+    padding: 0.1em 1em;
+    margin: 0 20px 10px 20px;
+    
+
+	background: linear-gradient(#aed03e, #e6f0c2);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+	
+	width:calc(100% - 40px);
+	box-sizing:border-box;
+}
+.areabox p {
+    margin: 0; 
+    padding: 10px 0;
+	font-size:0.5rem;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+	
+}
+.lead{
+	padding:0 10px;
+	font-size:0.3rem;
+}
+.main01_ph{
+
+/*	margin:8px 8px 0 8px;
+	text-align:center;
+	width:180px;*/
+	width:100%;
+	height:165px;
+	overflow:hidden;
+	
+}
+.main01_title{
+	font-size:0.32rem;
+/*	color:#996633;
+	font-weight:bold;*/
+	padding:5px 8px 5px 8px;
+	line-height:1.4;
+	height:95px;
+	overflow:hidden;
+	text-align:left;
+}
+.main01_con{
+	color:#333;
+	line-height:1.5;
+	padding:3px 8px 2px 8px;
+	font-weight:normal;
+	text-align:left;
+	height:70px;
+	font-size:0.26rem;
+}
+.main01_pr{
+	text-align:right;
+	color:#cc3333;
+	font-size:20px;
+	font-weight:bold;	
+	padding:0 15px 2px 15px;
+	
+}
+.main01_t01{
+	background:#C00000;
+	color:#FFF;
+	padding:6px 5px;
+	font-size:14px;
+	font-weight:bold;
+}
+.main01_b01{
+	border:1px solid #C00000;
+	font-size:12px;
+}
+.main01_t02{
+	background:#FFCC00;
+	color:#FFF;
+	padding:6px 5px;
+	font-size:14px;
+	font-weight:bold;
+}
+.main01_b02{
+	border:1px solid #FFCC00;
+	font-size:12px;
+}
+.main_con{
+/*	margin:10px 0;*/
+
+	
+	padding:6px;
+	font-size:0.26rem;
+	color:#333;
+}
+.main_con strong{
+	font-weight:bold;
+}
+
+</style>
+<?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">日帰り旅行・ツアーTOP</a></li>
+		  <li class="pl20">横浜クルーズツアー</li>
+        </ul>
+        <section>
+
+<h1 class="headline01">横浜クルーズツアー</h1>
+
+
+<div><img src="img/keyimage2018.jpg" width="100%" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。"></div>
+
+<div class="mb10"></div>
+
+
+<div class="lead">
+横浜みなとみらいの景色と潮風は、それだけで非日常世界に浸れるひととき。山下公園、赤レンガ倉庫、横浜ベイブリッジ、本牧埠頭など、港町横浜ならではの風景を一望することができます。ポケカルでは、ナイトクルーズやデイクルーズなど、スタンダードなクルーズプランばかりでなく、春の桜や夏の花火、冬のイルミネーション観賞など、季節限定クルーズも目白押しです！
+</div>
+
+
+<div class="mb20"></div>	
+
+</div>
+
+<div class="search">
+
+
+<h2 class="headline01">おすすめプラン</h2>
+
+<div class="bg_f2f2f2">
+
+<div class="pb10"></div>
+
+<div class="lead">ポケカル編集部がお薦めする横浜クルーズのご紹介。売れ筋のクルーズプランから季節限定プラン、ポケカルオリジナルのクルーズとレストランがセットになったプランなど、選りすぐりのプランをピックアップ。ぜひご参考ください。
+</div>
+
+<div class="pb10"></div>
+
+<div class="eventlist-scroll">
+<ul>
+	
+        	            
+            <?php 
+            $cnt = 0;
+            foreach($list1 as $val){
+           
+                if($cnt < 8):
+                    $path = $val['img'];
+                    $size = getimagesize($path);
+                    $width = $size[0];
+                    $height = $size[1];
+            ?>
+<li>
+           
+        
+            <a href="<?php echo $val['link']; ?>">
+            
+            <div class="main01_ph" align="center">
+          
+            
+            <?php if($width < $height): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+            <?php else: ?>    
+                <?php if($height < 0.75 * $width): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+                <?php else: ?>
+                <img src="<?php echo $val['img']; ?>" style="width:100%;">
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            </div>
+           
+            <h4 class="main01_title">
+            <?php 
+            if(mb_strlen($val['title'],'UTF-8') > 52):
+            echo mb_substr($val['title'],0,52,'UTF-8')."...";
+            else:
+            echo $val['title'];
+            endif;
+            ?>
+            </h4>
+            <div class="main01_con">
+            <?php 
+           
+            echo $val['price'];
+           
+            ?>
+            </div>
+            <div class="main01_pr"><?php echo $val[4]; ?></div>
+            </a>
+            
+            
+</li>         
+            
+            <?php 
+                $cnt++;
+                endif;
+            } ?>
+                        
+                  
+                        
+
+</ul>
+<div class="clearfix"></div>
+</div>
+
+
+<h3>
+<a href="/sp/tokyo-cruise/recommended/" class="eventlist-link"><img src="/sp/common2/img/common/arrow02.png">&nbsp;おすすめクルーズを全て見る</a>
+</h3>
+
+<div class="pb20"></div>
+
+</div><!-- bg_f2f2f2 -->
+
+
+<h2 class="headline01">お食事タイプ・シーン別</h2>
+
+<div class="bg_eaeaea">
+
+<div class="pb20"></div>
+
+<ul class="eventlist2">
+<?php 
+$cnt = 1;
+foreach($cruise[0] as $val): ?>
+
+<li>
+<a href="<?php echo $val[2];?>">
+<img src="img/<?php echo $val[3]; ?>.jpg" style="width:100%;" >
+</a>
+<div class="main_con">
+
+<strong><?php echo $val[0]; ?></strong><br>
+
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>予定航路</a>)";} ?></div>
+
+
+
+<div class="pb10"></div>
+
+</li>
+
+<?php 
+if($cnt%4 == 0){
+?>
+</ul>
+<ul class="eventlist2">
+<?php
+}
+
+endforeach; ?>
+
+</ul>
+
+<div class="pb20"></div>
+
+
+
+</div><!--bg_eaeaea-->
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+<h2 class="headline01">クルーズ動画</h2>
+
+<div class="block">          
+	<div class="wrap-slide">
+
+<ul class="l-grid slider-news">
+<?php echo $data2['optvideo']; ?>
+</ul>
+
+	</div>
+</div>
+
+<?php endif; ?>
+
+
+
+
+</div>
+<!-- / #page -->
+
+</section>
+
+<?php require_once("2018/footer.html"); ?>

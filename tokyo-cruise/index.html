@@ -1,0 +1,250 @@
+<?php
+#ini_set('display_errors', 'On');
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "tokyo-cruise";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+
+require_once dirname(dirname(__FILE__)) . '/_data/simple_html_dom.php';
+#require_once dirname(dirname(__FILE__)) . '/_data/index_160310.php';
+require_once dirname(dirname(__FILE__)) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('ランチ','普段の外食に飽きたら､洋上ランチはいかがでしょうか？青々とした空と海の中でのランチは、格別なひととき｡誕生日や母の日などの記念日にもおすすめです。','/tokyo-cruise/lunch/','cruise-lunch','/tokyo-cruise/route-lunch/');
+$cruise[0][] = array('サンセット','東京湾の夕陽を背にクルージングが楽しめる、デートや特別なお出かけにぴったりなサンセットクルーズ。情景異なる夕陽と夜景の2つの景色が楽しめます。','/tokyo-cruise/sunset/','cruise-sunset','/tokyo-cruise/route-lunch/');
+$cruise[0][] = array('ディナー','絶品ディナーを堪能しつつ、ライトアップされた東京の夜景をご覧ください。レインボーブリッジやお台場、品川埠頭のコンテナ群などの景色がご覧いただけます。','/tokyo-cruise/dinner/','cruise-dinner','/tokyo-cruise/route-dinner/');
+$cruise[0][] = array('期間限定','期間限定クルーズでは、花火や星空観賞など、季節限定のクルーズイベントや、クリスマスや期間限定で提供される食事コースのプランをご紹介。','/tokyo-cruise/limited/','cruise-limited','');
+$cruise[0][] = array('ダブル','東京湾クルーズと他水路のクルーズに乗船できるプラン。1度のご利用で2つの異なるクルーズが体験できます。クルーズをたっぷり堪能し、気分爽快・心もリフレッシュ！','/tokyo-cruise/two-rivers/','cruise-two-rivers','');
+$cruise[0][] = array('アニバーサリー','母の日や父の日、または、誕生日など、特別な日に利用できるアニバーサリークルーズプラン。ケーキや花束付きのプラン多数。詳細は各ページを確認ください。','/tokyo-cruise/anniversary/','cruise-anniversary','');
+
+
+$params["purposeid"] = "tokyo-cruise_recommended";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="日帰りバスツアーを検索・予約するこができます。テーマや日程、価格帯、出発地・目的地別などの検索条件で、お好みのツアーをお探しください。特に、春の桜、秋の紅葉狩り、工場見学、話題の観光名所めぐりは人気のバスツアーです。また、助成金が還元された格安バスツアーや宿泊付きのバスツアーも期間限定で取り扱っております。新着一覧では、常に最新のバスツアーをご紹介。毎日要チェックです。" />
+<meta name="keywords" content="日帰り,バスツアー,日帰りバスツアー,出発地,目的地,日程,東京,神奈川,横浜,千葉,埼玉,茨城,栃木,静岡,観光,桜,紅葉,ポケカル" />
+<meta name="copyright" content="" />
+<title>東京湾クルーズツアー | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/tokyo-cruise/">
+
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+			<li>東京湾クルーズ</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<h1 class="headline01"><p>東京湾クルーズ</p></h1>
+
+<div class="mb20"></div>
+
+<div class="mb10"><img src="img/keyimage2018.jpg" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。" width="100%"></div>
+
+<div class="lead">大切な人と行きたい東京湾クルージング。ランチやディナー、サンセット、各時間帯ごとにクルーズプランをご紹介。さらに、花火観覧や星空観賞、クリスマスディナーなどの季節毎の特別プランも見逃せません。大都市東京のパノラマを潮風と共にお楽しみいただければ、日ごろの疲れも癒されます。ポケカルでは、24時間いつでもインターネットから予約可能です。
+</div>
+              <div class="mb20"></div>
+
+</div>
+<div class="bg_f2f2f2">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>おすすめプラン</span><h3><a class="list-more" href="/tokyo-cruise/recommended/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>おすすめクルーズを全て見る</a></h3></h2>
+</div>
+
+
+
+
+
+
+<div class="mb10"></div>
+
+<div class="lead">数多くのクルーズプランより、ポケカル編集部がお薦めするクルーズプランのご紹介。売れ筋のクルーズプランや、お値打ち価格のプラン、アニバーサリープラン、季節限定プランなどから厳選チョイス！クルーズ選びに迷ったら、まずはおすすめプランを参考ください。
+</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+<div class="bg_eaeaea">
+<div class="wrapper">
+			
+<div class="headline04_wrap">
+<h2 class="headline04"><span>お食事タイプ・シーン別</span></h2>
+</div>
+
+<div class="lead"></div>
+
+<ul id="ticket_main">
+<?php foreach($cruise[0] as $val): ?>
+<li>
+
+<h4 class="ticket_main_title"><?php echo $val[0]; ?>クルーズ</h4>
+
+<div class="ticket_main_img">
+<a href="<?php echo $val[2]; ?>" class="ticket_sp_btn">
+<img src="img/<?php echo $val[3]; ?>.jpg" width="100%">
+</a>
+</div>
+
+<div class="ticket_main_con">
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>予定航路</a>)";} ?></div>
+
+
+
+</li>
+<? endforeach; ?>
+
+</ul>
+
+<div class="pb30"></div>
+
+</div>
+</div>
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+
+<div class="mb20"></div>
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>クルーズ動画</span></h2>
+</div>
+
+<div class="mb20"></div>
+
+<div class="p14">
+ポケカルのスタッフが撮影したクルーズ動画をご紹介。クルーズは昼でも夜でもやっぱり気分爽快！春の桜や夏の花火、冬のイルミネーションなど、季節限定クルーズも楽しさいっぱい。週末のおでかけはクルーズで決まりです！
+</div>
+
+<section class="sec-video">
+<ul class="l-grid">
+<?php echo $data2['optvideo']; ?>
+</ul>
+</section>
+
+</div>
+
+<?php endif; ?>
+
+
+
+
+
+  <!--/#content .clearfix-->
+  
+<?php include_once("include/2018/footer.html" ); ?>

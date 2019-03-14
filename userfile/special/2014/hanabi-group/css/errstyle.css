@@ -1,0 +1,75 @@
+/* errorpage
+----------------------------------------------*/
+#errorpage {
+	width:800px;
+	min-height:300px;
+	_height:300px;
+	margin:0 auto;
+}
+
+#errorpage .errormessage {
+	margin-top:30px;
+	background-color:#CCC;
+	padding:15px;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+
+/* illegalpage
+----------------------------------------------*/
+#illegalpage {
+	width:800px;
+	min-height:300px;
+	_height:300px;
+	margin:0 auto;
+}
+
+#illegalpage .errormessage{
+	
+	margin-top:30px;
+	background-color:#CCC;
+	padding:15px;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+/* timeoutpage
+----------------------------------------------*/
+#timeoutpage {
+	width:800px;
+	min-height:300px;
+	_height:300px;
+	margin:0 auto;
+}
+
+#timeoutpage .errormessage{
+	
+	margin-top:30px;
+	background-color:#FC6;
+	padding:15px;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+/* merumagapage
+----------------------------------------------*/
+#merumagapage {
+	width:800px;
+	min-height:300px;
+	_height:300px;
+	margin:0 auto;
+}
+
+#merumagapage .message{
+	
+	margin-top:30px;
+	background-color:#FC6;
+	padding:15px;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}

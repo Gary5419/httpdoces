@@ -1,0 +1,93 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<?php
+define("H1TXT","あいみ | 虎姫一座 メンバープロフィール");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="虎姫一座 メンバー「あいみ」のプロフィール、誕生日、一言メッセージなど。" />
+<meta name="keywords" content="虎姫一座,チケット,アミューズカフェシアター,昭和歌謡,浅草,レヴュー,あいみ,虎姫一座 あいみ" />
+<title>あいみ | 虎姫一座 メンバープロフィール | ポケカル</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="canonical" href="http://www.poke.co.jp/torahimeichiza/aimi/">
+
+<style>
+
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li><a href="../">浅草レヴュー 虎姫一座 特別インタビュー</a></li>
+          <li>あいみ</li>
+        </ul>
+        <section>
+
+<img src="/sp/torahimeichiza/img/keyimage.jpg" width="100%">
+
+
+
+<div class="search">
+
+<h2 class="maintitle">あいみ</h2>
+
+<div class="prof_picbox">
+<img src="../img/torahime_profile_aimi.jpg" width="100%">
+</div>
+	
+<div class="prof_msgbox">
+<!--ここからメッセージ入れる-->
+<div class="prof_cmnt">生年月日：1987年11月1日</div>
+<div class="prof_cmnt">血液型：A</div>
+<div class="prof_cmnt">趣味：ぬりえ、空の写真を撮る</div>
+<div class="prof_cmnt">好きな食べ物：炭水化物全般</div>
+<div class="prof_cmnt">好きな言葉：愛・ありがとう</div>
+<?php
+//                     <-------------------メッセージ長------------------>
+?>
+<div class="prof_cmnt">一言メッセージ：シアターから見える景色。おいしいご</div>
+<div class="prof_cmnt">はん。たのしいステージ。ぜひ浅草へ！虎姫一座へ Let</div>
+<div class="prof_cmnt">'s go!</div>
+</div>
+
+<div class="mb40"></div>
+ 
+<div class="mb20"></div>
+</div>
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

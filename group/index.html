@@ -1,0 +1,340 @@
+<?php
+define("H1TXT","団体旅行を幹事さんに代わって企画・手配します | ポケカル");
+?>
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="団体旅行ならポケカルにお任せ。社員旅行やお友達・ご家族・町内会・サークルのグループ旅行など、幹事さんの予算と行きたい場所を考慮し、オーダーメードの日帰りツアーを企画いたします。" />
+<meta name="keywords" content="団体旅行,グループ旅行,社員旅行,町内会,旅行,ポケカル" />
+<meta name="copyright" content="" />
+<title>団体旅行を幹事さんに代わって企画・手配 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<style>
+#pokekaru_old_html{
+font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+ul.grp{
+width:100%;
+margin:0 auto;
+border:1px solid #D9D9D9;
+position:relative;
+overflow:hidden;
+}
+ul.grp li{
+	float:left;
+}
+ul.grp li:nth-child(2n+1){
+	width:300px;
+	padding:0;
+	margin:0 0 -4px 0;
+}
+ul.grp li:nth-child(2n){
+	padding:15px 15px 0 15px;
+	box-sizing:border-box;
+	width:610px;
+	line-height:1.7;
+	font-size:16px;
+}
+
+ul.grp2{
+width:100%;
+margin:0 auto 20px auto;
+border:1px solid #D9D9D9;
+position:relative;
+overflow:hidden;
+}
+ul.grp2 li{
+	float:left;
+}
+ul.grp2 li:nth-child(2n+1){
+	width:150px;
+	padding:20px 0 0 20px;
+	box-sizing:border-box;
+}
+ul.grp2 li:nth-child(2n){
+	padding:15px 15px 0 15px;
+	box-sizing:border-box;
+	width:760px;
+	line-height:1.7;
+}
+.grp3{
+	width:910px;
+	margin:0 auto;
+}
+
+.title01{
+	color:#3399FF;
+	font-size:20px;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:30px;
+	font-weight:bold;
+}
+.intro{
+	font-size:14px;
+	line-height:1.5;
+	margin-left:10px;
+}
+.v01{
+	background:#FC7000;
+	color:#FFF;
+	font-size:16px;
+	box-sizing:border-box;
+	padding:5px 15px;
+	width:100%;
+}
+.v02{
+	font-size:16px;
+	line-height:1.5;
+	margin:15px 20px 10px 30px;
+}
+.v03{
+	font-size:14px;
+	color:#9B7248;
+	margin:0 20px 10px 30px;
+}
+.oh01{
+	background:#F2F2F2;
+	color:#575757;
+	text-align:center;
+	padding:7px;
+	border:1px solid #ECECEC;
+	font-size:16px;
+}
+.o01{
+	background:#92D050;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+}
+.o02{
+	background:#FC6F00;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+}
+.sep01{margin-bottom:80px;}
+a.link{display:block;color:#FFF;text-decoration:none;}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>団体旅行予約</li>
+          </ul>
+          <section>
+
+<!-- 新着ツアー情報　keyimage -->
+<div><img src="img/keyimage_renew.jpg" width="100%" ></div>
+<br>
+
+<div class="intro">
+日帰りの団体旅行は、ポケカルにお任せ。社員旅行やお友達・ご家族・町内会・サークルのグループ旅行など、幹事さんの予算と行きたい場所を考慮し、オーダーメードの日帰りツアーを企画いたします。日帰り旅行のメリットは、予算が節約できて、その日に帰れて、荷物が少なく身軽に行けること！さらに、宿泊旅行に比べれば、幹事さんの負担も少ないのも人気の秘訣です。ぜひ、「お手軽な」日帰り旅行で、会社やお仲間の親睦を深めてください。さらに、ポケカルでは、定番のバスツアーばかりではなく、屋形船や観光船の貸切手配も可能です。ぜひ、お気軽に電話やメールフォームよりお問合せください。
+</div>
+
+<div class="title01"><img src="img/t_left.png" width="14" style="position:relative;top:3px;">&nbsp;旅行開催までの簡単3ステップ！&nbsp;<img src="img/t_right.png" width="14" style="position:relative;top:3px;"></div>
+
+
+<ul class="grp">
+<li><img src="img/step1.jpg" width="100%"></li>
+<li>
+電話やメールフォームより、お気軽にお問合せください。その際、下記の項目について記載いただけると、その後の対応がスムーズになります。<br>
+(1)ご利用人数　(2)一人あたりの予算　(3)旅行の目的　(4)ポケカルのツアーをそのまま団体旅行でご利用したい場合は当該のツアー名
+
+</li>
+</ul>
+
+<div class="marginB20"></div>
+
+<div align="center"><img src="img/arrow_bottom.png" width="60"></div>
+
+<div class="marginB10"></div>
+
+<ul class="grp">
+<li><img src="img/step2.jpg" width="100%"></li>
+<li>
+ポケカルの団体旅行の担当者より、お電話・メールにて、ツアー案・お見積りについてご提示させて頂きます。提示されたツアーをさらにご希望に叶うようオーダーメードいただいて大丈夫です。ツアーが決定しましたら発注書にて、正式にお申込ください。
+</li>
+</ul>
+
+<div class="marginB20"></div>
+
+<div align="center"><img src="img/arrow_bottom.png" width="60"></div>
+
+<div class="marginB10"></div>
+
+<ul class="grp">
+<li><img src="img/step3.jpg" width="100%"></li>
+<li>
+あとは、当日のご旅行をお楽しみください！
+ぜひ、お仲間や同僚の皆様と楽しいひとときをお過ごしいただき、親睦を深めてください。
+</li>
+</ul>
+
+<div class="sep01"></div>
+
+<div class="title01"><img src="img/t_left.png" width="14" style="position:relative;top:3px;">&nbsp;　お客様よりいただいた声！　&nbsp;<img src="img/t_right.png" width="14" style="position:relative;top:3px;"></div>
+
+<ul class="grp2">
+<li><img src="img/icon_man.png" width="140"></li>
+<li>
+
+<table style="width:100%;">
+<tr>
+<td valign="bottom" width="20"><img src="img/fukidashi.png" width="20"></td>
+</td>
+<td>
+<div class="v01">初めての幹事で不安でしたが、観光地、スケジュールが希望通りになりました。</div>
+</td>
+</tr>
+</table>
+
+<div class="v02">初めての社員旅行の幹事で、どうしていいかわからなかったが、旅行の企画から、当日のスケジュールや運営までサポートいただきました。社員にも楽しい旅行だったと喜んでもらえ、幹事冥利に尽きました。</div>
+
+<div class="v03">[2017年7月] [40名様] [東京都・男性のお客様] 会社の社員旅行で、横須賀方面へご旅行</div>
+</li>
+</ul>
+
+<ul class="grp2">
+<li><img src="img/icon_woman.png" width="140"></li>
+<li>
+
+<table style="width:100%;">
+<tr>
+<td valign="bottom" width="20"><img src="img/fukidashi.png" width="20"></td>
+</td>
+<td>
+<div class="v01">参加者への旅行説明会を開いてもらえ、とても丁寧な対応に感激です！</div>
+</td>
+</tr>
+</table>
+
+<div class="v02">打合せ場所まで来てもらい、旅行内容の相談だけでなく、出発前に参加者への旅行説明会もしてもらえたので、盛りだくさんの内容でしたが予定通りに旅行を楽しむ事が出来ました。また利用させていただきます。</div>
+
+<div class="v03">[2017年2月] [38名様] [東京都・女性のお客様] 趣味サークルの仲間と房総方面へご旅行</div>
+</li>
+</ul>
+
+<ul class="grp2">
+<li><img src="img/icon_man.png" width="140"></li>
+<li>
+
+<table style="width:100%;">
+<tr>
+<td valign="bottom" width="20"><img src="img/fukidashi.png" width="20"></td>
+</td>
+<td>
+<div class="v01">同じバス会社とドライバーさんを手配してもらいました。</div>
+</td>
+</tr>
+</table>
+
+<div class="v02">一度目に利用して、バスもきれいで、ドライバーさんもとても感じが良く、二回目も同じドライバーさんにしてもらいたいと要望して、安心して楽しい旅行ができました。また、直前までの人数変更に対応してもらえたので助かりました。</div>
+
+<div class="v03">[2016年12月] [29名様] [神奈川・男性のお客様] 同じボランティア仲間と忘年会で西東京方面へご旅行</div>
+</li>
+</ul>
+
+
+<div style="margin-bottom:50px;"></div>
+
+
+<div class="title01"><img src="img/t_left.png" width="14" style="position:relative;top:3px;">&nbsp;お問合せはこちらから！&nbsp;<img src="img/t_right.png" width="14" style="position:relative;top:3px;"></div>
+
+
+<table class="grp3">
+<tr>
+<td width="440">
+	<table style="width:100%;">
+    <tr>
+    <td class="oh01">電話でのお問合せ</td>
+    </tr>
+    <tr>
+    <td class="o01">
+    <div style="margin-top:20px;"><img src="img/icon_sp.png" height="50"></div>
+    <div style="font-size:38px;">03-5652-7072</div>
+    
+    <div style="font-size:18px;">ポケカルお客様センター</div>
+    
+    <div style="font-size:16px;margin-bottom:10px;">【営業時間】9:00〜18:00(年末年始除き年中無休)</div>
+
+    </td>
+    </tr>
+    </table>
+</td>
+<td></td>
+<td width="440">
+	<table style="width:100%;">
+    <tr>
+    <td class="oh01">メールでのお問合せ</td>
+    </tr>
+    <tr>
+    <td class="o02">
+    <a href="https://www.poke.co.jp/group/contact.html" class="link">
+    <div style="margin-top:20px;"><img src="img/icon_pc.png" height="50"></div>
+    <div style="font-size:38px;">お問合せフォーム</div>
+    
+    <div style="font-size:18px;">24時間受付</div>
+    
+    <div style="font-size:14px;margin-bottom:10px;">メール受領後、3営業日以内に担当よりご連絡させて頂きます</div>
+</a>
+    </td>
+    </tr>
+    </table>
+</td>
+</tr>
+</table>
+
+
+</div>
+
+        
+      </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

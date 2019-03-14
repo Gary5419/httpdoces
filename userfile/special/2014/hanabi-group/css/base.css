@@ -1,0 +1,3782 @@
+@charset "utf-8";
+
+/*
+---------------------------------------------------------------
+Base CSS
+Last Up Date :2009/7/24
+---------------------------------------------------------------
+*/
+
+
+
+/* tag
+----------------------------------------------*/
+* {
+	font-style:normal;
+}
+
+html {
+	margin:0;
+	padding:0;
+}
+
+body {
+	margin:0;
+	padding:0;
+	font-size:80%;
+	color:#333333;
+	background-image:url(http://www.poke.co.jp/common/img/bg.gif);
+	background-repeat:no-repeat;
+	background-position:center top;
+	line-height:160%;
+	text-align:center;
+	font-family:"ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3", "Osaka", verdana,arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+	font-size:1em;
+	margin:0;
+	padding:0;
+}
+
+form,fieldset {
+	margin:0;
+	padding:0;
+}
+
+table,th,td {
+	border-collapse:collapse;
+}
+
+th p,td p {
+	margin:0;
+	padding:0;
+}
+
+ul {
+	list-style-type:none;
+}
+
+img {
+	border:none;
+}
+
+a {
+	color:#1B87C2;
+}
+
+a:visited {
+	color:#872974;
+}
+
+a:link,a:visited {
+	text-decoration:underline;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+input,
+textarea {
+	font-family:"ＭＳ Ｐゴシック","ヒラギノ角ゴ Pro W3", "Osaka", verdana,arial, sans-serif;
+}
+
+th,td {
+	line-height:1.2em;
+}
+
+ul,li,dl,dt,dd {
+	margin:0;
+	padding:0;
+}
+
+p {
+	margin:0 0 1em;
+}
+
+.imgover {}
+
+.small {
+	font-size:0.8em;
+	line-height:1.4;
+}
+
+.f-block {
+	zoom:1;
+}
+.f-block:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+.f-left {
+	float:left;
+}
+
+.f-right {
+	float:right;
+}
+
+.align-left {
+	float:left;
+	margin:0 20px 15px 0;
+}
+
+.align-right {
+	float:right;
+	margin:0 0 15px 20px;
+}
+
+.block {
+	zoom:1;
+	margin-top:30px;
+}
+.block:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+.center {
+	text-align:center;
+}
+
+.box-t10 {
+	margin-top:10px;
+}
+.box-t20 {
+	margin-top:20px;
+}
+.box-t30 {
+	margin-top:30px;
+}
+.box-t40 {
+	margin-top:40px;
+}
+.box-t50 {
+	margin-top:50px;
+}
+
+
+
+/* container
+----------------------------------------------*/
+#wrapper {
+	position:relative;
+	margin:0 auto;
+	width:900px;
+	text-align:left;
+}
+
+h1 {
+	position:absolute;
+	top:0;
+	left:0;
+	width:838px;
+	height:20px;
+	margin:0;
+	padding:0 0 0 62px;
+	color:#FFF;
+	overflow:hidden;
+	font-size:12px;
+	line-height:20px;
+	z-index:10;
+}
+*html h1 { /* IE6 */	
+	top:3px;
+	padding:0 0 0 60px;
+}
+*:first-child+html h1 { /* IE7 */
+	top:3px;
+	padding:0 0 0 60px;
+}
+
+
+
+/* header
+----------------------------------------------*/
+#header {
+	zoom:1;
+	margin-top:3px;
+}
+#header:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+*html #header { /* IE6 */	
+	padding-top:3px;
+}
+*:first-child+html #header { /* IE7 */
+	padding-top:3px;
+}
+
+#header #site-title {
+	float:left;
+}
+
+#header #header-navi {
+	zoom:1;
+	float:right;
+	margin:45px 25px 0 0;
+}
+#header #header-navi:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#header #header-navi li {
+	float:left;
+	margin-left:28px;
+	white-space:nowrap;
+	font-size:12px;
+	line-height:20px;
+}
+
+#header #header-navi li a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+
+
+/* global-navi
+----------------------------------------------*/
+#global-navi {
+	zoom:1;
+	background-image:url(http://www.poke.co.jp/common/img/bg_globalnavi.gif);
+	background-repeat:no-repeat;
+	width:900px;
+	height:26px;
+	margin:25px 0 -20px;
+	padding:5px 5px 0;
+	line-height:16px;
+}
+#global-navi:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#global-navi li {
+	float:left;
+	padding-right:1px;
+	_width:10px;
+	white-space:nowrap;
+}
+
+#global-navi li a {
+	text-decoration:none;
+	font-weight:bold; 
+	color:#FFF;
+	font-size:12px;
+}
+
+#global-navi li a span {
+	display:block;
+	height:19px;
+	padding:2px 5px 0;
+	cursor:pointer;
+}
+
+#global-navi li a.selected {
+	display:block;
+	height:21px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_globalnavi_selected_left.gif);
+	background-repeat:no-repeat;
+	text-decoration:none;
+	color:#87B821;
+}
+
+#global-navi li a.selected span {
+	background-image:url(http://www.poke.co.jp/common/img/bg_globalnavi_selected_right.gif);
+	background-repeat:no-repeat;
+	background-position:right top;
+}
+
+
+
+
+/* droplink
+----------------------------------------------*/
+#droplink {
+	zoom:1;
+	height:20px;
+	margin:25px 0 5px;
+	padding:0;
+}
+#droplink:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#droplink li {
+	float:left;
+	font-size:12px;
+}
+
+#droplink li strong,
+#droplink li b {
+	font-weight:normal;
+}
+
+#droplink li#catch {
+	float:right;
+	color:#999;
+	white-space:nowrap;
+}
+
+#droplink li#catch strong {
+	font-weight:normal;
+}
+
+#droplink li#catch h2 {
+	font-weight:normal;
+}
+
+
+
+/* page-nate
+----------------------------------------------*/
+.page-nate {
+	zoom:1;
+	margin-top:30px;
+	padding:3px 0;
+}
+.page-nate:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#page-nate-top {
+	border-bottom:2px solid #8FC323;
+}
+#page-nate-bottom {
+	border-top:2px solid #8FC323;
+}
+#guide-report #page-nate-top {
+	border-bottom:2px solid #FF4767;
+}
+#guide-report #page-nate-bottom {
+	border-top:2px solid #FF4767;
+}
+
+.page-nate .number {
+	float:left;
+}
+
+.page-nate .number h2 {
+	display:inline;
+	margin-right:1em;
+	font-weight:normal;
+}
+
+.page-nate .number h3 {
+	display:inline;
+	margin-right:1em;
+	font-weight:normal;
+}
+
+.page-nate .number strong {
+	font-size:1.5em;
+}
+
+.page-nate .page {
+	float:right;
+}
+
+
+
+/* container
+----------------------------------------------*/
+#container {
+	padding-top:20px;
+	zoom:1;
+}
+#container:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+.subtitlebar {
+	min-height:30px;
+	margin-bottom:10px;
+	background-image:url(http://www.poke.co.jp/common/img/subtitilebar_left.jpg);
+	background-repeat:no-repeat;
+	zoom:1;
+}
+.subtitlebar:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+.subtitlebar .title {
+	float:left;
+	width:880px;
+	padding:5px 0 0 10px;
+	font-weight:bold;
+	font-size:16px;
+	color:#FFF;
+}
+
+.subtitlebar span {
+	float:right;
+	height:30px;
+	padding-right:10px;
+	background-image:url(http://www.poke.co.jp/common/img/subtitilebar_right.jpg);
+	background-repeat:no-repeat;
+	background-position:right top;
+}
+
+.subtitlebar-guide {
+	height:30px;
+	margin-bottom:10px;
+	background-image:url(http://www.poke.co.jp/common/img/subtitlebar_guide_left.jpg);
+	background-repeat:no-repeat;
+}
+
+.subtitlebar-guide .title {
+	float:left;
+	padding:5px 0 0 10px;
+	font-weight:bold;
+	font-size:16px;
+	color:#FFF;
+}
+
+.subtitlebar-guide span {
+	float:right;
+	height:30px;
+	padding-right:10px;
+	background-image:url(http://www.poke.co.jp/common/img/subtitlebar_guide_right.jpg);
+	background-repeat:no-repeat;
+	background-position:right;
+}
+
+
+
+
+/* index right-content
+----------------------------------------------*/
+#index #container #right-content {
+	float:right;
+	width:600px;
+}
+
+#index #container #right-content #pickup-content {
+	width:590px;
+	height:240px;
+	padding:5px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_pickup.gif);
+}
+
+#index #container #right-content #sub-pickup-single {
+	width:600px;
+	margin-top:10px;
+}
+
+#index #container #right-content #sub-pickup-single dt {
+	height:22px;
+	padding:6px 0 0 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_subpickup_single_title.gif);
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+	line-height:20px;
+}
+
+#index #container #right-content #sub-pickup-single dd {
+	zoom:1;
+	padding:12px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_subpickup_single.gif);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+}
+#index #container #right-content #sub-pickup-single dd:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #sub-pickup-single dd .thumbnail {
+	float:left;
+	width:271px;
+	margin-right:10px;
+}
+
+#index #container #right-content #sub-pickup-single dd a {
+	float:left;
+	width:277px;
+	display:block;
+	margin-bottom:5px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#index #container #right-content #sub-pickup-single dd p {
+	float:left;
+	width:295px;
+	margin-bottom:0;
+	line-height:120%;
+}
+
+#index #container #right-content #sub-pickup-double {
+	zoom:1;
+	width:600px;
+	margin-top:10px;
+}
+#index #container #right-content #sub-pickup-double:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #sub-pickup-double dl {
+	width:295px;
+}
+
+#index #container #right-content #sub-pickup-double .left {
+	float:left;
+}
+
+#index #container #right-content #sub-pickup-double .right {
+	float:right;
+}
+
+#index #container #right-content #sub-pickup-double dt {
+	height:22px;
+	padding:6px 0 0 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_subpickup_double_title.gif);
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+	line-height:20px;
+}
+
+#index #container #right-content #sub-pickup-double dd {
+	padding:12px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_subpickup_double.gif);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+}
+
+#index #container #right-content #sub-pickup-double dd .thumbnail {
+	margin-bottom:5px;
+}
+
+#index #container #right-content #sub-pickup-double dd a {
+	display:block;
+	margin-bottom:5px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#index #container #right-content #sub-pickup-double dd p {
+	margin-bottom:0;
+	line-height:120%;
+}
+
+
+
+/* -- new-event -- */
+#index #container #right-content #new-event {
+	width:600px;
+	margin-top:30px;
+}
+
+#index #container #right-content #new-event h2 {
+	height:22px;
+	padding:4px 0 0 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_newevent.gif);
+	background-repeat:no-repeat;
+	color:#FFF;
+	font-size:14px;
+	line-height:20px;
+}
+
+#index #container #right-content #new-event ul {
+}
+
+#index #container #right-content #new-event li {
+	margin-top:15px;
+	zoom:1;
+}
+#index #container #right-content #new-event li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #new-event li .thumbnail {
+	float:left;
+	width:80px;
+	height:80px;
+	margin-right:9px;
+	border:1px solid #CCC;
+	padding:1px;
+	background-image:url(http://www.poke.co.jp/common/img/index_nophoto.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#index #container #right-content #new-event li .thumbnail img {
+	width:74px;
+	height:74px;
+	padding:3px;
+	background:#EEE;
+}
+
+#index #container #right-content #new-event li .commentary {
+	float:left;
+	width:507px;
+	line-height:140%;
+}
+
+#index #container #right-content #new-event li .commentary a {
+	display:block;
+	margin-bottom:5px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#index #container #right-content #new-event li .commentary p {
+	margin-bottom:5px;
+	font-size:12px;
+	line-height:140%;
+}
+
+#index #container #right-content #new-event li .commentary .price-area {
+	zoom:1;
+	border:1px solid #CCC;
+	padding:1px;
+}
+#index #container #right-content #new-event li .commentary .price-area:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #new-event li .commentary .price-area dt,
+#index #container #right-content #new-event li .commentary .price-area dd {
+	float:left;
+}
+
+#index #container #right-content #new-event li .commentary .price-area dt {
+	background:#CCC;
+	width:50px;
+	text-align:center;
+}
+
+#index #container #right-content #new-event li .commentary .price-area dd {
+	padding:0 5px;
+	background:#F0F0F0;
+}
+
+#index #container #right-content #new-event li .commentary .price-area dd.price {
+	width:130px;
+	font-weight:bold;
+	color:#999;
+}
+
+#index #container #right-content #new-event li .commentary .price-area dd.area {
+	width:253px;
+}
+
+#index #container #right-content #new-event .list-all {
+	margin-top:15px;
+	padding:2px 5px 1px;
+	background:#E2EBF6;
+	text-align:right;
+	font-size:10px;
+}
+
+#index #container #right-content #new-event .list-all a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+
+
+/* -- popular-event -- */
+#index #container #right-content #popular-event {
+	width:600px;
+	margin-top:30px;
+}
+
+#index #container #right-content #popular-event h2 {
+	height:22px;
+	padding:4px 0 0 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_popularevent.gif);
+	background-repeat:no-repeat;
+	color:#FFF;
+	font-size:14px;
+	line-height:20px;
+}
+
+#index #container #right-content #popular-event ul {
+	zoom:1;
+	position:relative;
+	margin-right:-25px;
+	_margin-right:-50px;
+}
+#index #container #right-content #popular-event ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #popular-event li {
+	zoom:1;
+	float:left;
+	width:287px;
+	margin-top:15px;
+	margin-right:25px;
+}
+#index #container #right-content #popular-event li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #popular-event li .thumbnail {
+	float:left;
+	width:80px;
+	height:80px;
+	margin-right:9px;
+	border:1px solid #CCC;
+	padding:1px;
+	background-image:url(http://www.poke.co.jp/common/img/index_nophoto.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#index #container #right-content #popular-event li .thumbnail img {
+	width:74px;
+	height:74px;
+	padding:3px;
+	background:#EEE;
+}
+
+#index #container #right-content #popular-event li .commentary {
+	float:left;
+	width:194px;
+	line-height:140%;
+}
+
+#index #container #right-content #popular-event li .commentary a {
+	display:block;
+	margin-bottom:5px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left 2px;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#index #container #right-content #popular-event li .commentary .price {
+	zoom:1;
+	border:1px solid #CCC;
+	width:173px;
+	margin-left:18px;
+	_margin-left:9px;
+	padding:1px;
+}
+#index #container #right-content #popular-event li .commentary .price:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #popular-event li .commentary .price dt,
+#index #container #right-content #popular-event li .commentary .price dd {
+	float:left;
+}
+
+#index #container #right-content #popular-event li .commentary .price dt {
+	background:#CCC;
+	width:60px;
+	text-align:center;
+}
+
+#index #container #right-content #popular-event li .commentary .price dd {
+	width:103px;
+	padding:0 5px;
+	background:#F0F0F0;
+	font-weight:bold;
+	color:#999;
+}
+
+#index #container #right-content #popular-event .list-all {
+	margin-top:15px;
+	padding:2px 5px 1px;
+	background:#DDEFE9;
+	text-align:right;
+	font-size:10px;
+}
+
+#index #container #right-content #popular-event .list-all a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+
+
+/* -- guide-blog -- */
+#index #container #right-content #guide-blog {
+	width:600px;
+	margin-top:30px;
+}
+
+#index #container #right-content #guide-blog h2 {
+	height:22px;
+	padding:4px 0 0 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_guideblog.gif);
+	background-repeat:no-repeat;
+	color:#FFF;
+	font-size:14px;
+	line-height:20px;
+}
+
+#index #container #right-content #guide-blog ul {
+	zoom:1;
+	position:relative;
+	margin-right:-25px;
+	_margin-right:-50px;
+}
+#index #container #right-content #guide-blog ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #guide-blog li {
+	zoom:1;
+	float:left;
+	width:287px;
+	margin-top:15px;
+	margin-right:25px;
+}
+#index #container #right-content #guide-blog li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #right-content #guide-blog li .thumbnail {
+	float:left;
+	width:80px;
+	height:80px;
+	margin-right:9px;
+	border:1px solid #CCC;
+	padding:1px;
+	background-image:url(http://www.poke.co.jp/common/img/index_nophoto.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#index #container #right-content #guide-blog li .thumbnail img {
+	width:74px;
+	height:74px;
+	padding:3px;
+	background:#EEE;
+}
+
+#index #container #right-content #guide-blog li .commentary {
+	float:left;
+	width:194px;
+	line-height:140%;
+}
+
+#index #container #right-content #guide-blog li .long {
+	width:287px;
+}
+
+#index #container #right-content #guide-blog li .commentary a {
+	display:block;
+	margin-bottom:5px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left 2px;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#index #container #right-content #guide-blog .list-all {
+	margin-top:15px;
+	padding:2px 5px 1px;
+	background:#FFE4E8;
+	text-align:right;
+	font-size:10px;
+}
+
+#index #container #right-content #guide-blog .list-all a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+
+
+/* index left-content
+----------------------------------------------*/
+#index #left-content {
+	float:left;
+}
+
+
+/* index left-navi
+----------------------------------------------*/
+#index #container #left-navi {
+	width:280px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_leftnavi_middle.gif);
+}
+#index #container #left-navi-top {
+	width:280px;
+	padding-top:10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_leftnavi_top.gif);
+	background-repeat:no-repeat;
+}
+#index #container #left-navi-bottom {
+	width:260px;
+	padding:0 10px 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_leftnavi_bottom.gif);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+}
+
+#index #container #left-navi #course-search {
+	width:260px;
+}
+
+#index #container #left-navi #course-search dt {
+	height:22px;
+	padding-top:5px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_course_search_title.jpg);
+	background-repeat:no-repeat;
+	font-size:14px;
+	line-height:20px;
+	font-weight:bold;
+	text-align:center;
+}
+#index #container #left-navi #course-search dd {
+	padding:5px 10px 10px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_course_search.jpg);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	line-height:140%;
+}
+
+#index #container #left-navi #course-search dd #search-box {
+	zoom:1;
+	margin-top:5px;
+}
+#index #container #left-navi #course-search dd #search-box:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #left-navi #course-search dd #search-box #input-field {
+	float:left;
+}
+
+#index #container #left-navi #course-search dd #search-box #input-field input {
+	background-color:#F2F2F2;
+	border-color:#777777 #CCCCCC #CCCCCC #777777;
+	border-style:solid;
+	border-width:1px;
+	color:#666;
+}
+
+#index #container #left-navi #course-search dd #search-box #submit-btn {
+	float:left;
+	padding-left:10px;
+}
+
+#index #container #left-navi #course-search dd #search-box #submit-btn input {
+	background-color:#666666;
+	border-color:#858585 #333333 #333333 #858585;
+	border-style:solid;
+	border-width:1px;
+	color:#FFFFFF;
+	padding:0 2px;
+}
+
+
+
+#index #container #left-navi #calender-link {
+	height:34px;
+	margin-top:10px;
+	padding-top:17px;
+	padding-left:73px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_calender.jpg);
+	background-position:left center;
+	background-repeat:no-repeat;
+	font-size:14px;
+	line-height:18px;
+}
+
+#index #container #left-navi #calender-link a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+
+
+#index #container #left-navi #theme-list {
+	margin:10px 0 0;
+	padding:0 0 6px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_themelist_bottom.gif);
+	background-repeat:no-repeat;
+	background-position:left bottom;
+}
+*html #index #container #left-navi #theme-list { /* IE6 */	
+	padding:0 0 4px;
+}
+*:first-child+html #index #container #left-navi #theme-list { /* IE7 */
+	padding:0 0 4px;
+}
+
+#index #container #left-navi #theme-list h2 {
+	height:22px;
+	padding-top:4px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_themelist_top.gif);
+	background-repeat:no-repeat;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	font-size:13px;
+	line-height:20px;
+}
+
+#index #container #left-navi #theme-list ul li {
+	zoom:1;
+	height:66px;
+	padding:2px 4px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_themelist_middle.gif);
+}
+#index #container #left-navi #theme-list ul li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+*html #index #container #left-navi #theme-list ul li { /* IE6 */	
+	margin-bottom:-2px;
+}
+*:first-child+html #index #container #left-navi #theme-list ul li { /* IE7 */
+	margin-bottom:-2px;
+}
+
+#index #container #left-navi #theme-list ul li .thumbnail {
+	float:left;
+	width:64px;
+	padding-right:5px;
+}
+
+#index #container #left-navi #theme-list ul li .thumbnail img {
+	padding:6px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_themelist_thumbnail.gif);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#index #container #left-navi #theme-list ul li .commentary {
+	float:left;
+	width:178px;
+	height:60px;
+	padding-top:4px;
+	overflow:hidden;
+}
+
+#index #container #left-navi #theme-list ul li .commentary a {
+	display:block;
+	margin-bottom:3px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+	font-weight:bold;
+	font-size:12px;
+	line-height:16px;
+}
+
+#index #container #left-navi #theme-list ul li .commentary p {
+	margin-bottom:0;
+	font-size:10px;
+	line-height:120%;
+}
+
+
+
+/* -- mailmagazine --*/
+#index #container #mailmagazine {
+	width:280px;
+	margin-top:20px;
+}
+
+#index #container #mailmagazine dt {
+	height:27px;
+	padding-top:14px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_mailmagazine_title.gif);
+	background-repeat:no-repeat;
+	text-align:center;
+}
+
+#index #container #mailmagazine dt span {
+	background-image:url(http://www.poke.co.jp/common/img/bg_mailmagazine_icon.jpg);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding:5px 0 5px 24px;
+	color:#8FC323;
+	font-weight:bold;
+	font-size:14px;
+}
+
+#index #container #mailmagazine dd {
+	padding:8px 10px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_mailmagazine.gif);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+}
+
+#index #container #mailmagazine dd h3 {
+	font-weight:normal;
+	line-height:120%;
+}
+
+#index #container #mailmagazine #mail-input-box {
+	zoom:1;
+	margin-top:5px;
+}
+#index #container #mailmagazine #mail-input-box:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #mailmagazine #mail-input-box #mail-input-field {
+	float:left;
+}
+
+#index #container #mailmagazine #mail-input-box #mail-input-field input {
+	background-color:#FFFFFF;
+	border-color:#777777 #CCCCCC #CCCCCC #777777;
+	border-style:solid;
+	border-width:1px;
+	color:#666;
+}
+
+#index #container #mailmagazine #mail-input-box #mail-input-btn {
+	float:left;
+	padding-left:10px;
+}
+
+#index #container #mailmagazine #mail-input-box #mail-input-btn input {
+	background-color:#666666;
+	border-color:#858585 #333333 #333333 #858585;
+	border-style:solid;
+	border-width:1px;
+	color:#FFFFFF;
+	padding:0 2px;
+}
+
+#index #container #mailmagazine dd .about {
+	margin-top:5px;
+}
+
+#index #container #mailmagazine dd a {
+	font-size:10px;
+}
+
+/* -- news --*/
+#index #container #news {
+	width:280px;
+	margin-top:20px;
+}
+
+#index #container #news dt {
+	height:27px;
+	padding-top:14px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_mailmagazine_title.gif);
+	background-repeat:no-repeat;
+	text-align:center;
+}
+
+#index #container #news dt span {
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding:5px 0 5px 0px;
+	color:#8FC323;
+	font-weight:bold;
+	font-size:14px;
+}
+
+#index #container #news dd {
+	padding:8px 10px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_mailmagazine.gif);
+	background-repeat:no-repeat;
+	background-position:center bottom;
+}
+
+#index #container #news dd h3 {
+	font-weight:normal;
+	line-height:120%;
+}
+
+#index #container #news #mail-input-box {
+	zoom:1;
+	margin-top:5px;
+}
+#index #container #news #mail-input-box:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#index #container #news #mail-input-box #mail-input-field {
+	float:left;
+}
+
+#index #container #news #mail-input-box #mail-input-field input {
+	background-color:#FFFFFF;
+	border-color:#777777 #CCCCCC #CCCCCC #777777;
+	border-style:solid;
+	border-width:1px;
+	color:#666;
+}
+
+#index #container #news #mail-input-box #mail-input-btn {
+	float:left;
+	padding-left:10px;
+}
+
+#index #container #news #mail-input-box #mail-input-btn input {
+	background-color:#666666;
+	border-color:#858585 #333333 #333333 #858585;
+	border-style:solid;
+	border-width:1px;
+	color:#FFFFFF;
+	padding:0 2px;
+}
+
+#index #container #news dd .about {
+	margin-top:5px;
+}
+
+#index #container #news dd a {
+	font-size:10px;
+}
+
+#index #container #banner {
+	margin-top:20px;
+	text-align:center;
+}
+
+#index #container #banner li {
+	margin-top:15px;
+}
+
+
+
+/* event-search
+----------------------------------------------*/
+#event-search {
+	zoom:1;
+	width:900px;
+	padding:10px 0 10px 20px;
+	background:#EEE;
+}
+#event-search:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+html:not([lang*=""]) #event-search { /* Firefox */
+	width:880px;
+}
+*html #event-detail #event-search { /* IE6 */	
+	width:900px;
+}
+*:first-child+html #event-search { /* IE7 */
+	width:890px;
+}
+
+#event-search dl {
+	zoom:1;
+	float:left;
+	margin-right:20px;
+}
+#event-search dl:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-search dl dt,
+#event-search dl dd {
+	float:left;
+}
+
+#event-search dl dt {
+	margin-right:10px;
+	color:#666;
+	font-weight:bold;
+}
+
+#event-search dl input {
+	background-color:#666666;
+	border-color:#858585 #333333 #333333 #858585;
+	border-style:solid;
+	border-width:1px;
+	color:#FFFFFF;
+	padding:2px 10px;
+}
+
+
+
+/* event-result
+----------------------------------------------*/
+#event-result {
+	
+}
+
+#event-result .search-sort {
+	zoom:1;
+	padding:5px 10px;
+	background:#EEE;
+}
+#event-result .search-sort:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-result .search-sort dt,
+#event-result .search-sort dd {
+	float:left;
+}
+
+#event-result .search-sort dt {
+	font-weight:bold;
+	margin-right:20px;
+}
+
+#event-result .result-list {
+	margin:0;
+	padding:0;
+}
+
+#event-result .result-list li {
+	margin-top:50px;
+	border:1px solid #8FC323;
+	padding:1px;
+}
+
+#event-result .result-list .list-box {
+	margin:0;
+	padding:1px;
+	border:1px solid #C7E191;
+}
+
+#event-result .result-list .list-box .event-title {
+	zoom:1;
+	margin:0;
+	padding:10px 20px;
+	background:#EEE;
+}
+#event-result .result-list .list-box .event-title:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-result .result-list .list-box .event-title .category {
+	float:left;
+	width:200px;
+	margin:0 15px 0 0;
+	padding:1px;
+	overflow:hidden;
+	background:#8FC323;
+}
+
+#event-result .result-list .list-box .event-title .category span {
+	display:block;
+	padding:1px;
+	border:1px solid #C7E191;
+	text-align:center;
+	font-size:1.2em;
+	font-weight:bold;
+	color:#FFF;
+}
+
+#event-result .result-list .list-box .event-title .name {
+	display:inline;
+	margin-right:10px;
+	padding-top:3px;
+	font-size:1.5em;
+	font-weight:bold;
+	line-height:120%;
+	vertical-align:baseline;
+}
+
+#event-result .result-list li .list-box .event-title .more {
+	display:inline;
+	vertical-align:baseline;
+}
+
+#event-result .result-list li .list-box .event-title .more a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#event-result .result-list li .list-box .event-body {
+	zoom:1;
+	padding:20px;
+}
+#event-result .result-list li .list-box .event-body:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-result .result-list li .list-box .event-body .pic {
+	float:left;
+	width:200px;
+	height:150px;
+	margin-right:20px;
+	border:1px solid #CCC;
+	background-image:url(http://www.poke.co.jp/common/img/eventlist_nophoto.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	padding:1px;
+}
+
+#event-result .result-list li .list-box .event-body .pic img {
+	width:196px;
+	height:146px;
+	padding:2px;
+	background:#EEE;
+}
+
+#event-result .result-list li .list-box .event-body .detail {
+	float:left;
+	width:628px;
+	margin-top:-5px;
+}
+
+#event-result .result-list li .list-box .event-body .detail table {
+	border:1px solid #CCC;
+	border-collapse:separate;
+	margin-top:5px;
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+#event-result .result-list li .list-box .event-body .detail table th {
+	width:115px;
+	padding:3px;
+	background:#D9D9D9;
+	text-align:center;
+}
+
+#event-result .result-list li .list-box .event-body .detail table td {
+	float:left;
+	width:484px;
+	padding:3px 10px;
+	background:#EEE;
+	color:#666;
+}
+
+#event-result .result-list li .list-box .event-body .detail table td strong {
+	color:#333;
+}
+
+#event-result .result-list li .list-box .event-body .detail dl {
+	zoom:1;
+	border:1px solid #CCC;
+	margin-top:5px;
+	padding:1px;
+	font-size:1.2em;
+	font-weight:bold;
+}
+#event-result .result-list li .list-box .event-body .detail dl:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-result .result-list li .list-box .event-body .detail dl dt {
+	float:left;
+	width:116px;
+	padding:2px;
+	background:#D9D9D9;
+	text-align:center;
+}
+
+#event-result .result-list li .list-box .event-body .detail dl dd {
+	float:left;
+	width:484px;
+	padding:2px 10px;
+	background:#EEE;
+	color:#666;
+}
+
+#event-result .result-list li .list-box .event-body .detail dl dd strong {
+	color:#333;
+}
+
+#event-result .result-list li .list-box .event-body .detail p {
+	margin-top:10px;
+}
+
+#event-result .result-list li .list-box .event-body .detail a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#event-result .result-list li .list-box h3 {
+	margin:0;
+	padding:0;
+	text-align:right;
+	font-weight:normal;
+	color:#999;
+}
+
+
+
+/* event-list
+----------------------------------------------*/
+#event-list {
+	
+}
+
+#event-list #theme-list ul {
+	zoom:1;
+	margin:-5px 0 0 0;
+}
+#event-list #theme-list ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-list #theme-list ul li {
+	float:left;
+	zoom:1;
+	width:250px;
+	height:66px;
+	margin:10px 50px 0 0;
+	padding:0;
+}
+#event-list #theme-list ul li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+*html #event-list #theme-list ul li { /* IE6 */	
+	margin-bottom:-2px;
+}
+*:first-child+html #event-list #theme-list ul li { /* IE7 */
+	margin-bottom:-2px;
+}
+
+#event-list #theme-list ul li .thumbnail {
+	float:left;
+	width:64px;
+	padding-right:5px;
+}
+
+#event-list #theme-list ul li .thumbnail img {
+	padding:6px;
+	background-image:url(http://www.poke.co.jp/common/img/index_bg_themelist_thumbnail.gif);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#event-list #theme-list ul li .commentary {
+	float:left;
+	width:178px;
+	padding-top:4px;
+}
+
+#event-list #theme-list ul li .commentary a {
+	display:block;
+	margin-bottom:3px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#event-list #theme-list ul li .commentary p {
+	margin-bottom:0;
+	font-size:10px;
+	line-height:120%;
+}
+
+/* area-list
+----------------------------------------------*/
+#event-list #area-list {
+	margin-top:50px;
+}
+
+#event-list #area-list table {
+	border:1px solid #CCC;
+	margin:15px 0 0;
+	padding:1px;
+	border-collapse:separate;
+}
+
+#event-list #area-list table th {
+	width:120px;
+	background:#D9D9D9;
+	text-align:center;
+	font-weight:bold;
+}
+
+#event-list #area-list table td {
+	width:758px;
+	padding:5px 0 5px 10px;
+	background:#F0F0F0;
+}
+
+#event-list #area-list table td ul {
+	zoom:1;
+	margin-right:-15px;
+}
+
+#event-list #area-list table td ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-list #area-list table td ul li {
+	float:left;
+	width:250px;
+}
+
+
+
+/* event-detail
+----------------------------------------------*/
+#event-detail {
+	
+}
+
+#event-detail #course-no {
+	text-align:right;
+	color:#999;
+}
+
+#event-detail #event-title {
+	zoom:1;
+	margin:0;
+	width:874px;
+	min-height:24px;
+	padding:10px;
+	border:3px solid #8FC323;
+	background-image:url(http://www.poke.co.jp/common/img/bg_eventtitle.jpg);
+	background-repeat:no-repeat;
+	background-position:left bottom;
+}
+#event-detail #event-title:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #event-title .category {
+	float:left;
+	display:block;
+	width:200px;
+	margin:0 15px 0 0;
+	padding:1px;
+	overflow:hidden;
+	background:#8FC323;
+}
+
+#event-detail #event-title .category span {
+	display:block;
+	padding:1px;
+	border:1px solid #C7E191;
+	text-align:center;
+	font-size:1.2em;
+	font-weight:bold;
+	color:#FFF;
+}
+
+#event-detail #event-title .name {
+	float:left;
+	display:block;
+	width:656px;
+	font-size:1.5em;
+	font-weight:bold;
+	line-height:120%;
+	vertical-align:baseline;
+}
+
+#event-detail #navi-top {
+	zoom:1;
+	margin-top:30px;
+	padding:0 10px;
+	border-bottom:3px solid #8FC323;
+}
+#event-detail #navi-top:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #navi-top li {
+	float:left;
+	height:33px;
+	margin:0 4px 0 0;
+	padding:0;
+}
+
+#event-detail #navi-top li img {
+	margin:0;
+	padding:0;
+}
+
+#event-detail #info {
+	zoom:1;
+	margin-top:10px;
+}
+#event-detail #info:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #info table {
+	border:1px solid #CCC;
+	border-collapse:separate;
+	margin-top:5px;
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+#event-detail #info table th {
+	width:115px;
+	padding:3px;
+	background:#D9D9D9;
+	text-align:center;
+}
+
+#event-detail #info table td {
+	padding:3px 10px;
+	background:#EEE;
+	color:#666;
+}
+
+#event-detail #info table td .mapicon {
+	margin:1px 0 0 10px;
+}
+
+#event-detail #info table td strong {
+	color:#333;
+}
+
+#event-detail #info #place {
+	float:left;
+	width:442px;
+	margin-right:16px;
+}
+#event-detail #info #place th {
+	width:115px;
+}
+#event-detail #info #place td {
+	width:298px;
+}
+
+#event-detail #info #time {
+	float:left;
+	width:440px;
+}
+#event-detail #info #time th {
+	width:115px;
+}
+#event-detail #info #time td {
+	width:296px;
+}
+
+#event-detail #info #fee {
+	float:left;
+	width:898px;
+}
+#event-detail #info #fee td {
+	width:754px;
+}
+
+#event-detail #pics {
+	zoom:1;
+	margin-top:10px;
+	margin-right:-15px;
+}
+#event-detail #pics:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+
+#event-detail #pics li {
+	float:left;
+	margin:10px 17px 0 0;
+}
+
+#event-detail #pics li dl {
+	
+}
+
+#event-detail #pics li dl dt {
+	width:284px;
+	height:214px;
+	border:1px solid #CCC;
+	padding:1px;
+	background-image:url(http://www.poke.co.jp/common/img/eventdetail_nophoto.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+html:not([lang*=""]) #pics li dl dt { /* Firefox */
+	height:214px;
+}
+
+#event-detail #pics li dl dt img {
+	width:280px;
+	height:210px;
+	padding:2px;
+	background:#EEE;
+}
+*html #event-detail #pics li dl dt img { /* IE6 */	
+	padding:2px 2px 1px;
+}
+*:first-child+html #event-detail #pics li dl dt img { /* IE7 */
+	padding:2px 2px 1px;
+}
+
+#event-detail #pics li dl dd {
+	width:274px;
+	padding:5px;
+	line-height:120%;
+}
+
+#event-detail #recommendation {
+	display:block;
+	float:right;
+	width:291px;
+	border:1px solid #CCC;
+	padding:1px;
+}
+
+#event-detail #recommendation dt {
+	width:286px;
+	height:22px;
+	padding:3px 0 0 5px;
+	line-height:20px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_recommendation_title.gif);
+	background-repeat:no-repeat;
+	font-weight:bold;
+	color:#FFF;
+}
+
+#event-detail #recommendation dd {
+	padding:5px;
+	background:#F0F0F0;
+}
+
+#event-detail #reserving .button {
+	margin:60px 0 30px;
+	text-align:center;
+}
+
+#event-detail #reserving .button input  {
+	max-width:800px;
+	padding:10px 50px;
+	border-top:1px solid #29A8F3;
+	border-left:1px solid #29A8F3;
+	border-right:1px solid #0A6AA5;
+	border-bottom:1px solid #0A6AA5;
+	background:#0B81C6;
+	color:#FFF;
+	font-weight:bold;
+	font-size:16px;
+}
+
+#event-detail #instructions dl {
+	
+}
+
+#event-detail #instructions dl {
+	zoom:1;
+	border:1px solid #CCC;
+	margin-top:5px;
+	padding:1px;
+	font-size:1.2em;
+}
+#event-detail #instructions dl:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #instructions dl dt {
+	float:left;
+	display:block;
+	width:154px;
+	padding:3px;
+	background:#FFF;
+	text-align:center;
+	font-weight:bold;
+}
+
+#event-detail #instructions dl dd {
+	float:left;
+	display:block;
+	width:716px;
+	padding:3px 10px;
+	background:#EEE;
+	color:#666;
+}
+
+#event-detail #calender {
+	border:1px solid #CCC;
+	padding:1px;
+}
+#event-detail #calender #inner {
+	border:1px solid #EEE;
+	padding:10px;
+}
+
+#event-detail #calender #tab {
+	zoom:1;
+	border-bottom:3px solid #FF9900;
+}
+#event-detail #calender #tab:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #calender #tab li {
+	float:left;
+}
+
+#event-detail #calender #tab li a {
+	display:block;
+	width:80px;
+	height:20px;
+	padding:3px 0 0;
+	background-image:url(http://www.poke.co.jp/common/img/bg_calender_tab_off.jpg);
+	background-repeat:no-repeat;
+	text-align:center;
+	font-weight:bold;
+}
+
+#event-detail #calender #tab li#previous {
+	float:left;
+}
+
+#event-detail #calender #tab li#forward {
+	float:right;
+}
+
+#event-detail #calender #tab li#months {
+	float:left;
+	width:714px;
+	padding:0;
+	margin:0 auto;
+	background:none;
+	text-align:center;
+}
+
+#event-detail #calender #tab li#months ul {
+	zoom:1;
+	width:492px;
+	margin:0 auto;
+}
+#event-detail #calender #tab li#months ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #calender #tab li#months ul li {
+	float:left;
+	margin-right:2px;
+}
+
+#event-detail #calender #tab li#months ul li.selected a {
+	background-image:url(http://www.poke.co.jp/common/img/bg_calender_tab_on.jpg);
+	color:#FFF;
+	text-decoration:none;
+}
+
+#event-detail #calender table {
+	margin-left:1px;
+	width:873px;
+}
+
+#event-detail #calender table,
+#event-detail #calender table th,
+#event-detail #calender table td {
+	border:1px solid #CCC;
+	border-collapse:collapse;
+}
+
+#event-detail #calender table th,
+#event-detail #calender table td {
+	width:14%;
+	padding:10px;
+	text-align:center;
+	vertical-align:top;
+}
+
+#event-detail #calender table th {
+	background:#EEE;
+}
+
+#event-detail #calender table td {
+	height:100px;
+}
+
+#event-detail #calender table .recep {
+	background:#FFFFCC;
+}
+
+#event-detail #calender table .sun {
+	color:#F00;
+}
+
+#event-detail #calender table .sat {
+	color:#0000FF;
+}
+
+#event-detail #calender table td span.other {
+	color:#999;
+}
+
+#event-detail #calender table td .decision {
+	width:80px;
+	height:16px;
+	margin:5px auto -15px;
+	background:#F00;
+	color:#FFF;
+	font-size:12px;
+}
+
+#event-detail #calender table td strong {
+	display:block;
+	margin:20px 0 0;
+	color:#333;
+	font-size:12px;
+}
+
+#event-detail #calender table td a {
+	display:block;
+	margin:5px 0 0;
+	text-align:center;
+	font-weight:bold;
+}
+
+#event-detail #phone {
+	padding:10px;
+	background:#FFFFCC;
+	text-align:center;
+	color:#666;
+}
+
+#event-detail #phone .information {
+	zoom:1;
+	width:470px;
+	margin:0 auto;
+}
+#event-detail #phone .information:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #phone .information div {
+	float:left;
+}
+
+#event-detail #phone .information .name {
+	width:110px;
+	font-size:12px;
+	line-height:20px;
+}
+
+#event-detail #phone .information .number {
+	width:250px;
+	font-size:40px;
+	line-height:40px;
+}
+
+#event-detail #phone .information .time {
+	width:110px;
+	font-size:12px;
+	line-height:20px;
+}
+
+#event-detail #wom .result-list {
+	margin-top:10px;
+}
+
+#event-detail #wom .result-list li {
+	margin-top:30px;
+}
+
+#event-detail #wom .result-list li dl.impression {
+	border:1px solid #FFBD31;
+	padding:1px;
+}
+
+#event-detail #wom .result-list li dl.impression dt {
+	zoom:1;
+	padding:5px 10px 5px 40px;
+	background-color:#FFF1D6;
+	background-image:url(http://www.poke.co.jp/common/img/bg_wom_title.gif);
+	background-repeat:no-repeat;
+	background-position:10px center;
+	vertical-align:bottom;
+}
+#event-detail #wom .result-list li dl.impression dt:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #wom .result-list li dl.impression dt .person {
+	float:left;
+	margin-right:10px;
+	padding-top:2px;
+	font-size:14px;
+	font-weight:bold;
+}
+
+#event-detail #wom .result-list li dl.impression dt .date {
+	float:right;
+	color:#E38E00;
+	font-size:10px;
+}
+
+#event-detail #wom .result-list li dl.impression dd {
+	padding:15px;
+}
+
+#event-detail #wom .result-list li dl.impression dd dl.comment {
+	margin-top:30px;
+	padding:1px;
+	border:1px solid #D5B586;
+}
+
+#event-detail #wom .result-list li dl.impression dd dl.comment dt {
+	padding:5px 10px;
+	background-color:#EEE1C7;
+	background-image:none;
+	font-weight:bold;
+	color:#AC6C0D;
+}
+
+#event-detail #wom .result-list li dl.impression dd dl.comment dd {
+	padding:5px 10px;
+	background-color:#FFFEF5;
+}
+
+#event-detail #guide-report .report-list {
+
+}
+
+#event-detail #guide-report .report-list li {
+	zoom:1;
+	padding:50px 0 30px;
+}
+#event-detail #guide-report .report-list li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #guide-report .report-list li .head {
+	zoom:1;
+	padding:0 0 5px;
+	border-bottom:1px dashed #999;
+}
+#event-detail #guide-report .report-list li .head:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #guide-report .report-list li .head .title {
+	float:left;
+	font-size:18px;
+	font-weight:bold;
+}
+
+#event-detail #guide-report .report-list li .head .title a {
+	color:#FF99AB;
+}
+
+
+#event-detail #guide-report .report-list li .head .category {
+	float:right;
+}
+
+#event-detail #guide-report .report-list li .head .area {
+	float:right;
+	margin-left:20px;
+}
+
+#event-detail #guide-report .report-list li .date {
+	padding:10px 0;
+	font-weight:bold;
+	color:#666;
+}
+
+#event-detail #guide-report .report-list li .body {
+	zoom:1;
+}
+#event-detail #guide-report .report-list li .body:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-detail #guide-report .report-list li .body a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+
+.guide-info {
+	zoom:1;
+	float:right;
+	background:#EEE;
+}
+.guide-info:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+.guide-info dt {
+	float:left;
+	width:80px;
+	height:80px;
+	padding:5px;
+}
+.guide-info dd {
+	float:left;
+	width:250px;
+	padding:5px;
+}
+
+.guide-info dd h3 {
+	line-height:120%;
+}
+
+.guide-info dd .author {
+	margin-bottom:2px;
+	font-weight:bold;
+}
+
+.guide-info dd p {
+	margin-bottom:0;
+	color:#999;
+	font-size:10px;
+	line-height:130%;
+}
+
+#event-detail #navi-bottom {
+	margin:30px 0 0 1em;
+	text-align:center;
+}
+#event-detail #navi-bottom li {
+}
+
+#event-detail em {
+	display:block;
+	margin-top:30px;
+	text-align:right;
+	color:#999;
+}
+
+
+
+/* event-calender
+----------------------------------------------*/
+#event-calender {
+	
+}
+
+#event-calender h2 {
+	height:35px;
+	padding:16px 0 0 80px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_eventcalender_title.jpg);
+	background-repeat:no-repeat;
+	background-position:left center;
+	font-size:16px;
+}
+
+#event-calender #tab-top {
+	zoom:1;
+	width:552px;
+	margin:30px auto 0;
+}
+#event-calender #tab-top:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-calender #tab-top li {
+	float:left;
+}
+
+#event-calender #tab-top li a {
+	display:block;
+	width:90px;
+	height:25px;
+	margin-right:2px;
+	padding:8px 0 0;
+	background-image:url(http://www.poke.co.jp/common/img/eventcalender_tab_top_off.jpg);
+	background-repeat:no-repeat;
+	text-align:center;
+	font-weight:bold;
+	font-size:14px;
+}
+
+#event-calender #tab-top li.selected a {
+	background-image:url(http://www.poke.co.jp/common/img/eventcalender_tab_top_on.jpg);
+	color:#FFF;
+	text-decoration:none;
+}
+
+#event-calender #days-top {
+	margin-bottom:30px;
+	border-top:3px solid #FD9F06;
+	background:#EEE;
+	padding:8px;
+	text-align:center;
+}
+
+#event-calender #days-top li {
+	display:inline;
+	padding:0 5px;
+	font-size:12px;
+}
+
+#event-calender #days-top li a {
+	font-weight:bold;
+}
+
+#event-calender #event-list {
+	width:100%;
+	border:1px solid #CCC;
+	border-collapse:collapse;
+}
+
+#event-calender #event-list th,
+#event-calender #event-list td {
+	border:1px solid #CCC;
+	padding:5px 0;
+}
+
+#event-calender #event-list .day {
+	width:40px;
+	text-align:center;
+}
+
+#event-calender #event-list .date {
+	width:40px;
+	text-align:center;
+}
+
+#event-calender #event-list .events ul {
+	zoom:1;
+	margin:0 0 10px 10px;
+}
+#event-calender #event-list .events ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-calender #event-list .events ul li {
+	zoom:1;
+	float:left;
+	width:360px;
+	min-height:100px;
+	_height:100px;
+	margin-top:10px;
+	margin-right:40px;
+}
+#event-calender #event-list .events ul li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-calender #event-list .events ul li .thumbnail {
+	float:left;
+	height:62px;
+	width:80px;
+	margin-right:9px;
+	background-image:url(http://www.poke.co.jp/common/img/index_nophoto.jpg);
+	background-position:center center;
+	background-repeat:no-repeat;
+	border:1px solid #CCCCCC;
+	padding:1px;
+}
+
+#event-calender #event-list .events ul li .thumbnail img {
+	background:#EEEEEE none repeat scroll 0 0;
+	padding:3px;
+	width:74px;
+}
+
+#event-calender #event-list .events ul li .commentary {
+	float:left;
+	width:264px;
+}
+
+#event-calender #event-list .events ul li .commentary a {
+	display:block;
+	margin-bottom:5px;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left 2px;
+	padding-left:18px;
+	font-weight:bold;
+}
+
+#event-calender #event-list .events ul li .commentary .price {
+	zoom:1;
+	width:242px;
+	margin-left:18px;
+	border:1px solid #CCC;
+	padding:1px;
+}
+#event-calender #event-list .events ul li .commentary .price:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-calender #event-list .events ul li .commentary .price dt,
+#event-calender #event-list .events ul li .commentary .price dd {
+	float:left;
+}
+
+#event-calender #event-list .events ul li .commentary .price dt {
+	background:#CCC;
+	width:50px;
+	padding:1px 0;
+	text-align:center;
+}
+
+#event-calender #event-list .events ul li .commentary .price dd {
+	width:182px;
+	padding:1px 5px;
+	background:#F0F0F0;
+	font-weight:bold;
+	color:#999;
+}
+
+#event-calender #event-list tr.sun {
+	background:#FFF1ED;
+}
+
+#event-calender #event-list tr.sat {
+	background:#EFF7FB;
+}
+
+#event-calender #days-bottom {
+	margin-top:30px;
+	border-bottom:3px solid #FD9F06;
+	background:#EEE;
+	padding:8px;
+	text-align:center;
+}
+
+#event-calender #days-bottom li {
+	display:inline;
+	padding:0 7px;
+	font-size:12px;
+}
+
+#event-calender #days-bottom li a {
+	font-weight:bold;
+}
+
+#event-calender #tab-bottom {
+	zoom:1;
+	width:552px;
+	margin:0 auto 30px;
+}
+#event-calender #tab-bottom:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#event-calender #tab-bottom li {
+	float:left;
+}
+
+#event-calender #tab-bottom li a {
+	display:block;
+	width:90px;
+	height:27px;
+	margin-right:2px;
+	padding:6px 0 0;
+	background-image:url(http://www.poke.co.jp/common/img/eventcalender_tab_bottom_off.jpg);
+	background-repeat:no-repeat;
+	text-align:center;
+	font-weight:bold;
+	font-size:14px;
+}
+
+#event-calender #tab-bottom li.selected a {
+	background-image:url(http://www.poke.co.jp/common/img/eventcalender_tab_bottom_on.jpg);
+	color:#FFF;
+	text-decoration:none;
+}
+
+
+
+/* reservation
+----------------------------------------------*/
+#reservation {
+	width:800px;
+	margin:30px auto 0;
+}
+
+#reservation #steps {
+	zoom:1;
+	margin-right:-25px;
+}
+#reservation #steps:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#reservation #steps li {
+	float:left;
+	display:table-cell;
+	width:130px;
+	height:32px;
+	margin-right:25px;
+	padding-top:18px;
+	padding-right:10px;
+	background-image:url(http://www.poke.co.jp/common/img/reservation_step_off.gif);
+	background-repeat:no-repeat;
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+	line-height:12px;
+}
+
+#reservation #steps li.selected {
+	background-image:url(http://www.poke.co.jp/common/img/reservation_step_on.gif);
+	color:#FFF;
+}
+
+#reservation #steps li .step {
+	display:inline-block;
+}
+
+#reservation #steps li span {
+	height:50px;
+}
+
+#reservation #notice {
+	margin-top:30px;
+	padding:10px;
+	background:#EEE;
+	text-align:center;
+	font-weight:bold;
+	font-size:18px;
+}
+
+#reservation #error-list {
+	margin-top:30px;
+	padding:10px;
+	border:1px solid #C00;
+	list-style-type:disc;
+}
+
+#reservation #error-list li {
+	color:#C00;
+	font-weight:bold;
+	margin-left:1em;
+}
+
+#reservation table.entryform {
+	width:100%;
+	margin-top:30px;
+	border:1px solid #CCC;
+	border-collapse:collapse;
+}
+
+#reservation table.entryform input,
+#reservation table.entryform select {
+	background:#FFCC99;
+	border:1px solid #999;
+	font-size:14px;
+}
+
+#reservation .essential {
+	font-size:12px;
+	font-weight:bold;
+	color:#F00;
+}
+
+#reservation .x-small {
+	font-size:12px;
+}
+
+#reservation table.entryform th,
+#reservation table.entryform td {
+	border:1px solid #CCC;
+	padding:10px;
+	font-size:16px;
+}
+
+#reservation table.entryform th {
+	width:160px;
+	background:#EEE;
+}
+
+#reservation table.entryform td .price {
+	color:#F00;
+	font-weight:bold;
+}
+
+#reservation table.entryform table.inner,
+#reservation table.entryform table.inner th,
+#reservation table.entryform table.inner td {
+	border:none;
+	vertical-align:middle;
+	padding:5px;
+}
+
+#reservation table.entryform table.inner th {
+	width:170px;
+	background:#FFF;
+	font-weight:normal;
+	text-align:left;
+}
+
+#reservation .button {
+	margin:60px 0 30px;
+	text-align:center;
+}
+
+#reservation .button a {
+	display:inline;
+	padding:10px;
+	border-top:1px solid #29A8F3;
+	border-left:1px solid #29A8F3;
+	border-right:1px solid #0A6AA5;
+	border-bottom:1px solid #0A6AA5;
+	background:#0B81C6;
+	color:#FFF;
+	font-weight:bold;
+	font-size:16px;
+	text-align:left;
+	text-decoration:none;
+	line-height:38px;
+}
+
+*html #reservation .button a { /* IE6 */	
+	line-height:40px;
+}
+*:first-child+html #reservation .button a { /* IE7 */
+}
+html:not([lang*=""]) #reservation .button a { /* Firefox */
+	line-height:39px;
+}
+
+#reservation .button input {
+	padding:10px 20px;
+	border-top:1px solid #29A8F3;
+	border-left:1px solid #29A8F3;
+	border-right:1px solid #0A6AA5;
+	border-bottom:1px solid #0A6AA5;
+	background:#0B81C6; color:#FFF;
+	font-weight:bold;
+	font-size:16px;
+}
+
+
+
+/* inquiry
+----------------------------------------------*/
+#inquiry {
+	width:800px;
+	min-height:300px;
+	_height:300px;
+	margin:0 auto;
+}
+
+#inquiry #notice {
+}
+
+#inquiry #notice strong {
+	color:#0066CC;
+}
+
+#inquiry #comment {
+	margin-top:30px;
+	background-color:#EEE;
+	padding:15px;
+	text-align:center;
+	font-weight:bold;
+	font-size:16px;
+}
+
+#error-list {
+	margin-top:30px;
+	padding:10px;
+	border:1px solid #C00;
+	list-style-type:disc;
+}
+
+#error-list li {
+	color:#C00;
+	font-weight:bold;
+	margin-left:1em;
+}
+
+#inquiry table.entryform {
+	width:100%;
+	margin-top:30px;
+	border:1px solid #CCC;
+	border-collapse:collapse;
+}
+
+#inquiry table.confirm td {
+	font-weight:bold;
+}
+
+#inquiry table.entryform input,
+#inquiry table.entryform select {
+	background:#FFCC99;
+	border:1px solid #999;
+	font-size:14px;
+}
+#inquiry table.entryform textarea {
+	border:1px solid #999;
+	font-size:14px;
+}
+
+#inquiry .essential {
+	font-size:12px;
+	font-weight:bold;
+	color:#F00;
+}
+
+#inquiry .x-small {
+	font-size:12px;
+}
+
+#inquiry table.entryform th,
+#inquiry table.entryform td {
+	border:1px solid #CCC;
+	padding:10px;
+	font-size:16px;
+}
+
+#inquiry table.entryform th {
+	width:250px;
+	background:#EEE;
+}
+
+#inquiry table.entryform td .price {
+	color:#F00;
+	font-weight:bold;
+}
+
+#inquiry table.entryform table.inner,
+#inquiry table.entryform table.inner th,
+#inquiry table.entryform table.inner td {
+	border:none;
+	vertical-align:middle;
+	padding:5px;
+}
+
+#inquiry table.entryform table.inner th {
+	width:170px;
+	background:#FFF;
+	font-weight:normal;
+}
+
+#inquiry .button {
+	margin:60px 0 30px;
+	text-align:center;
+}
+
+#inquiry .button input  {
+	max-width:800px;
+	padding:10px 30px;
+	border-top:1px solid #29A8F3;
+	border-left:1px solid #29A8F3;
+	border-right:1px solid #0A6AA5;
+	border-bottom:1px solid #0A6AA5;
+	background:#0B81C6;
+	color:#FFF;
+	font-weight:bold;
+	font-size:16px;
+}
+
+
+
+/* guide-report
+----------------------------------------------*/
+#guide-report {
+	
+}
+
+#guide-report #guide-image {
+	width:900px;
+	height:195px;
+}
+
+#guide-report #guide-image-s {
+	width:900px;
+	height:105px;
+}
+
+#guide-report #from-theme {
+	float:left;
+	width:689px;
+}
+
+#guide-report #from-theme ul {
+	zoom:1;
+	margin-top:-7px;
+	margin-right:-11px;
+}
+#guide-report #from-theme ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #from-theme li {
+	float:left;
+	width:160px;
+	margin:11px 11px 0 0;
+	border:1px solid #FFBAC6;
+	padding:1px;
+}
+
+#guide-report #from-theme li dl {
+	background:#FFF5F7;
+	padding:5px;
+}
+
+#guide-report #from-theme li dt img {
+	width:150px;
+	height:70px;
+}
+
+#guide-report #from-theme li dd {
+	padding:5px 0;
+	line-height:130%;
+}
+
+#guide-report #from-theme li dd a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#guide-report #from-theme li dd p {
+	margin:5px 0 0;
+	font-size:12px;
+}
+
+#guide-report #guide-staff {
+	float:right;
+	width:180px;
+}
+
+#guide-report #guide-staff ul {
+	margin:15px 0 0;
+}
+
+#guide-report #guide-staff ul li {
+	zoom:1;
+	margin:10px 0 0;
+	padding:0 0 10px;
+	border-bottom:1px dotted #999;
+}
+#guide-report #guide-staff ul li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #guide-staff ul li .thumbnail {
+	float:left;
+	width:50px;
+	margin-right:10px;
+}
+
+#guide-report #guide-staff ul li .thumbnail img {
+	width:50px;
+	height:50px;
+}
+
+#guide-report #guide-staff ul li .name {
+	float:left;
+	width:120px;
+}
+
+#guide-report #guide-staff ul li .name a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#guide-report #from-area {
+	margin-top:50px;
+}
+
+#guide-report #from-area table {
+	border:1px solid #FFBAC6;
+	margin:15px 0 0;
+	padding:1px;
+	border-collapse:separate;
+}
+
+#guide-report #from-area table th {
+	width:120px;
+	background:#FFBAC6;
+	text-align:center;
+	font-weight:bold;
+}
+
+#guide-report #from-area table td {
+	width:758px;
+	padding:5px 0 5px 10px;
+	background:#FFF5F7;
+}
+
+#guide-report #from-area table td ul {
+	zoom:1;
+	margin-right:-15px;
+}
+
+#guide-report #from-area table td ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #from-area table td ul li {
+	float:left;
+	width:250px;
+}
+
+#guide-report #go-guidetop a,
+#guide-report #go-guidetop-bottom a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+#guide-report #go-guidetop-bottom {
+	margin-top:30px;
+	text-align:center;
+}
+
+#guide-report #report-blog {
+	zoom:1;
+	margin-top:30px;
+}
+#guide-report #report-blog:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #report-blog #left-bar {
+	float:left;
+	width:150px;
+}
+
+#guide-report #report-blog #left-bar dl dd .author {
+	font-weight:bold;
+}
+
+#guide-report #report-blog #left-bar dl dd p {
+	line-height:130%;
+	color:#999;
+}
+
+#guide-report #report-blog #left-bar .widget {
+	margin-top:30px;
+}
+
+#guide-report #report-blog #left-bar .widget .widget-header {
+	background:#DDD;
+	padding:2px 5px 0px;
+	text-align:center;
+}
+
+#guide-report #report-blog #left-bar .widget ul {
+	margin-top:10px;
+	margin-left:20px;
+	list-style-type:disc;
+}
+
+#guide-report #report-blog #left-bar .widget ul li {
+	margin-top:5px;
+	line-height:130%;
+}
+
+#guide-report #report-blog #right-bar {
+	float:right;
+	width:700px;
+}
+
+#guide-report #report-blog #article-list {
+	margin-top:-80px;
+}
+
+#guide-report #report-blog #article-list li {
+	zoom:1;
+	margin-top:80px;
+}
+#guide-report #report-blog #article-list li:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #report-blog .block {
+	zoom:1;
+}
+#guide-report #report-blog .block:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #report-blog .head {
+	zoom:1;
+	padding:0 0 5px;
+	border-bottom:1px dashed #999;
+}
+#guide-report #report-blog .head:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #report-blog .head h3 {
+	display:block;
+}
+
+#guide-report #report-blog .head .title {
+	float:left;
+	margin-top:5px;
+	font-size:18px;
+	font-weight:bold;
+}
+
+#guide-report #report-blog .head .title a {
+	color:#FF99AB;
+}
+
+#guide-report #report-blog .head .category {
+	float:right;
+}
+
+#guide-report #report-blog .head .area {
+	float:right;
+	margin-left:20px;
+}
+
+#guide-report #report-blog .date {
+	padding:10px 0;
+	font-weight:bold;
+	color:#666;
+}
+
+#guide-report #report-blog .body {
+	zoom:1;
+}
+#guide-report #report-blog .body:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #report-blog .tour-link {
+	text-align:center;
+}
+
+#guide-report #report-blog .tour-link a {
+	font-size:16px;
+	font-weight:bold;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#guide-report #report-blog .content-nav {
+	zoom:1;
+	text-align:center;
+}
+#guide-report #report-blog .content-nav:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #report-blog .content-nav ul {
+	margin:70px auto 0;
+}
+
+#guide-report #report-blog .content-nav ul li {
+	display:inline;
+	color:#999;
+}
+
+#guide-report .category-navi {
+	zoom:1;
+	width:880px;
+	_width:896px;
+	margin:30px 0 0;
+	padding:0 10px;
+	_padding:0 2px;
+	line-height:16px;
+	text-align:center;
+}
+#guide-report .category-navi:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report .category-navi li {
+	float:left;
+	display:inline;
+	margin-right:3px;
+	white-space:nowrap;
+	_width:60px;
+	text-align:center;
+}
+
+#guide-report .category-navi li a {
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	color:#333;
+	font-size:12px;
+}
+
+#guide-report .category-navi li a span {
+	display:block;
+	background-color: transparent;
+	background-repeat:no-repeat;
+	background-position:right top;
+	height:18px;
+	padding:5px 6px 0 7px;
+}
+
+#guide-report .category-navi li a.selected {
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	color:#FFF;
+}
+
+#guide-report .category-navi li a.selected span {
+	background-repeat:no-repeat;
+	background-position:right top;
+	height:18px;
+	padding:5px 6px 0 7px;
+}
+
+#guide-report #category-navi-top {
+	border-bottom:3px solid #FF4767;
+}
+#guide-report #category-navi-top a {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_off_left_top.jpg);
+}
+#guide-report #category-navi-top a span {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_off_right_top.jpg);
+}
+#guide-report #category-navi-top a.selected {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_on_left_top.jpg);
+}
+#guide-report #category-navi-top a.selected span {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_on_right_top.jpg);
+}
+
+#guide-report #category-navi-bottom {
+	border-top:3px solid #FF4767;
+}
+#guide-report #category-navi-bottom a {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_off_left_bottom.jpg);
+}
+#guide-report #category-navi-bottom a span {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_off_right_bottom.jpg);
+}
+#guide-report #category-navi-bottom a.selected {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_on_left_bottom.jpg);
+}
+#guide-report #category-navi-bottom a.selected span {
+	background-image:url(http://www.poke.co.jp/common/img/guide_category_tab_on_right_bottom.jpg);
+}
+
+#guide-report #category-result-list {
+	margin-top:10px;
+}
+
+#guide-report #category-result-list li {
+	margin-top:30px;
+}
+
+#guide-report #category-result-list li dl {
+	zoom:1;
+	border:1px solid #CCC;
+	padding:1px;
+}
+#guide-report #category-result-list li dl:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #category-result-list li dl dt {
+	float:left;
+	width:93px;
+	height:70px;
+	margin-right:1px;
+}
+
+#guide-report #category-result-list li dl dt img {
+	width:93px;
+	height:70px;
+}
+
+#guide-report #category-result-list li dl dd {
+	float:left;
+	width:802px;
+}
+
+#guide-report #category-result-list li dl dd .title {
+	padding:4px 5px 5px;
+	background:#EEE;
+	font-size:18px;
+	font-weight:bold;
+}
+
+#guide-report #category-result-list li dl dd .title a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#guide-report #category-result-list li dl dd .commentary {
+	zoom:1;
+	padding:10px;
+}
+#guide-report #category-result-list li dl dd .commentary:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #category-result-list li dl dd .commentary .count {
+	float:left;
+}
+
+#guide-report #category-result-list li dl dd .commentary .area {
+	float:right;
+	margin-left:20px;
+}
+
+#guide-report #category-result-list li dl dd .commentary .category {
+	float:right;
+}
+
+#guide-report #category-detail-result-list {
+	margin-top:50px;
+}
+
+#guide-report #category-detail-result-list li {
+	margin-top:50px;
+}
+
+#guide-report #category-detail-result-list li dl dt {
+	zoom:1;
+	padding:5px 10px;
+	border:1px solid #FFBAC6;
+	background:#FFF5F7;
+}
+#guide-report #category-detail-result-list li dl dt:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #category-detail-result-list li dl dt .title {
+	float:left;
+}
+
+#guide-report #category-detail-result-list li dl dt .title a {
+	font-size:16px;
+	font-weight:bold;
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#guide-report #category-detail-result-list li dl dt .name {
+	float:right;
+}
+
+#guide-report #category-detail-result-list li dl dd {
+	zoom:1;
+	margin-top:10px;
+}
+#guide-report #category-detail-result-list li dl dd:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#guide-report #category-detail-result-list li dl dd .thumail {
+	float:left;
+	margin-right:10px;
+}
+
+#guide-report #category-detail-result-list li dl dd .thumail img {
+	border:1px solid #FFBAC6;
+	padding:2px;
+}
+
+#guide-report #category-detail-result-list li dl dd .commentary {
+	float:left;
+}
+
+#guide-report #category-detail-result-list li dl dd .commentary p {
+	line-height:130%;
+}
+
+#guide-report #category-detail-result-list li dl dd .commentary p a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#guide-report #category-detail-result-list li dl dd .commentary .category {
+	float:right;
+}
+
+#guide-report #category-detail-result-list li dl dd .commentary .area {
+	float:right;
+	margin-left:20px;
+}
+
+
+
+/* sitemap
+----------------------------------------------*/
+#sitemap {
+	
+}
+
+#sitemap a {
+	background-image:url(http://www.poke.co.jp/common/img/ankerpointer.gif);
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:18px;
+}
+
+#sitemap #page-list {
+	width:760px;
+	margin:20px auto 0;
+}
+
+/*
+#sitemap ul {
+	padding:10px 0 0;
+	background-image:url(http://www.poke.co.jp/common/img/bg_sitemap_length.gif);
+	background-repeat:repeat-y;
+	background-position:0 bottom;
+	line-height:150%;
+}
+
+#sitemap ul li {
+	margin:1px 0 0 5px;
+	padding:0 0 0 125px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_sitemap_breadth.gif);
+	background-repeat:no-repeat;
+	background-position:0 6px;
+}
+
+#sitemap ul li.last {
+	background-image:url(http://www.poke.co.jp/common/img/bg_sitemap_breadth_last.gif);
+	background-position:0 6px;
+}
+
+#sitemap ul li.child {
+	padding-bottom:1em;
+	background:none;
+}
+
+#sitemap ul li.child-last {
+	background:#FFF;
+	margin-top:0px;
+	padding-top:10px;
+	padding-bottom:1em;
+}
+
+*html #sitemap ul li.child ul,
+*html #sitemap ul li.child-last ul {
+	margin:-14px 0 0 0;
+}
+*:first-child+html #sitemap ul li.child ul,
+*:first-child+html #sitemap ul li.child-last ul {
+	margin:-14px 0 0 0;
+}
+*/
+
+#sitemap ul {
+	padding:10px 0 0;
+	background-image:url(http://www.poke.co.jp/common/img/bg_sitemap_length.gif);
+	background-repeat:repeat-y;
+	background-position:0 bottom;
+	line-height:150%;
+}
+
+#sitemap ul li {
+	margin:0 0 0 5px;
+	padding:0 0 0 125px;
+	background-image:url(http://www.poke.co.jp/common/img/bg_sitemap_breadth.gif);
+	background-repeat:no-repeat;
+	background-position:0 6px;
+}
+
+#sitemap ul li.last {
+	background-image:url(http://www.poke.co.jp/common/img/bg_sitemap_breadth_last.gif);
+}
+
+#sitemap ul li.child {
+	background:none;
+}
+
+#sitemap ul li.child-last {
+	background:#FFF;
+}
+
+*html #sitemap ul li.child ul,
+*html #sitemap ul li.child-last ul {
+	margin:-14px 0 0 0;
+}
+*:first-child+html #sitemap ul li.child ul,
+*:first-child+html #sitemap ul li.child-last ul {
+	margin:-14px 0 0 0;
+}
+
+
+
+
+/* footer
+----------------------------------------------*/
+#footer {
+	width:900px;
+	margin:40px auto;
+}
+
+#footer #sitelink {
+	padding:10px 0;
+	border-top:1px dotted #333;
+	border-bottom:1px dotted #333;
+	text-align:center;
+}
+
+#footer #sitelink dt {
+}
+
+#footer #sitelink dd {
+}
+
+#footer #sitelink dd ul {
+	text-align:center;
+}
+
+#footer #sitelink dd ul li {
+	display:inline;
+	font-size:10px;
+}
+
+
+#footer #pageup {
+	height:25px;
+	margin-top:30px;
+	text-align:right;
+	background-image:url(http://www.poke.co.jp/common/img/bg_pageup.gif);
+	background-repeat:no-repeat;
+	background-position:left bottom;
+}
+
+#footer #common {
+	zoom:1;
+	margin-top:10px;
+}
+#footer #common:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#footer #common #copyright {
+	float:left;
+	font-size:12px;
+}
+
+#footer #common ul {
+	zoom:1;
+	float:right;	
+}
+#footer #common ul:after {
+	content:".";
+	display:block;
+	height:0px;
+	clear:both;
+	visibility:hidden;
+}
+
+#footer #common ul li {
+	float:left;
+	font-size:12px;
+}
+
+
+
+/*------------------------------------------------
+		2009.08.14 Higasa Yusuke
+------------------------------------------------*/
+.txt_center { text-align:center; }
+
+.space_top_ll { margin-top:30px; }
+
+#lead_txt { margin-top:30px; padding:10px; background:#EEE; }
+#lead_txt p { font-size:14px; margin:0px; padding:0px; }
+#lead_txt .txt_red { color:#FF0000; }
+
+#certify_table_box { margin:50px 0px 30px 190px; }
+#certify_table_box table { margin-bottom:5px; border-collapse:collapse; border:1px solid #dadada; }
+#certify_table_box table th { width:160px; border-collapse:collapse; text-align:left; font-weight:normal; vertical-align:top; padding:10px 0px; font-size:12px; line-height:160%; background-color:#ffdf7c; border:none; }
+#certify_table_box table td {  border-collapse:collapse; text-align:left; font-weight:normal; vertical-align:top; padding:10px 0px; font-size:12px; line-height:160%; border:none; }
+#certify_table_box table strong { font-size:14px; }
+#certify_table_box table span.txt_field { display:block; margin:0px 10px; }
+#certify_table_box table input { background:#ffdddd; border:1px solid #999; font-size:14px; }
+#certify_table_box table span.txt_red { color:#dc4c2a; }
+
+#certify_table_box li { text-indent:-1em; margin-left:1em; }
+
+.com_btn { text-align:center; }
+.com_btn input  { padding:10px 20px; border-top:1px solid #29A8F3; border-left:1px solid #29A8F3; border-right:1px solid #0A6AA5; border-bottom:1px solid #0A6AA5; background:#0B81C6; color:#FFF; font-weight:bold; font-size:16px; }
+
+#warning_txt { color:#cf2828; font-weight:bold; text-align:center; font-size:18px; margin:20px 0px 0px; padding:0px; line-height:160%; }
+#warning_txt strong { color:#333; font-size:12px; }
+#warning_txt span { color:#a6a6a6; font-size:12px; font-weight:normal; }
+
+#warning_list { margin-left:150px; }
+#warning_list li { text-indent:-1em; margin-left:1em; color:#d2008c; }
+
+#reserve_txt_table { border-collapse:collapse; width:100%; background-color:#999; margin-top:20px; }
+#reserve_txt_table td { border-collapse:collapse; padding:10px; color:#fff; font-weight:bold; font-size:14px; } 
+#reserve_txt_table strong { font-size:20px; }
+#reserve_txt_table td#reserve_num { text-align:left; }
+#reserve_txt_table td#reserve_ymd { text-align:right; }
+
+
+
+
+
+
+

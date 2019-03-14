@@ -1,0 +1,235 @@
+<?php
+require_once("./_data/index.php");
+
+$cookie_name = "sakura2016en";
+
+if(isset($_GET['afi'])){
+	
+    #アフィリエイトIDがクッキー値と異なる場合、クッキーを削除して値変更
+	#$expire = time() + 60 * 60 * 24 * 30 * 1;#1ヶ月
+    $expire = 0;
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!-- InstanceBegin template="/Templates/second-noside.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<meta name="robots" content="noindex,nofollow" />
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<meta name="copyright" content="" />
+<title>2016 Tokyo Cherry Blossom Tours</title>
+<link href="/English/css/base.css" rel="stylesheet" type="text/css" />
+<link href="/English/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-sakura.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+img {
+	border-style:none;
+	vertical-align: text-bottom;
+	}
+-->
+</style>
+<!-- InstanceEndEditable -->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once "userfile_tag_after_startbody.inc"; ?>
+<div id="wrapper">
+  <!-- ##### HEADER ##### -->
+  <?php require_once 'English/header_onecolumn.inc'; ?>
+  <!-- ##### /HEADER ##### -->
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="body2Column">
+    <div class="floatContainer">
+	      <!-- +##### CONTENTS ##### -->
+      <!--<div class="floatRight" id="mainField"> -->
+      <div>
+	<!-- +##### NAVI ##### -->
+	<?php require_once 'English/navi_onecolumn2.inc'; ?>
+	<!-- +##### /NAVI ##### -->
+        <!-- ##### BREADCRUMBS ##### -->
+        <div class="topicPath floatContainer">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <!-- InstanceBeginEditable name="breadcrumbs" -->
+            <li>2016 Tokyo Cherry Blossom Tours</li>
+            <!-- InstanceEndEditable -->
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### -->
+       <!-- ##### MAIN ##### -->
+       <!-- InstanceBeginEditable name="main" -->
+<!--<h4 class="ttl" id="event_tour_list">Specials</h4>-->
+
+<div>
+<!-- keyimage -->
+<img src="img/keyimage.jpg" width="900" alt="2016 Tokyo Cherry Blossom Tours">
+
+<div class="sakura_entop">
+The season of cherry blossom is the most beautiful time in Japan. A lot of tourists can enjoy the season. We would like you to enjoy together, so we select recommendations for you. First please check our cherry blossom tours, and make a reservation on the Internet.
+</div>
+
+<!-- end/tab-area -->
+
+
+<!-- recommend-area -->
+<div style="width:900px;">
+
+<div class="sakura_recbar">Cherry Blossom Tours in Tokyo</div>
+
+<?php
+$cnt = 0;
+foreach($data as $val):
+$cnt++;
+?>
+
+<div class="sakura_enFrm">
+    <div class="sakura_enFrm_left">
+    <div class="sakura_photo_outer" align="center">
+    
+    <div style="overflow:hidden;width:278px;">
+    <?php
+    if(file_exists("./img/eventid_".$val[0].".jpg")):
+    ?>
+    <img src="./img/eventid_<?php echo $val[0];?>.jpg" height="194" class="sakura_photo">
+    <?php else: ?>
+    <img src="http://img.poke.co.jp/media/transfer/img/eventid_<?php echo $val[0];?>/eventid_<?php echo $val[0];?>_pic1.jpg" height="186"  class="sakura_photo">
+    <?php endif; ?>
+    </div>
+    
+    </div>
+    </div>
+    <div class="sakura_enFrm_right">
+    
+    <div class="marb20">
+    <?php if($afi == ""): ?>
+    <a href="/English/book/calendar.php?eventid=<?php echo $val[0];?>" class="sakura_enLink" style="color:#0070C0;line-height:1.2;"><?php echo $val[1];?></a>
+    <?php else: ?>
+    <a href="/English/book/calendar.php?eventid=<?php echo $val[0];?>&asid=<?php echo $afi; ?>" class="sakura_enLink" style="color:#0070C0;line-height:1.2;"><?php echo $val[1];?></a>
+    <?php endif; ?>
+    </div>
+    
+    <table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+    <td width="87" class="sakura_enBGexp">Price</td>
+    <td class="sakura_enExp"><font class="event-price"><?php echo $val[3]; ?></font></td>
+    </tr>
+    <tr>
+    <td width="87" class="sakura_enBGexp">Dates</td>
+    <td class="sakura_enExp"><?php echo $val[2];?></td>
+    </tr>
+  <tr>
+    <td width="87" class="sakura_enBGexp">Highlight</td>
+    <td class="sakura_enExp"><?php echo $val[4];?></td>
+    </tr>
+ 
+</table>
+    
+    </div>
+    <div class="clearfix"></div>
+    
+    <?php if($afi == ""): ?>
+    <a href="/English/book/calendar.php?eventid=<?php echo $val[0];?>" class="sakura_btn" style="color:#FFF;text-decoration:none;">Details &amp; Reservation</a>
+    <?php else: ?>
+    <a href="/English/book/calendar.php?eventid=<?php echo $val[0];?>&asid=<?php echo $afi; ?>" class="sakura_btn" style="color:#FFF;text-decoration:none;">Details &amp; Reservation</a>
+    <?php endif; ?>
+    
+    <div class="marb10"></div>
+    
+</div>
+
+
+
+<?php
+endforeach;
+?>
+
+</div>
+
+<br><br><br>
+<!-- /end recommend-area -->
+</DIV>
+</div>
+
+<!-- InstanceEndEditable -->
+        <div class="totop" style="clear:both;">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  
+</div>
+
+
+<!-- BLADE -->
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+<!-- end/BLADE -->
+
+
+<!-- 20121031追加 -->
+<!-- Google Code for &#24180;&#26411;&#24180;&#22987;&#29305;&#38598; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_label = "PTROCNbz1gQQupD43gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1004406842/?value=0&amp;label=PTROCNbz1gQQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- end/20121031追加 -->
+
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+  <!-- ##### FOOTER #####  -->
+  <?php require_once 'English/footer.inc'; ?>
+  <!-- ##### /FOOTER ##### -->
+</body>
+<!-- InstanceEnd -->
+</html>

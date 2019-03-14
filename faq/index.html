@@ -1,0 +1,217 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+require_once("./_data/index.php");
+#$suffix = "index_renew.html";
+$suffix = "";
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="Description" content="<?php echo $description; ?>" />
+<meta name="Keywords" content="<?php echo $keywords; ?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+
+.c_ff7c80{color:#FF7C80;}
+.c_c00000{color:#C00000;}
+.c_595959{color:#595959;}
+.c_99cc01{color:#99CC01;}
+
+
+.bar{
+width:100%;
+	background:#ECECEC;
+	color:#404040;
+	font-size:20px;
+	font-weight:bold;
+	-moz-box-shadow: 0px 2px 0px #A6A6A6;
+	-webkit-box-shadow: 0px 2px 0px #A6A6A6;
+	-o-box-shadow: 0px 2px 0px #A6A6A6;
+	-ms-box-shadow: 0px 2px 0px #A6A6A6;
+	box-shadow: 0px 2px 0px #A6A6A6;
+}
+.bar p{
+	padding:15px 15px 12px 15px;
+}
+
+
+
+.tokutyo_wrap{width:860px;margin:0 auto;line-height:1.4;color:#595959;}
+
+
+.mb30{margin-bottom:30px;}
+.mb50{margin-bottom:50px;}
+.mb100{margin-bottom:100px;line-height:1.6;}
+
+.faq{
+	border:1px solid #D9D9D9;
+	background:#FFF;	
+	margin-bottom:10px;
+}
+.faq_title{
+	font-size:16px;
+	font-weight:bold;
+	display:block;
+	margin:12px;
+}
+.faq_body{
+	font-size:14px;
+	margin:10px 18px 12px 18px;
+}
+ul#faq_navi{
+	width:860px;
+	margin:0 auto 20px auto;
+	position:relative;
+	overflow:hidden;
+}
+
+ul#faq_navi li{
+	float:left;
+	width:206px;
+	margin-right:12px;
+}
+
+
+ul#faq_navi li:nth-child(4n){
+	margin-right:0;
+}
+a.faq_link{
+	display:block;
+	text-decoration:none;
+	font-size:14px;
+	text-align:center;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+
+	background:#CCECFF;
+	color:#404040;
+	
+	padding:15px 8px;
+	margin-bottom:10px;
+	
+	-moz-box-shadow: 0px 2px 0px #a6a6a6;
+	-webkit-box-shadow: 0px 2px 0px #a6a6a6;
+	-o-box-shadow: 0px 2px 0px #a6a6a6;
+	-ms-box-shadow: 0px 2px 0px #a6a6a6;
+	
+	font-weight:bold;
+}
+
+a:hover.faq_link{
+	background:#3366CC;
+	color:#FFF;
+	font-weight:bold;
+}
+
+a.faq_link_a{
+	display:block;
+	text-decoration:none;
+	font-size:14px;
+	text-align:center;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+
+	padding:15px 8px;
+	margin-bottom:10px;
+	
+	-moz-box-shadow: 0px 2px 0px #a6a6a6;
+	-webkit-box-shadow: 0px 2px 0px #a6a6a6;
+	-o-box-shadow: 0px 2px 0px #a6a6a6;
+	-ms-box-shadow: 0px 2px 0px #a6a6a6;
+
+	background:#3366CC;
+	color:#FFF;
+	font-weight:bold;
+}
+.lead{font-size:14px;margin-bottom:20px;}
+</style>
+</head>
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li><a href="/faq/">よくある質問</a></li>
+            <li><?php echo $m_data[$p][0]; ?></li>
+          </ul>
+          <section>
+          
+       
+       <h2 class="bar"><p>よくある質問</p></h2>
+<br>
+
+<div class="tokutyo_wrap">
+
+<div class="lead">
+ポケカルに寄せられるよくある質問を質問のジャンル別で参照することができます。お問い合わせの前に一度ご確認頂けると幸いです。
+
+</div>
+
+<ul id="faq_navi">
+<?php foreach($m_data as $key => $val): ?>
+<li><a href="./<?php echo $suffix; ?><?php if($key != "faq") echo "?p={$key}";?>" class="faq_link<?php if($key == $p) echo "_a";?>"><?php echo $val[0]; ?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<?php foreach($data[$p] as $val): ?>
+<div class="faq">
+<div class="faq_title">Q.<?php echo $val[1]; ?></div>
+<div class="faq_body"><?php echo str_replace("___END___","</a>",str_replace("___START___","<a href='{$val[3]}'>",$val[2])) ; ?></div>
+</div>
+<?php endforeach; ?>
+
+
+
+    </div>   
+       
+
+
+   
+       </div>
+
+      </div>
+    </div>
+  </div>
+    <!-- ##### /BODY ##### -->
+</section>
+        </div>
+
+	</div>
+      </div>
+      
+      <div class="mb40"></div>
+      
+      <?php include_once("include/2018/footer.html" ); ?>

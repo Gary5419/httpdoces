@@ -1,0 +1,312 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<?php
+session_start();
+
+$title = "団体旅行を幹事さんに代わって企画・手配 | ポケカル";
+$description = "団体旅行ならポケカルにお任せ。社員旅行やお友達・ご家族・町内会・サークルのグループ旅行など、幹事さんの予算と行きたい場所を考慮し、オーダーメードの日帰りツアーを企画いたします。";
+$keywords = "団体旅行,グループ旅行,社員旅行,町内会,旅行,ポケカル";
+define("H1TXT","団体旅行を幹事さんに代わって企画・手配します | ポケカル");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<meta name="format-detection" content="telephone=no" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+function checkSubmit(){
+  
+  var errTxt = "";
+
+  if($("#sei").val() == "") errTxt += "姓は必須項目です\n";
+  if($("#mei").val() == "") errTxt += "名は必須項目です\n";
+  if($("#tel").val() == "") errTxt += "電話番号は必須項目です\n";
+  if($("#email").val() == "") errTxt += "メールアドレスは必須項目です\n";
+  if($("#people").val() == "") errTxt += "ご利用人数は必須項目です\n";
+  if($("#budget").val() == "")  errTxt += "一人あたりのご予算は必須項目です\n";  
+  if($("#object").val() == "") errTxt += "ご旅行の目的は必須項目です\n";
+
+  if(errTxt.length > 0){
+    alert(errTxt);
+    return false;
+  }else{
+	document.entry.submit();
+	return false;
+  }
+
+}
+</script>
+<style>
+
+
+
+/*.clearfix{clear:both;height:0;line-height:0;}*/
+.marb5{margin-bottom:5px;}
+.marb10{margin-bottom:10px;}
+.marb20{margin-bottom:20px;}
+.marb40{margin-bottom:40px;}
+
+
+
+
+
+
+.caption{
+	margin:0px auto 10px auto;
+	font-size:12px;
+	line-height:1.5;
+	width:96%;
+	
+	padding:7px 10px;
+	
+}
+
+.bar{
+	background:#ECECEC;
+	border-bottom:2px solid #A6A6A6;
+	color:#404040;
+	
+	font-weight:bold;
+	padding:8px 7px;
+	margin-bottom:20px;
+}
+
+.separator{
+	border-bottom:8px solid #A6A6A6;
+	margin-bottom:10px;
+}
+
+.g01{
+	width:96%;
+	margin:0 auto;
+	font-size:12px;
+	line-height:1.5;
+}
+.v01{
+	background:#FC7000;
+	color:#FFF;
+	font-size:14px;
+	box-sizing:border-box;
+	padding:5px 8px;
+	width:100%;
+	line-height:1.4;
+}
+.v02{
+	font-size:12px;
+	line-height:1.5;
+	
+}
+.v03{
+	font-size:10px;
+	color:#9B7248;
+	
+}
+.oh01{
+	background:#F2F2F2;
+	color:#3F3F3F;
+	text-align:center;
+	padding:7px;
+	border:1px solid #ECECEC;
+	box-sizing:border-box;
+	font-size:14px;
+}
+.o01{
+	background:#92D050;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+	box-sizing:border-box;
+}
+.o02{
+	background:#FC6F00;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+	box-sizing:border-box;
+}
+
+#contact{
+	width:96%;
+	margin:0 auto;
+	line-height:1.6;
+	font-size:12px;
+	box-sizing:border-box;
+}
+#contact input[type="text"]{
+	border:1px solid #ECECEC;
+	padding:8px;
+	font-size:14px;
+}
+#contact select{
+/*	-webkit-appearance:none;*/
+	font-size:12px;
+	padding:7px;
+}
+#contact textarea{
+	border:1px solid #ECECEC;
+	padding:8px;
+	font-size:12px;
+	width:95%;
+	margin:0 auto;
+	box-sizing:border-box;
+}
+/*#contact input[type="submit"]{*/
+a.btn{
+	-webkit-appearance:none;
+	display:block;
+	color:#FFF;
+	border:none;
+	background:#FC6F00;
+	font-size:20px;
+	width:100%;
+	margin:0 auto;
+	box-shadow:0px 4px 0px #D05900;
+	text-decoration:none;
+	text-align:center;
+}
+.att{
+	font-weight:normal;
+	font-style:normal;
+	color:#990000;
+}
+.bar2{
+	color:#93663B;
+	padding:5px 4px;
+	border-bottom:1px solid #93663B;
+	font-size:14px;	
+}
+</style>
+
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li><a href="http://www.poke.co.jp/sp/group/">団体旅行予約</a></li>
+          <li>メールフォーム</li>
+        </ul>
+        <section>
+
+<div class="bar">団体旅行予約 問い合わせメールフォーム</div>
+
+<div class="caption">
+下記お問い合わせフォームに、必要事項をご記入の上お問い合わせ下さい。メールを受領後、担当者より、平日3営業日以内にご連絡をさせて頂きます。お急ぎの手配の場合は、お電話にて、ポケカルお客様センター(<a href="tel:03-5652-7072">03-5652-7072</a>)までご連絡ください。
+</div>
+
+
+<div id="contact">
+<form name="entry" action="contact_confirm.html" method="post">
+お名前 <span class="att">※</span>
+<div class="marb5"></div>
+<input type="text" id="sei" name="sei" value="<?php echo $_SESSION['sei']; ?>" placeholder="姓" style="width:130px;">&nbsp;<input type="text" id="mei" name="mei" value="<?php echo $_SESSION['mei']; ?>" placeholder="名" style="width:130px;"><br>
+
+<div class="marb20"></div>
+
+電話番号 <span class="att">※</span>
+<div class="marb5"></div>
+<input type="text" id="tel" name="tel" value="<?php echo $_SESSION['tel']; ?>" placeholder="ハイフン抜きでご入力ください" style="width:92%;"><br>
+
+<div class="marb20"></div>
+
+メールアドレス <span class="att">※</span>
+<div class="marb5"></div>
+<input type="text" id="email" name="email" value="<?php echo $_SESSION['email']; ?>" placeholder="お間違えのないようご入力ください" style="width:95%;"><br>
+
+<div class="marb20"></div>
+
+<div class="bar2">団体旅行に関して詳細をお聞かせください</div>
+
+<div class="marb20"></div>
+
+ご利用人数 <span class="att">※</span>
+<div class="marb5"></div>
+<input type="text" id="people" name="people" value="<?php echo $_SESSION['people']; ?>" placeholder="数字のみご入力ください" style="width:160px;">&nbsp;人
+
+<div class="marb20"></div>
+
+一人あたりのご予算 <span class="att">※</span>
+<div class="marb5"></div>
+<input type="text" id="budget" name="budget" value="<?php echo $_SESSION['budget']; ?>" placeholder="記入例) 8000">&nbsp;円/人
+
+<div class="marb20"></div>
+
+ご旅行の目的 <span class="att">※</span>
+<div class="marb5"></div>
+<select id="object" name="object" style="width:100%;">
+<option value=""<?php if($_SESSION['object'] == "") echo " selected='selected'";?>>-</option>
+<option value="趣味仲間の旅行"<?php if($_SESSION['object'] == "趣味仲間の旅行") echo " selected='selected'";?>>趣味仲間の旅行</option>
+<option value="周年行事"<?php if($_SESSION['object'] == "周年行事") echo " selected='selected'";?>>周年行事</option>
+<option value="社員旅行"<?php if($_SESSION['object'] == "社員旅行") echo " selected='selected'";?>>社員旅行</option>
+<option value="町内会の旅行"<?php if($_SESSION['object'] == "町内会の旅行") echo " selected='selected'";?>>町内会の旅行</option>
+<option value="サークルの旅行"<?php if($_SESSION['object'] == "サークルの旅行") echo " selected='selected'";?>>サークルの旅行</option>
+<option value="宴会"<?php if($_SESSION['object'] == "宴会") echo " selected='selected'";?>>宴会</option>
+<option value="その他"<?php if($_SESSION['object'] == "その他") echo " selected='selected'";?>>その他</option>
+</select>
+
+<div class="marb20"></div>
+
+
+ポケカルのツアーをそのまま団体旅行でご利用したい場合は当該のツアー名
+<div class="marb5"></div>
+<textarea name="tour" rows="5" placeholder="記入例) 人気の桔梗信玄餅つめ放題体験＆桔梗屋工場見学と季節の味覚狩り＆食べ放題の食い倒れバスツアー"><?php echo $_SESSION['sei']; ?></textarea>
+
+<div class="marb20"></div>
+
+<a href="#" onclick="return checkSubmit();return false;" class="btn">送信する</a>
+
+<div class="marb20"></div>
+
+<div style="padding:0 30px;">弊社「個人情報の取扱い」の同意いただいた上で、送信するボタンを押してください</div>
+
+</form>
+
+</div>
+
+<div class="marb40"></div>
+
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

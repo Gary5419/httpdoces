@@ -1,0 +1,451 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+require_once("./_data/index.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="ポケカル情報誌の最新号とバックナンバーのご紹介" />
+<meta name="keywords" content="ポケカル,情報誌,最新号,バックナンバー" />
+<meta name="copyright" content="" />
+<title>ポケカル情報誌の紹介 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<style>
+ul.grp{
+width:860px;
+margin:0 auto;
+border-bottom:1px solid #DFDFDF;
+position:relative;
+overflow:hidden;
+}
+ul.grp li{
+	float:left;
+}
+ul.grp li:nth-child(2n+1){
+	width:35px;
+	padding:0;
+	margin:0 0 -4px 0;
+}
+ul.grp li:nth-child(2n){
+	padding:0px 0px 0px 15px;
+	box-sizing:border-box;
+	width:825px;
+	line-height:1.7;
+	font-size:18px;
+	font-weight:bold;
+	color:#FC6F00;
+}
+
+ul.grp2{
+width:910px;
+margin:0 auto 20px auto;
+border:1px solid #D9D9D9;
+position:relative;
+overflow:hidden;
+}
+ul.grp2 li{
+	float:left;
+}
+ul.grp2 li:nth-child(2n+1){
+	width:150px;
+	padding:20px 0 0 20px;
+	box-sizing:border-box;
+}
+ul.grp2 li:nth-child(2n){
+	padding:15px 15px 0 15px;
+	box-sizing:border-box;
+	width:760px;
+	line-height:1.7;
+}
+.grp3{
+	width:910px;
+	margin:0 auto 50px auto;
+}
+
+.grp4{
+	width:350px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align:center;
+	margin:0 auto;
+	border:1px solid #DFDFDF;
+	position:relative;
+	overflow:hidden;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+	
+.grp5{
+	width: 350px;
+	text-align:center;
+	margin:0 auto;
+	font-size:14px;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+	
+.grp6{
+	width:900px;
+	background:#F2F2F2;
+	color:#575757;
+	margin:0 auto;
+}
+	
+.obi{
+	width:900px;
+	background:#F2F2F2;
+	color:#575757;
+	padding-bottom: 30px;
+	margin:0 auto;
+}
+	
+.grp7{
+	width="850";
+	margin-left: auto;
+ 	margin-right: auto;
+}
+	
+.grp8{
+	width:150px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background:#FFF;
+	text-align:center;
+	margin:0 auto;
+	border:1px solid #DFDFDF;
+	position:relative;
+	overflow:hidden;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}	
+	
+.txtGrp2{
+	text-align:center;
+	vertical-align:middle;
+	margin:0 auto;
+	font-size:12px;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}	
+
+.title01{
+	color:#3399FF;
+	font-size:20px;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:30px;
+	font-weight:bold;
+}
+.intro{
+	font-size:16px;
+	line-height:1.5;
+	margin-left:10px;
+}
+.v01{
+	background:#FC7000;
+	color:#FFF;
+	font-size:16px;
+	box-sizing:border-box;
+	padding:5px 15px;
+	width:100%;
+}
+.v02{
+	font-size:16px;
+	line-height:1.5;
+	margin:15px 20px 10px 30px;
+}
+.v03{
+	font-size:14px;
+	color:#9B7248;
+	margin:0 20px 10px 30px;
+}
+.oh01{
+	background:#F2F2F2;
+	color:#575757;
+	text-align:center;
+	padding:7px;
+	border:1px solid #ECECEC;
+	font-size:16px;
+}
+.o01{
+	background:#92D050;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+}
+.o02{
+	background:#FC6F00;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+}
+.sep01{margin-bottom:80px;}
+a.link{display:block;color:#FFF;text-decoration:none;}
+	
+.bar1{
+	border-left:10px solid #FC6F00;
+	padding:10px 10px 12px 17px;
+	border-bottom:1px solid #DFDFDF;
+	font-size:18px;
+	font-weight:bold;
+	margin:20px 0 auto -10px;
+	width:100%;
+	box-sizing:border-box;
+}
+	
+.bar1_caption{
+	width:904px;
+	margin:0px auto 20px auto;
+	line-height:1.6;
+	font-size:16px;
+	
+	
+	padding:10px  10px;
+	box-sizing:border-box;
+}
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>ポケカル情報誌の紹介</li>
+          </ul>
+          <section>
+       <img src="img/keyimage.jpg" width="100%">
+       <div class="mb20"></div>
+<div class="intro">
+ポケカル情報誌は、ほぼ毎月発刊している「日帰り旅行専門」の情報誌です。ご希望の皆様に無料でお届けしております。毎号、四季折々の個性的な日帰りツアーを厳選掲載しており、本誌を通して、日帰り旅をもっと身近に感じ、実際の旅行をお楽しみいただければ幸いです。情報誌の無料購読は、電話、インターネットで募集しております。ぜひお気軽にお申込みください。
+</div>
+
+<div class="mb20"></div>
+
+<table class="grp3">
+<tr>
+<td width="440">
+	<table style="width:100%;">
+    <tr>
+    <td class="oh01">電話でのお申込み</td>
+    </tr>
+    <tr>
+    <td class="o01">
+    <div style="margin-top:20px;"><img src="img/icon_sp.png" height="50"></div>
+    <div style="font-size:38px;">03-5652-7072</div>
+    
+    <div style="font-size:18px;">ポケカルお客様センター</div>
+    
+    <div style="font-size:16px;margin-bottom:10px;">【営業時間】9:00〜18:00(年末年始除き年中無休)</div>
+
+    </td>
+    </tr>
+    </table>
+</td>
+<td></td>
+<td width="440">
+	<table style="width:100%;">
+    <tr>
+    <td class="oh01">インターネットでお申込み</td>
+    </tr>
+    <tr>
+    <td class="o02">
+    <a href="https://www.poke.co.jp/userfile/DM/request.html" class="link">
+    <div style="margin-top:20px;"><img src="img/icon_pc.png" height="50"></div>
+    <div style="font-size:38px;">お問合せフォーム</div>
+    
+    <div style="font-size:18px;">24時間受付</div>
+    
+    <div style="font-size:14px;margin-bottom:10px;">メール受領後、順次発送の手配をさせいただきます</div>
+</a>
+    </td>
+    </tr>
+    </table>
+</td>
+</tr>
+
+
+</table>
+
+
+<div class="bar1">情報誌ポケカルの特徴</div>
+<div class="bar1_caption">毎号、内容盛りだくさんでお届けしております！情報誌の定期送付はいつでも停止することができますので、お試し感覚で、まずは1~2号だけでも、無料購読ください</div>
+
+<ul class="grp">
+<li><img src="img/icon_book.png" width="100%"></li>
+<li>送料無料で、毎号、ご自宅へお届け！</li>
+</ul>
+
+<div class="mb5"></div>
+
+<ul class="grp">
+<li><img src="img/icon_book.png" width="100%"></li>
+<li>総ページ数は30ページ前後。軽くて・取り扱いやすく・すぐ読める、お手軽さ！</li>
+</ul>
+
+<div class="mb5"></div>
+
+<ul class="grp">
+<li><img src="img/icon_book.png" width="100%"></li>
+<li>春の桜、夏の花火、秋の紅葉、四季折々を楽しむ日帰りツアーを厳選！</li>
+</ul>
+
+<div class="mb5"></div>
+
+<ul class="grp">
+<li><img src="img/icon_book.png" width="100%"></li>
+<li>旅行を楽しむばかりでなく、「文化」や「歴史」など、「学べるツアー」も満載！</li>
+</ul>
+
+<div class="mb5"></div>
+
+<ul class="grp">
+<li><img src="img/icon_book.png" width="100%"></li>
+<li>電話やインターネット（24時間受付）で、簡単に予約できる！</li>
+</ul>
+
+<div class="mb10"></div>
+
+<div class="bar1">最新号の紹介</div>
+<div class="mb20"></div>
+
+<div class="grp4"><a href="<?php echo $data[1][0]; ?>"><img src="<?php echo $data[1][1]; ?>" width="300px"></a></div>
+<div class="mb10"></div>
+<div class="grp5"><?php echo $data[1][2]; ?></div>
+
+<div class="mb10"></div>
+
+<div class="bar1">バックナンバーの紹介</div>
+<div class="bar1_caption">バックナンバーの一部を紹介しております。各号の画像をクリックしていただければ、さらに、各号で掲載をしたツアーを見ることができます。※バックナンバーに掲載のツアーは、そのほとんどは開催日程を終了しております。
+</div>
+<div class="obi"></div>
+<div class="grp6">
+<table class="grp7" border="0">
+  <tbody>
+    <tr>
+     <?php for ($i=0; $i<5; $i++): ?>
+      <?php if($data[2+$i][1] == ""): ?>
+		<td></td>
+	  <?php else: ?>
+        <td width="170px"><div class="grp8"><a href="<?php echo $data[2+$i][0]; ?>"><img src="<?php echo $data[2+$i][1]; ?>" width="120px"></a></div></td>
+      <?php endif; ?>
+     <?php endfor; ?>
+    </tr>
+    <tr>
+     <?php for ($i=0; $i<5; $i++): ?>
+      <?php if($data[2+$i][1] == ""): ?>
+		<td></td>
+	  <?php else: ?>
+        <td height="20px"><div class="txtGrp2"><?php echo $data[2+$i][2]; ?></div></td>
+      <?php endif; ?>
+     <?php endfor; ?>
+    </tr>
+    <tr height="20px">
+    </tr>
+    <tr>
+     <?php for ($i=0; $i<5; $i++): ?>
+      <?php if($data[7+$i][1] == ""): ?>
+		<td></td>
+	  <?php else: ?>
+        <td width="170px"><div class="grp8"><a href="<?php echo $data[7+$i][0]; ?>"><img src="<?php echo $data[7+$i][1]; ?>" width="120px"></a></div></td>
+      <?php endif; ?>
+     <?php endfor; ?>
+    </tr>
+    <tr>
+     <?php for ($i=0; $i<=5; $i++): ?>
+      <?php if($data[7+$i][1] == ""): ?>
+		<td></td>
+	  <?php else: ?>
+        <td height="20px"><div class="txtGrp2"><?php echo $data[7+$i][2]; ?></div></td>
+      <?php endif; ?>
+     <?php endfor; ?>
+    </tr>    
+  </tbody>
+</table>
+<div class="obi"></div>
+
+</div>
+<div class="mb20"></div>
+<div class="mb20"></div>
+
+<table class="grp3">
+<tr>
+<td width="440">
+	<table style="width:100%;">
+    <tr>
+    <td class="oh01">電話でのお申込み</td>
+    </tr>
+    <tr>
+    <td class="o01">
+    <div style="margin-top:20px;"><img src="img/icon_sp.png" height="50"></div>
+    <div style="font-size:38px;">03-5652-7072</div>
+    
+    <div style="font-size:18px;">ポケカルお客様センター</div>
+    
+    <div style="font-size:16px;margin-bottom:10px;">【営業時間】9:00〜18:00(年末年始除き年中無休)</div>
+
+    </td>
+    </tr>
+    </table>
+</td>
+<td></td>
+<td width="440">
+	<table style="width:100%;">
+    <tr>
+    <td class="oh01">インターネットでお申込み</td>
+    </tr>
+    <tr>
+    <td class="o02">
+    <a href="https://www.poke.co.jp/userfile/DM/request.html" class="link">
+    <div style="margin-top:20px;"><img src="img/icon_pc.png" height="50"></div>
+    <div style="font-size:38px;">お問合せフォーム</div>
+    
+    <div style="font-size:18px;">24時間受付</div>
+    
+    <div style="font-size:14px;margin-bottom:10px;">メール受領後、順次発送の手配をさせいただきます</div>
+</a>
+    </td>
+    </tr>
+    </table>
+</td>
+</tr>
+
+
+</table>
+
+</div>
+
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

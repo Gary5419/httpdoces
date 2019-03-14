@@ -1,0 +1,76 @@
+<div id="footer">
+<MT:If name="unseofooter" eq="1">
+<MT:Else>
+<dl id="sitelink">
+<dt><em><i>現地集合・現地解散型　お手軽日帰りツアー・体験イベント</i></em>ならぽけかる倶楽部</dt>
+<dd>
+<MTBlogs include_blogs="1">
+<ul>
+<li><a href="/">日帰りツアー・見学・イベント情報トップ</a>｜</li>
+<li><a href="<$mt:Link template="イベント一覧静的"$>">日帰りツアー・体験イベント一覧</a>｜</li>
+<li><a href="http://www.poketabi-hikaku.com/" target="_blank">ぽけ旅比較.com</a></li>
+</ul>
+<ul>
+<MTSubCategories category="テーマ" sort_method="SortCatFld::Sort">
+  <li><a href="<$MTCategoryArchiveLink$>"><$MTCategoryLabel$></a><MTSubCatIsLast><MTELSE>｜</MTELSE></MTSubCatIsLast></li>
+</MTSubCategories>
+</ul>
+<MTIf name="category" eq="イベント一覧">
+<ul>
+<MTSubCategories category="エリア" sort_method="SortCatFld::Sort">
+   <MTSubCategories sort_method="SortCatFld::Sort">
+   <MTSubCatIsFirst><MTElse>｜</MTElse></MTSubCatIsFirst>
+     <MTSubCategories sort_method="SortCatFld::Sort">
+       <li><MTSubCatIsFirst><MTElse>｜</MTElse></MTSubCatIsFirst><a href="<$MTCategoryArchiveLink$>"><$MTCategoryLabel$></a></li>
+      </MTSubCategories>
+    </MTSubCategories>
+</MTSubCategories>
+</ul>
+</MTIf>
+<MTIfArchiveType archive_type="Category" >
+<ul>
+<MTSubCategories category="エリア" sort_method="SortCatFld::Sort">
+   <MTSubCategories sort_method="SortCatFld::Sort">
+   <MTSubCatIsFirst><MTElse>｜</MTElse></MTSubCatIsFirst>
+     <MTSubCategories sort_method="SortCatFld::Sort">
+       <li><MTSubCatIsFirst><MTElse>｜</MTElse></MTSubCatIsFirst><a href="<$MTCategoryArchiveLink$>"><$MTCategoryLabel$></a></li>
+      </MTSubCategories>
+    </MTSubCategories>
+</MTSubCategories>
+</ul>
+</MTIfArchiveType>
+<MTIfArchiveType archive_type="Individual" >
+<ul>
+<MTEntriesWithSubCategories category="$category" sort_method="SortCatFld::Sort">
+   <li><a href="<$MTEntryPermalink$>"><$MTEntryTitle$></a><MTEntriesFooter><MTELSE>｜</MTELSE></MTEntriesFooter></li>
+</MTEntriesWithSubCategories>
+</ul>
+</MTIfArchiveType>
+</MTBlogs>
+</dd>
+</dl><!-- //#sitelink -->
+</MT:Else>
+</MT:If>
+
+<div id="pageup"><a href="javascript:void(0);" onclick="pageTop(); return false;" onkeypress="0"><img src="/common/img/pageup.gif" alt="ページトップへ ▲" /></a></div>
+
+<div id="common">
+<div id="copyright">Copyright c 2009 Pokekaru-Club. All rights reserved.</div>
+<ul>
+<li><a href="/company.html">運営会社</a>&nbsp;｜&nbsp;</li>
+<li><a href="/ryokogyo.html">旅行業登録票</a>&nbsp;｜&nbsp;</li>
+<li><a href="/privacy.html">個人情報保護</a>&nbsp;｜&nbsp;</li>
+<li><a href="/copyright.html">著作権</a>&nbsp;｜&nbsp;</li>
+<li><a href="/yakkan.html">約款</a>&nbsp;｜&nbsp;</li>
+<li><a href="/book/inquiry.php">お問い合わせ</a></li>
+</ul>
+</div>
+
+</div><!-- //#footer -->
+
+</div><!-- //#wrapper -->
+
+
+
+</body>
+</html>

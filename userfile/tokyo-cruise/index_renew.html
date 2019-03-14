@@ -1,0 +1,690 @@
+<?php
+
+$p = isset($_REQUEST['p']) ? $_REQUEST['p'] : "tokyo-cruise";
+
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/simple_html_dom.php';
+
+
+$cr1 = getCrawlData("%23イチオシ東京湾クルーズ");
+foreach($cr1 as $v){
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+}
+
+require_once("./_data/index_renew.php");
+function getCrawlData($keyword){
+	$data = array();
+
+    if($keyword != ""){
+        $url = "http://www.poke.co.jp/book/eventlist_special.php?special=hot-base&sort=new&pagenum=1&keyword={$keyword}";
+        #echo $url;
+        $html = file_get_html($url);
+        $e = $html->find('div#mainField',0);
+        $ret = $e->find('div.search_results');
+        
+        $cnt = 0;
+        $data = array();
+        foreach($ret as $v){
+            $data[$cnt]['title'] = $v->find('div.ttlHeader h3',0)->innertext;
+            #echo $title."<br>\n";
+            $obj1 = $v->find('div.retumb',0);
+            $link = $obj1->find('a',0);
+            #echo $link->href."<br>\n";
+            $img = $obj1->find('a img',0);
+            #echo $img->src."<br>\n";
+            
+            $data[$cnt]['link'] = $link->href;
+            $data[$cnt]['img'] = $img->src;
+            $price = $v->find('table.sctbl2',0)->find('tr',2)->find('td',1);
+            $data[$cnt]['price'] = $price->innertext;
+            $cnt++;
+        }
+    }
+        
+    return $data;
+
+}
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-cruise.css" rel="stylesheet" type="text/css" />
+<style>
+ul.cr4col{
+	width:910px;
+	position:relative;
+	overflow:hidden;
+	margin-left:10px;
+}
+ul.cr4col li{
+	float:left;
+	width:214px;
+	box-sizing:border-box;
+	border:1px solid #BFBFBF;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+ul.cr4col li:nth-child(4n){
+	margin-right:0;
+}
+.row1{
+	text-align:center;
+/*	background:#C00000;*/
+	color:#FFF;
+	font-weight:bold;	
+	line-height:26px;
+	background:#B7A015;
+}
+.row1-2{
+	text-align:center;
+	background:#FFC000;
+	color:#FFF;
+	font-weight:bold;	
+	line-height:26px;
+}
+.row1-3{
+	text-align:center;
+	background:#F5F2E9;
+	font-weight:bold;	
+	line-height:1.4;
+	font-weight:bold;	
+	padding-top:5px;
+	padding-bottom:5px;
+	font-size:14px;
+}
+.row1-3 span{
+	color:#C00000;
+	
+}
+.row1-3 p{
+	color:#996633;
+}
+
+.row2{
+	text-align:center;
+	width:180px;
+	margin:10px auto;
+	box-sizing:border-box;
+	overflow:hidden;
+}
+.row2 img{
+	
+}
+.row3{
+	width:180px;
+	height:70px;
+	margin:0 auto;
+}
+.row3 a{
+	font-weight:bold;
+	color:#996633;
+	height:50px;
+	text-decoration:none;
+}
+.row4{
+	width:180px;
+	margin:10px auto 30px auto;
+	height:30px;
+}
+.row5{
+	width:180px;
+	margin:10px auto 30px auto;
+	height:70px;
+}
+.busreadmore{
+	margin-right:10px;
+	text-align:right;
+}
+.busreadmore a{
+	font-size:14px;
+	font-weight:bold;
+	color:#996633;
+	text-decoration:none;
+}
+
+.bar1{
+	border-left:6px solid #B7A015;
+	padding:10px 10px 12px 17px;
+	border-bottom:1px solid #DFDFDF;
+	font-size:18px;
+	font-weight:bold;
+	margin:20px 0 auto -10px;
+	width:920px;
+	box-sizing:border-box;
+}
+.cruise_btn2 {
+    display: block;
+    width: 410px;
+    margin: 0 auto;
+	margin-bottom:15px;
+    text-decoration: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #FF9932;
+    color: #FFF;
+    font-size: 16px;
+	line-height:40px;
+    text-align: center;
+   
+    box-shadow: 0px 3px 0px #CF6600;
+    -moz-box-shadow: 0px 3px 0px #CF6600;
+	font-weight:bold;
+	
+	
+}
+ul#crs_main{
+	width:900px;	
+	position:relative;
+	overflow:hidden;
+}
+ul#crs_main li{
+	float:left;
+	margin-right:12px;
+	margin-bottom:17px;
+	width:290px;
+/*	height:460px;*/
+	border:1px solid #BFBFBF;
+	
+	-moz-box-shadow: 0px 2px 0px #CDCDCD;
+	-webkit-box-shadow: 0px 2px 0px #CDCDCD;
+	-o-box-shadow: 0px 2px 0px #CDCDCD;
+	-ms-box-shadow: 0px 2px 0px #CDCDCD;
+	box-shadow: 0px 2px 0px #CDCDCD;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	overflow:hidden;
+}
+ul#crs_main a{
+	text-decoration:none;	
+}
+ul#crs_main li:nth-child(3n){
+	margin-right:0;
+}
+.crs_main_title{
+
+	padding:10px 0px 10px 0px;
+	text-align:center;
+	color:#986431;
+	font-weight:bold;
+	font-size:16px;
+}
+
+.crs_main_img{
+	width:270px;
+	margin:0 auto 10px auto;
+}
+.crs_main_con{
+	color:#4d4d4d;
+	line-height:1.5;
+	padding:3px 15px 15px 15px;
+	height:120px;
+}
+.crs_btn,.crs_btn2 {
+    display: block;
+    width: 270px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #FF9901;
+    color: #FFF;
+    text-align: center;
+    line-height: 40px;
+    box-shadow: 0px 2px 0px #F88300;
+    -moz-box-shadow: 0px 2px 0px #F88300;
+	font-size:16px;
+}
+.crs_btn2 {
+    
+    width: 400px;
+ 
+}
+.crs_link{
+	padding:0 10px 10px 10px;
+}
+</style>
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once 'header_noarea.inc'; ?>
+<div id="wrapper">
+
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+      <div id="content" class="clearfix mt20">
+          <a href="/">TOP</a> > 東京湾クルーズ特集
+
+        </div>
+        <div class="mb10"></div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <div id="pokekaru_old_html">
+          <link href="../css/style-cruise.css" rel="stylesheet" type="text/css" />
+
+<!-- keyimage -->
+<img src="img/keyimage_pc.jpg" width="" style="margin-left:-10px;" >
+<br>
+<!-- end/keyimage -->
+
+
+
+<h2 class="bar1">東京湾クルーズ[編集部イチオシプラン]</h2>
+
+
+<div class="cruise_caption">
+ポケカル編集部イチオシの東京湾クルーズプランをご紹介。主に季節や期間限定のプランを紹介しております。限定プランは特別価格や特典など、文字どおり、通常のプランとは異なる「お得で特別」なプランは見逃せません！
+</div>
+
+
+<!-- クロールデータここから -->
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row1">イチオシクルーズ</div>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" height="120">
+    <?php elseif($height > 132): ?>
+    	<img src="<?php echo $val['img']; ?>" height="120">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" height="120">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<div class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></div>
+<div class="row4"><?php echo $val['price']; ?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+<!-- クロールデータここまで -->
+
+
+<div class="cruise_bottom">
+<a href="/book/eventlist_special.php?special=tokyo_cruising_recommend&sort=new&pagenum=1&keyword=%23%E3%82%A4%E3%83%81%E3%82%AA%E3%82%B7%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA" class="cruise_btn2" style="color:#FFF;text-decoration:none;">イチオシプランをすべて見る</a>
+</div>
+<div class="marb40"></div>
+
+
+<h2 class="bar1">東京湾クルーズ[お食事タイプ・シーン別]</h2>
+
+<div class="cruise_caption">
+クルーズタイプはランチ、サンセット、ディナータイムとお食事形態毎に提供されていますので、ご予定に合わせてお選びください。また、期間限定のイベントが開催されるプランもあります。※プランや航路により見える建物等が異なる場合がございます。
+</div>
+
+
+<ul id="crs_main">
+<li>
+
+<div class="crs_main_title">
+
+ランチクルーズ
+
+</div>
+
+<div class="crs_main_img">
+<a href="/book/eventlist_special.php?special=tokyo_cruising_lunch&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%83%A9%E3%83%B3%E3%83%81%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA"><img src="img/tokyo_cruising_lunch.jpg" width="270"></a>
+</div>
+
+<div class="crs_main_con">
+普段のお店やデートに飽きたら､洋上ランチはいかがでしょうか？晴れた日に､青々とした空と海の中､いただく料理は､それだけで上質なひとときです｡誕生日や母の日などの記念日にもおすすめです。
+
+</div>
+
+<div class="crs_link"><a href="map_lunchsunset.html">→予定航路マップ</a></div>
+
+<a href="/book/eventlist_special.php?special=tokyo_cruising_lunch&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%83%A9%E3%83%B3%E3%83%81%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA" class="crs_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">プランの一覧を見る</a>
+
+</li>
+<li>
+
+<div class="crs_main_title">
+
+サンセットクルーズ
+
+</div>
+
+<div class="crs_main_img">
+<a href="/book/eventlist_special.php?special=tokyo_cruising_sunset&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%82%B5%E3%83%B3%E3%82%BB%E3%83%83%E3%83%88%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA"><img src="img/tokyo_cruising_sunset.jpg" width="270"></a>
+</div>
+
+<div class="crs_main_con">
+東京湾の夕暮れを目にしながら、お食事を楽しめるデートにもぴったりなプランです。羽田空港から飛び立つ飛行機を眺めつつ、季節により雰囲気が変わる夕陽と夜景の2つの景色をお楽しみください。
+</div>
+
+<div class="crs_link"><a href="map_lunchsunset.html">→予定航路マップ</a></div>
+
+<a href="/book/eventlist_special.php?special=tokyo_cruising_sunset&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%82%B5%E3%83%B3%E3%82%BB%E3%83%83%E3%83%88%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA" class="crs_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">プランの一覧を見る</a>
+
+</li>
+<li>
+
+<div class="crs_main_title">
+
+ディナークルーズ
+
+</div>
+
+<div class="crs_main_img">
+<a href="/book/eventlist_special.php?special=tokyo_cruising_dinner&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%83%87%E3%82%A3%E3%83%8A%E3%83%BC%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA"><img src="img/tokyo_cruising_dinner.jpg" width="270"></a>
+</div>
+
+<div class="crs_main_con">
+絶品ディナーに舌鼓を打ちつつ、ライトアップされたレインボーブリッジや東京ゲートブリッジなど、ネオン輝く珠玉の夕景色を堪能ください。特別な日を過ごすには最適のプランです。
+</div>
+
+
+<div class="crs_link"><a href="map_dinner.html">→予定航路マップ</a></div>
+
+<a href="/book/eventlist_special.php?special=tokyo_cruising_dinner&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%83%87%E3%82%A3%E3%83%8A%E3%83%BC%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA" class="crs_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">プランの一覧を見る</a>
+
+</li>
+<li>
+
+<div class="crs_main_title">
+
+ダブルクルーズ
+
+</div>
+
+<div class="crs_main_img">
+<a href="/book/eventlist_special.php?special=tokyo_cruising_double&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%83%80%E3%83%96%E3%83%AB%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA"><img src="img/tokyo_cruising_double.jpg" width="270"></a>
+</div>
+
+<div class="crs_main_con">
+東京湾クルーズと他水路のクルーズに乗船できるプランです。1度のご参加で2つの異なるクルーズに乗船できるお得なプランです。単体のクルーズでは物足りない方にぜひおすすめです！
+</div>
+
+<a href="/book/eventlist_special.php?special=tokyo_cruising_double&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E3%83%80%E3%83%96%E3%83%AB%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA" class="crs_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">プランの一覧を見る</a>
+
+</li>
+<li>
+
+<div class="crs_main_title">
+
+期間限定クルーズ
+
+</div>
+
+<div class="crs_main_img">
+<a href="/book/eventlist_special.php?special=tokyo_cruising_limited&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E6%9C%9F%E9%96%93%E9%99%90%E5%AE%9A%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA"><img src="img/tokyo_cruising_limited.jpg" width="270"></a>
+</div>
+
+<div class="crs_main_con">
+期間限定の船上イベントや、飲み放題、バイキングなど(プランにより異なります)が付いたクルーズです。1年に1回限りのプランなので、お見逃しなく！
+</div>
+
+<a href="/book/eventlist_special.php?special=tokyo_cruising_limited&sort=new&pagenum=1&keyword=%23%E6%9D%B1%E4%BA%AC%E6%B9%BE%E6%9C%9F%E9%96%93%E9%99%90%E5%AE%9A%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA" class="crs_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">プランの一覧を見る</a>
+
+</li>
+</ul>
+</div>
+
+<?php /*
+<ul id="cruise_content">
+<li>
+
+
+<h3 class="midashi">　シンフォニー・ディナープランの予定航路</h3>
+
+<div class="cruise_middle">
+
+<a href="map1.html"><img src="img/map1.jpg" width="100%" alt=""></a>
+
+<div class="cruise_lead">
+シンフォニーのクルーズは、ハート型の軌跡を描くロマンティックな航路。さらにディナーの時間帯は、夜景の美しさが一番の見どころ。ライトアップされたレインボーブリッジや東京ゲートブリッジをくぐり、お台場やスカイツリーなどの名所を眺めながら東京湾を一周する大満足コースです。夜景を眺めながらグルメや音楽鑑賞を楽しみ、優雅なひとときをご堪能ください。
+
+</div>
+
+
+</div>
+<div class="cruise_bottom">
+<a href="/book/eventlist_special.php?special=symphony-dinner&sort=new&pagenum=1&keyword=%23シンフォニー・ディナープラン" class="cruise_btn" style="color:#FFF;text-decoration:none;">ディナープランの一覧を見る</a>
+</div>
+</li>
+<li>
+
+
+<h3 class="midashi">　シンフォニー・ランチプランの予定航路</h3>
+
+<div class="cruise_middle">
+
+
+<a href="map2.html"><img src="img/map2.jpg" width="100%" alt=""></a>
+
+<div class="cruise_lead">
+羽田空港の飛行機の往来や、お台場やディズニーリゾートなど東京の風景を堪能できるコースです。シンフォニークルーズは「恋人の聖地サテライト」として認定（※）されているため、デートにもぴったりです。ダイナミックな東京の風景を眺めながらお食事やお酒をお楽しみいただけます。※NPO法人地域活性化支援センターが認定するプロポーズにふさわしいロマンティックなスポット。
+
+</div>
+
+
+
+</div>
+<div class="cruise_bottom">
+<a href="/book/eventlist_special.php?special=symphony-lunch&sort=new&pagenum=1&keyword=%23シンフォニー・ランチプラン" class="cruise_btn" style="color:#FFF;text-decoration:none;">ランチプランの一覧を見る</a>
+</div>
+</li>
+
+</ul>
+
+
+<h2 class="maintitle2">東京ヴァンテアンクルーズ</h2>
+<div class="cruise_caption">
+フランス語で「21」を意味する大型レストラン船「VINGT ET UN（ヴァンテアン）」。就航開始年が21世紀目前の1989年であったことから、新しい時代を航海する船への想いを込めて名づけられました。記念日などのお祝いごとはもちろん、気の合う仲間とのちょっと優雅なパーティや宴会まで、さまざまなシーンに対応しています。
+</div>
+
+
+<ul id="cruise_content">
+<li>
+
+
+<h3 class="midashi">　ヴァンテアンの予定航路</h3>
+
+<div class="cruise_middle">
+
+<a href="map3.html"><img src="img/map3.jpg" width="100%" alt=""></a>
+
+<div class="cruise_lead">
+竹芝桟橋を出航し、レインボーブリッジやお台場、大井コンテナ埠頭などの見どころスポットを約2時間かけて巡るヴァンテアンの東京湾クルーズ。東京湾の新ランドマークである東京ゲートブリッジや、羽田空港沖の景色も楽しめます。船内調理によるこだわりのフランス料理を堪能しながら時間帯によって表情を変える大パノラマをお楽しみください。
+</div>
+
+
+</div>
+<div class="cruise_bottom">
+<a href="/book/eventlist_special.php?special=vantean&sort=new&pagenum=1&keyword=%23%E3%83%B4%E3%82%A1%E3%83%B3%E3%83%86%E3%82%A2%E3%83%B3" class="cruise_btn" style="color:#FFF;text-decoration:none;">プランの一覧を見る</a>
+</div>
+</li>
+
+</ul>
+*/ ?>
+
+
+<h2 class="bar1">東京湾クルーズの関連記事(by ポケカルおでかけ通信)</h2>
+
+<table cellpadding="0" cellspacing="0" border="0" class="cruise_tbl">
+<tr>
+<td width="250"><a href="http://odekake.poke.co.jp/archives/237" target="_blank"><img src="img/odekake.jpg" width="100%"></a></td>
+<td>
+<a href="http://odekake.poke.co.jp/archives/237" target="_blank" class="odekake_title">クルーズで再発見する東京の街。<br>おすすめ3選のコースとその魅力に迫る！</a>
+
+<div class="odekake_lead">
+高層ビル群など都会のイメージが強い東京ですが、実は網の目のように運河がめぐる「水の都」の一面も持っています。船上から眺める東京は、普段とは違う顔を見せることもあり、都内をよく知る人にとっても新鮮な発見を得られることがあります。 今回は、都内のおすすめクルーズ3選をご紹介します。
+</div>
+<br>
+<a href="http://odekake.poke.co.jp/archives/237" class="crs_btn2" style="color:#FFF;text-decoration:none;font-weight:bold;" target="_blank">都内おすすめクルーズ3選(おでかけ通信)</a>
+
+</td>
+</tr>
+</table>
+
+
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <!-- ##### FOOTER #####  -->
+  <div id="footerField">
+    <ul class="footerLink">
+      <li><a href="/">日帰りツアー・見学・イベント情報トップ</a></li>
+      <li><a href="/event/">日帰りツアー・体験イベント一覧</a></li>
+      <li class="last"><a href="http://www.poketabi-hikaku.com/" target="_blank">ぽけ旅比較.com</a></li>
+    </ul>
+    <ul class="footerLink">
+<li><a href="/book/eventlist/bus/none/none/0/0000/00/00/index.html">観光名所めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/society-bus/none/none/0/0000/00/00/index.html">社会見学バスツアー</a></li>
+<li><a href="/book/eventlist/nature-bus/none/none/0/0000/00/00/index.html">花・自然めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/yakata/none/none/0/0000/00/00/index.html">屋形船遊び</a></li>
+<li><a href="/book/eventlist/cruising/none/none/0/0000/00/00/index.html">川下りクルーズ</a></li>
+<li><a href="/book/eventlist/tokyobay/none/none/0/0000/00/00/index.html">東京湾クルーズ</a></li>
+<li><a href="/book/eventlist/night-cruise/none/none/0/0000/00/00/index.html">ナイトクルーズ</a></li>
+<li class="last"><a href="/book/eventlist/ozashiki/none/none/0/0000/00/00/index.html">お座敷遊び</a></li><br>
+
+<li><a href="/book/eventlist/tradition/none/none/0/0000/00/00/index.html">伝統芸能</a></li>
+<li><a href="/book/eventlist/show/none/none/0/0000/00/00/index.html">ショー＆レビュー</a></li>
+<li><a href="/book/eventlist/society/none/none/0/0000/00/00/index.html">社会見学</a></li>
+<li><a href="/book/eventlist/factory/none/none/0/0000/00/00/index.html">工場見学</a></li>
+<li><a href="/book/eventlist/walking/none/none/0/0000/00/00/index.html">街歩き</a></li>
+<li><a href="/book/eventlist/history/none/none/0/0000/00/00/index.html">歴史探訪</a></li>
+<li><a href="/book/eventlist/spot/none/none/0/0000/00/00/index.html">名所・旧跡めぐり</a></li>
+<li><a href="/book/eventlist/exhibition/none/none/0/0000/00/00/index.html">展覧会・特別展</a></li>
+<li><a href="/book/eventlist/experience/none/none/0/0000/00/00/index.html">体験教室</a></li>
+<li class="last"><a href="/book/eventlist/gourmet/none/none/0/0000/00/00/index.html">レストランプラン</a></li><br>
+
+<li><a href="/book/eventlist/ticket-gourmet/none/none/0/0000/00/00/index.html">公演つきグルメプラン</a></li>
+<li><a href="/book/eventlist/ticket/none/none/0/0000/00/00/index.html">公演チケット</a></li>
+<li><a href="/book/eventlist/live/none/none/0/0000/00/00/index.html">室内ライブ</a></li>
+<li><a href="/book/eventlist/dayspa/none/none/0/0000/00/00/index.html">日帰り温泉</a></li>
+<li><a href="/book/eventlist/festival/none/none/0/0000/00/00/index.html">祭り・イベント</a></li>
+<li><a href="/book/eventlist/skytree/none/none/0/0000/00/00/index.html">東京スカイツリー</a></li>
+<li><a href="/book/eventlist/sakura/none/none/0/0000/00/00/index.html">桜・お花見ツアー</a></li>
+<li class="last"><a href="/book/eventlist/hanabi/none/none/0/0000/00/00/index.html">花火大会観覧ツアー</a></li><br>
+
+<li><a href="/book/eventlist/group/none/none/0/0000/00/00/index.html">団体様貸切OK</a></li>
+<li><a href="/book/eventlist/stay/none/none/0/0000/00/00/index.html">宿泊付きツアー</a></li>
+<li><a href="/book/eventlist/west/none/none/0/0000/00/00/index.html">関西 日帰り遊び</a></li>
+<li class="last"><a href="/book/eventlist/other/none/none/0/0000/00/00/index.html">その他地域 日帰り遊び</a></li>
+</ul>
+    <ul>
+      <li><a href="/company.html">運営会社</a></li>
+      <li><a href="/media.html">メディア掲載実績</a></li>
+      <li><a href="/pr.html">プレスリリース</a></li>
+      <li><a href="/ryokogyo.html">旅行業登録票</a></li>
+      <li><a href="/privacy.html">個人情報保護</a></li>
+      <li><a href="/copyright.html">著作権</a></li>
+      <li><a href="/yakkan.html">約款</a></li>
+      <li><a href="/tuuhan.html">通販規約</a></li>
+      <li class="last"><a href="/book/inquiry.php">お問い合わせ</a></li>
+    </ul>
+    <p class="imageBlock"><img src="/images/common/imgCopy.jpg" alt="Copyright c 2009 Pokekaru-Club. All rights reserved." width="358" height="14" /></p>
+  </div>
+  <!-- ##### /FOOTER ##### -->
+</div>
+
+
+<!-- Google Code for &#12304;&#29305;&#38598;&#12305;&#26481;&#20140;&#12473;&#12459;&#12452;&#12484;&#12522;&#12540; Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "zTiXCIbr7AIQupD43gM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1004406842/?value=0&amp;label=zTiXCIbr7AIQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+
+<!-- 20121024 -->
+<!-- Google Code for &#12486;&#12540;&#12510;&#12391;&#25506;&#12377;&#65306;&#12464;&#12523;&#12513; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_label = "auxcCKb1zwQQupD43gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1004406842/?value=0&amp;label=auxcCKb1zwQQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- 20121024 -->
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+</html>

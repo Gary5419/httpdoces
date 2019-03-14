@@ -1,0 +1,100 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+define("H1TXT","著作権保護対象物の取り扱いについてご説明しております。"); ?>
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="著作権について" />
+<meta name="keywords" content="" />
+<meta name="copyright" content="" />
+<title>著作権について｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/copyright/">
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+            <li>著作権について</li>
+          </ul>
+          <section class="p14">
+          
+          <h1 class="headline01">著作権について</h1>
+          
+          <div class="p16 mlr30 mb20">
+          当ホームページで提供されるすべての記事、情報、画像、コーポレートマークなどの著作権は 「株式会社ポケカル」に帰属します。 それら著作権保護対象物の取り扱い、及び使用に関しては下記の通りとします。
+          </div>
+          
+          <div class="mlr15">
+          
+          <div class="headline06">著作物の使用について</div>
+          
+          <div class="mb20"></div>
+          
+          <div class="mlr15">
+          
+          <div class="mb10">私的使用について</div>
+          
+          <ul class="tpl-item mb20">
+          <li>1.</li>
+          <li>第三者が閲覧可能な環境（ホームページ、ブログへの掲載など）に流用されない場合、 または営利目的でない場合、表示、複製、印刷などは使用可能です。※ただし、改変はできません。</li>
+          <li>2.</li>
+          <li>私的な使用であっても著作権等に関するあらゆる表示の削除は認めておりません。</li>
+          </ul>
+          
+          <div class="mb10">私的目的以外の使用について</div>
+          
+          <ul class="tpl-item mb20">
+          <li>1.</li>
+          <li>上記以外に該当する使用に関しては、予め以下へ申請いただき、 当社の正式な許可を取った後でのみ、再利用・複製・再配布可能です。 ただし、あくまでも閲覧者の誤解を受けるような使用方法はお断り致します。</li>
+          </ul>
+          
+          <div class="mb10">連絡先</div>
+          
+          <div class="mb50">
+          株式会社ポケカル　広告宣伝部<br>
+          〒103-0015 東京都中央区日本橋箱崎町20-1 アンソレイエ・オオタ 5F<br>
+          TEL：03-5623-9302   FAX：03-3249-3005
+          </div>
+
+
+          </div>
+          
+          </div>
+          
+          
+          </section>
+          
+        </div>
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

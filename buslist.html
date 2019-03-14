@@ -1,0 +1,175 @@
+<?php define("H1TXT","利用バス会社一覧 | ポケカル"); ?>
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="株式会社ポケカルで利用しているバス会社の一覧です。"/>
+<meta name="keywords" content="利用バス会社,バス会社,日帰りツアー,日帰り,バスツアー,ツアー,旅行,ポケカル" />
+<meta name="copyright" content="" />
+<title>利用バス会社一覧 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<style>
+.bar{
+width:100%;
+	background:#ECECEC;
+	color:#404040;
+	font-size:20px;
+	font-weight:bold;
+	-moz-box-shadow: 0px 2px 0px #A6A6A6;
+	-webkit-box-shadow: 0px 2px 0px #A6A6A6;
+	-o-box-shadow: 0px 2px 0px #A6A6A6;
+	-ms-box-shadow: 0px 2px 0px #A6A6A6;
+	box-shadow: 0px 2px 0px #A6A6A6;
+	
+	margin-bottom:20px;
+}
+.bar p{
+	padding:15px 15px 12px 15px;
+}
+
+.busblock{
+	border:1px solid #D9D9D9;
+	box-sizing:border-box;
+	padding:7px;
+	width:880px;
+	margin:0 auto 20px auto;
+}
+.busbar{ 
+background:#CCFFCC;padding:2px 7px; margin-bottom:5px;
+}
+.busin{
+	padding:0 15px;
+	line-height:1.6;
+}
+
+.busblock2{
+	border:1px solid #7F7F7F;
+	box-sizing:border-box;
+	padding:7px;
+	width:880px;
+	margin:0 auto 20px auto;
+	border-radius: 6px;   
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+.busbar2{ 
+background:#E6E6E6;padding:2px 7px; margin-bottom:5px;
+}
+.busin2{
+	padding:0 15px;
+	line-height:1.6;
+}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>利用バス会社一覧</li>
+          </ul>
+          <section>
+
+			<h2 class="bar"><p>ポケカル利用バス会社一覧</p></h2>
+
+             
+              
+              <div class="marginB20"></div>
+              
+              <div class="busblock">
+              <div class="busbar">東京都</div>
+              <div class="busin">東京滋賀交通、東京パッセンジャー、夢湖観光バス、萩観光バス、関越バス、東京遊覧観光バス、東京ワーナー観光バス、冨士自動車、光輝観光バス、亜希プロ、ワールド自興、ニッコー観光バス、和泉観光自動車、IBS COACH TOKYO、中日臨海バス、東京リムジンバス観光バス、旅友、バス窓.com、JAMJAM、東京シティ観光、朝日観光、関東自動車　東京営業所、帝産観光バス、西武バス、美杉観光バス、平成興業、沢井観光自動車、富士自動車、富士急行観光、四葉観光バス、群馬セイワ観光</div>
+
+              </div>
+              
+              
+              <div class="busblock">
+              <div class="busbar">埼玉県</div>
+              <div class="busin">武陽観光バス、十二天観光バス、ワールド自興、光輝観光バス、夢湖観光バス</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">千葉県</div>
+              <div class="busin">マイティ交通、D･Y EXPRESS、旅友</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">神奈川県</div>
+              <div class="busin">中日臨海バス、ピースジャパン、旅友、ミヤコバス、バス窓.com</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">愛知県</div>
+              <div class="busin">新生観光サービス、オーワ、名古屋滋賀交通、西三交通</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">京都府</div>
+              <div class="busin">都バス、ヤサカ観光バス、滋賀観光バス、日本交通、奈良交通、奈良観光、京都観光バス</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">大阪府</div>
+              <div class="busin">国際興業観光バス、ヤサカ観光バス、日本交通、中日臨海バス、トランスパック、西日本JRバス、日本交通、商都交通、奈良交通、近鉄バス、奈良観光、神姫観光バス、都島自動車、阪急バス</div>
+
+              </div>
+              
+              <div class="busblock">
+              <div class="busbar">福岡県</div>
+              <div class="busin">昭和自動車、森山観光、両野交通、ハラショー観光、倉成観光バス</div>
+
+              </div>
+              
+              <div style="width:400px;margin:0 auto 20px auto;"><a href="http://www.poke.co.jp/buslist/per-tours.html" class="btn_sfr">ツアー毎の利用バス会社ページはこちら</a></div>
+              
+              <div class="busblock2">
+              <div class="busbar2">弊社利用基準</div>
+              <div class="busin">社員が上記バス会社を訪問し、設備・施設・安全確認を行い、認定させて頂いて評価基準を作ってます。<br>
+				セフティーマークの評価基準と同じにしています。</div>
+                
+                <div class="marginB20"></div>
+                
+                <div class="busbar2">貸切バス事業者安全性評価認定制度</div>
+              <div class="busin">日本バス協会が貸切バス会社からの申請に基づき、各バス会社を評価認定しています。<br>
+				セフティー等の詳細につきましては、下記のホームページをご覧ください。<br>
+				<br>
+				・公益社団法人日本バス協会ホームページ<br>
+				<a href="http://www.bus.or.jp/safety/nintei.html" target="_blank" rel="nofollow" style="color:#0070C0;">http://www.bus.or.jp/safety/nintei.html</a>
+				</div>
+
+              </div>
+           
+           
+          
+           
+        </div>
+        </section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

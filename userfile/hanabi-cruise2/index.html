@@ -1,0 +1,410 @@
+<?php
+$cookie_name = "eventlist_special";
+
+if(isset($_GET['afi'])){
+	$url_array = parse_url($_SERVER["REQUEST_URI"]); 
+	$params = str_replace("&afi=".$_GET['afi'],"",$url_array['query']);
+    $expire = 0;
+    if(!isset($_COOKIE[$cookie_name])){
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }elseif( $_GET['afi'] != $_COOKIE[$cookie_name]){
+    	setcookie($cookie_name, '', time() - 1800);
+        setcookie($cookie_name, $_GET['afi'], $expire , '/');
+    }
+	header("Location: ./");
+}
+
+$afi = "";
+if(isset($_COOKIE[$cookie_name])){
+	$afi = $_COOKIE[$cookie_name];
+}
+
+
+#IACEトラベル：1144
+#サイネックス：1175
+#マップルトラベル：1149
+#アクティビティジャパン：1177
+#1176
+
+require_once "./_data/index.php";
+
+define("H1TXT","2016年 花火クルーズツアー特集｜日帰りツアーや日帰りバスツアーの予約ならぽけかる倶楽部");
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<meta name="Description" content="【2016年。花火クルーズツアー特集です。各地域の花火大会を船の上から観覧できるクルーズツアーを集めました。】ぽけかる倶楽部は日帰りツアーや日帰りバスツアーをインターネットで簡単に予約することができます。" />
+<meta name="Keywords" content="2016,花火,クルーズ,花火クルーズ,観覧,花火大会,東京,神奈川,千葉,隅田川花火大会,ツアー,バスツアー,見学,日帰りツアー,日帰りバスツアー,都内観光,日帰り遊び,日帰り観光,ぽけかる倶楽部" />
+<meta name="copyright" content="" />
+<meta name="robots" content="noindex,nofollow">
+<title>2016年 花火クルーズツアー特集｜日帰りツアーや日帰りバスツアーの予約ならぽけかる倶楽部</title>
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-days.css" rel="stylesheet" type="text/css" />
+<style>
+body{font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;}
+.daybar{
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background:#3399FF;
+	color:#FFF;
+	font-size:18px;
+	font-weight:bold;
+	padding:12px 0 12px 20px;
+	margin-bottom:10px;
+}
+
+.spot{
+	width:880px;
+	margin:0 auto 20px auto;
+	position:relative;
+	overflow:hidden;
+
+	
+	
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+.spotleft{
+	width:340px;
+	float:left;
+	margin:10px 0 10px 10px;
+}
+.spotright{
+	width:520px;
+	float:right;
+	margin-right:10px;
+	font-size:14px;
+	line-height:1.7;
+	
+	margin:10px 10px 10px 0;
+	
+}
+
+.apply_btn{
+	display:block;
+	width:520px;
+	margin:10px auto;
+	text-decoration:none;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background:#FF9901;
+	color:#FFF;
+	font-size:16px;
+	text-align:center;
+	line-height:40px;
+	
+	 box-shadow: 0px 2px 0px #E87B00;
+    -moz-box-shadow: 0px 2px 0px #E87B00;
+	margin-bottom:25px;
+}
+.photo{
+	border:3px solid #FFF;
+}
+.photo_outer{
+	
+	width:320px;
+	
+	
+}
+
+
+.c_ffffb3{
+	color:#FFFFB3;
+}
+.c_ffffff{
+	color:#FFF;
+}
+.midashi{color:#FFF;font-size:20px;font-weight:bold;}
+.pref{font-size:24px;font-weight:bold;color:#FFF;margin:0 0 20px 20px;}
+#fwbg{
+	background:#262626;padding:20px 0 0 0;color:#FFF;
+}
+#fwnavi{
+font-size:16px;
+margin:0 10px 10px 10px;
+padding:0 0 15px 15px;
+border-bottom:1px solid #7F7F7F;
+}
+#fwnavi a{color:#FFF;text-decoration:none;}
+.separator{border-bottom:1px solid #7F7F7F;margin:0 10px 20px 10px;}
+a.btn_all{
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #F5F5F5), color-stop(0.00,#E8E7E8 ));
+     background: -webkit-linear-gradient(#E8E7E8, #F5F5F5);
+     background: -moz-linear-gradient(#E8E7E8, #F5F5F5);
+     background: -o-linear-gradient(#E8E7E8, #F5F5F5);
+     background: -ms-linear-gradient(#E8E7E8, #F5F5F5);
+     background: linear-gradient(#E8E7E8, #F5F5F5);
+     
+	box-shadow: 0px 3px 2px #CECECE;
+	-moz-box-shadow: 0px 3px 2px #CECECE;
+	-webkit-box-shadow: 0px 3px 2px #CECECE;	
+	float:right;
+	width:200px;
+	display:block;
+	text-align:center;
+	border:1px solid #BFBFBF;
+	text-decoration:none;
+	color:#795548;
+	font-weight:bold;
+	padding:9px 0 7px 0;
+	margin-top:5px;
+}
+
+</style>
+
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once "userfile_tag_after_startbody.inc"; ?>
+<?php require_once 'include/const.inc.php'; 
+
+ if($afi == 1144):
+        require_once '_header_1144.php'; 
+    elseif($afi == 1175 || $afi == 1176):
+        require_once '_header_1175.php';  
+    elseif($afi == 1149):
+        require_once '_header_1149.php';  
+    elseif($afi == 1177):
+        require_once '_header_1177.php';  
+    elseif($afi == 1181):
+        require_once '_header_1181.php';  
+    else:
+        require_once 'header_noarea.inc'; 
+    endif;
+	
+?>
+
+<div id="wrapper">
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="floatContainer">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+      <div class="topicPath floatContainer noside">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <li>花火クルーズツアー特集</li>
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <div id="pokekaru_old_html">
+          <link href="../css/style-days.css" rel="stylesheet" type="text/css" />
+      
+
+<img src="/images/special/hanabi-cruise.jpg" width="900">
+
+
+<div style="width:860px;margin:20px auto;line-height:1.3;border:1px solid #D9D9D9;padding:10px;">
+<div style="font-size:20px;font-weight:bold;">
+花火大会に行きたいけど、人混みが苦手で断念・・。誰でもそんな経験がおありだと思います。花火大会をしばらく敬遠していた方々、今年は、花火大会を船の上から、観覧クルーズしてみてはいかがでしょうか？花火クルーズは、人混みから開放され、潮風にあたりながら、優雅に花火を楽しむことができます。遮るものがない海で大迫力の花火を堪能ください。
+
+
+</div>
+<div style="font-size:16px;font-weight:bold;color:#C00000;">
+※当特集ページで、一部、クルーズでないツアーもございます。予めご了承のほど、お願い申し上げます。
+</div>
+</div>
+
+<!-- イベント詳細　-->
+
+<!-- ★区切り★ -->
+
+<a href="http://www.poke.co.jp/book/eventlist.php?themaid=hanabi&sort=new" class="btn_all">花火ツアーを全てみる</a>
+<h2 style="font-size:24px;font-weight:bold;color:#404040;margin-bottom:20px;"><img src="images/icon_fw.png" width="30" style="position:relative;top:5px;">&nbsp;ぽけかる倶楽部がツアーを企画している花火大会一覧</h2>
+
+
+<div id="fwbg">
+
+<div id="fwnavi">
+<a href="#tokyo">東京</a>　｜　<a href="#kanagawa">神奈川</a><!--　｜　<a href="#chiba">千葉</a>　｜　<a href="#nagano">長野</a>-->
+</div>
+
+<?php 
+$pref = "";
+foreach($data as $key => $v): 
+
+if($pref != $key):
+?>
+<a name="<?php echo $key;?>"></a>
+<div class="pref"><img src="images/icon_marker.png" width="30" style="position:relative;top:7px;margin-right:6px;"><?php echo $m_data[$key]; ?>の花火大会</div>
+<?php
+$pref = $key;
+endif;
+
+foreach($v as $val): ?>
+
+
+<div class="spot">
+<div class="spotleft">
+
+    <div class="photo_outer">
+    
+    
+    <img src="images/<?php echo $val[1]; ?>.jpg" width="100%" class="">
+   
+    </div>
+
+</div>
+<div class="spotright">
+
+	<div class="midashi"><?php echo $val[2];?></div>
+
+	<div><span class="c_ffffb3">◆開催日時：</span><span class="c_ffffff"><?php echo $val[3];?></span></div>
+
+	<div><span class="c_ffffb3">◆開催場所：</span><span class="c_ffffff"><?php echo $val[4];?></span></div>
+
+	<div><span class="c_ffffb3">◆特徴：</span><span class="c_ffffff"><?php echo $val[5];?></span></div>
+    
+    <div><span class="c_ffffb3">◆荒天の場合：</span><span class="c_ffffff"><?php echo $val[6];?></span></div>
+
+
+<div style="float:right">
+    <a href="<?php echo $val[7];?>&special=hanabi-cruise&special_title=<?php echo $val[2]; ?>" class="apply_btn" style="color:#FFF;text-decoration:none;font-weight:bold;">ツアーの一覧を見る</a>
+    </div>
+    
+    
+</div>
+</div>
+
+<?php endforeach; ?>
+<div class="separator"></div>
+<?php endforeach; ?>
+
+
+</div><br><br><br>
+
+
+
+
+
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <!-- ##### FOOTER #####  -->
+  <div id="footerField">
+    <ul class="footerLink">
+      <li><a href="/">日帰りツアー・見学・イベント情報トップ</a></li>
+      <li><a href="/event/">日帰りツアー・体験イベント一覧</a></li>
+      <li class="last"><a href="http://www.poketabi-hikaku.com/" target="_blank">ぽけ旅比較.com</a></li>
+    </ul>
+    <ul class="footerLink">
+	  <li><a href="/book/eventlist/bus/none/none/0/0000/00/00/index.html">観光名所めぐりバスツアー</a></li>
+	    <li><a href="/book/eventlist/society-bus/none/none/0/0000/00/00/index.html">社会見学バスツアー</a></li>
+	    <li><a href="/book/eventlist/nature-bus/none/none/0/0000/00/00/index.html">花・自然めぐりバスツアー</a></li>
+	    <li><a href="/book/eventlist/yakata/none/none/0/0000/00/00/index.html">屋形船遊び</a></li>
+	    <li><a href="/book/eventlist/cruising/none/none/0/0000/00/00/index.html">川下りクルーズ</a></li>
+
+	    <li><a href="/book/eventlist/tokyobay/none/none/0/0000/00/00/index.html">東京湾クルーズ</a></li>
+	    <li><a href="/book/eventlist/night-cruise/none/none/0/0000/00/00/index.html">ナイトクルーズ</a></li>
+		<li class="last"><a href="/book/eventlist/ozashiki/none/none/0/0000/00/00/index.html">お座敷遊び</a></li><br>
+		
+		<li><a href="/book/eventlist/tradition/none/none/0/0000/00/00/index.html">伝統芸能</a></li>
+		<li><a href="/book/eventlist/show/none/none/0/0000/00/00/index.html">ショー＆レビュー</a></li>
+		<li><a href="/book/eventlist/society/none/none/0/0000/00/00/index.html">社会見学</a></li>
+
+		<li><a href="/book/eventlist/factory/none/none/0/0000/00/00/index.html">工場見学</a></li>
+		<li><a href="/book/eventlist/walking/none/none/0/0000/00/00/index.html">街歩き</a></li>
+		<li><a href="/book/eventlist/history/none/none/0/0000/00/00/index.html">歴史探訪</a></li>
+		<li><a href="/book/eventlist/spot/none/none/0/0000/00/00/index.html">名所・旧跡めぐり</a></li>
+		<li><a href="/book/eventlist/exhibition/none/none/0/0000/00/00/index.html">展覧会・特別展</a></li>
+		<li><a href="/book/eventlist/experience/none/none/0/0000/00/00/index.html">体験教室</a></li>
+
+		<li class="last"><a href="/book/eventlist/gourmet/none/none/0/0000/00/00/index.html">レストランプラン</a></li><br>
+		
+		<li><a href="/book/eventlist/ticket-gourmet/none/none/0/0000/00/00/index.html">公演つきグルメプラン</a></li>
+		<li><a href="/book/eventlist/ticket/none/none/0/0000/00/00/index.html">公演チケット</a></li>
+		<li><a href="/book/eventlist/live/none/none/0/0000/00/00/index.html">室内ライブ</a></li>
+		<li><a href="/book/eventlist/dayspa/none/none/0/0000/00/00/index.html">日帰り温泉</a></li>
+		<li><a href="/book/eventlist/festival/none/none/0/0000/00/00/index.html">祭り・イベント</a></li>
+
+		<li><a href="/book/eventlist/skytree/none/none/0/0000/00/00/index.html">東京スカイツリー入場券付きプラン</a></li>
+		<li><a href="/book/eventlist/sakura/none/none/0/0000/00/00/index.html">桜・お花見ツアー</a></li>
+		<li class="last"><a href="/book/eventlist/hanabi/none/none/0/0000/00/00/index.html">花火大会観覧ツアー</a></li><br>
+		
+		<li><a href="/book/eventlist/group/none/none/0/0000/00/00/index.html">団体様貸切OK</a></li>
+		<li><a href="/book/eventlist/stay/none/none/0/0000/00/00/index.html">宿泊付きツアー</a></li>
+		<li><a href="/book/eventlist/west/none/none/0/0000/00/00/index.html">関西 日帰り遊び</a></li>
+
+	    <li class="last"><a href="/book/eventlist/other/none/none/0/0000/00/00/index.html">その他地域 日帰り遊び</a></li>
+    </ul>
+    <ul>
+      <li><a href="/company.html">運営会社</a></li>
+      <li><a href="/media.html">メディア掲載実績</a></li>
+      <li><a href="/pr.html">プレスリリース</a></li>
+      <li><a href="/ryokogyo.html">旅行業登録票</a></li>
+      <li><a href="/privacy.html">個人情報保護</a></li>
+      <li><a href="/copyright.html">著作権</a></li>
+      <li><a href="/yakkan.html">約款</a></li>
+      <li><a href="/tuuhan.html">通販規約</a></li>
+      <li class="last"><a href="/book/inquiry.php">お問い合わせ</a></li>
+    </ul>
+    <p class="imageBlock"><img src="/images/common/imgCopy.jpg" alt="Copyright c 2009 Pokekaru-Club. All rights reserved." width="358" height="14" /></p>
+  </div>
+  <!-- ##### /FOOTER ##### -->
+</div>
+
+
+<!-- Google Code for &#12304;&#29305;&#38598;&#12305;&#26481;&#20140;&#12473;&#12459;&#12452;&#12484;&#12522;&#12540; Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "zTiXCIbr7AIQupD43gM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1004406842/?value=0&amp;label=zTiXCIbr7AIQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+</html>

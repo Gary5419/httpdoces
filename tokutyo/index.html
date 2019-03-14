@@ -1,0 +1,159 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+define("H1TXT","ポケカルの3つのこだわりをご紹介いたします。");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="ポケカルが提供するツアーコンセプトは、非日常体験。ヘリやセスナに搭乗したり、大使館を訪問したり、夜の工場を見学したり、1日で2つの運河をクルーズしたりと、通常のツアーでは味わえない、『初めて』が体験できます。ぜひ、ポケカルでお手軽な日帰り旅行をお愉しみください。" />
+<meta name="keywords" content="ポケカル,特徴,ツアー,コンセプト,日帰り,非日常,体験" />
+<meta name="copyright" content="" />
+<title>ポケカルとは｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/tokutyo/">
+
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+            <li>ポケカルとは</li>
+          </ul>
+			
+            <h1 class="headline01">ポケカルとは</h1>
+			
+            
+            <div class="mlr15"> 
+                       
+                <div class="headline04">ポケカル 3つのこだわり</div>
+    
+    
+                
+                <div class="headline05">ツアーのオリジナリティ</div>
+                
+                <div class="p16 mlr15">
+                ポケカルが提供するツアーは、従来の日帰りバスツアーのように、郊外の観光地に行き、グルメを満喫し、土産ショップに立ち寄るといったお決まりのツアーでありません。ヘリやセスナに搭乗したり、大使館を訪問したり、夜の工場を見学したり、1日で2つの運河をクルーズしたりと、通常のツアーでは味わえない、『非日常』『初めて』をお客様に体験いただくことが、ポケカルのツアーのコンセプトです。
+                </div>
+                
+                <div class="mb30"></div>
+                
+                <div class="headline05">丸一日を使わないツアー時間</div>
+                
+                <div class="p16 mlr15">
+                ポケカルが提供するツアーの多くは、夕方の時間までに終了する時間行程になっております。朝早く出かけて、夜遅く帰ってくるツアーももちろん楽しいですが、「手軽に旅を楽しんでいただきたい」という思いから、東京を中心とした名所・体験イベントにフォーカスし、お客様に丸一日を使わせないツアーになるよう励んでおります。ぜひ、ポケカルのツアーに『お手軽に』ご参加ください。
+                </div>
+                
+                <div class="mb30"></div>
+                
+                <div class="headline05">日帰りツアーに特化</div>
+                
+                <div class="p16 mlr15">
+                ポケカルが提供するツアーの多くは、夕方の時間までに終了する時間行程になっております。朝早く出かけて、夜遅く帰ってくるツアーももちろん楽しいですが、「手軽に旅を楽しんでいただきたい」という思いから、東京を中心とした名所・体験イベントにフォーカスし、お客様に丸一日を使わせないツアーになるよう励んでおります。ぜひ、ポケカルのツアーに『お手軽に』ご参加ください。
+    
+                </div>
+                
+                <div class="mb40"></div>
+                
+                <div class="headline04">ポケカルのツアー一覧</div>
+                
+                <div class="mlr15 p16">ポケカルのツアーはテーマや特集からお探しいただけます。ぜひお好みのツアーを発見ください。
+                
+                <div class="mb25"></div>
+                
+                <ul class="tokutyo">
+                <li>
+                <a href="/all-themes/" class="p16">テーマから探す</a>
+                
+                <div class="mb10"></div>
+                
+                <p class="mb10"><a href="/all-themes/"><img src="img/tokutyo-theme.jpg" width="100%"></a></p>
+                
+                <span class="p16">ポケカルが取り扱うツアーをテーマ別にご覧いただくことができます。人気のテーマは花火やクルーズ！季節毎に変わるイベントをお見逃しなく！</span>
+    
+                </li>
+                <li>
+                <a href="/all-features/" class="p16">特集から探す</a>
+                
+                <div class="mb10"></div>
+                
+                <p class="mb10"><a href="/all-features/"><img src="img/tokutyo-feature.jpg" width="100%"></a></p>
+                
+                <span class="p16">ポケカルが取り扱うツアーを特集別にご覧いただくことができます。特集は期間限定で公開されています。ツアーに参加した動画も特集内で紹介しておりますので、ぜひご覧ください！</span>
+                </li>
+                <li>
+                <a href="/bustours/" class="p16">日帰りバスツアーから探す</a>
+                
+                <div class="mb10"></div>
+                
+                <p class="mb10"><a href="/bustours/"><img src="img/tokutyo-bustours.jpg" width="100%"></a></p>
+                
+                <span class="p16">ポケカルが取り扱うツアーの中で、バスツアーに分類されるものをまとめております。シーンや目的・エリア・価格帯からお好みのバスツアーをお探しください。</span>
+                </li>
+                </ul>
+                
+                <div class="mb30"></div>
+                
+                </div>
+                        
+            </div>            
+                        
+                        
+
+
+	    </div><!-- wrapper -->
+    </div><!-- main -->
+
+</div><!-- container -->
+
+<!-- ##### /BODY ##### -->
+
+<div class="mb100"></div>
+
+
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+
+<?php include_once("include/2018/footer.html" ); ?>

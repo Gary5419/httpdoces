@@ -1,0 +1,95 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="虎姫一座 メンバー「ゆうき」のプロフィール、誕生日、一言メッセージなど。" />
+<meta name="keywords" content="虎姫一座,チケット,アミューズカフェシアター,昭和歌謡,浅草,レヴュー,ゆうき,虎姫一座 ゆうき" />
+<meta name="copyright" content="" />
+<title>ゆうき | 虎姫一座 メンバープロフィール | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+<link href="../css/style-cruise.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/torahimeichiza/yuuki/">
+
+
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li><a href="../">浅草レヴュー 虎姫一座 特別インタビュー</a></li>
+            <li>ゆうき</li>
+          </ul>
+          <section>
+
+<!-- keyimage -->
+<img src="../img/keyimage.jpg" width="100%">
+<br>
+<!-- end/keyimage -->
+
+<h2 class="maintitle">ゆうき</h2>
+<div class="marginB20"></div>
+<div class="marginB20"></div>
+<div class="prof_wide">
+<table width="800" border="0">
+  <tbody>
+    <tr>
+      <td width="35%"><img src="../img/torahime_profile_yuuki.jpg" width="250px"></td>
+      <td width="65%" class="prof_td">
+	  <div class="prof_feld">
+		  <div class="prof_cmnt">生年月日：1985年9月24日</div>
+		  <div class="prof_cmnt">血液型：A</div>
+		  <div class="prof_cmnt">趣味：体を動かすこと（スポーツなど）</div>
+		  <div class="prof_cmnt">好きな食べ物：米・肉</div>
+		  <div class="prof_cmnt">好きな言葉：一以貫之（いちいをもってこれをつらぬく）</div>
+		  <div class="prof_cmnt">一言メッセージ：損をさせないステージを!!　Liveを!!　お届けいたしま</div>
+		  <div class="prof_cmnt">す!!</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+<div class="mb20"></div>
+
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

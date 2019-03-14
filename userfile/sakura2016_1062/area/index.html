@@ -1,0 +1,317 @@
+<?php
+#ini_set( 'display_errors', 1 );
+$pref = isset($_REQUEST['pref']) ? $_REQUEST['pref'] : "東京都";
+
+include("../../sakura2016/_data/area.php");
+
+$afi = "1062";
+$ext_afi = "_".$afi;
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!-- InstanceBegin template="/Templates/second-noside.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<meta name="description" content="2016年　桜お花見日帰りツアー特集｜クルーズツアーやバスツアーなど、お花見を日帰りで楽しんで頂くツアー情報を掲載しています。ぜひご覧ください。" />
+<meta name="keywords" content="桜,花見,桜名所,観光,日帰り,ツアー,ぽけかる倶楽部" />
+<meta name="copyright" content="" />
+<meta name="robots" content="noindex,nofollow">
+<title>都道府県別でツアーを探す｜2016年　桜お花見日帰りツアー特集｜ぽけかる倶楽部</title>
+<!-- InstanceEndEditable -->
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="style" -->
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="../css/style-sakura.css" rel="stylesheet" type="text/css" />
+<!-- InstanceEndEditable -->
+  <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once 'header_noarea.inc'; ?>
+<div id="wrapper">
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="floatContainer">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+        <div class="topicPath floatContainer noside">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <!-- InstanceBeginEditable name="breadcrumbs" -->
+            <li>特集：2016　桜お花見日帰りツアー特集</li>
+            <!-- InstanceEndEditable -->
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <!-- InstanceBeginEditable name="main" -->
+        <div id="pokekaru_old_html">
+          <link href="../../css/style-sakura.css" rel="stylesheet" type="text/css" />
+
+<DIV CLASS="BB">
+<!-- keyimage -->
+<ul style="width:900px; padding:5px 0 5px 0;">
+<img src="../../sakura2016/img/keyimage.jpg" width="900" alt="特集：2016 桜お花見ツアー特集">
+
+<!-- tab-area -->
+
+<li class="tab-li"><a href="/userfile/sakura2016<?php echo $ext_afi; ?>/"><img src="../img/tab11.jpg" width="180" height="40"></a></li>
+<li class="tab-li"><a href="/userfile/sakura2016<?php echo $ext_afi; ?>/recommend/"><img src="../img/tab12.jpg" width="180" height="40"></a></li>
+<li class="tab-li"><a href="/userfile/sakura2016<?php echo $ext_afi; ?>/area/"><img src="../img/tab03.jpg" width="180" height="40"></a></li>
+<li class="tab-li"><a href="/userfile/sakura2016<?php echo $ext_afi; ?>/spot/"><img src="../img/tab14.jpg" width="180" height="40"></a></li>
+<li class="tab-li"><a href="/userfile/sakura2016<?php echo $ext_afi; ?>/theme/"><img src="../img/tab15.jpg" width="180" height="40"></a></li>
+</ul>
+<!-- end/tab-area -->
+<br><br><br>
+
+<!-- area-area -->
+<div style="width:900px;">
+<div class="sakura_midashi">行きたいエリアをご選択ください</div>
+<!-- tab -->
+
+<ul id="sakura_preftab">
+<?php foreach($m_pref as $val): ?>
+<li><a href="./<?php if($val != "東京都")	echo "?pref=".$val;?>" class="sakura_preflink<?php if($pref == $val)	echo "_a";?>"><?php echo $val; ?></a></li>
+<?php endforeach; ?>
+</ul>
+
+<!-- end/tab -->
+
+<div id="sakura_areabar"><?php echo $pref; ?>エリアのお花見スポット</div>
+<div id="sakura_arealist">
+
+<div class="marginB10">
+各スポット名をクリックするとツアー一覧ページへジャンプします
+</div>
+
+<ul>
+<?php 
+if(isset($m_area[$pref2area[$pref]]) && count($m_area[$pref2area[$pref]]) > 0):
+foreach($m_area[$pref2area[$pref]] as $val): ?>
+<li><a href="/userfile/sakura2016<?php echo $ext_afi; ?>/spot/<?php if($pref != "東京都")	echo "?pref=".$pref;?>#<?php echo urlencode($val); ?>"><?php echo $val; ?></a></li>
+<?php 
+endforeach; 
+endif;
+?>
+</ul>
+
+</div>
+
+
+
+<?php
+if(isset($data[$pref2area[$pref]]) && count($data[$pref2area[$pref]]) > 0):
+$cnt=0;
+foreach($data[$pref2area[$pref]] as $val):
+$cnt++;
+if($cnt%3 == 1)	echo "<div class='clearfix'>";
+?>
+
+<table width="290" height="293" border="0" class="event-t">
+  <tr>
+    <td colspan="2"><font class="event-ttl"><a href="http://www.poke.co.jp/book/calendar/P<?php echo sprintf("%06d",$val[0]);?>/<?php echo $afi;?>/index.html""><?php echo $val[1];?></a></font></td>
+    <td width="148" colspan="2" class="event-photo">
+    <div class="sakura_photo_wrap">
+    <div class="sakura_photo_outer3">
+    <?php
+    if(file_exists("../img/eventid_".$val[0].".jpg")):
+    ?>
+    <img src="../img/eventid_<?php echo $val[0];?>.jpg" width="139" height="104">
+    <?php else: 
+    $path = "http://img.poke.co.jp/media/transfer/img/eventid_{$val[0]}/eventid_{$val[0]}_pic1.jpg";
+    $size = getimagesize($path);
+    $width = $size[0];
+    $height = $size[1];
+    
+        if( ($width > $height) && ($width* 0.6 > $height)  ){
+        	$imgSize = "width='139'";
+        }else{
+        	$imgSize = "height='104'";
+        }
+    ?>
+    <img src="http://img.poke.co.jp/media/transfer/img/eventid_<?php echo $val[0];?>/eventid_<?php echo $val[0];?>_pic1.jpg" <?php echo $imgSize ;?>>
+    <?php endif; ?>
+    </div>
+    </div>
+    </td>
+    </tr>
+<?php if($val[2] != ""): ?>
+  <tr>
+    <td width="87"><img src="../img/item-date.jpg" width="83" height="25"></td>
+    <td colspan="3"><?php echo $val[2];?></td>
+    </tr>
+<?php endif; ?>
+  <tr>
+    <td width="87" height="43"><img src="../img/item-price.jpg" width="83" height="25"></td>
+    <td colspan="3"><font class="event-price">&yen;<?php echo number_format($val[3]);?></font></td>
+    </tr>
+  <tr>
+    <td height="34"><img src="../img/item-area.jpg" width="83" height="25"></td>
+    <td colspan="3"><?php echo $val[4];?></td>
+    </tr>
+  <tr>
+    <td height="32"><img src="../img/item-spot.jpg" width="83" height="25"></td>
+    <td colspan="3">
+    <?php 
+    $tmp = array();
+    for($i=5;$i<=8;$i++){
+    	if($val[$i] != "")	$tmp[] = $val[$i];
+    }
+    echo implode("、",$tmp);
+    ?>
+    </td>
+    </tr>
+  <tr>
+    <td><img src="../img/item-menu.jpg" width="83" height="25"></td>
+    <td colspan="3"><?php echo $val[9]; ?></td>
+    </tr>
+</table>
+
+<?php
+if($cnt%3 == 0 || $cnt == count($data[$pref2area[$pref]]) )	echo "</div>";
+
+endforeach;
+endif;
+?>
+
+
+
+
+
+
+
+<br><br><br><br>
+
+
+
+
+
+
+
+</div>
+
+<br><br><br>
+<!-- /end recommend-area -->
+</DIV>
+</div>
+
+<!-- InstanceEndEditable -->
+        <div class="totop" style="clear:both; text-align:right; padding:15px 0 0 0;">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <!-- ##### FOOTER #####  -->
+  <div id="footerField">
+    <ul class="footerLink">
+      <li><a href="/">日帰りツアー・見学・イベント情報トップ</a></li>
+      <li><a href="/event/">日帰りツアー・体験イベント一覧</a></li>
+      <li class="last"><a href="http://www.poketabi-hikaku.com/" target="_blank">ぽけ旅比較.com</a></li>
+    </ul>
+    <ul class="footerLink">
+<li><a href="/book/eventlist/bus/none/none/0/0000/00/00/index.html">観光名所めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/society-bus/none/none/0/0000/00/00/index.html">社会見学バスツアー</a></li>
+<li><a href="/book/eventlist/nature-bus/none/none/0/0000/00/00/index.html">花・自然めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/yakata/none/none/0/0000/00/00/index.html">屋形船遊び</a></li>
+<li><a href="/book/eventlist/cruising/none/none/0/0000/00/00/index.html">川下りクルーズ</a></li>
+<li><a href="/book/eventlist/tokyobay/none/none/0/0000/00/00/index.html">東京湾クルーズ</a></li>
+<li><a href="/book/eventlist/night-cruise/none/none/0/0000/00/00/index.html">ナイトクルーズ</a></li>
+<li class="last"><a href="/book/eventlist/ozashiki/none/none/0/0000/00/00/index.html">お座敷遊び</a></li><br>
+
+<li><a href="/book/eventlist/tradition/none/none/0/0000/00/00/index.html">伝統芸能</a></li>
+<li><a href="/book/eventlist/show/none/none/0/0000/00/00/index.html">ショー＆レビュー</a></li>
+<li><a href="/book/eventlist/society/none/none/0/0000/00/00/index.html">社会見学</a></li>
+<li><a href="/book/eventlist/factory/none/none/0/0000/00/00/index.html">工場見学</a></li>
+<li><a href="/book/eventlist/walking/none/none/0/0000/00/00/index.html">街歩き</a></li>
+<li><a href="/book/eventlist/history/none/none/0/0000/00/00/index.html">歴史探訪</a></li>
+<li><a href="/book/eventlist/spot/none/none/0/0000/00/00/index.html">名所・旧跡めぐり</a></li>
+<li><a href="/book/eventlist/exhibition/none/none/0/0000/00/00/index.html">展覧会・特別展</a></li>
+<li><a href="/book/eventlist/experience/none/none/0/0000/00/00/index.html">体験教室</a></li>
+<li class="last"><a href="/book/eventlist/gourmet/none/none/0/0000/00/00/index.html">レストランプラン</a></li><br>
+
+<li><a href="/book/eventlist/ticket-gourmet/none/none/0/0000/00/00/index.html">公演つきグルメプラン</a></li>
+<li><a href="/book/eventlist/ticket/none/none/0/0000/00/00/index.html">公演チケット</a></li>
+<li><a href="/book/eventlist/live/none/none/0/0000/00/00/index.html">室内ライブ</a></li>
+<li><a href="/book/eventlist/dayspa/none/none/0/0000/00/00/index.html">日帰り温泉</a></li>
+<li><a href="/book/eventlist/festival/none/none/0/0000/00/00/index.html">祭り・イベント</a></li>
+<li><a href="/book/eventlist/skytree/none/none/0/0000/00/00/index.html">東京スカイツリー</a></li>
+<li><a href="/book/eventlist/sakura/none/none/0/0000/00/00/index.html">桜・お花見ツアー</a></li>
+<li class="last"><a href="/book/eventlist/hanabi/none/none/0/0000/00/00/index.html">花火大会観覧ツアー</a></li><br>
+
+<li><a href="/book/eventlist/group/none/none/0/0000/00/00/index.html">団体様貸切OK</a></li>
+<li><a href="/book/eventlist/stay/none/none/0/0000/00/00/index.html">宿泊付きツアー</a></li>
+<li><a href="/book/eventlist/west/none/none/0/0000/00/00/index.html">関西 日帰り遊び</a></li>
+<li class="last"><a href="/book/eventlist/other/none/none/0/0000/00/00/index.html">その他地域 日帰り遊び</a></li>
+</ul>
+    <ul>
+      <li><a href="/company.html">運営会社</a></li>
+      <li><a href="/media.html">メディア掲載実績</a></li>
+      <li><a href="/pr.html">プレスリリース</a></li>
+      <li><a href="/ryokogyo.html">旅行業登録票</a></li>
+      <li><a href="/privacy.html">個人情報保護</a></li>
+      <li><a href="/copyright.html">著作権</a></li>
+      <li><a href="/yakkan.html">約款</a></li>
+      <li><a href="/tuuhan.html">通販規約</a></li>
+      <li class="last"><a href="/book/inquiry.php">お問い合わせ</a></li>
+    </ul>
+    <p class="imageBlock"><img src="/images/common/imgCopy.jpg" alt="Copyright c 2009 Pokekaru-Club. All rights reserved." width="358" height="14" /></p>
+  </div>
+  <!-- ##### /FOOTER ##### -->
+</div>
+
+
+<!-- BLADE -->
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+<!-- end/BLADE -->
+
+
+<!-- 20121031追加 -->
+<!-- Google Code for &#24180;&#26411;&#24180;&#22987;&#29305;&#38598; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_label = "PTROCNbz1gQQupD43gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1004406842/?value=0&amp;label=PTROCNbz1gQQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- end/20121031追加 -->
+
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+<!-- InstanceEnd -->
+</html>

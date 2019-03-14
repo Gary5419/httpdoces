@@ -1,0 +1,631 @@
+<?php
+#ini_set('display_errors', 'On');
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+
+require_once dirname(dirname(__FILE__)) . '/_data/simple_html_dom.php';
+#require_once dirname(dirname(__FILE__)) . '/_data/index_160310.php';
+require_once dirname(dirname(__FILE__)) . '/_data/functions.php';
+
+/*クリスマスコンサート・ディナーショー取得*/
+$params["purposeid"] = "christmas_concert";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*クリスマスイルミネーション取得（カセット8個）*/
+$params["purposeid"] = "christmas_illumination";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list2[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*クリスマスクルーズ取得*/
+$params["purposeid"] = "christmas_cruise";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list3[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+/*クリスマスディナープラン*/
+$params["purposeid"] = "christmas_dinner";
+$cr1 = getSearchData($params);
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list4[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="2018年度のクリスマスイブは祝日の月曜日。イブブは日曜日。クリスマスのイベントやお出かけを満喫するには、絶好の日並び！ポケカルでは、クリスマスに向けて季節限定企画を紹介中！クルーズやグルメプラン、コンサート観賞チケットなど。1年で一番心躍る季節を存分にお楽しみください。" />
+<meta name="keywords" content="クリスマス,お出かけ,2018,イベント,ディナー,ショー,コンサート,ポケカル" />
+<meta name="copyright" content="" />
+<title>クリスマスのお出かけ2018 | 日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/christmas/">
+
+
+
+<style>
+.pricebox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#fff100, #fffcb9);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.pricebox p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+.areabox{
+    padding: 0.5em 1em;
+    margin: 0;
+    
+
+	background: linear-gradient(#aed03e, #e6f0c2);
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.areabox p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	color: #333;
+}
+ul.spboxcol, ul.spwidecol{
+	width:100%;
+	position:relative;
+	overflow:hidden;
+	padding-bottom:40px;
+}
+ul.spboxcol li, ul.spwidecol li{
+	float:left;
+	box-sizing:border-box;
+}
+ul.spboxcol li a, ul.spwidecol li a{
+	text-decoration:none !important;
+}
+ul.spboxcol li{
+	width:246px;
+	border-radius: 7px;
+	margin-right:12px;
+	margin-bottom:10px;
+	
+}
+ul.spwidecol{
+	padding:bottom:70px;
+}
+ul.spwidecol li{
+	width:calc(50% - 5px);
+	margin-bottom:10px;
+	margin-right:10px;
+	
+	height:220px;
+}
+ul.spwidecol li:nth-child(2n){
+	margin-right:0;
+}
+ul.spwidecol li p{
+	padding:10px 10px 10px 10px;
+}
+
+ul.spboxcol li:nth-child(4n){
+	margin-right:0;
+}
+.spbox1,.spbox2,.spbox3,.spbox4,.spbox5,.spbox6,.spbox7,.spbox8,.spbox9{
+    padding: 0.5em 1em;
+    margin: 0;
+    border-bottom: solid 6px #BDBDBD;
+    border-radius: 8px;
+}
+.spbox1 p,.spbox2 p,.spbox3 p,.spbox4 p,.spbox5 p,.spbox6 p,.spbox7 p,.spbox8 p,.spbox9 p {
+    margin: 0; 
+    padding: 20px 0;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+}
+
+.spbox1{
+	background: linear-gradient(right, #91FDB7, #709DFF);
+	background: -moz-linear-gradient(right, #91FDB7, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#709DFF)); 
+}
+.spbox1 p {
+	color: #FFF;
+}
+
+.spbox2{
+	background: linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -moz-linear-gradient(right, #91FDB7, #4DD0E1);
+	background: -webkit-gradient(linear, right center, left center, from(#91FDB7), to(#4DD0E1)); 
+}
+.spbox2 p {
+	color: #FFF;
+}
+
+.spbox3{
+	background: linear-gradient(right, #4DD0E1, #709DFF);
+	background: -moz-linear-gradient(right, #4DD0E1, #709DFF);
+	background: -webkit-gradient(linear, right center, left center, from(#4DD0E1), to(#709DFF)); 
+}
+.spbox3 p {
+	color: #FFF;
+}
+
+.spbox4{
+	background: linear-gradient(right, #FFD400, #FF6B37);
+	background: -moz-linear-gradient(right, #FFD400, #FF6B37);
+	background: -webkit-gradient(linear, right center, left center, from(#FFD400), to(#FF6B37)); 
+}
+.spbox4 p {
+	color: #FFF;
+}
+
+.spbox5{
+	background: linear-gradient(right, #FFB822, #FA709A);
+	background: -moz-linear-gradient(right, #FFB822, #FA709A);
+	background: -webkit-gradient(linear, right center, left center, from(#FFB822), to(#FA709A)); 
+}
+.spbox5 p {
+	color: #FFF;
+}
+
+.spbox6{
+	background: linear-gradient(right, #FB97B4, #89AEFF);
+	background: -moz-linear-gradient(right, #FB97B4, #89AEFF);
+	background: -webkit-gradient(linear, right center, left center, from(#FB97B4), to(#89AEFF)); 
+}
+.spbox6 p {
+	color: #FFF;
+}
+
+.spbox7{
+	background: linear-gradient(right, #FCCB90, #D57EEB);
+	background: -moz-linear-gradient(right, #FCCB90, #D57EEB);
+	background: -webkit-gradient(linear, right center, left center, from(#FCCB90), to(#D57EEB)); 
+}
+.spbox7 p {
+	color: #FFF;
+}
+
+.spbox8{
+	background: linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -moz-linear-gradient(right, #FAD0C4, #FF9A9E);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FF9A9E)); 
+}
+.spbox8 p {
+	color: #FFF;
+}
+
+.spbox9{
+	background: linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -moz-linear-gradient(right, #FAD0C4, #FFD1FF);
+	background: -webkit-gradient(linear, right center, left center, from(#FAD0C4), to(#FFD1FF)); 
+}
+.spbox9 p {
+	color: #333;
+}
+
+.bg_ffffff{
+	background:#FFF;
+}
+
+</style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">日帰り旅行・ツアーTOP</a></li>
+			<li>クリスマス特集2018</li>
+            </ul>
+
+
+<div class="mb10"></div>
+
+<h1 class="headline01"><p>クリスマス特集2018</p></h1>
+
+<div class="mb20"></div>
+
+<div class="mb10"><img src="img/keyimage_pc.jpg" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。" width="100%"></div>
+
+<div class="lead">クリスマスは、心躍る特別な期間。幸い、2018年度のクリスマスイブ(12月24日)は月曜の祝日。さらに、22日は土曜日。クリスマスのイベントやお出かけを満喫するには、絶好の日並び(3連休)！ポケカルでは、クリスマス期間に合せて、ディナーやショー、クルーズ、コンサート、バスツアーなど、特別プランやツアーを造成。1年で一番ワクワクするイベントを存分にお楽しみください。
+</div>
+              <div class="mb20"></div>
+
+</div>
+		  
+		  
+<div class="bg_a98a5b">
+
+<div class="wrapper">
+
+<h2 class="headline04">クリスマス期間に行けるツアー・特別プラン</h2>
+
+<div class="lead2">
+	クリスマスの2018年のクリスマスは、3連休と重なり、盛り上がること間違いなし。特に3連休の初日と中日にご予約が集中することが予測されます。ぜひ、人気日のご予約はお早めに！
+</div>
+
+<ul class="spboxcol">
+
+<!-- -->
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-22&stock_date_to=2018-12-22&adults_cnt=2&purpose_id[]=christmas_all-tours">
+<h4 class="spbox8"><p>12/22(土)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-23&stock_date_to=2018-12-23&adults_cnt=2&purpose_id[]=christmas_all-tours">
+<h4 class="spbox8"><p>12/23(日)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-24&stock_date_to=2018-12-24&adults_cnt=2&purpose_id[]=christmas_all-tours">
+<h4 class="spbox8"><p>12/24(月)</p></h4>
+</a>
+</li>
+<li>
+<a href="https://www.poke.co.jp/book/eventlist.php?stock_date_from=2018-12-25&stock_date_to=2018-12-25&adults_cnt=2&purpose_id[]=christmas_all-tours">
+<h4 class="spbox8"><p>12/25(火)</p></h4>
+</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+		  
+	  
+<div class="bg_33553d">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>クリスマスコンサート・ディナーショー</span><h3><a class="list-more" href="/christmas/concert/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>チケットを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead2">ゴスペルにクラシック、クリスマス期間だけの限定コンサートもりだくさん。今年コンサートに行っていない方、ぜひ、家族や大切な方と連れだって、音楽の感動を共有ください。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list1 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+<div class="bg_a98a5b">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>クリスマスイルミネーション</span><h3><a class="list-more" href="/christmas/illumination/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead2">主に都内のイルミネーションスポットやクリスマスマーケットをバスツアーでめぐります。1年で街が最も華やかに輝くクリスマス！バスツアーでゆったり煌びやかな街の光をお愉しみください。※車窓からの見学も含まれます。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list2 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+		  
+<div class="bg_33553d">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>クリスマスクルーズ</span><h3><a class="list-more" href="/christmas/cruise/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead2">船の上で、いつもと異なるクリスマスのひとときを。レインボーブリッジに東京タワー、お台場の近未来的なビル群、海上からクリスマイルミネーションに染まる夜景をお愉しみください。※航路・天候によっては夜景が見れない場合もあります。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list3 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>
+		  
+<div class="bg_a98a5b">
+
+<div class="wrapper">
+
+<div class="headline04_wrap">
+<h2 class="headline04"><span>クリスマスディナープラン</span><h3><a class="list-more" href="/christmas/dinner/" style="color:#FFF;margin:12px 20px 0 0;"><i class="fa fa-angle-right" style="color:#FFF;border-color:#FFF;"></i>ツアーを全て見る</a></h3></h2>
+</div>
+
+<div class="mb10"></div>
+
+<div class="lead2">クリスマス期間の特別ディナープランのご案内。1年の締めくくりは、美味しい食事を大切な人と一緒にご堪能ください。</div>
+
+
+<ul class="cr4col">
+<?php 
+$cnt = 0;
+foreach($list4 as $val){ 
+	if($cnt < 8):
+        $path = $val['img'];
+        $size = getimagesize($path);
+        $width = $size[0];
+        $height = $size[1];
+?>
+<li>
+<div class="row2">
+<a href="<?php echo $val['link']; ?>">
+    <?php if($width < $height): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php elseif($height > 190): ?>
+    	<img src="<?php echo $val['img']; ?>" style="height:184.5px">
+    <?php else: ?>    
+        <?php if($height < 0.75 * $width): ?>
+        <img src="<?php echo $val['img']; ?>" style="height:184.5px">
+        <?php else: ?>
+        <img src="<?php echo $val['img']; ?>" width="100%">
+        <?php endif; ?>
+    <?php endif; ?>
+</a>
+</div>
+<h4 class="row3"><a href="<?php echo $val['link']; ?>">
+<?php 
+
+if(mb_strlen($val['title'],'UTF-8') > 45):
+    echo mb_substr($val['title'],0,45,'UTF-8')."...";
+    else:
+    echo $val['title'];
+    endif;
+
+ ?></a></h4>
+<div class="row4"><?php 
+
+if(mb_strlen($val['price'],'UTF-8') > 40):
+    echo mb_substr($val['price'],0,40,'UTF-8')."...";
+    else:
+    echo $val['price'];
+    endif;
+
+?></div>
+</li>
+<?php 
+	$cnt++;
+	endif;
+} ?>
+</ul>
+
+
+<div class="pb30"></div>
+
+</div>
+</div>	
+
+
+
+  <!--/#content .clearfix-->
+  
+<?php include_once("include/2018/footer.html" ); ?>

@@ -1,0 +1,255 @@
+<?php
+$protocol = $_SERVER['HTTPS'] ? "https" : "http";
+header("HTTP/1.0 301 Moved Permanently");
+header("Location: {$protocol}://{$_SERVER['HTTP_HOST']}/company/");
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+define("H1TXT","運営会社 | ポケカル"); ?>
+<?php
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="Description" content="「ポケットサイズ」のカルチャーエンターテイメントをご提案するポケカルの会社紹介です。" />
+<meta name="Keywords" content="会社案内,会社紹介,会社概要,ポケカル" />
+<title>運営会社 | ポケカル</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+<link href="https://img.poke.co.jp/css/book.css" rel="stylesheet" type="text/css" />
+<link href="https://img.poke.co.jp/css/second.css" rel="stylesheet" type="text/css" />
+<style>
+.bar {
+width:100%;
+	background:#ECECEC;
+	color:#404040;
+	font-size:20px;
+	font-weight:bold;
+	-moz-box-shadow: 0px 2px 0px #A6A6A6;
+	-webkit-box-shadow: 0px 2px 0px #A6A6A6;
+	-o-box-shadow: 0px 2px 0px #A6A6A6;
+	-ms-box-shadow: 0px 2px 0px #A6A6A6;
+	box-shadow: 0px 2px 0px #A6A6A6;
+	
+	margin-bottom:20px;
+}
+.bar p{
+	padding:10px 15px 7px 15px;
+}
+.info_table{margin:0 auto 5px auto;}
+</style>
+</head>
+ <body>
+ <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>運営会社</li>
+          </ul>
+          <section>
+  			
+
+<h2 class="bar"><p>運営会社</p></h2>
+
+<div class="mb20"></div>
+        <div id="company">
+          
+          <div id="company_info">
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">社名</th>
+                <td class="inner">
+                <div style="font-size:16px;">株式会社　ポケカル</div>
+                
+                <div style="color:#C00000;line-height:1.3;">
+                ※「株式会社 ぽけかる倶楽部」は、さらなるサービス拡大と、ブランド認知のため、2016年12月23日付で商号（社名）を「株式会社 ポケカル」へ変更させていただきました。
+				</div>
+                </td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">住所</th>
+                <td class="inner">〒103-0015 東京都中央区日本橋箱崎町20-1 アンソレイエ・オオタ 5F　[<a href="/img/map.jpg" target="_blank">地図</a>]<br />
+                  TEL：03-5623-9302<br />
+                  FAX：03-3249-3005</td>
+              </tr>
+              <tr>
+                <th class="g_ml">大阪営業所</th>
+                <td class="inner">〒533-0033 大阪府大阪市東淀川区東中島1-20-19　ヒカリビル 9F  [<a href="/img/osaka-map.jpg" target="_blank">地図</a>]<br />
+                  TEL：06-6476-7575<br />
+                  FAX：06-6476-9506</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">設立年月日</th>
+                <td class="inner">平成26年6月4日</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">資本金</th>
+                <td class="inner">3,000万円</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">代表者</th>
+                <td class="inner">代表取締役会長　&nbsp;鈴木　道男</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">役員</th>
+                <td class="inner">
+                取締役社長　　　&nbsp;中村　晋也<br />
+                専務取締役　　　&nbsp;鎌田　直臣<br />
+                取締役　　　　　&nbsp;三浦　和道
+                </td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">事業内容</th>
+                <td class="inner">■エンターテインメント企画運営業務<br />
+                  ■イベント・演劇・セミナーの企画、製作、公演、運営<br />
+                  ■上記に関するマーケティング業務及び付帯する一切の事業</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th height="62" class="g_ml">関連会社</th>
+                <td class="inner">
+                  株式会社ポケカル九州<br />
+                  <a href="http://mighty-kotsu.co.jp/" target="_blank" rel="nofollow">株式会社マイティ交通</a><br />
+                  <a href="http://kokusai-jigyo.co.jp" target="_blank" rel="nofollow">株式会社フューチャービジョン</a><br />
+                  <a href="http://kotoricafe.jp/" target="_blank" rel="nofollow">株式会社ことりカフェ</a><br />
+                  株式会社アンジーン</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr g_tl">&nbsp;</td>
+                <td class="crnr w_tr">&nbsp;</td>
+              </tr>
+              <tr>
+                <th class="g_ml">株主</th>
+                <td class="inner">鈴木　道男<br />
+                  東京急行電鉄株式会社</td>
+              </tr>
+              <tr>
+                <td class="crnr g_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+
+            <table class="info_table" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="crnr w_tl" width="50%">&nbsp;</td>
+                <td class="crnr w_tr" width="50%">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="inner" colspan="2" style="text-align: center;"><a href="/pokekaruguide.pdf" target="_blank">株式会社ポケカル（会社案内・媒体資料）</a>　（PDFファイル/約1.5MB）<br />
+                  PDFファイルが読み取れない場合は<a href="http://www.adobe.com/jp/products/reader/" target="_blank">コチラ</a>より無料インストールできます。</td>
+              </tr>
+              <tr>
+                <td class="crnr w_bl">&nbsp;</td>
+                <td class="crnr w_br">&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+</section>
+        </div>
+
+	</div>
+      </div>
+      <div class="mb40"></div>
+      <?php include_once("include/2018/footer.html" ); ?>

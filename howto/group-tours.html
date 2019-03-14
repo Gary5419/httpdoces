@@ -1,0 +1,103 @@
+<?php
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+    <meta name="Description" content="予約からツアー開催までの流れをご案内。払込票とクレジットカードでは、予約後の流れが異なります" />
+    <meta name="Keywords" content="" />
+    <meta name="copyright" content="" />
+    <title>予約からツアー開催までの流れ｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <link rel="stylesheet" href="/css/second.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://www.poke.co.jp/sp/howto/following-schedule/">
+    <style>
+        #media {
+            width: 900px;
+            margin: 0 auto;
+        }
+        .tbl-info2 .th {
+            color: #fff;
+            background-color: #ec7391;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+        <?php include_once("include/2018/header.html"); ?>
+        <div class="main">
+            <div class="wrapper">
+                <ul class="breadcrumb">
+                    <li><a class="trans" href="/">日帰り旅行・ツアーTOP</a></li>
+                    <li>予約からツアー開催までの流れ</li>
+                </ul>
+                <section>
+                    <h1 class="headline01">予約からツアー開催までの流れ</h1>
+                    <table class="tbl-info2">
+                        <tr>
+                            <th class="th"> ①お申込み<br>▼ </th>
+                            <td class="td">
+                                <p class="mb10">参加したいツアーを決めていただき、ツアーページの開催カレンダーの「申込み」ボタンをクリックし、画面に従いご予約手続きを進めてください。支払い方法は「払込票」もしくは「クレジットカード」のどちらかを選択することができます。</p>
+                                <p style="color: #C00000">※開催日の1週間にお申込みいただく場合は、「払込票」をお送りする日数がありませんので、支払方法はクレジットカードのみとなります。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="th"> ②ご予約完了<br>▼ </th>
+                            <td class="td"> ご予約を完了いただくと、ご入力いただいたメールアドレス宛に「予約確認メール」が送信されます。届かない場合は、メールアドレス間違いや迷惑メールフォルダに届いている等が考えられます。 </td>
+                        </tr>
+                        <tr>
+                            <th class="th"> ③ツアー開催決定<br>▼ </th>
+                            <td class="td">
+                                <p class="mb10">各ツアーには、ツアーを開催するための「最小催行人数」が設定されており、申込者の総数が、最少催行人数に達すると、ツアーは開催決定となります。催行人数に達しない場合は、ツアーは開催中止になります。</p>
+                                <p>※チケットや飲食店のグルメプラン、スカイバスツアー、クルーズツアーなどの商品は最少催行人数はありません。1～2名様からお申込み可能です。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="th"> ④払込票の受領 /<br>④契約完了メールの受領<br>▼ </th>
+                            <td class="td">
+                                <p style="font-weight: bold;">【支払い方法で｢払込票｣を選択されたお客様】</p>
+                                <p class="mb20">開催決定後、ポケカルより、ご予約をいただいたお客様に「払込票」を郵送にてお送りいたします。 <span style="color: #C00000">支払い期限までに、払込票に記載の金額をお支払いください。</span>また、払込票には、集合場所や行程が記載された「案内書」も同封されています。大切な書類となりますので、ツアーの開催まで大切に保管ください。※払込票は、ツアー開催の1週間前を目安としてお送りいたします。
+                                    <p style="font-weight: bold;">【支払い方法で｢クレジットカード｣を選択されたお客様】</p>
+                                    <p>クレジットカード支払のお客様には、払込票は送付されません。各クレジットカード会社を通して、決済手続きを進めさせて頂きます。<span style="color: #C00000">決済手続きが完了しましたら、ポケカルより「契約成立メール」をお送り致します。</span>当メールには、ツアー案内書(PDF)が添付されておりますので、大切に保管ください。※契約成立メールもツアー開催の1週間前を目安としてお送りしております。※ツアーが開催中止になった場合で、すでにクレジットカード決済が確定している場合は、お客様のご指定口座に返金をさせて頂きます。未確定の場合は、クレジットカード会社を通しての返金となります。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="th"> (⑤チケットの受領)<br>▼ </th>
+                            <td class="td"> チケット商品を申し込まれた方は、支払い手段に関わらず、公演開催日の1週間前を目安として、ポケカルより郵送にて、チケットをお送りいたします。 </td>
+                        </tr>
+                        <tr>
+                            <th class="th"> ⑥ツアーの開催 </th>
+                            <td class="td"> 当日は、案内書に記載された集合場所・集合時間にお集まりください。 </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+        </section>
+    </div>
+    </div>
+    </div>
+    <div class="mb40"></div>
+    <?php include_once("include/2018/footer.html"); ?>

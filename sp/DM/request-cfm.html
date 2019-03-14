@@ -1,0 +1,312 @@
+<?php
+require_once("include/2018/config.php");
+?>
+<?php
+session_start();
+
+foreach($_POST as $k => $v){
+	$_SESSION[$k] = $v;
+}
+
+$title = "ポケカル情報誌の申込みフォーム(内容確認) | ポケカル";
+$description = "";
+$keywords = "";
+define("H1TXT","ポケカル情報誌の申込みフォーム(内容確認) | ポケカル");
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="/sp/common/css/page.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+<meta name="format-detection" content="telephone=no" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+function checkSubmit(){
+  
+  var errTxt = "";
+	
+  if($("#sei").val() == "") errTxt += "姓は必須項目です\n";
+  if($("#mei").val() == "") errTxt += "名は必須項目です\n";
+  if($("#sei_kana").val() == "") errTxt += "セイは必須項目です\n";
+  if($("#mei_kana").val() == "") errTxt += "メイは必須項目です\n";
+  if($("#tel").val() == "") errTxt += "電話番号は必須項目です\n";
+  if($("#email").val() == "") errTxt += "メールアドレスは必須項目です\n";
+  if($("#yubin").val() == "") errTxt += "郵便番号は必須項目です\n";
+  if($("#address").val() == "") errTxt += "送付先の住所は必須項目です\n";
+  if($("#object").val() == "") errTxt += "ポケカルをお知りになったきっかけは必須項目です\n";
+
+  if(errTxt.length > 0){
+    alert(errTxt);
+    return false;
+  }else{
+	document.entry.submit();
+	return false;
+  }
+
+}
+</script>
+<style>
+.caption{
+	margin:0px auto 10px auto;
+	font-size:12px;
+	line-height:1.5;
+	width:96%;
+	
+	padding:7px 10px;
+	
+}
+
+.bar{
+	background:#ECECEC;
+	border-bottom:2px solid #A6A6A6;
+	color:#404040;
+	
+	font-weight:bold;
+	padding:8px 7px;
+	margin-bottom:20px;
+}
+
+.separator{
+	border-bottom:8px solid #A6A6A6;
+	margin-bottom:10px;
+}
+
+.g01{
+	width:96%;
+	margin:0 auto;
+	font-size:12px;
+	line-height:1.5;
+}
+.v01{
+	background:#FC7000;
+	color:#FFF;
+	font-size:14px;
+	box-sizing:border-box;
+	padding:5px 8px;
+	width:100%;
+	line-height:1.4;
+}
+.v02{
+	font-size:12px;
+	line-height:1.5;
+	
+}
+.v03{
+	font-size:10px;
+	color:#9B7248;
+	
+}
+.oh01{
+	background:#F2F2F2;
+	color:#3F3F3F;
+	text-align:center;
+	padding:7px;
+	border:1px solid #ECECEC;
+	box-sizing:border-box;
+	font-size:14px;
+}
+.o01{
+	background:#92D050;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+	box-sizing:border-box;
+}
+.o02{
+	background:#FC6F00;
+	color:#FFF;
+	text-align:center;
+	line-height:1.6;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	border-bottom:1px solid #ECECEC;
+	box-sizing:border-box;
+}
+
+#contact{
+	width:96%;
+	margin:0 auto;
+	line-height:1.6;
+	font-size:12px;
+}
+#contact input[type="text"]{
+	border:1px solid #ECECEC;
+	padding:8px;
+	font-size:14px;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+#contact select{
+/*	-webkit-appearance:none;*/
+	font-size:12px;
+	padding:7px;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+#contact textarea{
+	border:1px solid #ECECEC;
+	padding:8px;
+	font-size:12px;
+	width:96%;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+/*#contact input[type="submit"]{*/
+a.btn{
+	-webkit-appearance:none;
+	display:block;
+	color:#FFF;
+	border:none;
+	background:#FC6F00;
+	font-size:20px;
+	width:100%;
+	margin:0 auto;
+	box-shadow:0px 4px 0px #D05900;
+	text-decoration:none;
+	text-align:center;
+	margin-bottom:10px;
+	cursor:pointer;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	line-height:42px;
+}
+a.btn_back{
+	-webkit-appearance:none;
+	display:block;
+	color:#000;
+	border:none;
+	background:#BDBDBD;
+	font-size:20px;
+	width:100%;
+	margin:0 auto;
+	box-shadow:0px 4px 0px #777;
+	text-decoration:none;
+	text-align:center;
+	margin-bottom:10px;
+	font-family:Meiryo,"メイリオ",  "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	line-height:42px;
+}
+.att{
+	font-weight:normal;
+	font-style:normal;
+	color:#990000;
+}
+.bar2{
+	color:#93663B;
+	padding:5px 4px;
+	border-bottom:1px solid #93663B;
+	font-size:14px;	
+}
+</style>
+
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">ポケカルTOP</a></li>
+          <li><a href="http://www.poke.co.jp/sp/DM/">ポケカル情報誌の紹介</a></li>
+          <li>申込みフォーム(内容確認)</li>
+        </ul>
+        <section>
+
+<div class="bar">ポケカル情報誌 申込みフォーム(内容確認)</div>
+
+<div class="caption">
+各フォームに、必要事項をご入力の上、「送信」ボタンを押してください(<span class="att">※</span>は必須入力となります)。お電話での申込みの場合は、ポケカルお客様センター(<a href="tel:03-5652-7072">03-5652-7072</a>)までご連絡ください。
+</div>
+
+
+<div id="contact">
+
+お名前 <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["sei"]." ".$_SESSION["mei"]; ?>
+
+<div class="mb20"></div>
+
+お名前(フリガナ)  <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["sei_kana"]." ".$_SESSION["mei_kana"]; ?>
+
+<div class="mb20"></div>
+
+電話番号 <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["tel"]; ?>
+
+<div class="mb20"></div>
+
+メールアドレス <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["email"]; ?>
+
+<div class="mb20"></div>
+
+送付先の郵便番号 <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["yubin"]; ?>
+
+<div class="mb20"></div>
+
+送付先の住所 <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["address"]; ?>
+
+<div class="mb20"></div>
+
+ポケカルをお知りになったきっかけ <span class="att">※</span>
+<div class="mb5"></div>
+<?php echo $_SESSION["object"]; ?>
+
+
+<div class="mb20"></div>
+
+<form name="entry" action="request-end.html" method="post">
+
+
+<a href="request.html" class="btn_back">戻る</a>
+
+<a href="#" onclick="document.entry.submit();" class="btn">送信する</a>
+
+<div class="mb20"></div>
+
+<div style="padding:0 30px;">弊社「個人情報の取扱い」の同意いただいた上で、送信するボタンを押してください</div>
+
+</form>
+
+</div>
+
+<div class="mb40"></div>
+
+
+
+<div class="mb20"></div>
+
+</section>
+
+</div>
+</div>
+
+<?php require_once("2018/footer.html"); ?>

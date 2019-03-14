@@ -1,0 +1,323 @@
+<?php
+require_once("./_data/index_renew.php");
+
+define("H1TXT",$m_navi[$p][2]);
+$title = $m_navi[$p][3];
+$description = $m_navi[$p][4];
+$keywords = $m_navi[$p][5];
+
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!-- InstanceBegin template="/Templates/second-noside.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<meta name="description" content="<?php echo $description;?>" />
+<meta name="keywords" content="<?php echo $keywords;?>" />
+<meta name="copyright" content="" />
+<title><?php echo $title;?></title>
+<!-- InstanceEndEditable -->
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="style" -->
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+<link href="css/style-news.css" rel="stylesheet" type="text/css" />
+<style>
+.c_f00000{
+	color:#C00000;
+}
+</style>
+<!-- InstanceEndEditable -->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php require_once "userfile_tag_after_startbody.inc"; ?>
+<?php require_once 'include/const.inc.php'; ?>
+<?php require_once 'header_noarea.inc'; ?>
+<div id="wrapper">
+
+  <!-- ##### BODY ##### -->
+  <div id="bodyField" class="">
+    <div class="floatContainer">
+      <div id="mainField">
+        <!-- ##### BREADCRUMBS ##### -->
+      <div class="topicPath floatContainer noside">
+          <ul>
+            <li><a href="/">TOP</a></li>
+            <!-- InstanceBeginEditable name="breadcrumbs" -->
+           <li><a href="./<?php if($m_navi[$p][6] != $base_month):	echo "?month=".$m_navi[$p][6]; endif; ?>"><?php echo $m_navi[$p][7];?></a></li>
+           <li><?php echo $m_navi[$p][1];?></li>
+
+            <!-- InstanceEndEditable -->
+          </ul>
+        </div>
+        <!-- ##### /BREADCRUMBS ##### --> 
+        <!-- InstanceBeginEditable name="main" -->
+        <div id="pokekaru_old_html">
+          <link href="../css/style-cruise.css" rel="stylesheet" type="text/css" />
+
+<!-- keyimage -->
+<TABLE WIDTH=900 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR>
+<TD ALIGN=left VALIGN=top><img src="img/keyimage.jpg" width="900" ></TD>
+</TR>
+</TABLE>
+<br>
+<!-- end/keyimage -->
+
+
+
+<div class="news_caption">
+当ページでは、ぽけかる倶楽部が、各新聞誌面に掲載した広告画像、及びツアー情報をご覧いただけます。新聞広告を見て、気になるツアーがあれば、ウェブサイトの詳細ページをご覧ください。詳細ページには、新聞広告には記載されていない、訪れる観光スポットの詳細やお食事内容など、<span class="c_f00000">さらに詳しいツアー内容</span>を確認することができます。ウェブサイトでは、<span class="c_f00000">24時間いつでもオンライン予約が可能</span>です。また、<span class="c_f00000">クレジットカードでの支払いが可能です</span>（電話からの申込みの場合は、払込票の支払い手段のみ）。ぜひ、便利なオンライン予約をご利用ください。
+</div>
+
+
+
+<ul id="news_navi2">
+<?php
+foreach($m_month as $k => $v):
+?>
+<li><a href="./<?php if($k != $base_month)	echo "?month=".$k; ?>" class="news_link2"><?php echo $v['title']; ?></a></li>
+<?php
+endforeach;
+?>
+</ul>
+
+
+<ul id="news_navi">
+<?php foreach($m_month[$month]['p'] as $key => $val): ?>
+<li>
+
+<?php
+if( !isset($_GET['month']) && !isset($_GET['p']) ): 
+?>
+<a href="<?php if($val == $base)	echo "./"; else echo "./?p=".$val;?>" class="news_link<?php if(strcmp($p,$val) == 0)	echo "_a";?>"><?php echo $m_navi[$val][0];?></a>
+<?php
+elseif( !isset($_GET['month']) && isset($_GET['p']) ):
+?>
+<a href="<?php if($key == $base)	echo "./?"; else echo "./?p=".$val."&";?><?php if(isset($_GET['month']) ){ ?>month=<?php echo $month; } ?>" class="news_link<?php if(strcmp($p,$val) == 0)	echo "_a";?>"><?php echo $m_navi[$val][0];?></a>
+<?php
+elseif( isset($_GET['month']) &&  !isset($_GET['p']) ):
+?>
+<a href="<?php if($val == $base)	echo "./?"; else echo "./?p=".$val."&";?>month=<?php echo $month; ?>" class="news_link<?php if(strcmp($p,$val) == 0)	echo "_a";?>"><?php echo $m_navi[$val][0];?></a>
+
+<?php
+else:
+?>
+<a href="<?php if($val == $base)	echo "./?"; else echo "./?p=".$val."&";?><?php if(isset($_GET['month']) && isset($_GET['p'])){ ?>month=<?php echo $month; } ?>" class="news_link<?php if(strcmp($p,$val) == 0)	echo "_a";?>"><?php echo $m_navi[$val][0];?></a>
+<?php
+endif;
+?>
+
+
+</li>
+<?php endforeach; ?>
+</ul>
+<!--
+<ul id="news_navi">
+<?php foreach($m_navi as $key => $val): ?>
+<li><a href="<?php if($key == $base)	echo "./"; else echo "./?p=".$key;?>" class="news_link<?php if(strcmp($p,$key) == 0)	echo "_a";?>"><?php echo $val[0];?></a></li>
+<?php endforeach; ?>
+</ul>
+-->
+<div align="center">
+<img src="img/<?php echo $p;?>.jpg">
+</div>
+
+<br>
+
+
+
+<ul id="news_content">
+<?php foreach($data[$p] as $val): ?>
+<li>
+<div class="news_top">
+<a href="<?php echo $val[1];?>" style="color:#0070C0;text-decoration:none;">
+<?php 
+if(mb_strlen($val[2],'UTF-8') > 55):
+echo mb_substr($val[2],0,55,'UTF-8')."...";
+else:
+echo $val[2];
+endif;
+?></a>
+</div>
+<div class="news_middle">
+<div class="news_middle_left">
+<table>
+<tr>
+<td class="photo_outer"><img src="http://img.poke.co.jp/media/transfer/img/eventid_<?php echo $val[0];?>/eventid_<?php echo $val[0];?>_pic1.jpg" width="150" class="photo" alt="<?php echo $val[2];?>"></td>
+</tr>
+</table>
+</div>
+<div class="news_middle_right">
+<table cellpadding="0" cellspacing="0" border="0" style="margin-top:7px;">
+<tr>
+<td class="news_middle_tdleft">開催期間</td>
+<td class="news_middle_tdright"><?php echo $val[6];?></td>
+</tr>
+<tr><td><img src="img/spacer.gif" height="10" width="1" style="display:block;"></td><td></td></tr>
+<tr>
+<td class="news_middle_tdleft">添乗員</td>
+<td class="news_middle_tdright"><?php echo $val[3];?></td>
+</tr>
+<tr><td><img src="img/spacer.gif" height="10" width="1" style="display:block;"></td><td></td></tr>
+<tr>
+<td class="news_middle_tdleft">食事</td>
+<td class="news_middle_tdright"><?php echo $val[4];?></td>
+</tr>
+<tr><td><img src="img/spacer.gif" height="10" width="1" style="display:block;"></td><td></td></tr>
+<tr>
+<td class="news_middle_tdleft">金額</td>
+<td class="news_middle_tdright"><span class="news_price"><?php echo $val[5];?></span></td>
+</tr>
+
+
+</table>
+</div>
+</div>
+<div class="news_bottom">
+<a href="<?php echo $val[1];?>" class="news_btn" style="color:#FFF;text-decoration:none;"><img src="img/icon.png" width="20" style="">&nbsp;詳細を見る・予約をする</a>
+</div>
+</li>
+<?php endforeach; ?>
+</ul>
+
+
+<!-- tab-area -->
+
+
+<!-- InstanceEndEditable -->
+        <div class="totop">
+          <a href="#imgLogo" class="button">ページトップへ</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### --> 
+  <!-- ##### FOOTER #####  -->
+  <div id="footerField">
+    <ul class="footerLink">
+      <li><a href="/">日帰りツアー・見学・イベント情報トップ</a></li>
+      <li><a href="/event/">日帰りツアー・体験イベント一覧</a></li>
+      <li class="last"><a href="http://www.poketabi-hikaku.com/" target="_blank">ぽけ旅比較.com</a></li>
+    </ul>
+    <ul class="footerLink">
+<li><a href="/book/eventlist/bus/none/none/0/0000/00/00/index.html">観光名所めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/society-bus/none/none/0/0000/00/00/index.html">社会見学バスツアー</a></li>
+<li><a href="/book/eventlist/nature-bus/none/none/0/0000/00/00/index.html">花・自然めぐりバスツアー</a></li>
+<li><a href="/book/eventlist/yakata/none/none/0/0000/00/00/index.html">屋形船遊び</a></li>
+<li><a href="/book/eventlist/cruising/none/none/0/0000/00/00/index.html">川下りクルーズ</a></li>
+<li><a href="/book/eventlist/tokyobay/none/none/0/0000/00/00/index.html">東京湾クルーズ</a></li>
+<li><a href="/book/eventlist/night-cruise/none/none/0/0000/00/00/index.html">ナイトクルーズ</a></li>
+<li class="last"><a href="/book/eventlist/ozashiki/none/none/0/0000/00/00/index.html">お座敷遊び</a></li><br>
+
+<li><a href="/book/eventlist/tradition/none/none/0/0000/00/00/index.html">伝統芸能</a></li>
+<li><a href="/book/eventlist/show/none/none/0/0000/00/00/index.html">ショー＆レビュー</a></li>
+<li><a href="/book/eventlist/society/none/none/0/0000/00/00/index.html">社会見学</a></li>
+<li><a href="/book/eventlist/factory/none/none/0/0000/00/00/index.html">工場見学</a></li>
+<li><a href="/book/eventlist/walking/none/none/0/0000/00/00/index.html">街歩き</a></li>
+<li><a href="/book/eventlist/history/none/none/0/0000/00/00/index.html">歴史探訪</a></li>
+<li><a href="/book/eventlist/spot/none/none/0/0000/00/00/index.html">名所・旧跡めぐり</a></li>
+<li><a href="/book/eventlist/exhibition/none/none/0/0000/00/00/index.html">展覧会・特別展</a></li>
+<li><a href="/book/eventlist/experience/none/none/0/0000/00/00/index.html">体験教室</a></li>
+<li class="last"><a href="/book/eventlist/gourmet/none/none/0/0000/00/00/index.html">レストランプラン</a></li><br>
+
+<li><a href="/book/eventlist/ticket-gourmet/none/none/0/0000/00/00/index.html">公演つきグルメプラン</a></li>
+<li><a href="/book/eventlist/ticket/none/none/0/0000/00/00/index.html">公演チケット</a></li>
+<li><a href="/book/eventlist/live/none/none/0/0000/00/00/index.html">室内ライブ</a></li>
+<li><a href="/book/eventlist/dayspa/none/none/0/0000/00/00/index.html">日帰り温泉</a></li>
+<li><a href="/book/eventlist/festival/none/none/0/0000/00/00/index.html">祭り・イベント</a></li>
+<li><a href="/book/eventlist/skytree/none/none/0/0000/00/00/index.html">東京スカイツリー</a></li>
+<li><a href="/book/eventlist/sakura/none/none/0/0000/00/00/index.html">桜・お花見ツアー</a></li>
+<li class="last"><a href="/book/eventlist/hanabi/none/none/0/0000/00/00/index.html">花火大会観覧ツアー</a></li><br>
+
+<li><a href="/book/eventlist/group/none/none/0/0000/00/00/index.html">団体様貸切OK</a></li>
+<li><a href="/book/eventlist/stay/none/none/0/0000/00/00/index.html">宿泊付きツアー</a></li>
+<li><a href="/book/eventlist/west/none/none/0/0000/00/00/index.html">関西 日帰り遊び</a></li>
+<li class="last"><a href="/book/eventlist/other/none/none/0/0000/00/00/index.html">その他地域 日帰り遊び</a></li>
+</ul>
+    <ul>
+      <li><a href="/company.html">運営会社</a></li>
+      <li><a href="/media.html">メディア掲載実績</a></li>
+      <li><a href="/pr.html">プレスリリース</a></li>
+      <li><a href="/ryokogyo.html">旅行業登録票</a></li>
+      <li><a href="/privacy.html">個人情報保護</a></li>
+      <li><a href="/copyright.html">著作権</a></li>
+      <li><a href="/yakkan.html">約款</a></li>
+      <li><a href="/tuuhan.html">通販規約</a></li>
+      <li class="last"><a href="/book/inquiry.php">お問い合わせ</a></li>
+    </ul>
+    <p class="imageBlock"><img src="/images/common/imgCopy.jpg" alt="Copyright c 2009 Pokekaru-Club. All rights reserved." width="358" height="14" /></p>
+  </div>
+  <!-- ##### /FOOTER ##### -->
+</div>
+
+
+<!-- Google Code for &#12304;&#29305;&#38598;&#12305;&#26481;&#20140;&#12473;&#12459;&#12452;&#12484;&#12522;&#12540; Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "zTiXCIbr7AIQupD43gM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1004406842/?value=0&amp;label=zTiXCIbr7AIQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="http://d-cache.microad.jp/js/bl_track.js">
+</script>
+
+<!-- 20121024 -->
+<!-- Google Code for &#12486;&#12540;&#12510;&#12391;&#25506;&#12377;&#65306;&#12464;&#12523;&#12513; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1004406842;
+var google_conversion_label = "auxcCKb1zwQQupD43gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1004406842/?value=0&amp;label=auxcCKb1zwQQupD43gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- 20121024 -->
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="http://m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<!-- TAGGY 2013.6.4 -->
+<script type="text/javascript" src="http://e01.taggyad.jp/js/entry.js"></script>
+<script type="text/javascript" src="http://e01.taggyad.jp/js/ext/poke.js"></script>
+<!-- end/TAGGY 2013.6.4 -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+</body>
+<!-- InstanceEnd -->
+</html>

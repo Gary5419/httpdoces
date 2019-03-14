@@ -1,0 +1,293 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "tokyo-cruise";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+$cms->setAllSpecialHtml();
+$data2 = $cms->res_data;
+
+define("H1TXT","日帰りバスツアー一覧");
+
+
+
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/index_160310.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/functions.php';
+
+$cruise = array();
+$cruise[0][] = array('ランチ','普段の外食に飽きたら､洋上ランチはいかがでしょうか？青々とした空と海の中でのランチは、格別なひととき｡誕生日や母の日などの記念日にもおすすめです。','/tokyo-cruise/lunch/','cruise-lunch','/tokyo-cruise/route-lunch/');
+$cruise[0][] = array('サンセット','東京湾の夕陽を背にクルージングが楽しめる、デートや特別なお出かけにぴったりなサンセットクルーズ。情景異なる夕陽と夜景の2つの景色が楽しめます。','/tokyo-cruise/sunset/','cruise-sunset','/tokyo-cruise/route-lunch/');
+$cruise[0][] = array('ディナー','絶品ディナーを堪能しつつ、ライトアップされた東京の夜景をご覧ください。レインボーブリッジやお台場、品川埠頭のコンテナ群などの景色がご覧いただけます。','/tokyo-cruise/dinner/','cruise-dinner','/tokyo-cruise/route-dinner/');
+$cruise[0][] = array('期間限定','期間限定クルーズでは、花火や星空観賞など、季節限定のクルーズイベントや、クリスマスや期間限定で提供される食事コースのプランをご紹介。','/tokyo-cruise/limited/','cruise-limited','');
+$cruise[0][] = array('ダブルクルーズ','東京湾クルーズと他水路のクルーズに乗船できるプラン。1度のご利用で2つの異なるクルーズが体験できます。クルーズをたっぷり堪能し、気分爽快・心もリフレッシュ！','/tokyo-cruise/two-rivers/','cruise-two-rivers','');
+$cruise[0][] = array('アニバーサリー','母の日や父の日、または、誕生日など、特別な日に利用できるアニバーサリークルーズプラン。ケーキや花束付きのプラン多数。詳細は各ページを確認ください。','/tokyo-cruise/anniversary/','cruise-anniversary','');
+
+
+
+/*
+$cruise[0][] = array('ランチクルーズ','普段のお店やデートに飽きたら､洋上ランチはいかがでしょうか？晴れた日に､青々とした空と海の中､いただく料理は､それだけで上質なひとときです｡誕生日や母の日などの記念日にもおすすめです。','/tokyo-cruise/lunch/','cruise-lunch','/tokyo-cruise/route-lunch/');
+$cruise[0][] = array('サンセット','東京湾の夕暮れを目にしながら、お食事を楽しめるデートにもぴったりなプランです。羽田空港から飛び立つ飛行機を眺めつつ、季節により雰囲気が変わる夕陽と夜景の2つの景色をお楽しみください。','/tokyo-cruise/sunset/','cruise-sunset','/tokyo-cruise/route-lunch/');
+$cruise[0][] = array('ディナー','絶品ディナーに舌鼓を打ちつつ、ライトアップされたレインボーブリッジや東京ゲートブリッジなど、ネオン輝く珠玉の夕景色を堪能ください。特別な日を過ごすには最適のプランです。','/tokyo-cruise/dinner/','cruise-dinner','/tokyo-cruise/route-dinner/');
+$cruise[0][] = array('期間限定','東京湾クルーズと他水路のクルーズに乗船できるプランです。1度のご参加で2つの異なるクルーズに乗船できるお得なプランです。単体のクルーズでは物足りない方にぜひおすすめです！','/tokyo-cruise/limited/','cruise-limited','');
+$cruise[0][] = array('ダブル','期間限定の船上イベントや、飲み放題、バイキングなど(プランにより異なります)が付いたクルーズです。1年に1回限りのプランなので、お見逃しなく！','/tokyo-cruise/two-rivers/','cruise-two-rivers','');
+$cruise[0][] = array('アニバーサリー','母の日や父の日、または、誕生日など、特別な日に利用できるアニバーサリークルーズプラン。ケーキや花束付きのプラン多数。詳細は各ページを確認ください。','/tokyo-cruise/anniversary/','cruise-anniversary','');
+*/
+
+
+$params["purposeid"] = "tokyo-cruise_recommended";
+$cr1 = getSearchData($params);	#バス新着
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 4) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="日帰りバスツアーを検索・予約するこができます。テーマや日程、価格帯、出発地・目的地別などの検索条件で、お好みのツアーをお探しください。特に、春の桜、秋の紅葉狩り、工場見学、話題の観光名所めぐりは人気のバスツアーです。また、助成金が還元された格安バスツアーや宿泊付きのバスツアーも期間限定で取り扱っております。新着一覧では、常に最新のバスツアーをご紹介。毎日要チェックです。" />
+<meta name="keywords" content="日帰り,バスツアー,日帰りバスツアー,出発地,目的地,日程,東京,神奈川,横浜,千葉,埼玉,茨城,栃木,静岡,観光,桜,紅葉,ポケカル" />
+<meta name="copyright" content="" />
+<title>東京湾クルーズツアー | ポケカル</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/bustours/">
+<link rel="canonical" href="http://www.poke.co.jp/bustours/">
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">日帰り旅行・ツアーTOP</a></li>
+		  <li class="pl20">東京湾クルーズ</li>
+        </ul>
+        <section>
+
+<h1 class="headline01">東京湾クルーズ</h1>
+
+
+<div><img src="img/keyimage2018.jpg" width="100%" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。"></div>
+
+<div class="mb10"></div>
+
+
+<div class="lead">
+大切な人と行きたい東京湾クルージング。ランチやディナー、サンセット、各時間帯ごとにクルーズプランをご紹介。さらに、花火観覧や星空観賞、クリスマスディナーなどの季節毎の特別プランも見逃せません。大都市東京のパノラマを潮風と共にお楽しみいただければ、日ごろの疲れも癒されます。ポケカルでは、24時間いつでもインターネットから予約可能です。
+</div>
+
+
+<div class="mb20"></div>	
+
+</div>
+
+<div class="search">
+
+
+<h2 class="headline01">おすすめプラン</h2>
+
+<div class="bg_f2f2f2">
+
+<div class="pb10"></div>
+
+<div class="lead">ポケカル編集部がお薦めするクルーズプランのご紹介。売れ筋のクルーズプランや格安プラン、アニバーサリー、季節限定プランなどから厳選チョイス！クルーズ選びに迷ったら、まずはおすすめプランをご利用してみては。
+</div>
+
+<div class="pb10"></div>
+
+<div class="eventlist-scroll">
+<ul>
+	
+        	            
+            <?php 
+            $cnt = 0;
+            foreach($list1 as $val){
+           
+                if($cnt < 8):
+                    $path = $val['img'];
+                    $size = getimagesize($path);
+                    $width = $size[0];
+                    $height = $size[1];
+            ?>
+<li>
+           
+        
+            <a href="<?php echo $val['link']; ?>">
+            
+            <div class="main01_ph" align="center">
+          
+            
+            <?php if($width < $height): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+            <?php else: ?>    
+                <?php if($height < 0.75 * $width): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+                <?php else: ?>
+                <img src="<?php echo $val['img']; ?>" style="width:100%;">
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            </div>
+           
+            <h4 class="main01_title">
+            <?php 
+            if(mb_strlen($val['title'],'UTF-8') > 52):
+            echo mb_substr($val['title'],0,52,'UTF-8')."...";
+            else:
+            echo $val['title'];
+            endif;
+            ?>
+            </h4>
+            <div class="main01_con">
+            <?php 
+           
+            echo $val['price'];
+           
+            ?>
+            </div>
+            <div class="main01_pr"><?php echo $val[4]; ?></div>
+            </a>
+            
+            
+</li>         
+            
+            <?php 
+                $cnt++;
+                endif;
+            } ?>
+                        
+                  
+                        
+
+</ul>
+<div class="clearfix"></div>
+</div>
+
+
+<h3>
+<a href="/sp/tokyo-cruise/recommended/" class="eventlist-link"><img src="/sp/common2/img/common/arrow02.png">&nbsp;おすすめクルーズを全て見る</a>
+</h3>
+
+<div class="pb20"></div>
+
+</div><!-- bg_f2f2f2 -->
+
+
+<h2 class="headline01">お食事タイプ・シーン別</h2>
+
+<div class="bg_eaeaea">
+
+<div class="pb20"></div>
+
+<ul class="eventlist2">
+<?php 
+$cnt = 1;
+foreach($cruise[0] as $val): ?>
+
+<li>
+<a href="<?php echo $val[2];?>">
+<img src="img/<?php echo $val[3]; ?>.jpg" style="width:100%;" >
+</a>
+<div class="main_con">
+
+<strong><?php echo $val[0]; ?></strong><br>
+
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>予定航路</a>)";} ?></div>
+
+
+
+<div class="pb10"></div>
+
+</li>
+
+<?php 
+if($cnt%4 == 0){
+?>
+</ul>
+<ul class="eventlist2">
+<?php
+}
+
+endforeach; ?>
+
+</ul>
+
+<div class="pb20"></div>
+
+
+
+</div><!--bg_eaeaea-->
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+<h2 class="headline01">クルーズ動画</h2>
+
+<div class="block">          
+	<div class="wrap-slide">
+
+<ul class="l-grid slider-news">
+<?php echo $data2['optvideo']; ?>
+</ul>
+
+	</div>
+</div>
+
+<?php endif; ?>
+
+
+
+</div>
+<!-- / #page -->
+
+</section>
+
+<?php require_once("2018/footer.html"); ?>

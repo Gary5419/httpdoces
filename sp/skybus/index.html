@@ -1,0 +1,288 @@
+<?php
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+
+$cms = new getDataFromCms();
+$cms->optmovie_type = "skybus";
+$cms->setOptVideoHtml();
+$data2 = $cms->res_data;
+
+$cms->setAllSpecialHtml();
+$data2 = $cms->res_data;
+
+define("H1TXT","日帰りバスツアー一覧");
+
+
+
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/simple_html_dom.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/index_160310.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/_data/functions.php';
+
+
+$cruise = array();
+$cruise[0][] = array('レストラン(ビュッフェ)','スカイバス＋ビュッフェは、スカイバスの組み合わせツアーの中でも、人気No1の組み合わせ。週末のお出かけに、親子やカップルで利用されるお客様が多く、幅広い年齢層に人気です。','/skybus/buffet/','sky-buffet','');
+$cruise[0][] = array('レストラン(洋食)','スカイバスと洋食レストランでのお食事が楽しめるツアー。レストランは、乗降場所の丸の内周辺のレストランをご案内。※洋食には多国籍料理等のお店も含みます。','/skybus/western-food/','sky-western-food','');
+$cruise[0][] = array('レストラン(和食・その他)','スカイバスと和食レストランでのお食事が楽しめるツアー。レストランは、乗降場所の丸の内周辺のレストランをご案内。※和食以外のジャンルのお店も含みます。','/skybus/japanese-food/','sky-washoku','');
+$cruise[0][] = array('スカイバス＋スカイダック','スカイバスと水陸両用自動車のスカイダック、両方の人気バスに1日で乗車できるツアー。テーマパークのアトラクション感覚で楽しめ、お子様連れのお客様に大人気。','/skybus/skyduck/','sky-bus-duck','');
+$cruise[0][] = array('スカイダックツアー','スカイダックが主役のツアーをご案内。水しぶきが車内にも入ってくるスカイダックは、想像以上に臨場感いっぱい！同乗するガイドさんのトークも面白く、大人でも十分に楽しめます。','/skyduck/','sky-duck','');
+$cruise[0][] = array('スカイダック in 横浜','スカイダックは、横浜でも運行中。横浜ツアーも、レストランとの組み合わせプランを中心にポケカルオリジナルツアーをご案内。中華街や赤レンガ倉庫、横浜の日帰り旅を満喫ください。','/skyduck-yokohama/','sky-duck-yokohama','');
+$cruise[0][] = array('ナイト/期間限定ツアー','ナイトドライブやナイトクルーズ、夜の時間帯に楽しめるツアーと桜や花火観覧、季節・期間限定のツアーのご紹介。紅葉観賞や冬のイルミネーション、さらに商品ラインナップを拡大。','/skybus/night-tours/','sky-night','');
+$cruise[0][] = array('添乗員付きツアー','添乗員が同行するツアーで、スカイバスやスカイダックに乗車できる団体ツアーのご案内。団体ツアーだからこそできる割安な価格帯が人気の秘訣。','/skybus/tour-operator/','sky-attendant','');
+$cruise[0][] = array('入場チケット付きツアー','スカイバス＋東京タワーやお台場マダム・タッソーなどの人気施設の入場チケットがセットになったツアー。シンプルな組み合わせながらも人気のツアー。','/skybus/ticket/','sky-ticket','');
+
+
+
+$params["purposeid"] = "skybus_recommended";
+$cr1 = getSearchData($params);	#バス新着
+
+$cnt = 1;
+foreach($cr1 as $v){
+
+	if($cnt > 8) break;
+	$list1[str_replace("http://www.poke.co.jp/book/calendar.php?eventid=","",$v['link'])] = $v;
+    $cnt++;
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="description" content="2階建てのスカイバスに乗車できるツアーのご紹介。各ツアーは、スカイバスに乗車できるだけではなく、お食事や観光スポットの入場チケットなどが付いた組み合わせプランが充実。中でもスカイバスとビュッフェのお食事が付いたプランはファミリーのお客様に大人気。ぜひ、季節の行楽や週末デートにご利用ください。" />
+<meta name="keywords" content="スカイバス,2階建て,オープンバス,丸の内,お台場,ナイトドライブ,ツアー,予約,ポケカル" />
+<meta name="copyright" content="" />
+<title>スカイバス 2階建てオープンバスの乗車ツアー｜日帰りバス旅行・観光ツアーならポケカルへ</title>
+    <link rel="stylesheet" href="/sp/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/sp/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/sp/common2/css/slick.css">
+    <link rel="stylesheet" href="/sp/common2/css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+      <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sp/common/js/flipsnap.min.js"></script>
+
+
+
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="canonical" href="http://www.poke.co.jp/skybus/">
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
+</script>
+<!-- End User Heat Tag -->
+</head>
+
+  <body>
+  <?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      <!-- HEADER -->
+      <?php require_once("2018/header.html"); ?>
+      <!-- END HEADER -->
+
+      <div class="main">
+        <ul class="breadcrumb">
+          <li><a href="../">日帰り旅行・ツアーTOP</a></li>
+		  <li class="pl20">スカイバス乗車ツアー</li>
+        </ul>
+        <section>
+
+<h1 class="headline01">スカイバス乗車ツアー</h1>
+
+
+<div><img src="https://img.poke.co.jp/skybus/img/keyimage2018_sp.jpg" width="100%" alt="日帰りバスツアーの一覧を掲載。ジャンルや価格・エリアからお好みのバスツアーをお探しください。"></div>
+
+<div class="mb10"></div>
+
+
+<div class="lead">
+2階建てバス「スカイバス」に乗車できるツアーのご紹介。ポケカルがご案内するツアーは、スカイバスに乗車するばかりでなく、他の遊びやコンテンツを組み合わせて楽しむツアーが中心。例えば、スカイバス＋レストラン、スカイバス＋スカイダック、スカイバス＋入場チケットなど、スカイバスを中心に、さまざまな遊びの輪が広がります。ツアーといっても、添乗員はつきません。乗車時間やお食事時間等が決まっているだけで、お客様の自由なスタイルでお楽しみいただけます。ぜひ、季節や週末の行楽に、スカイバスツアーをご利用ください。
+</div>
+
+
+<div class="mb20"></div>	
+
+</div>
+
+<div class="search">
+
+
+<h2 class="headline01">おすすめツアー</h2>
+
+<div class="bg_f2f2f2">
+
+<div class="pb10"></div>
+
+<div class="lead">
+</div>
+
+<div class="pb10"></div>
+
+<div class="eventlist-scroll">
+<ul>
+	
+        	            
+            <?php 
+            $cnt = 0;
+            foreach($list1 as $val){
+           
+                if($cnt < 8):
+                    $path = $val['img'];
+                    $size = getimagesize($path);
+                    $width = $size[0];
+                    $height = $size[1];
+            ?>
+<li>
+           
+        
+            <a href="<?php echo $val['link']; ?>">
+            
+            <div class="main01_ph" align="center">
+          
+            
+            <?php if($width < $height): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+            <?php else: ?>    
+                <?php if($height < 0.75 * $width): ?>
+                <img src="<?php echo $val['img']; ?>" style="height:165px;">
+                <?php else: ?>
+                <img src="<?php echo $val['img']; ?>" style="width:100%;">
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            </div>
+           
+            <h4 class="main01_title">
+            <?php 
+            if(mb_strlen($val['title'],'UTF-8') > 52):
+            echo mb_substr($val['title'],0,52,'UTF-8')."...";
+            else:
+            echo $val['title'];
+            endif;
+            ?>
+            </h4>
+            <div class="main01_con">
+            <?php 
+           
+            echo $val['price'];
+           
+            ?>
+            </div>
+            <div class="main01_pr"><?php echo $val[4]; ?></div>
+            </a>
+            
+            
+</li>         
+            
+            <?php 
+                $cnt++;
+                endif;
+            } ?>
+                        
+                  
+                        
+
+</ul>
+<div class="clearfix"></div>
+</div>
+
+
+<h3>
+<a href="https://www.poke.co.jp/skybus/recommended/" class="eventlist-link"><img src="/sp/common2/img/common/arrow02.png">&nbsp;おすすめツアーを全て見る</a>
+</h3>
+
+<div class="pb20"></div>
+
+</div><!-- bg_f2f2f2 -->
+
+
+<h2 class="headline01">組み合わせジャンル別</h2>
+
+<div class="bg_eaeaea">
+
+<div class="pb20"></div>
+
+<ul class="eventlist2">
+<?php 
+$cnt = 1;
+foreach($cruise[0] as $val): ?>
+
+<li>
+<a href="<?php echo $val[2];?>">
+<img src="https://img.poke.co.jp/skybus/img/<?php echo $val[3]; ?>.jpg" style="width:100%;" >
+</a>
+<div class="main_con">
+
+<strong><?php echo $val[0]; ?></strong><br>
+
+<?php echo $val[1]; if($val[4] != ""){ echo "(<a href='{$val[4]}'>予定航路</a>)";} ?></div>
+
+
+
+<div class="pb10"></div>
+
+</li>
+
+<?php 
+if($cnt%4 == 0){
+?>
+</ul>
+<ul class="eventlist2">
+<?php
+}
+
+endforeach; ?>
+
+</ul>
+
+<div class="pb20"></div>
+
+
+
+</div><!--bg_eaeaea-->
+
+
+<?php if( $data2['optvideo'] != ""): ?>
+<div class="wrapper">
+
+<h3 class="headline01">スカイバス/スカイダック 乗車体験動画</h3>
+
+<div class="block">          
+	<div class="wrap-slide">
+
+<ul class="l-grid slider-news">
+<?php echo $data2['optvideo']; ?>
+</ul>
+
+	</div>
+</div>
+
+<?php endif; ?>
+
+
+
+</div>
+<!-- / #page -->
+
+</section>
+
+<?php require_once("2018/footer.html"); ?>

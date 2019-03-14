@@ -1,0 +1,329 @@
+<?php
+$protocol = $_SERVER['HTTPS'] ? "https" : "http";
+header("HTTP/1.0 301 Moved Permanently");
+header("Location: {$protocol}://{$_SERVER['HTTP_HOST']}/pr/");
+
+if(strpos($_SERVER['HTTP_HOST'],'master') === false){
+    if (empty($_SERVER['HTTPS'])) {
+        header("HTTP/1.0 301 Moved Permanently");
+        header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+}
+
+require_once("include/2018/config.php");
+?>
+<?php define("H1TXT","プレスリリース | ポケカル"); 
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1.0">
+<meta name="Description" content="ポケカルのプレスリリースです。" />
+<meta name="Keywords" content="プレスリリース,ポケカル" />
+<title>プレスリリース | ポケカル</title>
+<link href="/css/second.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/common2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/common2/css/jquery-ui.css">
+    <link rel="stylesheet" href="/common2/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/common2/css/slick.css">
+    <link rel="stylesheet" href="/common2/css/style.css">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+    <?php include_once("/_data/tags/head_tag.php"); ?>
+
+
+<!--
+<link href="/css/base_renew.css" rel="stylesheet" type="text/css">
+<link href="/css/topstyle_renew.css" rel="stylesheet" type="text/css">
+
+-->
+</head>
+<body>
+<?php include_once("/_data/tags/body_tag.php"); ?>
+    <div class="container" id="container">
+      
+      <?php include_once("include/2018/header.html" ); ?>
+
+      <div class="main">
+        <div class="wrapper">
+
+          <ul class="breadcrumb">
+            <li><a class="trans" href="../">ポケカル TOP</a></li>
+            <li>プレスリリース</li>
+          </ul>
+
+        <div id="pr" align="center">
+          <h2 class="ttl-long">プレスリリース</h2>
+          <div id="mediaField">
+            <table class="list_table">
+              <thead>
+                <tr>
+                  <th class="gray"></th>
+                  <td class="white last"></td>
+                </tr>
+              </thead>
+              <tbody>
+              
+              <?php  if(  time() > strtotime("2017-09-27 16:00:00")  || isset($_REQUEST['testview']) )	: ?>
+              <tr class="first">
+                  <th>2018/3/19</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20180319.pdf" target="_blank">役員人事のお知らせ</a></td>
+                </tr>
+              <tr class="last">
+                  <th>2017/12/18</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20171218.pdf" target="_blank">毎回大好評「ラオス大使館特別見学ツアー」2018年初旬の設定日発表について</a></td>
+                </tr>
+                  <th>2017/10/17</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20171017.pdf" target="_blank">一般社団法人ツーリズムとよた開設記念「秋のモニターツアー」実施について</a></td>
+                </tr>
+                  <th>2017/9/27</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170927.pdf" target="_blank">＜東急電鉄×ポケカル＞玉電開通110周年記念 魅力的な旧跡名所が残る世田谷線沿いを巡る商品販売について</a></td>
+                </tr>
+              <tr class="last">
+                  <th>2017/9/7</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170907.pdf" target="_blank">西武グループ「西武線沿線活性化」推進施策の一環「埼玉西武ライオンズ特別観戦ツアー」の造成について</a></td>
+                </tr>
+                <?php else: ?>
+              <tr class="first">
+                  <th>2017/9/7</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170907.pdf" target="_blank">西武グループ「西武線沿線活性化」推進施策の一環「埼玉西武ライオンズ特別観戦ツアー」の造成について</a></td>
+                </tr>
+                <?php endif; ?>
+              <tr class="last">
+                  <th>2017/8/31</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170831_2.pdf" target="_blank">おかげ様で愛されて10周年！｢江戸の粋 神楽坂で楽しむ たいこもち｣2018年上半期設定日の追加について</a></td>
+                </tr>
+                  <th>2017/8/31</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170831.pdf" target="_blank">＜東急電鉄×ポケカル＞オリジナルツアー 新たに3商品販売開始について</a></td>
+                </tr>
+                  <th>2017/8/4</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170804.pdf" target="_blank">東急電鉄×伊豆急行の豪華観光列車『THE ROYAL EXPRESS』ポケカル限定の特別車内見学ツアー販売について</a></td>
+                </tr>
+                  <th>2017/5/18</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20170518.pdf" target="_blank">東急電鉄とポケカル社、着地型観光事業における資本業務提携契約の締結について</a></td>
+                </tr>
+              <tr class="last">
+                  <th>2016/5/31</th>
+                  <td class="last"><a href="/userfile/pdf/press-release_20160530.pdf" target="_blank">「民泊」サービス展開に向けた 株式会社アパマンショップリーシングとの業務提携について</a></td>
+                </tr>
+                
+                <tr class="last">
+                  <th>2013/2/4</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20130204.pdf" target="_blank">昭文社と共同で『まっぷるツアーby ぽけかる倶楽部』販売開始について</a></td>
+                </tr>              
+                <tr>
+                  <th>2011/12/28</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20111228.pdf" target="_blank">映画『麒麟の翼〜劇場版・新参者〜』公開記念オフィシャルタイアップツアーの販売開始について</a></td>
+                </tr>
+                <tr>
+                  <th>2011/10/19</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20111019.pdf" target="_blank">「えきねっとポイントモール」出店記念キャンペーンの実施について</a></td>
+                </tr>
+                <tr>
+                  <th>2011/8/11</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20110811.pdf" target="_blank">「真夏の怪談バスツアー」好評開催中</a></td>
+                </tr>
+                <tr>
+                  <th>2011/7/14</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20110714.pdf" target="_blank">花火商品満載の夏号情報誌を発行について</a></td>
+                </tr>
+                <tr>
+                  <th>2011/6/09</th>
+                  <td class="last"><a href="userfile/pdf/Press-Release_20110609.pdf" target="_blank">究極の安・近・短バスツアー販売開始について</a></td>
+                </tr>
+                <tr>
+                  <th>2011/4/21</th>
+                  <td class="last"><a href="userfile/pdf/Press-Release_20110421.pdf" target="_blank">高尾山散策ツアー　再販決定について</a></td>
+                </tr>
+                <tr>
+                  <th>2011/3/01</th>
+                  <td class="last"><a href="userfile/pdf/Press-Release_20110301.pdf" target="_blank">春の新商品無料情報誌を発行について</a></td>
+                </tr>
+              <tr>
+                  <th>2011/2/17</th>
+                  <td class="last"><a href="userfile/pdf/Press-Release_20110217.pdf" target="_blank">東京人気スポット５景観光バスツアー　増便・開催日程延長決定について</a></td>
+                </tr>
+                 <tr>
+                  <th>2011/1/27</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20110127.pdf" target="_blank">春の桜商品の販売開始と特集ページ開設について</a></td>
+                </tr>
+                <!--<tr>
+                  <th>2011/1/13</th>
+                  <td class="last"><a href="userfile/pdf/Press-Release_20110113.pdf" target="_blank">温泉ライナー　路線拡大・増便について</a></td>
+                </tr>-->
+                <tr>
+                  <th>2010/11/17</th>
+                  <td class="last"><a href="userfile/pdf/Press-Release_20101117.pdf" target="_blank">ぽけかる名物ガイドご紹介ページ新設について</a></td>
+                </tr>
+                <!--<tr>
+                  <th>2010/10/20</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20101020.pdf" target="_blank">温泉直行バス運行開始について</a></td>
+                </tr>-->
+                <tr>
+                  <th>2010/9/28</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20100928.pdf" target="_blank">新宿ワシントンホテル共同企画 中国人観光客向け 新宿観光と買い物ツアー開始について</a></td>
+                </tr>
+                <tr>
+                  <th>2010/6/22</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20100622.pdf" target="_blank">ANAとぽけかる倶楽部の着地型ツアーを共同開発について</a></td>
+                </tr>
+                <tr>
+                  <th>2010/6/17</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20100617.pdf" target="_blank">携帯位置情報ゲーム「コロニーな生活☆PLUS（通称：コロプラ）」との提携について</a></td>
+                </tr>
+                <tr>
+                  <th>2010/4/7</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20100407.pdf" target="_blank">ANAとぽけかる倶楽部の連携スタートについて</a></td>
+                </tr>
+                <tr>
+                  <th>2010/4/1</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20100401.pdf" target="_blank">TBSテレビ「ひるおび！」にてぽけかるイベント放映</a></td>
+                </tr>
+                <tr>
+                  <th>2010/2/19</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20100219.pdf" target="_blank">ぽけかる倶楽部・NECビッグローブ アフェリエイト提携サイトがオープン</a></td>
+                </tr>
+                <tr class="last">
+                  <th>2009/8/28</th>
+                  <td class="last"><a href="/userfile/pdf/Press-Release_20090828.pdf" target="_blank">セブン-イレブン店頭にてぽけかる倶楽部のイベント販売開始</a></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th width="77"></th>
+                  <td class="last"></td>
+                </tr>
+              </tfoot>
+            </table>
+            <table class="list_table">
+              <thead>
+                <tr>
+                  <th colspan="2" class="single"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="first">
+                  <th colspan="2" class="single">商品紹介、プレスリリース</th>
+                </tr>
+                <tr>
+                  <th>2010/12/13</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20101213.pdf" target="_blank">観劇型エンターテインメントバスツアー第二弾開催！</a></td>
+                </tr>
+                <tr>
+                  <th>2010/8/2</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20100802.pdf" target="_blank">“黒澤明生誕100年祭記念「八ヶ岳薪能」鑑賞日帰りバスツアー”を開催！</a></td>
+                </tr>
+                <tr>
+                  <th>2010/7/9</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20100709.pdf" target="_blank">新感覚 観劇型・日帰りバスツアー第一弾 真夏の怪談ツアーを開催！！</a></td>
+                </tr>
+                <tr>
+                  <th>2010/6/30</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20100630.pdf" target="_blank">業界初！ぽけかる倶楽部が今夏贈るエンターテインメントバスツアー！</a></td>
+                </tr>
+                <tr>
+                  <th>2010/6/4</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20100604.pdf" target="_blank">好評発売中！大河ドラマ散策シリーズ 大人気！！「龍馬に逢いにゆく</a></td>
+                </tr>
+                <tr>
+                  <th>2010/6/2</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20100602.pdf" target="_blank">ミュージカル『CHICAGO』鑑賞とマキシム・ド・パリ</a></td>
+                </tr>
+                <tr>
+                  <th>2010/4/23</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20100423.pdf" target="_blank">ゴールデンウィーク特集！</a></td>
+                </tr>
+                <tr>
+                  <th>2009/12/9</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20091209.pdf" target="_blank">クリスマス＆ニューイヤー特集！！</a></td>
+                </tr>
+                <tr>
+                  <th>2009/11/30</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20091130.pdf" target="_blank">新春イベント発表！</a></td>
+                </tr>
+                <tr>
+                  <th>2009/11/6</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20091106.pdf" target="_blank">秋の東京再発見！今話題のスポットなど</a></td>
+                </tr>
+                <tr>
+                  <th>2009/10/7</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20091007.pdf" target="_blank">秋の東京再発見”2009 年秋のおすすめイベント</a></td>
+                </tr>
+                <tr>
+                  <th>2009/9/6</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090806.pdf" target="_blank">2009年夏号イベント　夏に楽しむ大江戸遊び</a></td>
+                </tr>
+                <tr>
+                  <th>2009/7/1</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090701.pdf" target="_blank">情報誌夏号完成！　親子3代で楽しむ夏休み</a></td>
+                </tr>
+                <tr>
+                  <th>2009/6/3</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090603.pdf" target="_blank">2009年6月　新商品のご案内</a></td>
+                </tr>
+                <tr>
+                  <th>2009/4/27</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090427.pdf" target="_blank">ゴールデンウィークのイチオシ！イベント</a></td>
+                </tr>
+                <tr>
+                  <th>2009/3/4</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090304.pdf" target="_blank">ぽけかる倶楽部、最新の人気イベント動向を発表</a></td>
+                </tr>
+                <tr>
+                  <th>2009/2/12</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090212.pdf" target="_blank">春の遊び情報満載 日帰りイベント全103 コース誕生！</a></td>
+                </tr>
+                <tr>
+                  <th>2010/2/19</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090219.pdf" target="_blank">ぽけかる倶楽部・NECビッグローブ アフェリエイト提携サイトがオープン</a></td>
+                </tr>
+                <tr class="last">
+                  <th>2009/8/28</th>
+                  <td class="last"><a href="/userfile/pdf/PR_20090828.pdf" target="_blank">セブン-イレブン店頭にてぽけかる倶楽部のイベント販売開始</a></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th width="77"></th>
+                  <td class="last"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ##### /BODY ##### -->
+
+</div>
+<script type="text/javascript">
+<!--
+var blade_co_account_id='2019';
+var blade_group_id='';
+-->
+</script>
+<script src="//d-cache.microad.jp/js/bl_track.js">
+</script>
+<!-- YDNリタゲタグ -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'listing1930';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+
+<!-- for pixel tracking -->
+<img src="//m.one.impact-ad.jp/pix?p=19575&t=i"/>
+<!-- end/YDNリタゲタグ -->
+
+<?php require_once "userfile_tag_before_endbody.inc"; ?>
+<?php include_once("include/2018/footer.html" ); ?>

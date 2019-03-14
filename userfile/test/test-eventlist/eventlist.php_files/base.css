@@ -1,0 +1,768 @@
+@charset "utf-8";
+
+/* ###### INITIALIZE ###### */
+
+body {
+	behavior: url(/css/csshover3.htc); 
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	text-align: justify;
+	text-justify:distribute;
+	line-height: 1.3em;
+	color: #333333;
+	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
+}
+
+h1 , h2 , h3 , h4 , div , p , ul , li , dl , dt , dd{
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul , li , dl , dt , dd{
+	list-style-type: none;
+}
+
+a:link , a:visited{
+	color: #326601;
+	text-decoration: underline;
+}
+
+a:hover , a:active{
+	text-decoration: none;
+}
+
+img {
+	border:none 0px;
+	vertical-align:bottom;
+}
+table{
+	border-collapse:separate;
+
+}
+
+
+
+/* ###### COMMON CLASS ###### */
+
+.lineZero{
+	line-height:0;
+}
+
+.floatContainer{
+	display: inline-block;
+	width: 100%;
+	line-height:0;
+	font-size:1%;
+	clear: both;
+}
+
+.floatLeft{
+	display: inline;
+	float: left;
+	font-size:12px;
+	line-height:1.3em;	
+}
+
+.floatRight{
+	display: inline;
+	float: right;
+	font-size:12px;
+	line-height:1.3em;	
+}
+
+.imageBlock{
+	line-height:0;
+	font-size:1%;
+}
+
+.titleClass{
+	display: block;
+	font-size: 1%;
+	line-height:normal;
+	background-repeat: no-repeat;
+	float: none;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+.buttonMode a{
+	display: block;
+	font-size: 1%;
+	line-height:normal;
+	background-repeat: no-repeat;
+	float: none;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+.buttonMode a:link , .buttonMode a:visited{
+	background-position: left top;
+}
+
+.buttonMode a:hover , .buttonMode a:active{
+	background-position: left bottom;
+}
+
+.buttonModeVertical a {
+	font-size: 1%;
+	line-height:normal;
+	display:block;
+	overflow:hidden;
+	text-indent:-9999px;
+}
+.buttonModeVertical a:link, .buttonModeVertical a:visited {
+	background-position:left top;
+}
+.buttonModeVertical a:hover, .buttonModeVertical a:active {
+	background-position:right top;
+}
+
+.marginT10 {
+margin-top:10px;
+}
+
+.marginT15 {
+margin-top:15px;
+}
+
+
+.marginL10 {
+margin-left:10px;
+}
+
+.marginB20 {
+margin-bottom:20px;
+}
+
+.marginB15 {
+margin-bottom:15px;
+}
+.marginB10 {
+margin-bottom:10px;
+}
+.marginB5 {
+margin-bottom:5px;
+}
+
+.centering{
+	text-align:center;
+}
+
+.pinkBold{
+	color:#ff009a;
+	font-weight:bolder;
+	font-size:14px;
+}
+
+/* ##### EACH ELEMENT STYLE ##### */
+#wrapper {
+	width: 904px;
+	margin:0 auto;
+}
+.fixShadow {
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+/* HEADER
+-------------------------------------------*/
+#imgLogo {
+	background-image: url(http://img.poke.co.jp/images/common/header/imgLogo.jpg);
+	height: 85px;
+	width: 261px;
+}
+#headNavi {
+    margin: 3px 2px 0 0;
+    width: 625px;
+}
+
+#bgNaviArea{
+	background: url(http://img.poke.co.jp/images/common/header/bgNaviArea.jpg) repeat-x left bottom;
+	padding:0 0 6px;
+	margin:0 0 6px;
+}
+#bgNaviAreaBook{
+	background: url(http://img.poke.co.jp/images/book/bgNaviArea.jpg) repeat-x left 51px;
+	padding:0 0 6px;
+	margin:0 0 6px;
+}
+
+#headLead {
+	font-size: 10px;
+	color: #666666;
+	line-height: 1.2em;
+	margin: 6px 0 5px;
+	width: 390px;
+	overflow: hidden;
+}
+#areaNaviField{
+	padding:0 0 2px 0;
+}
+
+#areaNaviField li {
+	display: inline;
+	float:left;
+}
+
+#btnKantou {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnKantou.jpg);
+	height: 23px;
+	width: 90px;
+	margin:0 4px 0 0;
+}
+#btnKantou.current,
+#btnKantou:hover {
+	background-position: left bottom;
+}
+
+#btnSapporo {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnSapporo.jpg);
+	height: 23px;
+	width: 90px;
+	margin:0 4px 0 0;
+}
+#btnSapporo.current,
+#btnSapporo:hover {
+	background-position: left bottom;
+}
+
+#btnKyusyu {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnKyusyu.jpg);
+	height: 23px;
+	width: 90px;
+	margin:0 4px 0 0;
+}
+#btnKyusyu.current,
+#btnKyusyu:hover {
+	background-position: left bottom;
+}
+
+#btnOkinawa {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnOkinawa.jpg);
+	height: 23px;
+	width: 90px;
+}
+#btnOkinawa.current,
+#btnOkinawa:hover {
+	background-position: left bottom;
+}
+
+
+#btnAbout {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnAbout.jpg);
+	height: 12px;
+	width: 112px;
+	margin:0 16px 0 10px;
+}
+#btnHowto {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnHowto.jpg);
+	height: 12px;
+	width: 86px;
+	margin:0 21px 0 0;
+}
+#btnFaq {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnFaq.jpg);
+	height: 12px;
+	width: 73px;
+	margin:0 21px 0 0;
+}
+#btnSitemap {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnSitemap.jpg);
+	height: 12px;
+	width: 71px;
+	margin:0 21px 0 0;
+}
+#btnmailmag {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnMailMag.jpg);
+	height: 12px;
+	width: 75px;
+	margin:0 21px 0 0;
+}
+
+#btngroup {
+	background-image: url(http://img.poke.co.jp/images/common/header/btngroup.jpg);
+	height: 12px;
+	width: 125px;
+}
+
+#headLinkField li{
+	display: inline;
+	float:left;
+}
+
+/* FOOTER
+-------------------------------------------*/
+#footerField {
+	margin:38px 0 0 0;
+	padding: 20px 0px 10px;
+	border-top: 1px dotted #cccccc;
+	text-align:center;
+}
+#footerField ul{
+	display:inline-block;
+	width:100%;
+	margin:0;
+	padding: 20px 0px 20px;
+	border-top: 1px dotted #cccccc;
+}
+#footerField li{
+	display:inline;
+	line-height:1.2em;
+	margin:0 6px 0 0;
+	padding:0 6px 0 0;	
+	border-right:solid 1px #000000;
+}
+#footerField li a{
+color:#000000;
+}
+#footerField li.last{
+	margin:0;
+	padding:0;
+	border-right:none 0 #000000;
+}
+#footerField ul.footerLink {
+	padding: 0px 0px 20px;
+	border: none;
+}
+
+
+
+/* BODY 2-COLUMN
+-------------------------------------------*/
+#sideMenuField {
+	background: url(http://img.poke.co.jp/images/common/side/bgSideMiddle.jpg) repeat-y left top;
+	width: 264px;
+}
+.body2Column #mainField {
+	width: 629px;
+}
+
+.body2Column #mainField #foot_banner{
+	padding-top:10px;
+	text-align:center;
+}
+.body2Column #mainField #foot_banner a{
+	padding-bottom:10px;
+}
+
+
+/* sideMenu */
+
+.sideInnerContainer {
+	background-image: url(http://img.poke.co.jp/images/common/side/bgSideInnerMiddle.jpg);
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.sideInnerContainer p,
+.sideInnerContainer .fixInput {
+	margin:0 4px 5px;
+}
+
+.bannerContainer .borderBottom {
+	background: url(http://img.poke.co.jp/images/common/side/bgSideContainerBorder.jpg) repeat-x left bottom;
+	padding:0 0 9px;
+	margin:4px 7px;
+}
+
+.bannerImageContainer .borderBottom {
+	background: url(http://img.poke.co.jp/images/common/side/bgSideContainerBorder.jpg) repeat-x left bottom;
+	padding:0 0 9px;
+	margin:4px 7px;
+}
+
+.sideInnerContainer .borderBottom {
+	background: url(http://img.poke.co.jp/images/common/side/bgSideContainerBorder.jpg) repeat-x left bottom;
+	padding:0 8px 9px;
+	
+}
+
+.sideInnerRankingContainer .borderBottom {
+	background: url(http://img.poke.co.jp/images/common/side/bgSideContainerBorder.jpg) repeat-x left bottom;
+	padding:5px 9px 5px;
+	
+}
+
+.sideInnerContainer .noBorderBottom {
+	padding:0 8px 0;
+}
+
+
+.sideInnerContainerYellow{
+	background-image: url(http://img.poke.co.jp/images/common/side/bgSideInnerMiddleYellow.jpg);
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.sideInnerRankingContainer {
+	background-image: url(http://img.poke.co.jp/images/common/side/bgSideInnerMiddle.jpg);
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+
+#ttlSideGoodsNum {
+	background-image: url(http://img.poke.co.jp/images/common/side/ttlSideGoodsNum.jpg);
+	height: 33px;
+}
+
+#ttlSideSchedule {
+	background-image: url(http://img.poke.co.jp/images/common/side/ttlSideSchedule.jpg);
+	height: 33px;
+}
+
+#ttlSideArea {
+	background-image: url(http://img.poke.co.jp/images/common/side/ttlSideArea.jpg);
+	height: 33px;
+}
+
+#ttlSideBest4 {
+	background-image: url(http://img.poke.co.jp/images/common/side/ttlSideBest4.jpg);
+	height: 33px;
+}
+
+#ttlSideMailmag {
+	background-image: url(http://img.poke.co.jp/images/common/side/ttlSideMailmag.jpg);
+	height: 33px;
+}
+
+#ttlSideSupport{
+	background-image: url(http://img.poke.co.jp/images/common/side/ttlSideSupport.jpg);
+	height: 33px;
+}
+
+.sideText{
+	padding:3px;
+	line-height:1.2em;
+	width:144px;
+	margin:1px 0 0 0;
+}
+
+.sideTextKeyword {
+    line-height: 1.2em;
+    margin: 1px 0 0;
+    padding: 3px;
+    width: 220px;
+}
+
+.btnSideSearch {
+	border: medium none;
+	cursor: pointer;
+	display: block;
+	height: 29px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	text-indent: -9999px;
+	width: 78px;
+	background: url(http://img.poke.co.jp/images/common/side/btnSideSearch.jpg) no-repeat right top transparent;
+	margin:0 0 0 5px;
+	_margin:0 0 0 3px;
+}
+
+.btnSideSearch:hover {
+	background: url(http://img.poke.co.jp/images/common/side/btnSideSearch.jpg) no-repeat right bottom transparent;
+}
+
+.fixInput .btnSideSearch {
+	margin:0 auto;
+}
+
+.fixInput select{
+	width:185px;
+}
+
+.btnSideReg {
+	border: medium none;
+	cursor: pointer;
+	display: block;
+	height: 29px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	text-indent: -9999px;
+	width: 78px;
+	background: url(http://img.poke.co.jp/images/common/side/btnSideReg.jpg) no-repeat right top transparent;
+	margin:0 0 0 5px;
+	_margin:0 0 0 3px;
+}
+
+.btnSideReg:hover {
+	background: url(http://img.poke.co.jp/images/common/side/btnSideReg.jpg) no-repeat right bottom transparent;
+}
+
+.btnSideSchedule{
+	background-position: left top;
+	background-image: url(http://img.poke.co.jp/images/common/side/btnSideSchedule.jpg);
+	height: 29px;
+	width: 218px;
+	margin:0 auto;
+}
+
+.btnSideSchedule:hover{
+	background-position: left bottom;
+}
+
+#sideLinkListYellow {
+	margin:2px 0;
+	display: inline-block;
+	width:254px;
+}
+
+#sideLinkListYellow li {
+	margin: 0px 4px 3px;
+	padding: 0px 9px 6px;
+	background: url(http://img.poke.co.jp/images/common/side/bgSideContainerBorderYellow.jpg) repeat-x left bottom;
+}
+
+#sideLinkListYellow li.last {
+	margin: 0px 4px 0;
+	padding: 0px 9px 0;
+	background: none repeat-x left bottom;
+}
+
+#sideLinkListYellow li a{
+	line-height: 1.2em;
+	background: url(http://img.poke.co.jp/images/common/side/icnSideArrowYellow.jpg) no-repeat left center;
+	display: inline-block;
+	padding-left: 13px;	
+	color:#000000;
+}
+
+#sideLinkList {
+	margin:2px 0;
+	display: inline-block;
+	width:254px;
+}
+
+#sideLinkList li {
+	margin: 3px 4px 0;
+	padding: 6px 9px 0;
+	background: url(http://img.poke.co.jp/images/common/side/bgSideContainerBorder.jpg) repeat-x left top;
+}
+
+#sideLinkList li.first {
+	margin: 0 4px 0;
+}
+
+#sideLinkList li a{
+	line-height: 1.2em;
+	background: url(http://img.poke.co.jp/images/common/side/icnSideArrow.jpg) no-repeat left center;
+	display: inline-block;
+	padding-left: 13px;	
+	color:#000000;
+}
+
+.bannerImage{
+	width:60px;
+}
+
+.bannerInfo{
+	width:180px;
+}
+
+
+
+/* global */
+#globalNaviField{
+	position: relative;
+}
+#globalNaviField li{
+		display:inline;
+		float:left;
+}
+
+#btnNaviTheme {
+	background-image: url(http://img.poke.co.jp/images/common/header/btnNaviTheme.jpg);
+	height: 53px;
+	width: 128px;
+}
+
+#btnNaviTheme.current,
+#btnNaviTheme:hover{
+	background-position: left bottom;
+}
+
+#btnNaviArea{
+	background-image: url(http://img.poke.co.jp/images/common/header/btnNaviArea.jpg);
+	height: 53px;
+	width: 125px;
+}
+
+#btnNaviArea.current,
+#btnNaviArea:hover{
+	background-position: left bottom;
+}
+
+#btnNaviSchedule{
+	background-image: url(http://img.poke.co.jp/images/common/header/btnNaviSchedule.jpg);
+	height: 53px;
+	width: 124px;
+}
+#btnNaviSchedule.current,
+#btnNaviSchedule:hover{
+	background-position: left bottom;
+}
+
+#btnNaviPurpose{
+	background-image: url(http://img.poke.co.jp/images/common/header/btnNaviPurpose.jpg);
+	height: 53px;
+	width: 125px;
+}
+
+#btnNaviPurpose.current,
+#btnNaviPurpose:hover{
+	background-position: left bottom;
+}
+
+#btnNaviEvent{
+	background-image: url(http://img.poke.co.jp/images/common/header/btnNaviEvent.jpg);
+	height: 53px;
+	width: 127px;
+}
+
+#btnNaviEvent.current,
+#btnNaviEvent:hover{
+	background-position: left bottom;
+}
+
+.lineupImage {
+	display: block;
+	padding: 1px;
+	border: 1px solid #cbccce;
+}
+
+.lineupBody {
+	width: 130px;
+
+}
+
+.sideInnerRankingContainer .lineupBody {
+	width: 170px;
+	margin-right:5px; 
+
+}
+
+
+.lineupBody dt{
+	font-weight:bolder;
+	margin-bottom: 8px;
+	font-size:14px;
+}
+
+.lineupBody dt a{
+	text-decoration:underline;
+}
+
+.sideInnerRankingContainer .lineupBody dt{
+	font-weight:normal;
+	margin-bottom: 0px;
+	font-size:12px;
+	color:#356501;
+	padding-left:3px;
+}
+
+.sideInnerRankingContainer .lineupBody dt.first{
+	color:#fe0000;
+}
+
+.sideInnerRankingContainer .lineupBody dt a{
+	text-decoration:underline;
+}
+
+
+ul#dropdownmenu{
+	position: absolute;
+	top: 53px;
+	left: 1px;
+	width: 200px;
+	z-index: 51;
+}
+ul#dropdownmenu li{
+	display: none;
+	border: 1px solid #CCCCCC;
+	border-top: none;
+	background: #EFE8D6;
+}
+ul#dropdownmenu li a{
+	display: block;
+	width: 180px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 10px;
+	margin-left: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	background: url(http://img.poke.co.jp/images/guide/icon_list_arrow.gif) no-repeat center left;
+}
+ul#dropdownmenu li a:hover{
+	text-decoration: underline;
+}
+
+iframe#frm{
+	z-index: 50;
+	position: absolute;
+	display: none;
+}
+
+
+
+.clearfix:after {
+  content: ".";  /* 新しい要素を作る */
+  display: block;  /* ブロックレベル要素に */
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  min-height: 1px;
+}
+
+* html .clearfix {
+  height: 1px;
+  /*\*//*/
+  height: auto;
+  overflow: hidden;
+  /**/
+}
+
+div.noside{
+ padding: 6px 0;
+ width:890px;
+ margin-left: 10px;
+ line-height:1.5em;
+}
+div.noside ul li{
+ float:left;
+ padding-right: 5px;
+ line-height: 1.5em;
+}
+div.noside ul li a{
+ padding-right: 15px;
+ background:url(http://img.poke.co.jp/images/common/topic_path.gif) no-repeat right center;
+}
+#pokekaru_old_html{
+	margin:0;
+	padding:0;
+    line-height: 130%;
+	display:block;
+	_zoom:1;
+	position: relative;
+}
+#pokekaru_old_html p {
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+#pokekaru_old_html .bookmark{
+	width:134px;
+	height:50px;
+	position:absolute;
+	top:-29px;
+	left:749px;
+}
+#pokekaru_old_html .cnt_clear { clear:both; height:1px; line-height:1px; font-size:0px; }

@@ -281,10 +281,10 @@ $totalfee = $_SESSION['calcres'];
 	vertical-align:middle !important;
 }
 </style>
-    <?php include("tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 <body>
-<?php include("tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 

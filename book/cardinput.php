@@ -277,7 +277,7 @@ $totalfee = $_SESSION['calcres'];
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="cleartype" content="on">
 <![endif]-->
-    <?php include("tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?=$urlroot?>common/js/heightLine.js"></script>
 <script type="text/javascript" src="<?=$urlroot?>common/js/valueClear.js"></script>
@@ -327,7 +327,7 @@ $totalfee = $_SESSION['calcres'];
 </style>
 </head>
 <body onLoad="f_ChangeInputColor()">
-<?php include("tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 

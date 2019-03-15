@@ -254,7 +254,7 @@ if (PEAR::isError($result)) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="cleartype" content="on">
 <![endif]-->
-    <?php include("tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 <style>
 .submit_btn2 {
 	-webkit-appearance:none;
@@ -311,7 +311,7 @@ if (PEAR::isError($result)) {
 </style>
 </head>
 <body>
-<?php include("tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 

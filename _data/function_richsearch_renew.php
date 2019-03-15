@@ -401,10 +401,10 @@ endif;
 	border-bottom:none;
 }
 </style>
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 </head>
 <body>
-    <?php include_once("/_data/tags/body_tag.php"); ?>
+    <?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 
@@ -829,10 +829,10 @@ if(isset($canonicalsp) && $canonicalsp != ""):
 	echo $canonicalsp."\n";
 endif;
 ?>
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 </head>
   <body>
-    <?php include_once("/_data/tags/body_tag.php"); ?>
+    <?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
 
       <?php require_once("2018/header.html"); ?>

@@ -881,7 +881,7 @@ function filterPostData() {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
@@ -933,7 +933,7 @@ function zenhan(obj){
 </head>
 <!--  <body onLoad="f_ChangeInputColor()">-->
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <!-- HEADER -->
       <?php require_once("2018/header.html"); ?>

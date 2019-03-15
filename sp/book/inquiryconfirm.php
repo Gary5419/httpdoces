@@ -105,7 +105,7 @@ if ($_POST['screenid'] == $screenid_current) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 <meta name="format-detection" content="telephone=no" />
 
 <!--<link rel="apple-touch-icon" href="./img/apple-touch-icon.png" />
@@ -133,7 +133,7 @@ font-size: 0.32rem;
 </style>
 </head>
   <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <!-- HEADER -->
       <?php require_once("2018/header.html"); ?>

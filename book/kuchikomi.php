@@ -192,10 +192,10 @@ function filterPostData() {
     <script type="text/javascript" src="/common/js/heightLine.js"></script>
     <script type="text/javascript" src="/common/js/valueClear.js"></script>
     <script type="text/javascript" src="/common/js/pageTop.js"></script>
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 <body id="index">
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
 <div id="wrapper">
 
 <h1>クチコミ登録｜現地集合・現地解散型 お手軽日帰りツアー・体験イベント</h1>

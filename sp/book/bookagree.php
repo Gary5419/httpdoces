@@ -247,7 +247,7 @@ if (PEAR::isError($result)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="/sp/common/js/google-analytics.js"></script>
 <script src="/sp/common/js/share.js"></script>
@@ -261,7 +261,7 @@ if (PEAR::isError($result)) {
 
 </head>
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <!-- HEADER -->
       <?php require_once("2018/header.html"); ?>
@@ -308,8 +308,8 @@ if (PEAR::isError($result)) {
 		
 		<form name="FORM_BOTTUN" method="post" action="<?=$url_currentdir.$filename_current?>" target="_self">
 			<input type="hidden" name="screenid" value="<?=$screenid_current?>" />
-			<p class="wrapper">
-				<a href="#" class="btn-detail" onClick="document.FORM_BOTTUN.submit();return false;">カード決済画面へ</a>
+			<p class="wrapper" onclick="return judge()">
+				<a id="p1" class="btn-detail" onClick="document.FORM_BOTTUN.submit();return false;">カード決済画面へ</a>
 			</p>
 		</form>
 		<div class="mb5"></div>
@@ -339,3 +339,17 @@ if (PEAR::isError($result)) {
 <!-- / #page -->
 
 <?php require_once("2018/footer.html"); ?>
+        <script>
+            var colorTag = 0;
+            var set=0;
+            //    var colors = ["#d3d3d3", "blue"];
+            var colors = ["#d3d3d3"];
+            function judge() {
+                if (set==0){
+                    set = 1;
+                }else {
+                    alert("只今処理中です。\nそのままお待ちください。");
+                }
+                document.getElementById("p1").style.backgroundColor = colors[colorTag];
+            }
+        </script>

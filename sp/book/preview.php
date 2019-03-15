@@ -4,7 +4,7 @@
  *
  *
  */
-ini_set( 'display_errors', 'On' );
+//ini_set( 'display_errors', 'On' );
 require_once("include/2018/config.php");
 
 $cms->setAllSpecialHtml();
@@ -1170,8 +1170,7 @@ $mdbapp->disconnect();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
-
+      <?php include_once("tags/head_tag.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="/sp/common/js/google-analytics.js"></script>
 <script src="/sp/common/js/share.js"></script>
@@ -1200,7 +1199,7 @@ hr{
 
 </head>
 <body onLoad="f_ChangeInputColor()">
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <!-- HEADER -->
       <?php require_once("2018/header.html"); ?>
@@ -1568,9 +1567,8 @@ hr{
 				} 
 				?>	
 			</div>
-			<div class="wrapper">
-
-				<a href="#" class="btn-detail" onClick="document.frm_booking.submit();return false;">キャンセル規定に同意の上､予約を確定する</a>
+			<div class="wrapper" onclick="return judge()">
+				<a id="p1" class="btn-detail" onClick="document.frm_booking.submit();return false;">キャンセル規定に同意の上､予約を確定する</a>
 			</div>
 			
 			<div class="carttableInfo">
@@ -1578,12 +1576,12 @@ hr{
 					※ボタンは2回以上押さないようお願いいたします。
 				</div>
 			</div>
-			
-			
-		
-			
+
+
+
+
 		</form>
-			
+
 
 	</section>
 
@@ -1594,3 +1592,17 @@ hr{
 
 
 <?php require_once("2018/footer.html"); ?>
+        <script>
+            var colorTag = 0;
+            var set=0;
+            //    var colors = ["#d3d3d3", "blue"];
+            var colors = ["#d3d3d3"];
+            function judge() {
+                if (set==0){
+                    set = 1;
+                }else {
+                    alert("只今処理中です。\nそのままお待ちください。");
+                }
+                document.getElementById("p1").style.backgroundColor = colors[colorTag];
+            }
+        </script>

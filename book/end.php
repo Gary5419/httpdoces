@@ -593,7 +593,7 @@ src="https://www.facebook.com/tr?id=651670761687631&ev=PageView&noscript=1"
 	vertical-align:middle !important;
 }
 </style>
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 <script>
 fbq('track', 'CompleteRegistration', {
@@ -602,7 +602,7 @@ currency: 'USD'
 });
 </script>
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
 <!-- Yahoo Keyword Code 2012.11.09.add{ -->
 <!-- Yahoo Code for &#12452;&#12505;&#12531;&#12488;&#12539;&#12484;&#12450;&#12540;&#30003;&#36796;&#23436;&#20102; Conversion Page -->
 <script type="text/javascript">

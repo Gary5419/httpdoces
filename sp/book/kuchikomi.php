@@ -193,10 +193,10 @@ function filterPostData() {
 <link rel="shortcut icon" href="./favicon.ico" />-->
 
 <link rel="stylesheet" href="/sp/common/css/import.css" />
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 <body id="kuchikomi">
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
 <div id="page">
 
 <?php require_once "header.inc"; ?>

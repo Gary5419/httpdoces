@@ -42,11 +42,11 @@ endif;
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/asobi/css/style_sp.css" />
 
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
 <a name="page"></a>
 <h1 style="font-weight:normal;margin-bottom:3px;margin:6px 8px 0 8px;font-size:6px;">
 日帰り旅行やバスツアーの予約ならポケカルへ

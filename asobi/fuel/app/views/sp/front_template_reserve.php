@@ -30,11 +30,11 @@ $domain_mypage = MYPAGE_HOST;
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/asobi/css/style_sp.css" />
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
 <!-- <div id="page02"> -->
 <div>
 

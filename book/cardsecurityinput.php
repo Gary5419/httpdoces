@@ -281,10 +281,10 @@ $totalfee = $_SESSION['calcres'];
 	vertical-align:middle !important;
 }
 </style>
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include("tags/head_tag.php"); ?>
 </head>
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 
@@ -468,7 +468,7 @@ $totalfee = $_SESSION['calcres'];
 				
 				<div style="margin-bottom:80px;"></div>
 	  			
-				<p class="btn-detail"><a href="javascript:void(0);" onclick="document.frm.submit();">次へ</a></p>					
+				<p class="btn-detail"  onclick="return judge()"><a id="p1" onclick="document.frm.submit();">次へ</a></p>
 				
 			</form>
 			
@@ -531,3 +531,17 @@ function zenhan(obj){
         echo '$_SESSION[\'auto_furiwake\']='.$_SESSION['auto_furiwake']."<br />";
     }
 ?>
+<script>
+    var colorTag = 0;
+    var set=0;
+    //    var colors = ["#d3d3d3", "blue"];
+    var colors = ["#d3d3d3"];
+    function judge() {
+        if (set==0){
+            set = 1;
+        }else {
+            alert("只今処理中です。\nそのままお待ちください。");
+        }
+        document.getElementById("p1").style.backgroundColor = colors[colorTag];
+    }
+</script>

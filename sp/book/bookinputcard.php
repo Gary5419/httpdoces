@@ -471,7 +471,7 @@ $mdbapp->disconnect();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="/sp/common/js/google-analytics.js"></script>
 <script src="/sp/common/js/share.js"></script>
@@ -497,7 +497,7 @@ hr{
 	  
 </head>
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <!-- HEADER -->
       <?php require_once("2018/header.html"); ?>

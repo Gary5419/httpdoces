@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
     <style>
 	#date{/* margin:0 5px 0;*/}
 #date p{
@@ -94,7 +94,7 @@ if($canonical_tag != ""):
 endif; ?>
   </head>
   <body>
-  <?php include_once("/_data/tags/body_tag.php"); ?>
+  <?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <!-- HEADER -->
       <?php require_once("2018/header.html"); ?>

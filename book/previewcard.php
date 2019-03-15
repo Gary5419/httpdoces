@@ -94,7 +94,7 @@ if (is_null($_SESSION['optname1'])) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="cleartype" content="on">
 <![endif]-->
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 
 
 <link href="/common/css/errstyle.css" type="text/css" rel="stylesheet" />
@@ -115,7 +115,7 @@ document.write("<SCR" + "IPT language='JavaScript' type='text/javascript' "
 </SCRIPT>
 </head>
 <body onLoad="f_ChangeInputColor()">
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 

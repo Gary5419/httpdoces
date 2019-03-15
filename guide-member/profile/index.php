@@ -62,7 +62,7 @@ $data2 = $cms->res_data;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 <style>
 .guide_head{
 	position:relative;
@@ -284,7 +284,7 @@ ul#ticket_main li{
 </style>
   </head>
   <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 

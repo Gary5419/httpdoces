@@ -300,7 +300,7 @@ if(!isset($mode)):
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 
 <?php /*
 <script type="text/javascript">
@@ -420,7 +420,7 @@ endif;
 <!-- End User Heat Tag -->
 </head>
 <body>
-    <?php include_once("/_data/tags/body_tag.php"); ?>
+    <?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 
@@ -852,10 +852,10 @@ endif;
 (function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhjD1c8Tz4'});
 </script>
 <!-- End User Heat Tag -->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
 </head>
   <body>
-    <?php include_once("/_data/tags/body_tag.php"); ?>
+    <?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
 
       <?php require_once("2018/header.html"); ?>

@@ -254,7 +254,7 @@ if (PEAR::isError($result)) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="cleartype" content="on">
 <![endif]-->
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include("tags/head_tag.php"); ?>
 <style>
 .submit_btn2 {
 	-webkit-appearance:none;
@@ -311,7 +311,7 @@ if (PEAR::isError($result)) {
 </style>
 </head>
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 
@@ -379,7 +379,7 @@ if (PEAR::isError($result)) {
 				
 	  			<div style="margin-bottom:50px;"></div>
 	  			
-	  			<p class="btn-detail"><a href="javascript:void(0);" onclick="document.frm.submit();">カード決済画面へ</a></p>
+	  			<p class="btn-detail"  onclick="return judge()"><a id="p1" onclick="document.frm.submit();">カード決済画面へ</a></p>
 				
 				<div class="mb10"></div>
 
@@ -413,3 +413,17 @@ if (PEAR::isError($result)) {
   </div>
 </div>
        <?php include_once("include/2018/footer.html"); ?>
+<script>
+    var colorTag = 0;
+    var set=0;
+    //    var colors = ["#d3d3d3", "blue"];
+    var colors = ["#d3d3d3"];
+    function judge() {
+        if (set==0){
+            set = 1;
+        }else {
+            alert("只今処理中です。\nそのままお待ちください。");
+        }
+        document.getElementById("p1").style.backgroundColor = colors[colorTag];
+    }
+</script>

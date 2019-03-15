@@ -159,7 +159,7 @@ if($_SESSION['currentasid'] == ASID_JCOM) {
  */
 function checkPostData(&$user_error) {
     global $transl;
-    
+
     $lang = $transl->lang;
     if(!$transl->isJapanese()){
       // カード番号/cardno1/必須
@@ -188,7 +188,7 @@ function checkPostData(&$user_error) {
       // 有効期限/cardmonth/必須
       isParamCheckOK($user_error, $_POST['cardmonth'], '有効期限(月)', true, 2, 2, '', '^[0-9]+$');
     }
-    
+
 }
 
 /**
@@ -277,7 +277,7 @@ $totalfee = $_SESSION['calcres'];
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="cleartype" content="on">
 <![endif]-->
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include("tags/head_tag.php"); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?=$urlroot?>common/js/heightLine.js"></script>
 <script type="text/javascript" src="<?=$urlroot?>common/js/valueClear.js"></script>
@@ -327,11 +327,9 @@ $totalfee = $_SESSION['calcres'];
 </style>
 </head>
 <body onLoad="f_ChangeInputColor()">
-<?php include_once("/book/body.php"); ?>
+<?php include("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
-
-
 
       <div class="main">
         <div class="wrapper">
@@ -581,7 +579,7 @@ $totalfee = $_SESSION['calcres'];
 				</div>	
 				<div style="margin-bottom:80px;"></div>
 	  			
-				<p class="btn-detail"><a href="javascript:void(0);" onclick="document.frm.submit();">次へ</a></p>
+				<p class="btn-detail"  onclick="return judge()"><a id="p1" onclick="document.frm.submit();">次へ</a></p>
                 
 			</form>
 		</section>
@@ -643,3 +641,17 @@ function zenhan(obj){
         echo '$_SESSION[\'auto_furiwake\']='.$_SESSION['auto_furiwake']."<br />";
     }
 ?>
+<script>
+    var colorTag = 0;
+    var set=0;
+    //    var colors = ["#d3d3d3", "blue"];
+    var colors = ["#d3d3d3"];
+    function judge() {
+        if (set==0){
+            set = 1;
+        }else {
+            alert("只今処理中です。\nそのままお待ちください。");
+        }
+        document.getElementById("p1").style.backgroundColor = colors[colorTag];
+    }
+</script>

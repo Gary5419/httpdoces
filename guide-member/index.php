@@ -50,7 +50,7 @@ if($_REQUEST['type'] == 1){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cleartype" content="on">
     <![endif]-->
-      <?php include_once("/_data/tags/head_tag.php"); ?>
+      <?php include_once("tags/head_tag.php"); ?>
     <link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.poke.co.jp/sp/guide-member/">
 
 <style>
@@ -186,7 +186,7 @@ if($_REQUEST['type'] == 1){
 <!-- End User Heat Tag -->
   </head>
   <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
     <div class="container" id="container">
       <?php include_once("include/2018/header.html"); ?>
 

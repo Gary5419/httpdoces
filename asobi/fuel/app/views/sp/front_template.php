@@ -52,11 +52,11 @@ function frm_date_submit(){
 <link rel="stylesheet" href="/asobi/css/style_sp.css" />
 
 
-    <?php include_once("/_data/tags/head_tag.php"); ?>
+    <?php include_once("tags/head_tag.php"); ?>
 </head>
 
 <body>
-<?php include_once("/_data/tags/body_tag.php"); ?>
+<?php include_once("tags/body_tag.php"); ?>
 <!-- <div id="page02"> -->
 <div>
 
